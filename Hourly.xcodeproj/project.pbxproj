@@ -13,6 +13,7 @@
 		79F1AFCE29E4BFD4004CED4E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFCD29E4BFD4004CED4E /* SettingsViewController.swift */; };
 		79F1AFD029E4C047004CED4E /* WorkdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFCF29E4C047004CED4E /* WorkdayViewController.swift */; };
 		79F1AFD229E4C07A004CED4E /* ClientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFD129E4C07A004CED4E /* ClientsViewController.swift */; };
+		79F1AFD429E4C8CD004CED4E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFD329E4C8CD004CED4E /* Constants.swift */; };
 		79FA886E29E4AD66003C6DFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FA886D29E4AD66003C6DFB /* AppDelegate.swift */; };
 		79FA887029E4AD66003C6DFB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FA886F29E4AD66003C6DFB /* SceneDelegate.swift */; };
 		79FA887229E4AD66003C6DFB /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FA887129E4AD66003C6DFB /* SummaryViewController.swift */; };
@@ -51,6 +52,7 @@
 		79F1AFCD29E4BFD4004CED4E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		79F1AFCF29E4C047004CED4E /* WorkdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkdayViewController.swift; sourceTree = "<group>"; };
 		79F1AFD129E4C07A004CED4E /* ClientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsViewController.swift; sourceTree = "<group>"; };
+		79F1AFD329E4C8CD004CED4E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		79FA886A29E4AD66003C6DFB /* Hourly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hourly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79FA886D29E4AD66003C6DFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79FA886F29E4AD66003C6DFB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				79FA88A129E4B25D003C6DFB /* Localizables */,
+				79F1AFD329E4C8CD004CED4E /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				79FA887029E4AD66003C6DFB /* SceneDelegate.swift in Sources */,
 				79F1AFC829E4BD0E004CED4E /* HourlyTabBar.swift in Sources */,
 				79F1AFCE29E4BFD4004CED4E /* SettingsViewController.swift in Sources */,
+				79F1AFD429E4C8CD004CED4E /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
