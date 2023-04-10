@@ -7,9 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		79F1AFC829E4BD0E004CED4E /* HourlyTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFC729E4BD0E004CED4E /* HourlyTabBar.swift */; };
+		79F1AFCA29E4BD32004CED4E /* HourlyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFC929E4BD32004CED4E /* HourlyTabBarController.swift */; };
+		79F1AFCC29E4BFBB004CED4E /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFCB29E4BFBB004CED4E /* CalendarViewController.swift */; };
+		79F1AFCE29E4BFD4004CED4E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFCD29E4BFD4004CED4E /* SettingsViewController.swift */; };
+		79F1AFD029E4C047004CED4E /* WorkdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFCF29E4C047004CED4E /* WorkdayViewController.swift */; };
+		79F1AFD229E4C07A004CED4E /* ClientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFD129E4C07A004CED4E /* ClientsViewController.swift */; };
 		79FA886E29E4AD66003C6DFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FA886D29E4AD66003C6DFB /* AppDelegate.swift */; };
 		79FA887029E4AD66003C6DFB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FA886F29E4AD66003C6DFB /* SceneDelegate.swift */; };
-		79FA887229E4AD66003C6DFB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FA887129E4AD66003C6DFB /* ViewController.swift */; };
+		79FA887229E4AD66003C6DFB /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FA887129E4AD66003C6DFB /* SummaryViewController.swift */; };
 		79FA887529E4AD66003C6DFB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79FA887329E4AD66003C6DFB /* Main.storyboard */; };
 		79FA887829E4AD66003C6DFB /* Hourly.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 79FA887629E4AD66003C6DFB /* Hourly.xcdatamodeld */; };
 		79FA887A29E4AD67003C6DFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79FA887929E4AD67003C6DFB /* Assets.xcassets */; };
@@ -39,10 +45,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		79F1AFC729E4BD0E004CED4E /* HourlyTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyTabBar.swift; sourceTree = "<group>"; };
+		79F1AFC929E4BD32004CED4E /* HourlyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyTabBarController.swift; sourceTree = "<group>"; };
+		79F1AFCB29E4BFBB004CED4E /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		79F1AFCD29E4BFD4004CED4E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		79F1AFCF29E4C047004CED4E /* WorkdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkdayViewController.swift; sourceTree = "<group>"; };
+		79F1AFD129E4C07A004CED4E /* ClientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsViewController.swift; sourceTree = "<group>"; };
 		79FA886A29E4AD66003C6DFB /* Hourly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hourly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79FA886D29E4AD66003C6DFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79FA886F29E4AD66003C6DFB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		79FA887129E4AD66003C6DFB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		79FA887129E4AD66003C6DFB /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 		79FA887429E4AD66003C6DFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		79FA887729E4AD66003C6DFB /* Hourly.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Hourly.xcdatamodel; sourceTree = "<group>"; };
 		79FA887929E4AD67003C6DFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -157,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				79FA887329E4AD66003C6DFB /* Main.storyboard */,
+				79F1AFC729E4BD0E004CED4E /* HourlyTabBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -164,7 +177,12 @@
 		79FA88A329E4B282003C6DFB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				79FA887129E4AD66003C6DFB /* ViewController.swift */,
+				79FA887129E4AD66003C6DFB /* SummaryViewController.swift */,
+				79F1AFC929E4BD32004CED4E /* HourlyTabBarController.swift */,
+				79F1AFCB29E4BFBB004CED4E /* CalendarViewController.swift */,
+				79F1AFCD29E4BFD4004CED4E /* SettingsViewController.swift */,
+				79F1AFCF29E4C047004CED4E /* WorkdayViewController.swift */,
+				79F1AFD129E4C07A004CED4E /* ClientsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -308,11 +326,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79FA887229E4AD66003C6DFB /* ViewController.swift in Sources */,
+				79F1AFCC29E4BFBB004CED4E /* CalendarViewController.swift in Sources */,
+				79FA887229E4AD66003C6DFB /* SummaryViewController.swift in Sources */,
+				79F1AFCA29E4BD32004CED4E /* HourlyTabBarController.swift in Sources */,
 				79FA886E29E4AD66003C6DFB /* AppDelegate.swift in Sources */,
+				79F1AFD029E4C047004CED4E /* WorkdayViewController.swift in Sources */,
 				79FA88A629E4B2BD003C6DFB /* StringResource.swift in Sources */,
 				79FA887829E4AD66003C6DFB /* Hourly.xcdatamodeld in Sources */,
+				79F1AFD229E4C07A004CED4E /* ClientsViewController.swift in Sources */,
 				79FA887029E4AD66003C6DFB /* SceneDelegate.swift in Sources */,
+				79F1AFC829E4BD0E004CED4E /* HourlyTabBar.swift in Sources */,
+				79F1AFCE29E4BFD4004CED4E /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,15 +7,16 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
-    @IBOutlet weak var label: UILabel!
+class SummaryViewController: UIViewController {
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        label.text = S.labelTitle.localized
+        
+        
+        
     }
-
-
+    
 }
 
