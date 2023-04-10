@@ -3,26 +3,21 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
+        <!--Hourly Tab Bar Controller-->
         <scene sceneID="Rdm-Pl-8pk">
             <objects>
-                <tabBarController id="qAy-gA-Wk1" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="c3G-jh-Jiv" customClass="HourlyTabBar" customModule="Hourly" customModuleProvider="target">
+                <tabBarController id="qAy-gA-Wk1" customClass="HourlyTabBarController" customModule="Hourly" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="c3G-jh-Jiv" customClass="HourlyTabBar" customModule="Hourly" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemGreenColor"/>
                     </tabBar>
-                    <connections>
-                        <segue destination="Vym-x0-T1T" kind="relationship" relationship="viewControllers" id="Pj3-Ju-pS6"/>
-                        <segue destination="QVk-d3-TBv" kind="relationship" relationship="viewControllers" id="EEb-L6-cfg"/>
-                        <segue destination="Bgo-Co-I6e" kind="relationship" relationship="viewControllers" id="XjB-VJ-G7y"/>
-                        <segue destination="fVY-2F-ubt" kind="relationship" relationship="viewControllers" id="dCW-uC-FV6"/>
-                    </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gGK-Jz-G2C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -31,7 +26,7 @@
         <!--Item-->
         <scene sceneID="5hS-bo-2MX">
             <objects>
-                <navigationController id="QVk-d3-TBv" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="CalendarNavigation" id="QVk-d3-TBv" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="olX-GF-cWd"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xWo-h1-5mC">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -48,7 +43,7 @@
         <!--Item-->
         <scene sceneID="E7x-oc-MgR">
             <objects>
-                <navigationController id="Vym-x0-T1T" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SummaryNavigation" id="Vym-x0-T1T" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="8ax-jm-WNe"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="99t-Y4-tTe">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -70,7 +65,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="SOk-cc-Hj0"/>
-                        <color key="backgroundColor" systemColor="tintColor"/>
+                        <color key="backgroundColor" name="BackgroundGrey"/>
                     </view>
                     <navigationItem key="navigationItem" title="Summary" id="wTI-qC-5ho"/>
                 </viewController>
@@ -81,18 +76,34 @@
         <!--Calendar-->
         <scene sceneID="Vuh-P1-obg">
             <objects>
-                <viewController id="U3z-UT-q9m" sceneMemberID="viewController">
+                <viewController id="U3z-UT-q9m" customClass="CalendarViewController" customModule="Hourly" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2zL-9p-cTq">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="sD7-xZ-PjV"/>
-                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                        <color key="backgroundColor" name="BackgroundGrey"/>
                     </view>
                     <navigationItem key="navigationItem" title="Calendar" id="tJG-Zo-Fzn"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FDY-AM-foa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1207" y="696"/>
+        </scene>
+        <!--Add New Workday-->
+        <scene sceneID="cI7-HU-Gxj">
+            <objects>
+                <viewController id="q60-8t-Gij" customClass="WorkdayViewController" customModule="Hourly" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="WorkdayNavigation" id="myi-Kt-Ur9">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="GrK-Fo-fBJ"/>
+                        <color key="backgroundColor" name="BackgroundGrey"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add New Workday" id="7G0-Q4-JuT"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aJ6-xO-myP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-176" y="696"/>
         </scene>
         <!--Clients-->
         <scene sceneID="t3I-yc-4AT">
@@ -102,7 +113,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="fuJ-b0-cQM"/>
-                        <color key="backgroundColor" systemColor="systemPinkColor"/>
+                        <color key="backgroundColor" name="BackgroundGrey"/>
                     </view>
                     <navigationItem key="navigationItem" title="Clients" id="bLg-PT-lF7"/>
                 </viewController>
@@ -118,7 +129,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="iNo-lB-vjt"/>
-                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                        <color key="backgroundColor" name="BackgroundGrey"/>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="bYo-ZZ-8G4"/>
                 </viewController>
@@ -126,25 +137,10 @@
             </objects>
             <point key="canvasLocation" x="1543" y="696"/>
         </scene>
-        <!--Workday View Controller-->
-        <scene sceneID="m9s-sO-TFy">
-            <objects>
-                <viewController id="vlA-a9-Xnd" customClass="WorkdayViewController" customModule="Hourly" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="1vt-eF-ctY">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="CTG-Jr-xSI"/>
-                        <color key="backgroundColor" systemColor="systemPurpleColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tzV-Wi-iZB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-176" y="366"/>
-        </scene>
         <!--Item-->
         <scene sceneID="HdE-xf-bT6">
             <objects>
-                <navigationController id="Bgo-Co-I6e" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ClientsNavigation" id="Bgo-Co-I6e" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="AmI-6o-lsx"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="STD-Cn-2tz">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -161,7 +157,7 @@
         <!--Item-->
         <scene sceneID="sms-5b-Ilu">
             <objects>
-                <navigationController id="fVY-2F-ubt" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SettingsNavigation" id="fVY-2F-ubt" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="dEQ-4x-Pxn"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="g9F-u9-McX">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -175,22 +171,32 @@
             </objects>
             <point key="canvasLocation" x="1543" y="-13"/>
         </scene>
+        <!--Item-->
+        <scene sceneID="18P-Jp-x7w">
+            <objects>
+                <navigationController storyboardIdentifier="WorkdayNavigation" automaticallyAdjustsScrollViewInsets="NO" id="Bqh-ro-g0T" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="pd3-EA-Ts5"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uPP-O7-lM7">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="q60-8t-Gij" kind="relationship" relationship="rootViewController" id="6Zw-kC-fZp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ogs-Gi-fpx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-176" y="-13"/>
+        </scene>
     </scenes>
     <resources>
+        <namedColor name="BackgroundGrey">
+            <color red="0.92549019610000005" green="0.94117647059999998" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemPurpleColor">
-            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
