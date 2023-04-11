@@ -16,11 +16,18 @@ class CalendarViewController: UIViewController {
     private var isDisplayingCalendar = true
     
     let calendarView = UICalendarView()
+    
+    private let workDays: Array<WorkDayItem> = []
+    
+    
+    let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     override func viewDidLoad() {
         super.viewDidLoad()
         calendarView.delegate = self
+        tableView.delegate = self
         calendarView.selectionBehavior = UICalendarSelectionSingleDate(delegate: self)
+        
         createCalendar()
     }
     
@@ -89,6 +96,34 @@ extension CalendarViewController: UICalendarSelectionSingleDateDelegate {
     
     func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
 
+    }
+}
+
+//MARK: - UITableViewDelegate
+
+extension CalendarViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+    }
+}
+
+
+//MARK: - UITableViewDataSource
+
+extension CalendarViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return workDays.count
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.Identifiers.workdayCell, for: indexPath)
+        let workDay = workDays[indexPath.row]
+        cell.textLabel?.text = workDay.client?.name
+        
+        cell.detailTextLabel?.text = workDay.date?.description
+        
+        return cell
     }
 }
 
