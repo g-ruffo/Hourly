@@ -182,14 +182,46 @@
                     <view key="view" contentMode="scaleToFill" id="ceQ-9A-xKx">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="yt8-tq-LYn">
+                                <rect key="frame" x="20" y="103" width="353" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="v97-2T-A1B" id="fUh-la-Omb"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qXq-Ny-TAf">
+                                <rect key="frame" x="16" y="159" width="361" height="629"/>
+                                <color key="backgroundColor" name="BackgroundGrey"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="fuJ-b0-cQM"/>
                         <color key="backgroundColor" name="BackgroundGrey"/>
+                        <constraints>
+                            <constraint firstItem="qXq-Ny-TAf" firstAttribute="leading" secondItem="fuJ-b0-cQM" secondAttribute="leading" constant="16" id="4nu-PB-L0U"/>
+                            <constraint firstItem="qXq-Ny-TAf" firstAttribute="top" secondItem="yt8-tq-LYn" secondAttribute="bottom" id="APx-lg-GIU"/>
+                            <constraint firstItem="fuJ-b0-cQM" firstAttribute="trailing" secondItem="yt8-tq-LYn" secondAttribute="trailing" constant="20" id="OFg-xi-vuY"/>
+                            <constraint firstItem="yt8-tq-LYn" firstAttribute="leading" secondItem="fuJ-b0-cQM" secondAttribute="leading" constant="20" id="Wfr-jS-iuw"/>
+                            <constraint firstItem="fuJ-b0-cQM" firstAttribute="trailing" secondItem="qXq-Ny-TAf" secondAttribute="trailing" constant="16" id="bzL-wP-wvu"/>
+                            <constraint firstItem="qXq-Ny-TAf" firstAttribute="bottom" secondItem="fuJ-b0-cQM" secondAttribute="bottom" constant="-30" id="dyv-Et-Lqr"/>
+                            <constraint firstItem="yt8-tq-LYn" firstAttribute="top" secondItem="fuJ-b0-cQM" secondAttribute="top" id="qbF-Es-2v9"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Clients" id="bLg-PT-lF7"/>
+                    <navigationItem key="navigationItem" title="Clients" id="bLg-PT-lF7">
+                        <barButtonItem key="rightBarButtonItem" title="New" id="DxM-kc-lz6">
+                            <connections>
+                                <action selector="createClientPressed:" destination="v97-2T-A1B" id="9cJ-fV-TQw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchBar" destination="yt8-tq-LYn" id="H87-0b-RtW"/>
+                        <outlet property="tableView" destination="qXq-Ny-TAf" id="GPe-db-Q48"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f3S-iA-y9s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="698" y="696"/>
+            <point key="canvasLocation" x="696.94656488549617" y="695.77464788732402"/>
         </scene>
         <!--Item-->
         <scene sceneID="18P-Jp-x7w">
