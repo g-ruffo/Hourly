@@ -30,6 +30,7 @@ class ClientsViewController: UIViewController {
     
 
     @IBAction func createClientPressed(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: K.Identifiers.addEditClientNav, sender: self)
     }
 
 }
