@@ -12,18 +12,40 @@ class CalendarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+//        createCalendar()
+    }
+    
+    private func createCalendar() {
+        let calendarView = UICalendarView()
+        calendarView.translatesAutoresizingMaskIntoConstraints = true
+        calendarView.calendar = .current
+        calendarView.locale = .current
+        calendarView.fontDesign = .rounded
+        
+        calendarView.delegate = self
+
+        view.addSubview(calendarView)
+        
+        NSLayoutConstraint.activate([
+            calendarView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            calendarView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            calendarView.heightAnchor.constraint(equalToConstant: 300),
+            calendarView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
+        ])
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+
+extension CalendarViewController: UICalendarViewDelegate {
+    func calendarView(_ calendarView: UICalendarView, decorationFor dateComponents: DateComponents) -> UICalendarView.Decoration? {
+        return nil
+    }
+}
+
+//extension CalendarViewController: UICalendarSelection {
+//
+//}
+
+
+

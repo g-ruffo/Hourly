@@ -23,6 +23,40 @@
             </objects>
             <point key="canvasLocation" x="-176" y="-741"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="8Yp-kn-ah2">
+            <objects>
+                <navigationController storyboardIdentifier="SummaryNavigation" automaticallyAdjustsScrollViewInsets="NO" id="wU0-f1-3ju" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iEg-Uo-MQh">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="jRK-G3-78r" kind="relationship" relationship="rootViewController" id="4N9-Pb-u5L"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ykR-V5-jjE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2037" y="-13"/>
+        </scene>
+        <!--Summary-->
+        <scene sceneID="Umg-fd-Rg4">
+            <objects>
+                <viewController id="jRK-G3-78r" customClass="SummaryViewController" customModule="Hourly" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rIT-X4-Q1T">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="SJF-ER-bSW"/>
+                        <color key="backgroundColor" name="BackgroundGrey"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Summary" id="wsU-xm-ZFe"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="evq-6A-sP8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2037" y="696"/>
+        </scene>
         <!--Item-->
         <scene sceneID="5hS-bo-2MX">
             <objects>
@@ -40,39 +74,6 @@
             </objects>
             <point key="canvasLocation" x="-1207" y="-13"/>
         </scene>
-        <!--Item-->
-        <scene sceneID="E7x-oc-MgR">
-            <objects>
-                <navigationController storyboardIdentifier="SummaryNavigation" id="Vym-x0-T1T" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="8ax-jm-WNe"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="99t-Y4-tTe">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="jxt-vn-4pD" kind="relationship" relationship="rootViewController" id="fkC-bE-Qn2"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EcE-Qa-S9p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2189" y="-13"/>
-        </scene>
-        <!--Summary-->
-        <scene sceneID="EX5-hP-nJo">
-            <objects>
-                <viewController id="jxt-vn-4pD" customClass="SummaryViewController" customModule="Hourly" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="yeC-DW-uhC" customClass="view">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="SOk-cc-Hj0"/>
-                        <color key="backgroundColor" name="BackgroundGrey"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Summary" id="wTI-qC-5ho"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="prv-B8-3cU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2187" y="696"/>
-        </scene>
         <!--Calendar-->
         <scene sceneID="Vuh-P1-obg">
             <objects>
@@ -89,37 +90,22 @@
             </objects>
             <point key="canvasLocation" x="-1207" y="696"/>
         </scene>
-        <!--Add New Workday-->
-        <scene sceneID="cI7-HU-Gxj">
+        <!--Item-->
+        <scene sceneID="sms-5b-Ilu">
             <objects>
-                <viewController id="q60-8t-Gij" customClass="WorkdayViewController" customModule="Hourly" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" restorationIdentifier="WorkdayNavigation" id="myi-Kt-Ur9">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="GrK-Fo-fBJ"/>
-                        <color key="backgroundColor" name="BackgroundGrey"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Add New Workday" id="7G0-Q4-JuT"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aJ6-xO-myP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController storyboardIdentifier="SettingsNavigation" id="fVY-2F-ubt" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="dEQ-4x-Pxn"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="g9F-u9-McX">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="raF-R6-oSx" kind="relationship" relationship="rootViewController" id="Nqr-o1-7kH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IN8-1p-Gqp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-176" y="696"/>
-        </scene>
-        <!--Clients-->
-        <scene sceneID="t3I-yc-4AT">
-            <objects>
-                <viewController id="v97-2T-A1B" customClass="ClientsViewController" customModule="Hourly" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ceQ-9A-xKx">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="fuJ-b0-cQM"/>
-                        <color key="backgroundColor" name="BackgroundGrey"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Clients" id="bLg-PT-lF7"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="f3S-iA-y9s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="698" y="696"/>
+            <point key="canvasLocation" x="1543" y="-13"/>
         </scene>
         <!--Settings-->
         <scene sceneID="GGy-aF-ulg">
@@ -154,22 +140,21 @@
             </objects>
             <point key="canvasLocation" x="698" y="-13"/>
         </scene>
-        <!--Item-->
-        <scene sceneID="sms-5b-Ilu">
+        <!--Clients-->
+        <scene sceneID="t3I-yc-4AT">
             <objects>
-                <navigationController storyboardIdentifier="SettingsNavigation" id="fVY-2F-ubt" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="dEQ-4x-Pxn"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="g9F-u9-McX">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="raF-R6-oSx" kind="relationship" relationship="rootViewController" id="Nqr-o1-7kH"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IN8-1p-Gqp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController id="v97-2T-A1B" customClass="ClientsViewController" customModule="Hourly" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ceQ-9A-xKx">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="fuJ-b0-cQM"/>
+                        <color key="backgroundColor" name="BackgroundGrey"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Clients" id="bLg-PT-lF7"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f3S-iA-y9s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1543" y="-13"/>
+            <point key="canvasLocation" x="698" y="696"/>
         </scene>
         <!--Item-->
         <scene sceneID="18P-Jp-x7w">
@@ -189,6 +174,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ogs-Gi-fpx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-176" y="-13"/>
+        </scene>
+        <!--Add New Workday-->
+        <scene sceneID="cI7-HU-Gxj">
+            <objects>
+                <viewController id="q60-8t-Gij" customClass="WorkdayViewController" customModule="Hourly" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="WorkdayNavigation" id="myi-Kt-Ur9">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="GrK-Fo-fBJ"/>
+                        <color key="backgroundColor" name="BackgroundGrey"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add New Workday" id="7G0-Q4-JuT"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aJ6-xO-myP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-176" y="696"/>
         </scene>
     </scenes>
     <resources>
