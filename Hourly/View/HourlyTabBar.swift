@@ -18,6 +18,7 @@ class HourlyTabBar: UITabBar {
     */
     
     // MARK: - Variables
+    
     public var didTapButton: (() -> ())?
     
     public lazy var middleButton: UIButton! = {
@@ -40,6 +41,7 @@ class HourlyTabBar: UITabBar {
         
         return middleButton
     }()
+    
     
     // MARK: - View Lifecycle
     override func awakeFromNib() {
