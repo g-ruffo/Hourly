@@ -16,7 +16,9 @@ struct K {
         static let clientsNav = "ClientsNavigation"
         static let workdayNav = "WorkdayNavigation"
         static let settingsNav = "SettingsNavigation"
-        static let workdayCell = "WorkdayCell"
+        static let workdayNibName = "WorkdayCell"
+        static let workdayCell = "ReusableWorkdayCell"
+
     }
     
     struct NavigationBar {

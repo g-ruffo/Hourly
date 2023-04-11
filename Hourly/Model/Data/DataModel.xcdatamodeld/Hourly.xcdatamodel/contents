@@ -16,6 +16,7 @@
     </entity>
     <entity name="WorkDayItem" representedClassName=".WorkDayItem" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="earnings" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="endTIme" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="isFinalized" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="kmDriven" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>

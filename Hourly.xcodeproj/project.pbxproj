@@ -14,8 +14,9 @@
 		79F1AFD029E4C047004CED4E /* WorkdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFCF29E4C047004CED4E /* WorkdayViewController.swift */; };
 		79F1AFD229E4C07A004CED4E /* ClientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFD129E4C07A004CED4E /* ClientsViewController.swift */; };
 		79F1AFD429E4C8CD004CED4E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFD329E4C8CD004CED4E /* Constants.swift */; };
-		79F1AFDC29E52E78004CED4E /* WorkDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFDA29E52E78004CED4E /* WorkDayCell.swift */; };
-		79F1AFDD29E52E78004CED4E /* WorkDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79F1AFDB29E52E78004CED4E /* WorkDayCell.xib */; };
+		79F1AFDC29E52E78004CED4E /* WorkdayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFDA29E52E78004CED4E /* WorkdayCell.swift */; };
+		79F1AFDD29E52E78004CED4E /* WorkdayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79F1AFDB29E52E78004CED4E /* WorkdayCell.xib */; };
+		79F1AFDF29E53748004CED4E /* TestDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFDE29E53748004CED4E /* TestDay.swift */; };
 		79FA886E29E4AD66003C6DFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FA886D29E4AD66003C6DFB /* AppDelegate.swift */; };
 		79FA887029E4AD66003C6DFB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FA886F29E4AD66003C6DFB /* SceneDelegate.swift */; };
 		79FA887229E4AD66003C6DFB /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FA887129E4AD66003C6DFB /* SummaryViewController.swift */; };
@@ -55,8 +56,9 @@
 		79F1AFCF29E4C047004CED4E /* WorkdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkdayViewController.swift; sourceTree = "<group>"; };
 		79F1AFD129E4C07A004CED4E /* ClientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsViewController.swift; sourceTree = "<group>"; };
 		79F1AFD329E4C8CD004CED4E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		79F1AFDA29E52E78004CED4E /* WorkDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkDayCell.swift; sourceTree = "<group>"; };
-		79F1AFDB29E52E78004CED4E /* WorkDayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkDayCell.xib; sourceTree = "<group>"; };
+		79F1AFDA29E52E78004CED4E /* WorkdayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkdayCell.swift; sourceTree = "<group>"; };
+		79F1AFDB29E52E78004CED4E /* WorkdayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkdayCell.xib; sourceTree = "<group>"; };
+		79F1AFDE29E53748004CED4E /* TestDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDay.swift; sourceTree = "<group>"; };
 		79FA886A29E4AD66003C6DFB /* Hourly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hourly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79FA886D29E4AD66003C6DFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79FA886F29E4AD66003C6DFB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -184,8 +186,8 @@
 			children = (
 				79FA887329E4AD66003C6DFB /* Main.storyboard */,
 				79F1AFC729E4BD0E004CED4E /* HourlyTabBar.swift */,
-				79F1AFDA29E52E78004CED4E /* WorkDayCell.swift */,
-				79F1AFDB29E52E78004CED4E /* WorkDayCell.xib */,
+				79F1AFDA29E52E78004CED4E /* WorkdayCell.swift */,
+				79F1AFDB29E52E78004CED4E /* WorkdayCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -207,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				79F1AFD929E51971004CED4E /* Data */,
+				79F1AFDE29E53748004CED4E /* TestDay.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -317,7 +320,7 @@
 			files = (
 				79FA887D29E4AD67003C6DFB /* LaunchScreen.storyboard in Resources */,
 				79FA88A929E4B37E003C6DFB /* Localizable.strings in Resources */,
-				79F1AFDD29E52E78004CED4E /* WorkDayCell.xib in Resources */,
+				79F1AFDD29E52E78004CED4E /* WorkdayCell.xib in Resources */,
 				79FA887A29E4AD67003C6DFB /* Assets.xcassets in Resources */,
 				79FA887529E4AD66003C6DFB /* Main.storyboard in Resources */,
 			);
@@ -348,6 +351,7 @@
 				79FA887229E4AD66003C6DFB /* SummaryViewController.swift in Sources */,
 				79F1AFCA29E4BD32004CED4E /* HourlyTabBarController.swift in Sources */,
 				79FA886E29E4AD66003C6DFB /* AppDelegate.swift in Sources */,
+				79F1AFDF29E53748004CED4E /* TestDay.swift in Sources */,
 				79F1AFD029E4C047004CED4E /* WorkdayViewController.swift in Sources */,
 				79FA88A629E4B2BD003C6DFB /* StringResource.swift in Sources */,
 				79FA887829E4AD66003C6DFB /* DataModel.xcdatamodeld in Sources */,
@@ -356,7 +360,7 @@
 				79F1AFC829E4BD0E004CED4E /* HourlyTabBar.swift in Sources */,
 				79F1AFCE29E4BFD4004CED4E /* SettingsViewController.swift in Sources */,
 				79F1AFD429E4C8CD004CED4E /* Constants.swift in Sources */,
-				79F1AFDC29E52E78004CED4E /* WorkDayCell.swift in Sources */,
+				79F1AFDC29E52E78004CED4E /* WorkdayCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
