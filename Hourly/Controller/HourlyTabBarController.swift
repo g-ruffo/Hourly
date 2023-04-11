@@ -14,7 +14,7 @@ class HourlyTabBarController: UITabBarController {
             super.viewDidLoad()
             
 //            tabBar.isTranslucent = false
-            tabBar.tintColor = #colorLiteral(red: 0.05700000003, green: 0.09799999744, blue: 0.1070000008, alpha: 1)
+            tabBar.tintColor = #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)
             
             delegate = self
             
@@ -50,11 +50,11 @@ class HourlyTabBarController: UITabBarController {
             guard let tabBar = self.tabBar as? HourlyTabBar else { return }
             
             tabBar.didTapButton = { [unowned self] in
-                self.routeToCreateNewAd()
+                self.navigateToWorday()
             }
         }
         
-        func routeToCreateNewAd() {
+        func navigateToWorday() {
             let createAdNavController = self.storyboard?.instantiateViewController(withIdentifier: K.Identifiers.workdayNav) as! UINavigationController
             createAdNavController.modalPresentationCapturesStatusBarAppearance = true
             self.present(createAdNavController, animated: true, completion: nil)
@@ -64,6 +64,7 @@ class HourlyTabBarController: UITabBarController {
     // MARK: - UITabBarController Delegate
     extension HourlyTabBarController: UITabBarControllerDelegate {
         func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+            
             guard let selectedIndex = tabBarController.viewControllers?.firstIndex(of: viewController) else {
                 return true
             }

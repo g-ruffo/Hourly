@@ -23,17 +23,16 @@ class HourlyTabBar: UITabBar {
     public lazy var middleButton: UIButton! = {
         let middleButton = UIButton()
         
-        middleButton.frame.size = CGSize(width: 48, height: 48)
-
+        middleButton.frame.size = CGSize(width: K.NavigationBar.middleButtonSize, height: K.NavigationBar.middleButtonSize)
+        
         var configuration = UIButton.Configuration.filled()
-        configuration.contentInsets = NSDirectionalEdgeInsets(top: 15, leading: 15, bottom: 15, trailing: 15)
-        configuration.baseBackgroundColor = #colorLiteral(red: 0.9843137255, green: 0.4117647059, blue: 0.3803921569, alpha: 1)
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+        configuration.baseBackgroundColor = #colorLiteral(red: 0.9450980392, green: 0.768627451, blue: 0.05882352941, alpha: 1)
+        configuration.baseForegroundColor = #colorLiteral(red: 0.2235294118, green: 0.2431372549, blue: 0.2745098039, alpha: 1)
+        configuration.background.cornerRadius = K.NavigationBar.middleButtonRadius
+        configuration.cornerStyle = .dynamic
+        configuration.image = UIImage(systemName: "plus")
         middleButton.configuration = configuration
-
-        let image = UIImage(systemName: "plus")!
-        middleButton.setImage(image, for: .normal)
-        middleButton.tintColor = .white
-        middleButton.layer.cornerRadius = 8
         
         middleButton.addTarget(self, action: #selector(self.middleButtonAction), for: .touchUpInside)
         

@@ -16,6 +16,10 @@ struct K {
         static let clientsNav = "ClientsNavigation"
         static let workdayNav = "WorkdayNavigation"
         static let settingsNav = "SettingsNavigation"
-
+    }
+    
+    struct NavigationBar {
+        static let middleButtonSize: CGFloat = 64
+        static let middleButtonRadius: CGFloat = middleButtonSize / 2
     }
 }
