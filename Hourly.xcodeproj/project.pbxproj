@@ -18,7 +18,7 @@
 		79FA887029E4AD66003C6DFB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FA886F29E4AD66003C6DFB /* SceneDelegate.swift */; };
 		79FA887229E4AD66003C6DFB /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FA887129E4AD66003C6DFB /* SummaryViewController.swift */; };
 		79FA887529E4AD66003C6DFB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79FA887329E4AD66003C6DFB /* Main.storyboard */; };
-		79FA887829E4AD66003C6DFB /* Hourly.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 79FA887629E4AD66003C6DFB /* Hourly.xcdatamodeld */; };
+		79FA887829E4AD66003C6DFB /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 79FA887629E4AD66003C6DFB /* DataModel.xcdatamodeld */; };
 		79FA887A29E4AD67003C6DFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79FA887929E4AD67003C6DFB /* Assets.xcassets */; };
 		79FA887D29E4AD67003C6DFB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79FA887B29E4AD67003C6DFB /* LaunchScreen.storyboard */; };
 		79FA888829E4AD67003C6DFB /* HourlyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FA888729E4AD67003C6DFB /* HourlyTests.swift */; };
@@ -96,6 +96,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		79F1AFD929E51971004CED4E /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				79FA887629E4AD66003C6DFB /* DataModel.xcdatamodeld */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		79FA886129E4AD66003C6DFB = {
 			isa = PBXGroup;
 			children = (
@@ -128,7 +136,6 @@
 				79FA887929E4AD67003C6DFB /* Assets.xcassets */,
 				79FA887B29E4AD67003C6DFB /* LaunchScreen.storyboard */,
 				79FA887E29E4AD67003C6DFB /* Info.plist */,
-				79FA887629E4AD66003C6DFB /* Hourly.xcdatamodeld */,
 			);
 			path = Hourly;
 			sourceTree = "<group>";
@@ -193,6 +200,7 @@
 		79FA88A429E4B28F003C6DFB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				79F1AFD929E51971004CED4E /* Data */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -335,7 +343,7 @@
 				79FA886E29E4AD66003C6DFB /* AppDelegate.swift in Sources */,
 				79F1AFD029E4C047004CED4E /* WorkdayViewController.swift in Sources */,
 				79FA88A629E4B2BD003C6DFB /* StringResource.swift in Sources */,
-				79FA887829E4AD66003C6DFB /* Hourly.xcdatamodeld in Sources */,
+				79FA887829E4AD66003C6DFB /* DataModel.xcdatamodeld in Sources */,
 				79F1AFD229E4C07A004CED4E /* ClientsViewController.swift in Sources */,
 				79FA887029E4AD66003C6DFB /* SceneDelegate.swift in Sources */,
 				79F1AFC829E4BD0E004CED4E /* HourlyTabBar.swift in Sources */,
@@ -692,13 +700,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		79FA887629E4AD66003C6DFB /* Hourly.xcdatamodeld */ = {
+		79FA887629E4AD66003C6DFB /* DataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				79FA887729E4AD66003C6DFB /* Hourly.xcdatamodel */,
 			);
 			currentVersion = 79FA887729E4AD66003C6DFB /* Hourly.xcdatamodel */;
-			path = Hourly.xcdatamodeld;
+			path = DataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

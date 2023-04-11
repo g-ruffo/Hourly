@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22D68" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="ClientItem" representedClassName=".ClientItem" syncable="YES" codeGenerationType="class">
+        <attribute name="address" optional="YES" attributeType="String"/>
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="payRate" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="phoneNumber" optional="YES" attributeType="String"/>
+        <attribute name="tagColor" optional="YES" attributeType="String"/>
+        <relationship name="daysWorked" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WorkDayItem" inverseName="client" inverseEntity="WorkDayItem"/>
+    </entity>
+    <entity name="PhotoItem" representedClassName="PhotoItem" syncable="YES" codeGenerationType="class">
+        <attribute name="imageDescription" optional="YES" attributeType="String"/>
+        <attribute name="imagePath" optional="YES" attributeType="String"/>
+        <relationship name="workingDay" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WorkDayItem" inverseName="photos" inverseEntity="WorkDayItem"/>
+    </entity>
+    <entity name="WorkDayItem" representedClassName=".WorkDayItem" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="endTIme" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isFinalized" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="kmDriven" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="location" optional="YES" attributeType="String"/>
+        <attribute name="lunchBreak" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="payRate" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="startTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="workDescription" optional="YES" attributeType="String"/>
+        <relationship name="client" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ClientItem" inverseName="daysWorked" inverseEntity="ClientItem"/>
+        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PhotoItem" inverseName="workingDay" inverseEntity="PhotoItem"/>
+    </entity>
+</model>
