@@ -18,6 +18,8 @@ struct K {
         static let settingsNav = "SettingsNavigation"
         static let workdayNibName = "WorkdayCell"
         static let workdayCell = "ReusableWorkdayCell"
+        static let clientCell = "ReusableClientCell"
+        static let clientNibName = "ClientCell"
 
     }
     

@@ -43,6 +43,7 @@ class CalendarViewController: UIViewController {
         calendarView.delegate = self
         tableView.delegate = self
         calendarView.selectionBehavior = UICalendarSelectionSingleDate(delegate: self)
+        searchBar.delegate = self
         tableView.dataSource = self
         
         // Register custom work day cell with table view
@@ -151,6 +152,12 @@ extension CalendarViewController: UITableViewDataSource {
         return cell
     }
 }
+
+//MARK: - UISearchBarDelegate
+extension CalendarViewController: UISearchBarDelegate {
+    
+}
+
 
 
 

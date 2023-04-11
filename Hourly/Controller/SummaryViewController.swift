@@ -9,7 +9,8 @@ import UIKit
 
 class SummaryViewController: UIViewController {
     
-    
+    let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
