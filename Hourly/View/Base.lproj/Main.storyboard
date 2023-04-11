@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -81,14 +82,59 @@
                     <view key="view" contentMode="scaleToFill" id="2zL-9p-cTq">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4HI-Wt-1ub">
+                                <rect key="frame" x="20" y="103" width="353" height="56"/>
+                                <color key="barTintColor" name="BackgroundGrey"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="U3z-UT-q9m" id="hXe-1w-rMi"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="VP7-sE-ufo">
+                                <rect key="frame" x="16" y="175" width="361" height="613"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="RIF-RB-16j">
+                                        <rect key="frame" x="0.0" y="50" width="361" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RIF-RB-16j" id="p92-nb-xB3">
+                                            <rect key="frame" x="0.0" y="0.0" width="361" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="sD7-xZ-PjV"/>
                         <color key="backgroundColor" name="BackgroundGrey"/>
+                        <constraints>
+                            <constraint firstItem="VP7-sE-ufo" firstAttribute="bottom" secondItem="sD7-xZ-PjV" secondAttribute="bottom" constant="-30" id="1j8-Sj-Yzb"/>
+                            <constraint firstItem="4HI-Wt-1ub" firstAttribute="top" secondItem="sD7-xZ-PjV" secondAttribute="top" id="8wu-DB-HXL"/>
+                            <constraint firstItem="4HI-Wt-1ub" firstAttribute="leading" secondItem="sD7-xZ-PjV" secondAttribute="leading" constant="20" id="Pc5-7y-25e"/>
+                            <constraint firstItem="sD7-xZ-PjV" firstAttribute="trailing" secondItem="VP7-sE-ufo" secondAttribute="trailing" constant="16" id="afA-Bi-yQx"/>
+                            <constraint firstItem="sD7-xZ-PjV" firstAttribute="trailing" secondItem="4HI-Wt-1ub" secondAttribute="trailing" constant="20" id="jBc-6U-vXh"/>
+                            <constraint firstItem="VP7-sE-ufo" firstAttribute="leading" secondItem="sD7-xZ-PjV" secondAttribute="leading" constant="16" id="qoN-jC-aIf"/>
+                            <constraint firstItem="VP7-sE-ufo" firstAttribute="top" secondItem="4HI-Wt-1ub" secondAttribute="bottom" constant="16" id="ziK-Xw-oKO"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Calendar" id="tJG-Zo-Fzn"/>
+                    <navigationItem key="navigationItem" title="Calendar" id="tJG-Zo-Fzn">
+                        <barButtonItem key="rightBarButtonItem" image="list.bullet" catalog="system" id="1SG-u5-9Js">
+                            <color key="tintColor" name="PrimaryBlueLight"/>
+                            <connections>
+                                <action selector="switchDisplayModePressed:" destination="U3z-UT-q9m" id="yI8-qj-3Ea"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="listModeMenuItem" destination="1SG-u5-9Js" id="HLx-Nh-8lS"/>
+                        <outlet property="searchBar" destination="4HI-Wt-1ub" id="maA-b6-bJ3"/>
+                        <outlet property="tableView" destination="VP7-sE-ufo" id="bM4-3M-EuP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FDY-AM-foa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1207" y="696"/>
+            <point key="canvasLocation" x="-1208.3969465648854" y="695.77464788732402"/>
         </scene>
         <!--Item-->
         <scene sceneID="sms-5b-Ilu">
@@ -193,11 +239,15 @@
         </scene>
     </scenes>
     <resources>
+        <image name="list.bullet" catalog="system" width="128" height="87"/>
         <namedColor name="BackgroundGrey">
             <color red="0.92500001192092896" green="0.94099998474121094" blue="0.94499999284744263" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PrimaryBlueLight">
             <color red="0.20399999618530273" green="0.59600001573562622" blue="0.85900002717971802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

@@ -58,7 +58,7 @@ class HourlyTabBar: UITabBar {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        middleButton.center = CGPoint(x: frame.width / 2, y: -5)
+        middleButton.center = CGPoint(x: frame.width / 2, y: 5)
     }
     
     // MARK: - Actions
