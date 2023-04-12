@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qAy-gA-Wk1">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -78,6 +79,7 @@
         <!--Calendar-->
         <scene sceneID="Vuh-P1-obg">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FDY-AM-foa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="U3z-UT-q9m" customClass="CalendarViewController" customModule="Hourly" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2zL-9p-cTq">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
@@ -122,9 +124,8 @@
                         <outlet property="tableView" destination="VP7-sE-ufo" id="bM4-3M-EuP"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FDY-AM-foa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1208.3969465648854" y="695.77464788732402"/>
+            <point key="canvasLocation" x="-1208" y="696"/>
         </scene>
         <!--Item-->
         <scene sceneID="sms-5b-Ilu">
@@ -150,14 +151,30 @@
                     <view key="view" contentMode="scaleToFill" id="BNZ-Hc-peM">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="6Tg-4b-xbb">
+                                <rect key="frame" x="16" y="119" width="361" height="699"/>
+                                <color key="backgroundColor" name="BackgroundGrey"/>
+                                <sections/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="iNo-lB-vjt"/>
                         <color key="backgroundColor" name="BackgroundGrey"/>
+                        <constraints>
+                            <constraint firstItem="iNo-lB-vjt" firstAttribute="trailing" secondItem="6Tg-4b-xbb" secondAttribute="trailing" constant="16" id="DO8-jI-ezc"/>
+                            <constraint firstItem="6Tg-4b-xbb" firstAttribute="top" secondItem="iNo-lB-vjt" secondAttribute="top" constant="16" id="EId-VL-NFs"/>
+                            <constraint firstItem="6Tg-4b-xbb" firstAttribute="leading" secondItem="iNo-lB-vjt" secondAttribute="leading" constant="16" id="KVz-pu-RjF"/>
+                            <constraint firstItem="6Tg-4b-xbb" firstAttribute="bottom" secondItem="iNo-lB-vjt" secondAttribute="bottom" id="dRX-nM-cPY"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="bYo-ZZ-8G4"/>
+                    <connections>
+                        <outlet property="tableView" destination="6Tg-4b-xbb" id="iew-PU-KXi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gZV-SA-yEA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1543" y="696"/>
+            <point key="canvasLocation" x="1542.7480916030534" y="695.77464788732402"/>
         </scene>
         <!--Item-->
         <scene sceneID="HdE-xf-bT6">
@@ -396,6 +413,57 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aJ6-xO-myP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-176" y="696"/>
+        </scene>
+        <!--Calendar-->
+        <scene sceneID="cXN-7c-WOa">
+            <objects>
+                <viewController id="AK8-Vc-J7m" customClass="CalendarViewController" customModule="Hourly" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3AM-kf-EvS">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5p-nI-DHw">
+                                <rect key="frame" x="20" y="59" width="353" height="56"/>
+                                <color key="barTintColor" name="BackgroundGrey"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="AK8-Vc-J7m" id="woB-jo-Xex"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="6xN-TJ-WJM">
+                                <rect key="frame" x="16" y="115" width="361" height="673"/>
+                                <color key="backgroundColor" name="BackgroundGrey"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="VVV-5F-gbL"/>
+                        <color key="backgroundColor" name="BackgroundGrey"/>
+                        <constraints>
+                            <constraint firstItem="VVV-5F-gbL" firstAttribute="trailing" secondItem="j5p-nI-DHw" secondAttribute="trailing" constant="20" id="KUa-IZ-KNn"/>
+                            <constraint firstItem="6xN-TJ-WJM" firstAttribute="leading" secondItem="VVV-5F-gbL" secondAttribute="leading" constant="16" id="aPb-MA-y0i"/>
+                            <constraint firstItem="6xN-TJ-WJM" firstAttribute="top" secondItem="j5p-nI-DHw" secondAttribute="bottom" id="acQ-MN-dYf"/>
+                            <constraint firstItem="j5p-nI-DHw" firstAttribute="leading" secondItem="VVV-5F-gbL" secondAttribute="leading" constant="20" id="b7E-l8-CMR"/>
+                            <constraint firstItem="VVV-5F-gbL" firstAttribute="trailing" secondItem="6xN-TJ-WJM" secondAttribute="trailing" constant="16" id="baS-H6-Wwz"/>
+                            <constraint firstItem="6xN-TJ-WJM" firstAttribute="bottom" secondItem="VVV-5F-gbL" secondAttribute="bottom" constant="-30" id="tgX-S9-kWL"/>
+                            <constraint firstItem="j5p-nI-DHw" firstAttribute="top" secondItem="VVV-5F-gbL" secondAttribute="top" id="yrb-ip-vVo"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Calendar" id="ikD-8L-j0r">
+                        <barButtonItem key="rightBarButtonItem" image="list.bullet" catalog="system" id="nrJ-BN-SJo">
+                            <color key="tintColor" name="PrimaryBlueLight"/>
+                            <connections>
+                                <action selector="switchDisplayModePressed:" destination="AK8-Vc-J7m" id="xfT-lx-sEU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="listModeMenuItem" destination="nrJ-BN-SJo" id="Ftu-ub-IkY"/>
+                        <outlet property="searchBar" destination="j5p-nI-DHw" id="PzO-7r-IjA"/>
+                        <outlet property="tableView" destination="6xN-TJ-WJM" id="Hky-Jh-Yyi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gxq-vF-24b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3193" y="733"/>
         </scene>
     </scenes>
     <resources>

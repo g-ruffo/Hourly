@@ -9,6 +9,7 @@ import Foundation
 
 enum S: String {
     case labelTitle
+    case exportTitle
     
     var localized: String {
         NSLocalizedString(String(describing: Self.self) + "_\(rawValue)", comment: "")

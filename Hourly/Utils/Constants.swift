@@ -21,6 +21,9 @@ struct K {
         static let clientCell = "ReusableClientCell"
         static let clientNibName = "ClientCell"
         static let addEditClientNav = "AddEditClientNavigation"
+        static let settingsCell = "SettingsReusableCell"
+        static let settingsNibName = "SettingsCell"
+
 
     }
     
