@@ -7,29 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		152B14A231C31386DFD8146A294009D5 /* Pods-Hourly-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2EABC476B30BFD693EB8303F9ECE7A /* Pods-Hourly-dummy.m */; };
-		1A26F4A34339DFBAB45A1F0CDD6204D3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		0326FEE757BDB65BE0F9972DDC8FFF01 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		0CF091AF890637EFDD29D8F893E8B267 /* Pods-Hourly-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D36BEB384513A40FF9C327EEA63B8764 /* Pods-Hourly-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		23842D35C84BB7DB4CB0A75181A75225 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		34D86F4481D9328BF45B637B906B3122 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		3E636873C64FB70164A6CC349C04D0A6 /* Pods-Hourly-HourlyUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 132BFE1B815A5636A211E2D32E1C67BC /* Pods-Hourly-HourlyUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		46568AA11BBCB941A41D7AD7AE5F13E0 /* Pods-HourlyTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D4445308971F9E788F82E0027F21FA /* Pods-HourlyTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4C3A4D87E22F1DA7EBD27E22D626A5E2 /* Pods-HourlyTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BB44646C1C79262AD68A466BB08B20FB /* Pods-HourlyTests-dummy.m */; };
+		3E636873C64FB70164A6CC349C04D0A6 /* Pods-Hourly-HourlyUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 95985EBC2E73855359BA63F78069C57E /* Pods-Hourly-HourlyUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		46568AA11BBCB941A41D7AD7AE5F13E0 /* Pods-HourlyTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 118C4EFC48E36AD40D569C407E92E26E /* Pods-HourlyTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C3A4D87E22F1DA7EBD27E22D626A5E2 /* Pods-HourlyTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C08971734C575808D1B1E365179F564 /* Pods-HourlyTests-dummy.m */; };
 		515E22E4255B6073C1897BDDB091A2B8 /* DropDown+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87586FE2C9DECB6AE7FCA3238E4A1B8 /* DropDown+Appearance.swift */; };
 		5CF3CD2BA504A7FD7BCDF9B61A27B711 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		68E1653C561E14BBEAC9CF4873570D58 /* DropDownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEBC6D732E1B0C41C6A8D03A8C81CF47 /* DropDownCell.xib */; };
-		72ABD1ABFB8A33F225F6B8EF8A17BE2E /* Pods-Hourly-HourlyUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EBD8D362A8FF4638BC3A4A6738837080 /* Pods-Hourly-HourlyUITests-dummy.m */; };
+		72ABD1ABFB8A33F225F6B8EF8A17BE2E /* Pods-Hourly-HourlyUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 28142EF4C28A9425E2546DFDF189F0A3 /* Pods-Hourly-HourlyUITests-dummy.m */; };
 		74012B832FAF67F8D62A2B27CDAFE8B5 /* DPDConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3761A77A038E79C8451C03293CDA4FC0 /* DPDConstants.swift */; };
 		84459C4824533C9C4FD12AFC941F3CE1 /* DropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCC1AD54C344AFD4E184B9586BFE267 /* DropDown.swift */; };
 		89A72A55273CE358DC4E7600F785C37B /* DPDKeyboardListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBB2377069976EC65992A59335066D3 /* DPDKeyboardListener.swift */; };
+		8D22C6FF2FAFB9F3C74C260A1B269A14 /* Pods-Hourly-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F69FAD8EAAB3A8B7D819DCB08A487C /* Pods-Hourly-dummy.m */; };
 		907338727C09F65DB75AA7AB9E10C3B4 /* DropDown-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AF17E1BF2597D8F37F69DB34CA024E5C /* DropDown-dummy.m */; };
 		B73E510E851686F8184E26986A470458 /* DPDUIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451F84589A96D52448FD74E261268404 /* DPDUIView+Extension.swift */; };
 		BDC10974A8641F01C5665C61EA37A153 /* DropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EA092CDFBD4C66A29A9CDEA1DE78E1 /* DropDownCell.swift */; };
-		D422DE0EE4E60D7E406471F26476B7A8 /* Pods-Hourly-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F40DF4CED18227DB91F2BD959740221E /* Pods-Hourly-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E0A8C46EEE733B55971B1CC5ED65C9AA /* DropDown-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F8F61850F82D6CC477FAF8326336FD5A /* DropDown-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		18A0207DC91D294D5969C45DE85A3C40 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E9F9401E9C74C0C393164FD8D86D0068;
+			remoteInfo = DropDown;
+		};
+		B6AD4BCCD306526D25E720FF10CF93D3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -46,50 +53,51 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0252B737B0234159E195C4329FC9C51B /* Pods-HourlyTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-HourlyTests.modulemap"; sourceTree = "<group>"; };
-		132BFE1B815A5636A211E2D32E1C67BC /* Pods-Hourly-HourlyUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Hourly-HourlyUITests-umbrella.h"; sourceTree = "<group>"; };
-		1D2EABC476B30BFD693EB8303F9ECE7A /* Pods-Hourly-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Hourly-dummy.m"; sourceTree = "<group>"; };
-		27D4445308971F9E788F82E0027F21FA /* Pods-HourlyTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-HourlyTests-umbrella.h"; sourceTree = "<group>"; };
+		03B1D2D4B41A6BA6A81A30A4DBD7D52F /* Pods-Hourly-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Hourly-Info.plist"; sourceTree = "<group>"; };
+		0BA9F7A66C10F7F14258F8E6A697DD6C /* Pods-Hourly-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Hourly-acknowledgements.markdown"; sourceTree = "<group>"; };
+		118C4EFC48E36AD40D569C407E92E26E /* Pods-HourlyTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-HourlyTests-umbrella.h"; sourceTree = "<group>"; };
+		28142EF4C28A9425E2546DFDF189F0A3 /* Pods-Hourly-HourlyUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Hourly-HourlyUITests-dummy.m"; sourceTree = "<group>"; };
+		2BB434449B37EFD928177D165E5AA68D /* Pods-HourlyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HourlyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2BF8E8CA159197C7B5441EE628762646 /* Pods-HourlyTests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-HourlyTests"; path = Pods_HourlyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2DDB3E84DB1710A4592EE1056718A869 /* Pods-Hourly-HourlyUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Hourly-HourlyUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		2F8A529C653A26F8D0B57E1CD7B2B5E6 /* DropDown-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "DropDown-Info.plist"; sourceTree = "<group>"; };
 		2FCC1AD54C344AFD4E184B9586BFE267 /* DropDown.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DropDown.swift; path = DropDown/src/DropDown.swift; sourceTree = "<group>"; };
+		34F69FAD8EAAB3A8B7D819DCB08A487C /* Pods-Hourly-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Hourly-dummy.m"; sourceTree = "<group>"; };
 		3761A77A038E79C8451C03293CDA4FC0 /* DPDConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DPDConstants.swift; path = DropDown/helpers/DPDConstants.swift; sourceTree = "<group>"; };
-		40AE815635F48124C255BA99CE3CCA3F /* Pods-Hourly-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Hourly-acknowledgements.markdown"; sourceTree = "<group>"; };
+		377D7234FA64A5F5CE0DEFF03429C664 /* Pods-Hourly-HourlyUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Hourly-HourlyUITests-frameworks.sh"; sourceTree = "<group>"; };
+		3C08971734C575808D1B1E365179F564 /* Pods-HourlyTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-HourlyTests-dummy.m"; sourceTree = "<group>"; };
 		451F84589A96D52448FD74E261268404 /* DPDUIView+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DPDUIView+Extension.swift"; path = "DropDown/helpers/DPDUIView+Extension.swift"; sourceTree = "<group>"; };
-		45909957106C99E3A5D88CC19411F76C /* Pods-Hourly-HourlyUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Hourly-HourlyUITests.modulemap"; sourceTree = "<group>"; };
-		45D430AEB0412E5DF125A7E861698C78 /* Pods-Hourly.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Hourly.modulemap"; sourceTree = "<group>"; };
-		46CD7922B00C712B263033426FF3799E /* Pods-Hourly-HourlyUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Hourly-HourlyUITests-Info.plist"; sourceTree = "<group>"; };
-		57E10A4AE9AA6611097C6124156A6023 /* Pods-HourlyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HourlyTests.release.xcconfig"; sourceTree = "<group>"; };
-		5BD6CEF55681C0CF49DCC47B7578DB6C /* Pods-HourlyTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HourlyTests-Info.plist"; sourceTree = "<group>"; };
+		4878E5FAF4A46F3AD0AA1689600B30E9 /* Pods-Hourly-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Hourly-acknowledgements.plist"; sourceTree = "<group>"; };
+		543A50BB068FC58470F222D5F2D3AA26 /* Pods-Hourly-HourlyUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Hourly-HourlyUITests.modulemap"; sourceTree = "<group>"; };
 		635A04635F444FFC0C90363DAE818199 /* Pods-Hourly-HourlyUITests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Hourly-HourlyUITests"; path = Pods_Hourly_HourlyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6777D9604A68F7A9E9B14495F256CD60 /* Pods-HourlyTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HourlyTests-Info.plist"; sourceTree = "<group>"; };
+		67E7C686CF675C021CF4D7CCAE6EB722 /* Pods-Hourly-HourlyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Hourly-HourlyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		730D85BE0320FD50EA665A82042E5742 /* DropDown-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DropDown-prefix.pch"; sourceTree = "<group>"; };
-		89696FBE4DFA8387B1DB6173DC8CEA0A /* Pods-HourlyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HourlyTests.debug.xcconfig"; sourceTree = "<group>"; };
+		89196593274E6ED377A2E7B49FC3B19F /* Pods-HourlyTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-HourlyTests.modulemap"; sourceTree = "<group>"; };
+		8A4158865B8DA41D30B0EBAB0492BCE8 /* Pods-Hourly.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Hourly.debug.xcconfig"; sourceTree = "<group>"; };
 		8DBB2377069976EC65992A59335066D3 /* DPDKeyboardListener.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DPDKeyboardListener.swift; path = DropDown/helpers/DPDKeyboardListener.swift; sourceTree = "<group>"; };
-		91B8242B73A3FF654235E0934AED5B7E /* Pods-Hourly-HourlyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Hourly-HourlyUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		91465687A4E791E1BB23BDF26C15D695 /* Pods-Hourly.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Hourly.modulemap"; sourceTree = "<group>"; };
 		93EA092CDFBD4C66A29A9CDEA1DE78E1 /* DropDownCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DropDownCell.swift; path = DropDown/src/DropDownCell.swift; sourceTree = "<group>"; };
-		9709728E2EB0F1B442E6E25BA0705ABC /* Pods-Hourly.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Hourly.release.xcconfig"; sourceTree = "<group>"; };
+		95985EBC2E73855359BA63F78069C57E /* Pods-Hourly-HourlyUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Hourly-HourlyUITests-umbrella.h"; sourceTree = "<group>"; };
 		9B6725B782188F18CB76A740433F14E4 /* DropDown */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DropDown; path = DropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C15EB8657063755722D9C7DC8D72885 /* DropDown.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DropDown.release.xcconfig; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A2182E0CE54D77F1ECE582D986B92025 /* Pods-Hourly-HourlyUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Hourly-HourlyUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		A87586FE2C9DECB6AE7FCA3238E4A1B8 /* DropDown+Appearance.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DropDown+Appearance.swift"; path = "DropDown/src/DropDown+Appearance.swift"; sourceTree = "<group>"; };
+		AC71F180495AA418EBD02EF93794C8D4 /* Pods-Hourly-HourlyUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Hourly-HourlyUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		AF17E1BF2597D8F37F69DB34CA024E5C /* DropDown-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DropDown-dummy.m"; sourceTree = "<group>"; };
-		B1406E1A63CCCCE65C77F04A77B0FF8B /* Pods-Hourly-HourlyUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Hourly-HourlyUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		B8092A8A13B7698E8E45DA462F4840F8 /* Pods-HourlyTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-HourlyTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		BAD3C44E199414627DC37AA5BFAC706D /* Pods-Hourly-HourlyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Hourly-HourlyUITests.release.xcconfig"; sourceTree = "<group>"; };
-		BB44646C1C79262AD68A466BB08B20FB /* Pods-HourlyTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-HourlyTests-dummy.m"; sourceTree = "<group>"; };
-		C2B3A504CCF631168B957B1E6AB81F9B /* Pods-Hourly.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Hourly.debug.xcconfig"; sourceTree = "<group>"; };
-		C31DF3798C585D44640F14BEFA03A2A3 /* Pods-HourlyTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HourlyTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		D0A6B1E9544B6A108FF7F6E853C48AEB /* Pods-Hourly-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Hourly-acknowledgements.plist"; sourceTree = "<group>"; };
-		D5F825F02F91A3A1CE49EF2B71270EC6 /* Pods-Hourly-HourlyUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Hourly-HourlyUITests-frameworks.sh"; sourceTree = "<group>"; };
+		BBB5DCA46584D29C6CD4B2A15AFAF903 /* Pods-Hourly.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Hourly.release.xcconfig"; sourceTree = "<group>"; };
+		CE22BEE9A3E463EC51E8C750D9D4D893 /* Pods-HourlyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HourlyTests.release.xcconfig"; sourceTree = "<group>"; };
+		D36BEB384513A40FF9C327EEA63B8764 /* Pods-Hourly-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Hourly-umbrella.h"; sourceTree = "<group>"; };
+		DC70BD704AE930CD1811CFB2C6536BD4 /* Pods-Hourly-HourlyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Hourly-HourlyUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DCCE969FA335CDFA9E42D1577DBEF4C6 /* Pods-Hourly */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Hourly"; path = Pods_Hourly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCD9DE78A7260CA1D999340CF0124D1D /* DropDown.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = DropDown.modulemap; sourceTree = "<group>"; };
+		E299A5E02AD08334ECFFD3A83344AD19 /* Pods-HourlyTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HourlyTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		E5834E7BD925BD3ED29331C1938CC0B7 /* DropDown.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DropDown.debug.xcconfig; sourceTree = "<group>"; };
-		EBD8D362A8FF4638BC3A4A6738837080 /* Pods-Hourly-HourlyUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Hourly-HourlyUITests-dummy.m"; sourceTree = "<group>"; };
+		E84FB34ECC3C498CCA70304806062F19 /* Pods-Hourly-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Hourly-frameworks.sh"; sourceTree = "<group>"; };
+		EACD784D193B61AD993B941CE95BD4EF /* Pods-HourlyTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-HourlyTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		EEBC6D732E1B0C41C6A8D03A8C81CF47 /* DropDownCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = DropDownCell.xib; path = DropDown/resources/DropDownCell.xib; sourceTree = "<group>"; };
-		F40DF4CED18227DB91F2BD959740221E /* Pods-Hourly-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Hourly-umbrella.h"; sourceTree = "<group>"; };
-		F8EEA05311D82012B54F90444ECFCAF4 /* Pods-Hourly-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Hourly-Info.plist"; sourceTree = "<group>"; };
+		F073073844EA6D63C4790BE9C5C72CD7 /* Pods-Hourly-HourlyUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Hourly-HourlyUITests-Info.plist"; sourceTree = "<group>"; };
 		F8F61850F82D6CC477FAF8326336FD5A /* DropDown-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DropDown-umbrella.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,19 +110,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3EABB15227B7683E301D3B6C26736DD0 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1A26F4A34339DFBAB45A1F0CDD6204D3 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		808BE4E171BD75B6477EC2B77490C2B1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				34D86F4481D9328BF45B637B906B3122 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9F1157CAA4B204CE95D7D641FE915848 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0326FEE757BDB65BE0F9972DDC8FFF01 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,27 +187,34 @@
 			path = DropDown;
 			sourceTree = "<group>";
 		};
-		30D9DB2FBECC364B3D34536ECAF521F2 /* Targets Support Files */ = {
+		174E142BB0F987F20FFF065E1A6CFF6C /* Pods-HourlyTests */ = {
 			isa = PBXGroup;
 			children = (
-				4FDAF90F3BDC0F2045C0BFFD4EE28A4E /* Pods-Hourly */,
-				D7865FDDF052B4997B52BD9AF8CCBECB /* Pods-Hourly-HourlyUITests */,
-				5D6178787C088D845537575732D42AB6 /* Pods-HourlyTests */,
+				89196593274E6ED377A2E7B49FC3B19F /* Pods-HourlyTests.modulemap */,
+				EACD784D193B61AD993B941CE95BD4EF /* Pods-HourlyTests-acknowledgements.markdown */,
+				E299A5E02AD08334ECFFD3A83344AD19 /* Pods-HourlyTests-acknowledgements.plist */,
+				3C08971734C575808D1B1E365179F564 /* Pods-HourlyTests-dummy.m */,
+				6777D9604A68F7A9E9B14495F256CD60 /* Pods-HourlyTests-Info.plist */,
+				118C4EFC48E36AD40D569C407E92E26E /* Pods-HourlyTests-umbrella.h */,
+				2BB434449B37EFD928177D165E5AA68D /* Pods-HourlyTests.debug.xcconfig */,
+				CE22BEE9A3E463EC51E8C750D9D4D893 /* Pods-HourlyTests.release.xcconfig */,
 			);
-			name = "Targets Support Files";
+			name = "Pods-HourlyTests";
+			path = "Target Support Files/Pods-HourlyTests";
 			sourceTree = "<group>";
 		};
-		4FDAF90F3BDC0F2045C0BFFD4EE28A4E /* Pods-Hourly */ = {
+		3C94A8E123712FBE2D37FA70441BF1EB /* Pods-Hourly */ = {
 			isa = PBXGroup;
 			children = (
-				45D430AEB0412E5DF125A7E861698C78 /* Pods-Hourly.modulemap */,
-				40AE815635F48124C255BA99CE3CCA3F /* Pods-Hourly-acknowledgements.markdown */,
-				D0A6B1E9544B6A108FF7F6E853C48AEB /* Pods-Hourly-acknowledgements.plist */,
-				1D2EABC476B30BFD693EB8303F9ECE7A /* Pods-Hourly-dummy.m */,
-				F8EEA05311D82012B54F90444ECFCAF4 /* Pods-Hourly-Info.plist */,
-				F40DF4CED18227DB91F2BD959740221E /* Pods-Hourly-umbrella.h */,
-				C2B3A504CCF631168B957B1E6AB81F9B /* Pods-Hourly.debug.xcconfig */,
-				9709728E2EB0F1B442E6E25BA0705ABC /* Pods-Hourly.release.xcconfig */,
+				91465687A4E791E1BB23BDF26C15D695 /* Pods-Hourly.modulemap */,
+				0BA9F7A66C10F7F14258F8E6A697DD6C /* Pods-Hourly-acknowledgements.markdown */,
+				4878E5FAF4A46F3AD0AA1689600B30E9 /* Pods-Hourly-acknowledgements.plist */,
+				34F69FAD8EAAB3A8B7D819DCB08A487C /* Pods-Hourly-dummy.m */,
+				E84FB34ECC3C498CCA70304806062F19 /* Pods-Hourly-frameworks.sh */,
+				03B1D2D4B41A6BA6A81A30A4DBD7D52F /* Pods-Hourly-Info.plist */,
+				D36BEB384513A40FF9C327EEA63B8764 /* Pods-Hourly-umbrella.h */,
+				8A4158865B8DA41D30B0EBAB0492BCE8 /* Pods-Hourly.debug.xcconfig */,
+				BBB5DCA46584D29C6CD4B2A15AFAF903 /* Pods-Hourly.release.xcconfig */,
 			);
 			name = "Pods-Hourly";
 			path = "Target Support Files/Pods-Hourly";
@@ -213,20 +228,14 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		5D6178787C088D845537575732D42AB6 /* Pods-HourlyTests */ = {
+		BE0E82A754B720F8BF304BD5DC011A67 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				0252B737B0234159E195C4329FC9C51B /* Pods-HourlyTests.modulemap */,
-				B8092A8A13B7698E8E45DA462F4840F8 /* Pods-HourlyTests-acknowledgements.markdown */,
-				C31DF3798C585D44640F14BEFA03A2A3 /* Pods-HourlyTests-acknowledgements.plist */,
-				BB44646C1C79262AD68A466BB08B20FB /* Pods-HourlyTests-dummy.m */,
-				5BD6CEF55681C0CF49DCC47B7578DB6C /* Pods-HourlyTests-Info.plist */,
-				27D4445308971F9E788F82E0027F21FA /* Pods-HourlyTests-umbrella.h */,
-				89696FBE4DFA8387B1DB6173DC8CEA0A /* Pods-HourlyTests.debug.xcconfig */,
-				57E10A4AE9AA6611097C6124156A6023 /* Pods-HourlyTests.release.xcconfig */,
+				3C94A8E123712FBE2D37FA70441BF1EB /* Pods-Hourly */,
+				D9A013934FE5E8D89F55DAF100D4507E /* Pods-Hourly-HourlyUITests */,
+				174E142BB0F987F20FFF065E1A6CFF6C /* Pods-HourlyTests */,
 			);
-			name = "Pods-HourlyTests";
-			path = "Target Support Files/Pods-HourlyTests";
+			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
 		C59647B6F3C67ED72D999C113D892AF0 /* Resources */ = {
@@ -244,7 +253,7 @@
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
 				057ED11B9D5977F85CBBBEF7C3E69DDB /* Pods */,
 				0D98C4F8DBB9EC29B80CF73B86DA3851 /* Products */,
-				30D9DB2FBECC364B3D34536ECAF521F2 /* Targets Support Files */,
+				BE0E82A754B720F8BF304BD5DC011A67 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
@@ -256,18 +265,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D7865FDDF052B4997B52BD9AF8CCBECB /* Pods-Hourly-HourlyUITests */ = {
+		D9A013934FE5E8D89F55DAF100D4507E /* Pods-Hourly-HourlyUITests */ = {
 			isa = PBXGroup;
 			children = (
-				45909957106C99E3A5D88CC19411F76C /* Pods-Hourly-HourlyUITests.modulemap */,
-				B1406E1A63CCCCE65C77F04A77B0FF8B /* Pods-Hourly-HourlyUITests-acknowledgements.markdown */,
-				2DDB3E84DB1710A4592EE1056718A869 /* Pods-Hourly-HourlyUITests-acknowledgements.plist */,
-				EBD8D362A8FF4638BC3A4A6738837080 /* Pods-Hourly-HourlyUITests-dummy.m */,
-				D5F825F02F91A3A1CE49EF2B71270EC6 /* Pods-Hourly-HourlyUITests-frameworks.sh */,
-				46CD7922B00C712B263033426FF3799E /* Pods-Hourly-HourlyUITests-Info.plist */,
-				132BFE1B815A5636A211E2D32E1C67BC /* Pods-Hourly-HourlyUITests-umbrella.h */,
-				91B8242B73A3FF654235E0934AED5B7E /* Pods-Hourly-HourlyUITests.debug.xcconfig */,
-				BAD3C44E199414627DC37AA5BFAC706D /* Pods-Hourly-HourlyUITests.release.xcconfig */,
+				543A50BB068FC58470F222D5F2D3AA26 /* Pods-Hourly-HourlyUITests.modulemap */,
+				AC71F180495AA418EBD02EF93794C8D4 /* Pods-Hourly-HourlyUITests-acknowledgements.markdown */,
+				A2182E0CE54D77F1ECE582D986B92025 /* Pods-Hourly-HourlyUITests-acknowledgements.plist */,
+				28142EF4C28A9425E2546DFDF189F0A3 /* Pods-Hourly-HourlyUITests-dummy.m */,
+				377D7234FA64A5F5CE0DEFF03429C664 /* Pods-Hourly-HourlyUITests-frameworks.sh */,
+				F073073844EA6D63C4790BE9C5C72CD7 /* Pods-Hourly-HourlyUITests-Info.plist */,
+				95985EBC2E73855359BA63F78069C57E /* Pods-Hourly-HourlyUITests-umbrella.h */,
+				67E7C686CF675C021CF4D7CCAE6EB722 /* Pods-Hourly-HourlyUITests.debug.xcconfig */,
+				DC70BD704AE930CD1811CFB2C6536BD4 /* Pods-Hourly-HourlyUITests.release.xcconfig */,
 			);
 			name = "Pods-Hourly-HourlyUITests";
 			path = "Target Support Files/Pods-Hourly-HourlyUITests";
@@ -276,19 +285,19 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		33F6C704669E8085A53F52E44221093A /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D422DE0EE4E60D7E406471F26476B7A8 /* Pods-Hourly-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		97CE91431E229797751455423C79CA4F /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				E0A8C46EEE733B55971B1CC5ED65C9AA /* DropDown-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		99DD67859559DB48D2606A86BF317053 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0CF091AF890637EFDD29D8F893E8B267 /* Pods-Hourly-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,16 +341,17 @@
 		};
 		78E918B55F038761CAA71E8802F0808D /* Pods-Hourly */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B1DFAC67B30B67D095281F56845CFCA2 /* Build configuration list for PBXNativeTarget "Pods-Hourly" */;
+			buildConfigurationList = 09C9C0ACF995CA50DA87EA34206F6E02 /* Build configuration list for PBXNativeTarget "Pods-Hourly" */;
 			buildPhases = (
-				33F6C704669E8085A53F52E44221093A /* Headers */,
-				C6781A84AB1E30B8B5C263D0DFD397E7 /* Sources */,
-				3EABB15227B7683E301D3B6C26736DD0 /* Frameworks */,
-				424AAA7B11AC2563BE11B650F66D7310 /* Resources */,
+				99DD67859559DB48D2606A86BF317053 /* Headers */,
+				00309FB8896DF70434FA216D3E476546 /* Sources */,
+				9F1157CAA4B204CE95D7D641FE915848 /* Frameworks */,
+				EB3EE561559D390C941599AD3EF092FF /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				65C80BA6F2502E57DEC94D551292E3A7 /* PBXTargetDependency */,
 			);
 			name = "Pods-Hourly";
 			productName = Pods_Hourly;
@@ -416,13 +426,6 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		424AAA7B11AC2563BE11B650F66D7310 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		4C33E66A01EAFCAF8B4389544814892E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -431,6 +434,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		AB168E277EE758398246FC7D170A99B9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB3EE561559D390C941599AD3EF092FF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -448,6 +458,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		00309FB8896DF70434FA216D3E476546 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D22C6FF2FAFB9F3C74C260A1B269A14 /* Pods-Hourly-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		48864C435B3DB37698CF568C638CF98F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -470,14 +488,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C6781A84AB1E30B8B5C263D0DFD397E7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				152B14A231C31386DFD8146A294009D5 /* Pods-Hourly-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E2CE56C5C5ED3DE832CE229EF2D52694 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -495,6 +505,12 @@
 			target = 78E918B55F038761CAA71E8802F0808D /* Pods-Hourly */;
 			targetProxy = B891BB009CBC00A8631773A67832AEFF /* PBXContainerItemProxy */;
 		};
+		65C80BA6F2502E57DEC94D551292E3A7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = DropDown;
+			target = E9F9401E9C74C0C393164FD8D86D0068 /* DropDown */;
+			targetProxy = B6AD4BCCD306526D25E720FF10CF93D3 /* PBXContainerItemProxy */;
+		};
 		EE4CDC1E24C1D2EBD189DED545816421 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = DropDown;
@@ -506,7 +522,7 @@
 /* Begin XCBuildConfiguration section */
 		13FB5E60545530CED648C99FFDCA2D84 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 57E10A4AE9AA6611097C6124156A6023 /* Pods-HourlyTests.release.xcconfig */;
+			baseConfigurationReference = CE22BEE9A3E463EC51E8C750D9D4D893 /* Pods-HourlyTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -544,7 +560,7 @@
 		};
 		2CB30AD2D0C6C399202B0EC52CE6B137 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BAD3C44E199414627DC37AA5BFAC706D /* Pods-Hourly-HourlyUITests.release.xcconfig */;
+			baseConfigurationReference = DC70BD704AE930CD1811CFB2C6536BD4 /* Pods-Hourly-HourlyUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -582,7 +598,7 @@
 		};
 		49D4460E80FCFF6180F97C044397F332 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 91B8242B73A3FF654235E0934AED5B7E /* Pods-Hourly-HourlyUITests.debug.xcconfig */;
+			baseConfigurationReference = 67E7C686CF675C021CF4D7CCAE6EB722 /* Pods-Hourly-HourlyUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -617,9 +633,47 @@
 			};
 			name = Debug;
 		};
-		6E22010AA5D75759C49E7663B1C85AFA /* Debug */ = {
+		49E4E0FE0289A56B9A71456E5FE4D26C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C2B3A504CCF631168B957B1E6AB81F9B /* Pods-Hourly.debug.xcconfig */;
+			baseConfigurationReference = BBB5DCA46584D29C6CD4B2A15AFAF903 /* Pods-Hourly.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Hourly/Pods-Hourly-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Hourly/Pods-Hourly.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		7411E91D1304CB2D82CBF991C6D335EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A4158865B8DA41D30B0EBAB0492BCE8 /* Pods-Hourly.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -782,44 +836,6 @@
 			};
 			name = Release;
 		};
-		9F8BF1EF2E0D69F39FF4626F1E90530F /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9709728E2EB0F1B442E6E25BA0705ABC /* Pods-Hourly.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Hourly/Pods-Hourly-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Hourly/Pods-Hourly.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		C24518E891FAA59668669823639498EB /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9C15EB8657063755722D9C7DC8D72885 /* DropDown.release.xcconfig */;
@@ -835,7 +851,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/DropDown/DropDown-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/DropDown/DropDown-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -870,7 +886,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/DropDown/DropDown-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/DropDown/DropDown-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -891,7 +907,7 @@
 		};
 		ED5F4B7F6380E038BE4F01C261433DC0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89696FBE4DFA8387B1DB6173DC8CEA0A /* Pods-HourlyTests.debug.xcconfig */;
+			baseConfigurationReference = 2BB434449B37EFD928177D165E5AA68D /* Pods-HourlyTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -929,6 +945,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		09C9C0ACF995CA50DA87EA34206F6E02 /* Build configuration list for PBXNativeTarget "Pods-Hourly" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7411E91D1304CB2D82CBF991C6D335EE /* Debug */,
+				49E4E0FE0289A56B9A71456E5FE4D26C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		1432FB141C863AA17B1B42C45592A166 /* Build configuration list for PBXNativeTarget "Pods-Hourly-HourlyUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -961,15 +986,6 @@
 			buildConfigurations = (
 				ED5F4B7F6380E038BE4F01C261433DC0 /* Debug */,
 				13FB5E60545530CED648C99FFDCA2D84 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B1DFAC67B30B67D095281F56845CFCA2 /* Build configuration list for PBXNativeTarget "Pods-Hourly" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6E22010AA5D75759C49E7663B1C85AFA /* Debug */,
-				9F8BF1EF2E0D69F39FF4626F1E90530F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

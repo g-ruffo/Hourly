@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0A771C0668A5D0DCB0EDEF2B /* Pods_Hourly_HourlyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B182A1B3FD571BC504FABF1 /* Pods_Hourly_HourlyUITests.framework */; };
-		27C33B974BAD88C52F4EB018 /* Pods_Hourly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42F4F2435481A38F443BAD5 /* Pods_Hourly.framework */; };
 		795BB46B29E63FB1000D7FB1 /* ColorTagButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795BB46A29E63FB1000D7FB1 /* ColorTagButton.swift */; };
 		795BB46E29E65D99000D7FB1 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795BB46C29E65D99000D7FB1 /* SettingsCell.swift */; };
 		795BB46F29E65D99000D7FB1 /* SettingsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 795BB46D29E65D99000D7FB1 /* SettingsCell.xib */; };
@@ -40,6 +39,7 @@
 		79FA889429E4AD67003C6DFB /* HourlyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FA889329E4AD67003C6DFB /* HourlyUITestsLaunchTests.swift */; };
 		79FA88A629E4B2BD003C6DFB /* StringResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FA88A529E4B2BD003C6DFB /* StringResource.swift */; };
 		79FA88A929E4B37E003C6DFB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79FA88AB29E4B37E003C6DFB /* Localizable.strings */; };
+		CCC5D716397647B609157987 /* Pods_Hourly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42F4F2435481A38F443BAD5 /* Pods_Hourly.framework */; };
 		D2AC5107369A9218D16C80AA /* Pods_HourlyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF8AAF155DD824E6BC6A0F9A /* Pods_HourlyTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -112,7 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27C33B974BAD88C52F4EB018 /* Pods_Hourly.framework in Frameworks */,
+				CCC5D716397647B609157987 /* Pods_Hourly.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,7 +145,6 @@
 				501298F4316EF3DC4DED610C /* Pods-HourlyTests.debug.xcconfig */,
 				B9B99B84B3680AC31F3FFC82 /* Pods-HourlyTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -301,6 +300,7 @@
 				79FA886629E4AD66003C6DFB /* Sources */,
 				79FA886729E4AD66003C6DFB /* Frameworks */,
 				79FA886829E4AD66003C6DFB /* Resources */,
+				A184F3C6D82A5F624772BB6B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -338,7 +338,7 @@
 				79FA888929E4AD67003C6DFB /* Sources */,
 				79FA888A29E4AD67003C6DFB /* Frameworks */,
 				79FA888B29E4AD67003C6DFB /* Resources */,
-				2E5579AF86A25059EC5CB5CA /* [CP] Embed Pods Frameworks */,
+				D2FE74F9B06EA3FF632B66D8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -446,7 +446,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		2E5579AF86A25059EC5CB5CA /* [CP] Embed Pods Frameworks */ = {
+		A184F3C6D82A5F624772BB6B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Hourly/Pods-Hourly-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Hourly/Pods-Hourly-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Hourly/Pods-Hourly-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D2FE74F9B06EA3FF632B66D8 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
