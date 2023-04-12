@@ -17,7 +17,8 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     fileprivate let menuItems: Array<MenuItem> = [
-        MenuItem(image: UIImage(systemName: "externaldrive.fill"), title: S.exportTitle.localized),
+        MenuItem(image: UIImage(systemName: "person.text.rectangle.fill"), title: S.clientsTitle.localized),
+        MenuItem(image: UIImage(systemName: "externaldrive.fill"), title: S.exportTitle.localized)
     ]
     
     override func viewDidLoad() {

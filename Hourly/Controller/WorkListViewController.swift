@@ -43,10 +43,7 @@ class WorkListViewController: UIViewController {
         searchBar.delegate = self
         tableView.dataSource = self
         
-        // Register custom work day cell with table view
-        tableView.register(UINib(nibName: K.Identifiers.workdayNibName, bundle: nil), forCellReuseIdentifier: K.Identifiers.workdayCell)
     }
-
 }
 
 //MARK: - UITableViewDelegate

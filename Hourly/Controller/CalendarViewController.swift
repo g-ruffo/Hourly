@@ -47,15 +47,17 @@ class CalendarViewController: UIViewController {
     }
     
     private func createCalendarGestureRecognizer() {
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(onPan(_:)))
-        swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(onSwipe(_:)))
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(onSwipe(_:)))
+        
+        swipeLeft.direction = .left
+        swipeRight.direction = .right
+        
         collectionView.addGestureRecognizer(swipeLeft)
-                let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(onPan(_:)))
-        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
         collectionView.addGestureRecognizer(swipeRight)
     }
     
-    @objc func onPan(_ pan: UISwipeGestureRecognizer) {
+    @objc func onSwipe(_ pan: UISwipeGestureRecognizer) {
         if pan.direction == .right {
             selectedDate = calendarManager.minusMonth(date: selectedDate)
             setMonthView()

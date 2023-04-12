@@ -28,9 +28,9 @@ class HourlyTabBarController: UITabBarController {
         let workdayNav = self.storyboard?.instantiateViewController(withIdentifier: K.Identifiers.workdayNav) as! UINavigationController
         
         // Create Tab Bar items
-        summaryNav.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "house.fill"), selectedImage: UIImage(systemName: "house.fill"))
+        summaryNav.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house.fill"))
         calendarNav.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "calendar"), selectedImage: UIImage(systemName: "calendar"))
-        clientsNav.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "person.text.rectangle.fill"), selectedImage: UIImage(systemName: "person.text.rectangle.fill"))
+        clientsNav.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "list.bullet.rectangle"), selectedImage: UIImage(systemName: "list.bullet.rectangle.fill"))
         settingsNav.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "gearshape"), selectedImage: UIImage(systemName: "gearshape.fill"))
         workdayNav.tabBarItem = UITabBarItem(title: nil, image: nil, selectedImage: nil)
         
