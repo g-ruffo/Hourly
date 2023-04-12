@@ -14,6 +14,7 @@ struct K {
         static let summaryNav = "SummaryNavigation"
         static let calendarNav = "CalendarNavigation"
         static let clientsNav = "ClientsNavigation"
+        static let exportNav = "ExportNavigation"
         static let workdayNav = "WorkdayNavigation"
         static let settingsNav = "SettingsNavigation"
         static let workdayCell = "WorkdayCell"

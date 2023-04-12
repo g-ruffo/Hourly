@@ -37,7 +37,15 @@ class SettingsViewController: UIViewController {
 
 extension SettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        let selection = menuItems[indexPath.row].title
+        
+        switch selection {
+        case S.clientsTitle.localized: performSegue(withIdentifier: K.Identifiers.clientsNav, sender: self)
+        case S.exportTitle.localized: performSegue(withIdentifier: K.Identifiers.exportNav, sender: self)
+        default : print("No selection found")
+        }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }

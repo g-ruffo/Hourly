@@ -277,11 +277,29 @@
                     <navigationItem key="navigationItem" title="Settings" id="bYo-ZZ-8G4"/>
                     <connections>
                         <outlet property="tableView" destination="6Tg-4b-xbb" id="iew-PU-KXi"/>
+                        <segue destination="v97-2T-A1B" kind="show" identifier="ClientsNavigation" id="l2h-eN-hg0"/>
+                        <segue destination="uEf-bV-X3D" kind="show" identifier="ExportNavigation" id="qcd-7f-B1V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gZV-SA-yEA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1542.7480916030534" y="695.77464788732402"/>
+        </scene>
+        <!--Export-->
+        <scene sceneID="Abk-7d-lLE">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="uEf-bV-X3D" customClass="ExportViewController" customModule="Hourly" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ffc-Wo-pvG">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Dyd-fy-21l"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Export" id="ByU-uq-w3b"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2aT-V1-A13" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2742" y="1178"/>
         </scene>
         <!--Item-->
         <scene sceneID="HdE-xf-bT6">
@@ -303,20 +321,20 @@
         <!--Clients-->
         <scene sceneID="t3I-yc-4AT">
             <objects>
-                <viewController id="v97-2T-A1B" customClass="ClientsViewController" customModule="Hourly" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="v97-2T-A1B" customClass="ClientsViewController" customModule="Hourly" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ceQ-9A-xKx">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="yt8-tq-LYn">
-                                <rect key="frame" x="20" y="59" width="353" height="56"/>
+                                <rect key="frame" x="20" y="103" width="353" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="v97-2T-A1B" id="fUh-la-Omb"/>
                                 </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qXq-Ny-TAf">
-                                <rect key="frame" x="16" y="115" width="361" height="673"/>
+                                <rect key="frame" x="16" y="159" width="361" height="629"/>
                                 <color key="backgroundColor" name="BackgroundGrey"/>
                             </tableView>
                         </subviews>
@@ -347,7 +365,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f3S-iA-y9s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2595" y="696"/>
+            <point key="canvasLocation" x="2758" y="442"/>
         </scene>
         <!--Add New Client-->
         <scene sceneID="1En-HD-8fV">
@@ -484,7 +502,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ima-Nl-hyO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2595" y="1393"/>
+            <point key="canvasLocation" x="3744" y="442"/>
         </scene>
         <!--Item-->
         <scene sceneID="18P-Jp-x7w">
