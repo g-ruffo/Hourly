@@ -10,6 +10,7 @@
 		795BB46B29E63FB1000D7FB1 /* ColorTagButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795BB46A29E63FB1000D7FB1 /* ColorTagButton.swift */; };
 		795BB46E29E65D99000D7FB1 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795BB46C29E65D99000D7FB1 /* SettingsCell.swift */; };
 		795BB46F29E65D99000D7FB1 /* SettingsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 795BB46D29E65D99000D7FB1 /* SettingsCell.xib */; };
+		795BB47129E66E3E000D7FB1 /* WorkListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795BB47029E66E3E000D7FB1 /* WorkListViewController.swift */; };
 		79D5F6A929E5F04D00CA2542 /* ClientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D5F6A729E5F04D00CA2542 /* ClientCell.swift */; };
 		79D5F6AA29E5F04D00CA2542 /* ClientCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79D5F6A829E5F04D00CA2542 /* ClientCell.xib */; };
 		79D5F6AC29E606F000CA2542 /* AddEditClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D5F6AB29E606F000CA2542 /* AddEditClientViewController.swift */; };
@@ -58,6 +59,7 @@
 		795BB46A29E63FB1000D7FB1 /* ColorTagButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTagButton.swift; sourceTree = "<group>"; };
 		795BB46C29E65D99000D7FB1 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		795BB46D29E65D99000D7FB1 /* SettingsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsCell.xib; sourceTree = "<group>"; };
+		795BB47029E66E3E000D7FB1 /* WorkListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkListViewController.swift; sourceTree = "<group>"; };
 		79D5F6A729E5F04D00CA2542 /* ClientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientCell.swift; sourceTree = "<group>"; };
 		79D5F6A829E5F04D00CA2542 /* ClientCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClientCell.xib; sourceTree = "<group>"; };
 		79D5F6AB29E606F000CA2542 /* AddEditClientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditClientViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +116,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		795BB47229E67798000D7FB1 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				79F1AFDA29E52E78004CED4E /* WorkdayCell.swift */,
+				79F1AFDB29E52E78004CED4E /* WorkdayCell.xib */,
+				79D5F6A729E5F04D00CA2542 /* ClientCell.swift */,
+				79D5F6A829E5F04D00CA2542 /* ClientCell.xib */,
+				795BB46C29E65D99000D7FB1 /* SettingsCell.swift */,
+				795BB46D29E65D99000D7FB1 /* SettingsCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		79F1AFD929E51971004CED4E /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,15 +211,10 @@
 		79FA88A229E4B279003C6DFB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				795BB47229E67798000D7FB1 /* Cells */,
 				79FA887329E4AD66003C6DFB /* Main.storyboard */,
 				79F1AFC729E4BD0E004CED4E /* HourlyTabBar.swift */,
-				79F1AFDA29E52E78004CED4E /* WorkdayCell.swift */,
-				79F1AFDB29E52E78004CED4E /* WorkdayCell.xib */,
-				79D5F6A729E5F04D00CA2542 /* ClientCell.swift */,
-				79D5F6A829E5F04D00CA2542 /* ClientCell.xib */,
 				795BB46A29E63FB1000D7FB1 /* ColorTagButton.swift */,
-				795BB46C29E65D99000D7FB1 /* SettingsCell.swift */,
-				795BB46D29E65D99000D7FB1 /* SettingsCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -219,6 +229,7 @@
 				79F1AFCF29E4C047004CED4E /* WorkdayViewController.swift */,
 				79F1AFD129E4C07A004CED4E /* ClientsViewController.swift */,
 				79D5F6AB29E606F000CA2542 /* AddEditClientViewController.swift */,
+				795BB47029E66E3E000D7FB1 /* WorkListViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -373,6 +384,7 @@
 				79F1AFCA29E4BD32004CED4E /* HourlyTabBarController.swift in Sources */,
 				79FA886E29E4AD66003C6DFB /* AppDelegate.swift in Sources */,
 				79F1AFDF29E53748004CED4E /* TestDay.swift in Sources */,
+				795BB47129E66E3E000D7FB1 /* WorkListViewController.swift in Sources */,
 				79F1AFD029E4C047004CED4E /* WorkdayViewController.swift in Sources */,
 				79FA88A629E4B2BD003C6DFB /* StringResource.swift in Sources */,
 				79FA887829E4AD66003C6DFB /* DataModel.xcdatamodeld in Sources */,

@@ -23,6 +23,8 @@ struct K {
         static let addEditClientNav = "AddEditClientNavigation"
         static let settingsCell = "SettingsReusableCell"
         static let settingsNibName = "SettingsCell"
+        static let calendarNibName = "CalendarCell"
+
 
 
     }
