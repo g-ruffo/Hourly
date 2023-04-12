@@ -9,7 +9,7 @@ import UIKit
 
 class CalendarCell: UICollectionViewCell {
 
-    @IBOutlet weak var dayOfMonthLabel: UIView!
+    @IBOutlet weak var dayOfMonthLabel: UILabel!
     
     
     override func awakeFromNib() {

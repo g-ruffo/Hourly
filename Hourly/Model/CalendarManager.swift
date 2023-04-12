@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CalendarManager {
+struct CalendarManager {
     
     let calendar = Calendar.current
     
@@ -48,7 +48,7 @@ class CalendarManager {
     
     func weekDay(date: Date) -> Int {
         let components = calendar.dateComponents([.weekday], from: date)
-        return components.day! - 1
+        return components.weekday! - 1
     }
     
 }
