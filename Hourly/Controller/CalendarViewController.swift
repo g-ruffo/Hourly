@@ -9,7 +9,8 @@ import UIKit
 
 class CalendarViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var monthLabel: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     private var isDisplayingCalendar = true
         
@@ -36,45 +37,31 @@ class CalendarViewController: UIViewController {
         super.viewDidLoad()
         
         // Connect required delegates
-        tableView.delegate = self
-        tableView.dataSource = self
+        collectionView.delegate = self
+//        collectionView.dataSource = self
         
         // Register custom work day cell with table view
-        tableView.register(UINib(nibName: K.Identifiers.workdayNibName, bundle: nil), forCellReuseIdentifier: K.Identifiers.workdayCell)
-    }
-}
-
-//MARK: - UITableViewDelegate
-
-extension CalendarViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
-    }
-}
-
-
-//MARK: - UITableViewDataSource
-
-extension CalendarViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return testDays.count
     }
     
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.Identifiers.workdayCell, for: indexPath) as! WorkdayCell
-        
-        let workDay = testDays[indexPath.row]
-        cell.clientLabel.text = workDay.client
-        cell.dateLabel?.text = workDay.date
-        cell.earningsLabel?.text = workDay.earnings
-        cell.hoursLabel?.text = workDay.hoursWorked
-        cell.backgroundColor = .clear
-
-
-        return cell
+    @IBAction func nextMonthPressed(_ sender: UIButton) {
+    }
+    
+    @IBAction func previousMonthPressed(_ sender: UIButton) {
     }
 }
+
+//MARK: - CalendarViewController
+
+extension CalendarViewController: UICollectionViewDelegate {
+}
+
+
+//MARK: - CalendarViewController
+
+//extension CalendarViewController: UICollectionViewDataSource {
+//
+//}
 
 
 

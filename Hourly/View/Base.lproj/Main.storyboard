@@ -95,11 +95,17 @@
                                 <rect key="frame" x="353.33333333333331" y="124.33333333333333" width="39.666666666666686" height="34.333333333333329"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="chevron.right" catalog="system"/>
+                                <connections>
+                                    <action selector="nextMonthPressed:" destination="U3z-UT-q9m" eventType="touchUpInside" id="a1G-GT-c8x"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhm-xR-SEn">
                                 <rect key="frame" x="0.0" y="124.33333333333333" width="39.666666666666664" height="34.333333333333329"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="chevron.left" catalog="system"/>
+                                <connections>
+                                    <action selector="previousMonthPressed:" destination="U3z-UT-q9m" eventType="touchUpInside" id="34n-Qo-IJF"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="nCs-cK-aGh">
                                 <rect key="frame" x="0.0" y="186" width="393" height="50"/>
@@ -161,7 +167,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="3kA-Rj-hNh">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="3kA-Rj-hNh" customClass="CalendarCell" customModule="Hourly" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="bx6-Sc-UjY">
@@ -180,6 +186,9 @@
                                                 <constraint firstItem="eq7-tf-cjy" firstAttribute="centerY" secondItem="bx6-Sc-UjY" secondAttribute="centerY" multiplier="0.5" id="whM-Xx-Ey8"/>
                                             </constraints>
                                         </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="dayOfMonthLabel" destination="bx6-Sc-UjY" id="Fz3-bQ-yEw"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -208,6 +217,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Calendar" id="tJG-Zo-Fzn"/>
+                    <connections>
+                        <outlet property="collectionView" destination="1bg-58-Ima" id="Hk1-fJ-KwR"/>
+                        <outlet property="monthLabel" destination="y9m-Wt-nng" id="oEK-yb-tXt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FDY-AM-foa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
