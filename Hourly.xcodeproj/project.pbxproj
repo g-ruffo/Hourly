@@ -12,6 +12,7 @@
 		795BB46F29E65D99000D7FB1 /* SettingsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 795BB46D29E65D99000D7FB1 /* SettingsCell.xib */; };
 		795BB47129E66E3E000D7FB1 /* WorkListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795BB47029E66E3E000D7FB1 /* WorkListViewController.swift */; };
 		795BB47729E67881000D7FB1 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795BB47529E67881000D7FB1 /* CalendarCell.swift */; };
+		795BB47A29E67CC8000D7FB1 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795BB47929E67CC8000D7FB1 /* CalendarManager.swift */; };
 		79D5F6A929E5F04D00CA2542 /* ClientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D5F6A729E5F04D00CA2542 /* ClientCell.swift */; };
 		79D5F6AA29E5F04D00CA2542 /* ClientCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79D5F6A829E5F04D00CA2542 /* ClientCell.xib */; };
 		79D5F6AC29E606F000CA2542 /* AddEditClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D5F6AB29E606F000CA2542 /* AddEditClientViewController.swift */; };
@@ -62,6 +63,7 @@
 		795BB46D29E65D99000D7FB1 /* SettingsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsCell.xib; sourceTree = "<group>"; };
 		795BB47029E66E3E000D7FB1 /* WorkListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkListViewController.swift; sourceTree = "<group>"; };
 		795BB47529E67881000D7FB1 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		795BB47929E67CC8000D7FB1 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		79D5F6A729E5F04D00CA2542 /* ClientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientCell.swift; sourceTree = "<group>"; };
 		79D5F6A829E5F04D00CA2542 /* ClientCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClientCell.xib; sourceTree = "<group>"; };
 		79D5F6AB29E606F000CA2542 /* AddEditClientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditClientViewController.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 			children = (
 				79F1AFD929E51971004CED4E /* Data */,
 				79F1AFDE29E53748004CED4E /* TestDay.swift */,
+				795BB47929E67CC8000D7FB1 /* CalendarManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				79F1AFCC29E4BFBB004CED4E /* CalendarViewController.swift in Sources */,
 				79FA887229E4AD66003C6DFB /* SummaryViewController.swift in Sources */,
 				795BB46E29E65D99000D7FB1 /* SettingsCell.swift in Sources */,
+				795BB47A29E67CC8000D7FB1 /* CalendarManager.swift in Sources */,
 				79F1AFCA29E4BD32004CED4E /* HourlyTabBarController.swift in Sources */,
 				79FA886E29E4AD66003C6DFB /* AppDelegate.swift in Sources */,
 				79F1AFDF29E53748004CED4E /* TestDay.swift in Sources */,
