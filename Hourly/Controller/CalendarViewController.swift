@@ -40,13 +40,34 @@ class CalendarViewController: UIViewController {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
+    
         setCellsView()
         setMonthView()
+        createCalendarGestureRecognizer()
+    }
+    
+    private func createCalendarGestureRecognizer() {
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(onPan(_:)))
+        swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
+        collectionView.addGestureRecognizer(swipeLeft)
+                let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(onPan(_:)))
+        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
+        collectionView.addGestureRecognizer(swipeRight)
+    }
+    
+    @objc func onPan(_ pan: UISwipeGestureRecognizer) {
+        if pan.direction == .right {
+            selectedDate = calendarManager.minusMonth(date: selectedDate)
+            setMonthView()
+        } else if pan.direction == .left {
+            selectedDate = calendarManager.plusMonth(date: selectedDate)
+            setMonthView()
+        }
     }
     
     func setCellsView() {
         let width = (collectionView.frame.size.width - 2) / 8
-        let height = (collectionView.frame.size.width - 2) / 8
+        let height = (collectionView.frame.size.height - 2) / 8
         
         let flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         flowLayout.itemSize = CGSize(width: width, height: height)
@@ -60,7 +81,7 @@ class CalendarViewController: UIViewController {
         let startingSpaces = calendarManager.weekDay(date: firstDayOfMonth)
         
         var count: Int = 1
-        while(count <= 42) {
+        while count <= 42 {
             if(count <= startingSpaces || count - startingSpaces > daysInMonth) {
                 totalSquares.append("")
             } else {
@@ -101,14 +122,20 @@ extension CalendarViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.Identifiers.calendarCell, for: indexPath) as! CalendarCell
         
-        cell.dayOfMonthLabel.text = "2"
+        cell.dayOfMonthLabel.text = totalSquares[indexPath.item]
+        if !totalSquares[indexPath.item].isEmpty {
+//            let image = UIImageView(image: UIImage(systemName: "square.fill"))
+//            image.tintColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+//
+//            image.translatesAutoresizingMaskIntoConstraints = false
+//
+//            cell.stackVIew.addArrangedSubview(image)
+        }
         
         return cell
     }
-    
 
 }
-
 
 
 

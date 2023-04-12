@@ -11,6 +11,7 @@ class CalendarCell: UICollectionViewCell {
 
     @IBOutlet weak var dayOfMonthLabel: UILabel!
     
+    @IBOutlet weak var stackVIew: UIStackView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
