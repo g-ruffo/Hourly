@@ -16,6 +16,7 @@
 		795BB47C29E743F4000D7FB1 /* ExportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795BB47B29E743F4000D7FB1 /* ExportViewController.swift */; };
 		7964AFC029E7993900065863 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964AFBF29E7993900065863 /* Extensions.swift */; };
 		7964AFC329E7C24C00065863 /* UIColorHexSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7964AFC229E7C24C00065863 /* UIColorHexSwift */; };
+		7964AFC629E88F4700065863 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7964AFC529E88F4700065863 /* IQKeyboardManagerSwift */; };
 		79D5F6A929E5F04D00CA2542 /* ClientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D5F6A729E5F04D00CA2542 /* ClientCell.swift */; };
 		79D5F6AA29E5F04D00CA2542 /* ClientCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79D5F6A829E5F04D00CA2542 /* ClientCell.xib */; };
 		79D5F6AC29E606F000CA2542 /* AddEditClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D5F6AB29E606F000CA2542 /* AddEditClientViewController.swift */; };
@@ -104,6 +105,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7964AFC329E7C24C00065863 /* UIColorHexSwift in Frameworks */,
+				7964AFC629E88F4700065863 /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +274,7 @@
 			name = Hourly;
 			packageProductDependencies = (
 				7964AFC229E7C24C00065863 /* UIColorHexSwift */,
+				7964AFC529E88F4700065863 /* IQKeyboardManagerSwift */,
 			);
 			productName = Hourly;
 			productReference = 79FA886A29E4AD66003C6DFB /* Hourly.app */;
@@ -347,6 +350,7 @@
 			mainGroup = 79FA886129E4AD66003C6DFB;
 			packageReferences = (
 				7964AFC129E7C24C00065863 /* XCRemoteSwiftPackageReference "UIColor-Hex-Swift" */,
+				7964AFC429E88F4700065863 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = 79FA886B29E4AD66003C6DFB /* Products */;
 			projectDirPath = "";
@@ -779,6 +783,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		7964AFC429E88F4700065863 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.5.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -786,6 +798,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7964AFC129E7C24C00065863 /* XCRemoteSwiftPackageReference "UIColor-Hex-Swift" */;
 			productName = UIColorHexSwift;
+		};
+		7964AFC529E88F4700065863 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7964AFC429E88F4700065863 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 
