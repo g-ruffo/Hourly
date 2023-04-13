@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UIColorHexSwift
 
 class AddEditClientViewController: UIViewController {
 
@@ -15,63 +16,53 @@ class AddEditClientViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var payRateTextField: UITextField!
+    @IBOutlet weak var popUpButton: UIButton!
     
-    @IBOutlet weak var textField: UITextField!
+    private let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    @IBOutlet weak var dropDownView: UIView!
-    @IBOutlet weak var tagColourImageView: UIView!
+    private var selectedColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1).hexString()
     
+    private var manager = AddEditClientManager()
     
-    @IBOutlet weak var menu: UIMenu!
-    
-    private let dropDownValues = [
-        UIImage(systemName: "circle.fill"),
-        UIImage(systemName: "circle.fill"),
-        UIImage(systemName: "circle.fill"),
-        UIImage(systemName: "circle.fill"),
-        UIImage(systemName: "circle.fill"),
-        UIImage(systemName: "circle.fill")
 
+    private let tagStringColours: Array<String> = [
+        "#0096FF", "#941751", "#941100", "#FF9300", "#00F900", "#0433FF", "#FF2F92", "#FFFB00", "#942193", "#73FCD6", "#009193", "#FF2600", "#FF85FF", "#FFFC79"
     ]
-    
-    private let tagColours: Array<UIColor> = [
-        #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1),
-        #colorLiteral(red: 0.4392156899, green: 0.01176470611, blue: 0.1921568662, alpha: 1),
-        #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1),
-        #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1),
-        #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1),
-        #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1),
-        #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
-    ]
-    private let array = [
-    "1", "2", "3", "4", "5", "6", "2", "3", "4", "5", "6", "2", "3", "4", "5", "6"
-    ]
-    
-    @IBOutlet weak var popUpMenu: UIButton!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        manager.delegate = self
+        payRateTextField.delegate = self
+        setupPopUpButton()
+    }
     
-
+    func setupPopUpButton() {
+        let initialImage = UIImage(systemName: "circle.fill")?.withTintColor(UIColor(selectedColor), renderingMode: .alwaysOriginal)
+        popUpButton.setImage(initialImage, for: .normal)
+        popUpButton.setTitle("Tag Colour", for: .normal)
+        popUpButton.imageView?.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).cgColor
+        popUpButton.layer.borderWidth = 1
+        popUpButton.layer.cornerRadius = 8
+        
+        // Called when selection is made
         let optionClosure = {(action: UIAction) in
-                    print(action.title)
+            self.popUpButton.setImage(action.image, for: .normal)
+            self.selectedColor = action.discoverabilityTitle ?? "#0096FF"
                 }
 
-        // create an array to store the actions
         var optionsArray = [UIAction]()
 
-        // loop and populate the actions array
-        for number in tagColours {
-            let image = UIImage(systemName: "circle.fill")?.withTintColor(number, renderingMode: .alwaysOriginal)
-            let colored = image?.withTintColor(number)
-            // create each action and insert the right country as a title
-            let action = UIAction( image: image, state: .off, handler: optionClosure)
-                    
-            // add newly created action to actions array
+        for hex in tagStringColours {
+            let image = UIImage(systemName: "circle.fill")?.withTintColor(UIColor(hex), renderingMode: .alwaysOriginal)
+            
+            // Create each action and insert the coloured image
+            let action = UIAction(image: image, discoverabilityTitle: hex, state: .off, handler: optionClosure)
+
+            // Add created action to action array
             optionsArray.append(action)
+        
         }
                 
                 
@@ -79,21 +70,77 @@ class AddEditClientViewController: UIViewController {
         optionsArray[0].state = .on
 
         // create an options menu
-        let optionsMenu = UIMenu(title: "", options: .displayInline, children: optionsArray)
+        let optionsMenu = UIMenu(options: .displayInline, children: optionsArray)
+        
                 
         // add everything to your button
-        popUpMenu.menu = optionsMenu
+        popUpButton.menu = optionsMenu
 
         // make sure the popup button shows the selected value
-        popUpMenu.changesSelectionAsPrimaryAction = true
-        popUpMenu.showsMenuAsPrimaryAction = true
+        popUpButton.changesSelectionAsPrimaryAction = true
+        popUpButton.showsMenuAsPrimaryAction = true
+    }
+    
 
+    
+    func showAlertDialog() {
+        // Create a new alert
+        let dialogMessage = UIAlertController(title: "Missing Information", message: "Please fill in all required fields", preferredStyle: .alert)
         
+        let dismissButton = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+            dialogMessage.dismiss(animated: true)
+        })
+        dialogMessage.addAction(dismissButton)
+        // Present alert to user
+        self.present(dialogMessage, animated: true, completion: nil)
+    }
+    
+    func createClient() {
+        let newClient = ClientItem(context: databaseContext)
+        newClient.companyName = companyNameTextField.text
+        newClient.contactName = contactNameTextField.text
+        newClient.phoneNumber = phoneNumberTextField.text
+        newClient.email = emailTextField.text
+        newClient.address = addressTextField.text
+        newClient.payRate = manager.currencyStringToDouble(for: payRateTextField.text) ?? 0
+        newClient.tagColor = selectedColor
+    
+    }
+    
+    func saveClient() -> Bool {
+        if databaseContext.hasChanges {
+            do {
+                try databaseContext.save()
+                return true
+            } catch {
+                print("Error saving client to database = \(error)")
+                return false
+            }
+        } else {
+            return true
+        }
     }
     
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
-        self.dismiss(animated: true)
+        if !companyNameTextField.isValid() || !payRateTextField.isValid() {
+            showAlertDialog()
+        } else {
+            createClient()
+            if saveClient() {
+                self.dismiss(animated: true)
+            }
+        }
+    }
+}
+
+extension AddEditClientViewController: AddEditClientManagerDelegate {
+    func didUpdateCurrencyText(_ addEditClientManager: AddEditClientManager, newCurrencyValue: String?) {
+        payRateTextField.text = newCurrencyValue
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        manager.validateCurrencyInput(string: string)
     }
 }
 
