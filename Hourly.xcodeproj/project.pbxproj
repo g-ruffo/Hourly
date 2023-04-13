@@ -19,7 +19,6 @@
 		7964AFC629E88F4700065863 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7964AFC529E88F4700065863 /* IQKeyboardManagerSwift */; };
 		7964AFC829E89CDF00065863 /* AddEditClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964AFC729E89CDF00065863 /* AddEditClientManager.swift */; };
 		79D5F6A929E5F04D00CA2542 /* ClientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D5F6A729E5F04D00CA2542 /* ClientCell.swift */; };
-		79D5F6AA29E5F04D00CA2542 /* ClientCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79D5F6A829E5F04D00CA2542 /* ClientCell.xib */; };
 		79D5F6AC29E606F000CA2542 /* AddEditClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D5F6AB29E606F000CA2542 /* AddEditClientViewController.swift */; };
 		79F1AFC829E4BD0E004CED4E /* HourlyTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFC729E4BD0E004CED4E /* HourlyTabBar.swift */; };
 		79F1AFCA29E4BD32004CED4E /* HourlyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFC929E4BD32004CED4E /* HourlyTabBarController.swift */; };
@@ -72,7 +71,6 @@
 		7964AFBF29E7993900065863 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		7964AFC729E89CDF00065863 /* AddEditClientManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditClientManager.swift; sourceTree = "<group>"; };
 		79D5F6A729E5F04D00CA2542 /* ClientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientCell.swift; sourceTree = "<group>"; };
-		79D5F6A829E5F04D00CA2542 /* ClientCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClientCell.xib; sourceTree = "<group>"; };
 		79D5F6AB29E606F000CA2542 /* AddEditClientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditClientViewController.swift; sourceTree = "<group>"; };
 		79F1AFC729E4BD0E004CED4E /* HourlyTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyTabBar.swift; sourceTree = "<group>"; };
 		79F1AFC929E4BD32004CED4E /* HourlyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyTabBarController.swift; sourceTree = "<group>"; };
@@ -133,7 +131,6 @@
 			children = (
 				79F1AFDA29E52E78004CED4E /* WorkdayCell.swift */,
 				79D5F6A729E5F04D00CA2542 /* ClientCell.swift */,
-				79D5F6A829E5F04D00CA2542 /* ClientCell.xib */,
 				795BB46C29E65D99000D7FB1 /* SettingsCell.swift */,
 				795BB46D29E65D99000D7FB1 /* SettingsCell.xib */,
 				795BB47529E67881000D7FB1 /* CalendarCell.swift */,
@@ -372,7 +369,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				795BB46F29E65D99000D7FB1 /* SettingsCell.xib in Resources */,
-				79D5F6AA29E5F04D00CA2542 /* ClientCell.xib in Resources */,
 				79FA887D29E4AD67003C6DFB /* LaunchScreen.storyboard in Resources */,
 				79FA88A929E4B37E003C6DFB /* Localizable.strings in Resources */,
 				79FA887A29E4AD67003C6DFB /* Assets.xcassets in Resources */,
