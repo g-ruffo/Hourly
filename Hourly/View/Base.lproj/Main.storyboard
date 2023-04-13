@@ -7,6 +7,7 @@
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -429,29 +430,40 @@
                                             </textField>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="0vY-Pf-8PW">
-                                        <rect key="frame" x="16" y="428" width="329" height="40"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="13c-pO-wuE">
+                                        <rect key="frame" x="28.333333333333343" y="392" width="304.33333333333326" height="50"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Client Tag Colour" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e2E-HI-MUF">
-                                                <rect key="frame" x="0.0" y="10.333333333333369" width="124.66666666666667" height="19.333333333333329"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tag Colour" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pcs-Fp-rH6">
+                                                <rect key="frame" x="16" y="10" width="82.333333333333329" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="dEs-h6-O0F"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k6B-Vr-6FL" customClass="ColorTagButton" customModule="Hourly" customModuleProvider="target">
-                                                <rect key="frame" x="279" y="0.0" width="50" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="73c-fx-2P3"/>
-                                                    <constraint firstAttribute="height" constant="40" id="fXh-vj-3Q0"/>
-                                                </constraints>
+                                            <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zyc-qf-6Zc">
+                                                <rect key="frame" x="122.33333333333331" y="0.0" width="75" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                                <menu key="menu" id="cQF-hZ-oVV">
+                                                    <children>
+                                                        <command title="Item 2" id="g03-ja-8Pv"/>
+                                                        <command title="Item 1" id="LbV-t0-tgQ"/>
+                                                    </children>
+                                                </menu>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain"/>
-                                                <connections>
-                                                    <action selector="colourTabButtonPressed:" destination="yHG-3C-L6b" eventType="touchUpInside" id="eOy-V4-gnb"/>
-                                                </connections>
+                                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
                                             </button>
                                         </subviews>
-                                    </stackView>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="Pcs-Fp-rH6" firstAttribute="leading" secondItem="13c-pO-wuE" secondAttribute="leading" constant="16" id="XBb-Jl-CGK"/>
+                                            <constraint firstAttribute="bottom" secondItem="Zyc-qf-6Zc" secondAttribute="bottom" id="icr-OS-uAu"/>
+                                            <constraint firstItem="Pcs-Fp-rH6" firstAttribute="centerY" secondItem="13c-pO-wuE" secondAttribute="centerY" id="jpR-8n-Ecd"/>
+                                            <constraint firstItem="Zyc-qf-6Zc" firstAttribute="leading" secondItem="Pcs-Fp-rH6" secondAttribute="trailing" constant="24" id="klR-Hz-I7C"/>
+                                            <constraint firstItem="Zyc-qf-6Zc" firstAttribute="top" secondItem="13c-pO-wuE" secondAttribute="top" id="wXt-g5-SEe"/>
+                                        </constraints>
+                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0MI-A5-hd7">
                                         <rect key="frame" x="130.66666666666666" y="648.66666666666663" width="100" height="33.333333333333371"/>
                                         <constraints>
@@ -469,14 +481,17 @@
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="13c-pO-wuE" secondAttribute="trailing" constant="28.329999999999998" id="2Mg-Qp-apg"/>
                                     <constraint firstItem="0MI-A5-hd7" firstAttribute="centerX" secondItem="8Tk-mE-R5L" secondAttribute="centerX" id="2ts-Dh-OcJ"/>
                                     <constraint firstAttribute="trailing" secondItem="gsM-q5-wOh" secondAttribute="trailing" id="6St-iU-Ozd"/>
                                     <constraint firstItem="gsM-q5-wOh" firstAttribute="top" secondItem="Osg-Le-SRa" secondAttribute="top" constant="-106" id="9xx-OX-vMa"/>
                                     <constraint firstItem="Osg-Le-SRa" firstAttribute="leading" secondItem="8Tk-mE-R5L" secondAttribute="leading" constant="16" id="FUd-KC-klm"/>
                                     <constraint firstItem="gsM-q5-wOh" firstAttribute="leading" secondItem="Osg-Le-SRa" secondAttribute="leading" constant="-16" id="HDf-on-MiK"/>
                                     <constraint firstAttribute="trailing" secondItem="Osg-Le-SRa" secondAttribute="trailing" constant="16" id="Jlb-bu-GaG"/>
-                                    <constraint firstItem="Osg-Le-SRa" firstAttribute="trailing" secondItem="0vY-Pf-8PW" secondAttribute="trailing" id="XxJ-pM-Hde"/>
+                                    <constraint firstItem="13c-pO-wuE" firstAttribute="top" secondItem="Osg-Le-SRa" secondAttribute="bottom" constant="12" id="Yvx-we-ccx"/>
                                     <constraint firstItem="Osg-Le-SRa" firstAttribute="top" secondItem="gsM-q5-wOh" secondAttribute="bottom" constant="30" id="lHi-i8-MRq"/>
+                                    <constraint firstItem="13c-pO-wuE" firstAttribute="leading" secondItem="8Tk-mE-R5L" secondAttribute="leading" constant="28.329999999999998" id="mHM-8Y-exl"/>
+                                    <constraint firstItem="13c-pO-wuE" firstAttribute="centerX" secondItem="8Tk-mE-R5L" secondAttribute="centerX" id="xkN-4N-Av9"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -495,14 +510,15 @@
                         <outlet property="companyNameTextField" destination="BRn-fm-xKK" id="5u7-Vn-rQA"/>
                         <outlet property="contactNameTextField" destination="45P-6j-EOj" id="Mrz-fu-0PR"/>
                         <outlet property="emailTextField" destination="agl-ve-lg2" id="isS-NP-P05"/>
+                        <outlet property="menu" destination="cQF-hZ-oVV" id="KiL-Cb-ASp"/>
                         <outlet property="payRateTextField" destination="XWb-Bd-RgS" id="YkU-R6-l2Z"/>
                         <outlet property="phoneNumberTextField" destination="j3g-Pd-XUD" id="bgs-1T-YQx"/>
-                        <outlet property="tagColourButton" destination="k6B-Vr-6FL" id="XKC-Vc-ALc"/>
+                        <outlet property="popUpMenu" destination="Zyc-qf-6Zc" id="5RN-Ni-D1c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ima-Nl-hyO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3744" y="442"/>
+            <point key="canvasLocation" x="3742.7480916030531" y="441.54929577464793"/>
         </scene>
         <!--Item-->
         <scene sceneID="18P-Jp-x7w">
@@ -689,6 +705,9 @@
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

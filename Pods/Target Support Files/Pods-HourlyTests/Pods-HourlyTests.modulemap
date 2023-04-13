@@ -1,6 +1,0 @@
-framework module Pods_HourlyTests {
-  umbrella header "Pods-HourlyTests-umbrella.h"
-
-  export *
-  module * { export * }
-}
