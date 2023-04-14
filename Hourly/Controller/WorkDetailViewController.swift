@@ -9,12 +9,22 @@ import UIKit
 
 class WorkDetailViewController: UIViewController {
     
+
+    @IBOutlet weak var draftButton: UIButton!
+    @IBOutlet weak var photosCollectionView: UICollectionView!
+    
+    //MARK: - Fields to set
     @IBOutlet weak var clientLabel: UILabel!
     @IBOutlet weak var earningsLabel: UILabel!
-    @IBOutlet weak var draftButton: UIButton!
-    @IBOutlet weak var photosView: UIView!
-    @IBOutlet weak var photosCollectionView: UICollectionView!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var startTimeLabel: UILabel!
+    @IBOutlet weak var endTimeLabel: UILabel!
+    @IBOutlet weak var lunchTimeLabel: UILabel!
+    @IBOutlet weak var hoursWorkedLabel: UILabel!
+    @IBOutlet weak var payRateLabel: UILabel!
+    @IBOutlet weak var mileageLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
     
     var workday: WorkDayItem?
     
@@ -42,7 +52,8 @@ extension WorkDetailViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.Cell.workdayImageCell, for: indexPath) as! WordayImageCell
+        return cell
     }
     
     
