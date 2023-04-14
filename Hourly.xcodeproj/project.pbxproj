@@ -22,6 +22,9 @@
 		7964AFCC29E9D91400065863 /* WorkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964AFCB29E9D91400065863 /* WorkDetailViewController.swift */; };
 		7964AFCF29E9F87800065863 /* DescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964AFCE29E9F87800065863 /* DescriptionCell.swift */; };
 		7964AFD129E9F89B00065863 /* PayRateHoursCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964AFD029E9F89B00065863 /* PayRateHoursCell.swift */; };
+		7964AFD329E9FA4000065863 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964AFD229E9FA4000065863 /* LocationCell.swift */; };
+		7964AFD529E9FA5E00065863 /* StartEndLunchTImeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964AFD429E9FA5E00065863 /* StartEndLunchTImeCell.swift */; };
+		7964AFD729E9FA8800065863 /* MileageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964AFD629E9FA8800065863 /* MileageCell.swift */; };
 		79D5F6A929E5F04D00CA2542 /* ClientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D5F6A729E5F04D00CA2542 /* ClientCell.swift */; };
 		79D5F6AC29E606F000CA2542 /* AddEditClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D5F6AB29E606F000CA2542 /* AddEditClientViewController.swift */; };
 		79F1AFC829E4BD0E004CED4E /* HourlyTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFC729E4BD0E004CED4E /* HourlyTabBar.swift */; };
@@ -78,6 +81,9 @@
 		7964AFCB29E9D91400065863 /* WorkDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkDetailViewController.swift; sourceTree = "<group>"; };
 		7964AFCE29E9F87800065863 /* DescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionCell.swift; sourceTree = "<group>"; };
 		7964AFD029E9F89B00065863 /* PayRateHoursCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayRateHoursCell.swift; sourceTree = "<group>"; };
+		7964AFD229E9FA4000065863 /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
+		7964AFD429E9FA5E00065863 /* StartEndLunchTImeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartEndLunchTImeCell.swift; sourceTree = "<group>"; };
+		7964AFD629E9FA8800065863 /* MileageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileageCell.swift; sourceTree = "<group>"; };
 		79D5F6A729E5F04D00CA2542 /* ClientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientCell.swift; sourceTree = "<group>"; };
 		79D5F6AB29E606F000CA2542 /* AddEditClientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditClientViewController.swift; sourceTree = "<group>"; };
 		79F1AFC729E4BD0E004CED4E /* HourlyTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyTabBar.swift; sourceTree = "<group>"; };
@@ -152,6 +158,9 @@
 			children = (
 				7964AFCE29E9F87800065863 /* DescriptionCell.swift */,
 				7964AFD029E9F89B00065863 /* PayRateHoursCell.swift */,
+				7964AFD229E9FA4000065863 /* LocationCell.swift */,
+				7964AFD429E9FA5E00065863 /* StartEndLunchTImeCell.swift */,
+				7964AFD629E9FA8800065863 /* MileageCell.swift */,
 			);
 			path = WorkDayDetails;
 			sourceTree = "<group>";
@@ -419,6 +428,7 @@
 			files = (
 				7964AFC029E7993900065863 /* Extensions.swift in Sources */,
 				79F1AFCC29E4BFBB004CED4E /* CalendarViewController.swift in Sources */,
+				7964AFD729E9FA8800065863 /* MileageCell.swift in Sources */,
 				7964AFCC29E9D91400065863 /* WorkDetailViewController.swift in Sources */,
 				79FA887229E4AD66003C6DFB /* SummaryViewController.swift in Sources */,
 				795BB46E29E65D99000D7FB1 /* SettingsCell.swift in Sources */,
@@ -438,12 +448,14 @@
 				79FA887029E4AD66003C6DFB /* SceneDelegate.swift in Sources */,
 				795BB47C29E743F4000D7FB1 /* ExportViewController.swift in Sources */,
 				79D5F6AC29E606F000CA2542 /* AddEditClientViewController.swift in Sources */,
+				7964AFD329E9FA4000065863 /* LocationCell.swift in Sources */,
 				795BB46B29E63FB1000D7FB1 /* ColorTagButton.swift in Sources */,
 				79F1AFC829E4BD0E004CED4E /* HourlyTabBar.swift in Sources */,
 				79F1AFCE29E4BFD4004CED4E /* SettingsViewController.swift in Sources */,
 				79F1AFD429E4C8CD004CED4E /* Constants.swift in Sources */,
 				79F1AFDC29E52E78004CED4E /* WorkdayCell.swift in Sources */,
 				7964AFC829E89CDF00065863 /* AddEditClientManager.swift in Sources */,
+				7964AFD529E9FA5E00065863 /* StartEndLunchTImeCell.swift in Sources */,
 				795BB47729E67881000D7FB1 /* CalendarCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
