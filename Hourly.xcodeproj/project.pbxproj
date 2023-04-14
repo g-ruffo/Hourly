@@ -25,6 +25,7 @@
 		7964AFD329E9FA4000065863 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964AFD229E9FA4000065863 /* LocationCell.swift */; };
 		7964AFD529E9FA5E00065863 /* StartEndLunchTImeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964AFD429E9FA5E00065863 /* StartEndLunchTImeCell.swift */; };
 		7964AFD729E9FA8800065863 /* MileageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964AFD629E9FA8800065863 /* MileageCell.swift */; };
+		7964AFD929E9FEA000065863 /* WorkdayDetailsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964AFD829E9FEA000065863 /* WorkdayDetailsManager.swift */; };
 		79D5F6A929E5F04D00CA2542 /* ClientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D5F6A729E5F04D00CA2542 /* ClientCell.swift */; };
 		79D5F6AC29E606F000CA2542 /* AddEditClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D5F6AB29E606F000CA2542 /* AddEditClientViewController.swift */; };
 		79F1AFC829E4BD0E004CED4E /* HourlyTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFC729E4BD0E004CED4E /* HourlyTabBar.swift */; };
@@ -84,6 +85,7 @@
 		7964AFD229E9FA4000065863 /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		7964AFD429E9FA5E00065863 /* StartEndLunchTImeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartEndLunchTImeCell.swift; sourceTree = "<group>"; };
 		7964AFD629E9FA8800065863 /* MileageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileageCell.swift; sourceTree = "<group>"; };
+		7964AFD829E9FEA000065863 /* WorkdayDetailsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkdayDetailsManager.swift; sourceTree = "<group>"; };
 		79D5F6A729E5F04D00CA2542 /* ClientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientCell.swift; sourceTree = "<group>"; };
 		79D5F6AB29E606F000CA2542 /* AddEditClientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditClientViewController.swift; sourceTree = "<group>"; };
 		79F1AFC729E4BD0E004CED4E /* HourlyTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyTabBar.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				79F1AFDE29E53748004CED4E /* TestDay.swift */,
 				795BB47929E67CC8000D7FB1 /* CalendarManager.swift */,
 				7964AFC729E89CDF00065863 /* AddEditClientManager.swift */,
+				7964AFD829E9FEA000065863 /* WorkdayDetailsManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 				79D5F6AC29E606F000CA2542 /* AddEditClientViewController.swift in Sources */,
 				7964AFD329E9FA4000065863 /* LocationCell.swift in Sources */,
 				795BB46B29E63FB1000D7FB1 /* ColorTagButton.swift in Sources */,
+				7964AFD929E9FEA000065863 /* WorkdayDetailsManager.swift in Sources */,
 				79F1AFC829E4BD0E004CED4E /* HourlyTabBar.swift in Sources */,
 				79F1AFCE29E4BFD4004CED4E /* SettingsViewController.swift in Sources */,
 				79F1AFD429E4C8CD004CED4E /* Constants.swift in Sources */,
