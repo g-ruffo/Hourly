@@ -11,4 +11,6 @@ struct WorkdayDetailsManager {
     
     var numberOfDetailCells: Int = 0
     
+    
+    
 }

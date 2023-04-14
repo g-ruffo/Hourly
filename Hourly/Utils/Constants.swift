@@ -28,11 +28,7 @@ struct K {
     }
     
     struct Cell {
-        static let workDescriptionCell = "WorkDescriptionCell"
-        static let workHoursPayRateCell = "WorkHoursPayRateCell"
-        static let workLocationCell = "WorkLocationCell"
-        static let workMileageCell = "WorkMileageCell"
-        static let workStartEndTimeCell = "WorkStartEndTimeCell"
+
     }
     
     struct Segue {
