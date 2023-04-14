@@ -18,6 +18,8 @@ class AddEditClientViewController: UIViewController {
     @IBOutlet weak var payRateTextField: UITextField!
     @IBOutlet weak var popUpButton: UIButton!
     
+    @IBOutlet weak var deleteBarButton: UIBarButtonItem!
+    
     private let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     private var selectedColour = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1).hexString()
@@ -53,8 +55,9 @@ class AddEditClientViewController: UIViewController {
             if let colour = client.tagColor {
                 selectedColour = colour
             }
-            
         } else {
+            deleteBarButton.isEnabled = false
+            deleteBarButton.tintColor = .clear
             self.title = S.addClientTitle.localized
         }
     }
@@ -116,6 +119,24 @@ class AddEditClientViewController: UIViewController {
         self.present(dialogMessage, animated: true, completion: nil)
     }
     
+    func showDeleteAlertDialog() {
+        // Create a new alert
+        let dialogMessage = UIAlertController(title: "Are You Sure?", message: "Deleting this client can't be undone, are you sure you would like to proceed?", preferredStyle: .alert)
+        
+        let dismissButton = UIAlertAction(title: "No", style: .default, handler: { (action) -> Void in
+            dialogMessage.dismiss(animated: true)
+        })
+        let confirmButton = UIAlertAction(title: "DELETE!", style: .destructive, handler: { (action) -> Void in
+            self.deleteClientFromDatabase()
+            dialogMessage.dismiss(animated: true)
+        })
+        
+        dialogMessage.addAction(dismissButton)
+        dialogMessage.addAction(confirmButton)
+        // Present alert to user
+        self.present(dialogMessage, animated: true, completion: nil)
+    }
+    
     func createClient() {
         let newClient = ClientItem(context: databaseContext)
         newClient.companyName = companyNameTextField.text
@@ -125,7 +146,6 @@ class AddEditClientViewController: UIViewController {
         newClient.address = addressTextField.text
         newClient.payRate = manager.currencyStringToDouble(for: payRateTextField.text) ?? 0
         newClient.tagColor = selectedColour
-    
     }
     
     func saveClient() -> Bool {
@@ -142,6 +162,15 @@ class AddEditClientViewController: UIViewController {
         }
     }
     
+    func deleteClientFromDatabase() {
+        if let client = clientEdit {
+            databaseContext.delete(client)
+            if saveClient() {
+                navigationController?.popViewController(animated: true)
+            }
+        }
+    }
+    
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         if !companyNameTextField.isValid() || !payRateTextField.isValid() {
@@ -153,6 +182,11 @@ class AddEditClientViewController: UIViewController {
             }
         }
     }
+    @IBAction func deleteButtonPressed(_ sender: UIBarButtonItem) {
+        showDeleteAlertDialog()
+        
+    }
+    
 }
 
 extension AddEditClientViewController: AddEditClientManagerDelegate {

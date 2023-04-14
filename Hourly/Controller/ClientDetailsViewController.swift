@@ -48,9 +48,6 @@ class ClientDetailsViewController: UIViewController {
         }
     }
     
-    @IBAction func deleteButtonPressed(_ sender: UIButton) {
-    }
-    
     @IBAction func phoneButtonPressed(_ sender: UIButton) {
     }
     

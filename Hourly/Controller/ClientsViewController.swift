@@ -39,11 +39,11 @@ class ClientsViewController: UIViewController {
         let request: NSFetchRequest<ClientItem> = ClientItem.fetchRequest()
         do{
             clientList = try databaseContext.fetch(request)
+            tableView.reloadData()
         } catch {
             print("Error fetching clients from database = \(error)")
         }
-    }
-    
+    }    
 
     @IBAction func createClientPressed(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: K.Identifiers.addClientNav, sender: self)
@@ -108,6 +108,7 @@ extension ClientsViewController: UISearchBarDelegate {
 //MARK: - EditClientDelegate
 
 extension ClientsViewController: EditClientDelegate {
+
     func editClient(_ clientDetailsViewController: ClientDetailsViewController, client: ClientItem) {
         clientToEdit = client
         performSegue(withIdentifier: K.Identifiers.editClientNav, sender: self)
