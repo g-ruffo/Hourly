@@ -8,7 +8,7 @@
 import UIKit
 
 class ClientDetailsViewController: UIViewController {
-
+    
     @IBOutlet weak var tagImageView: UIImageView!
     @IBOutlet weak var clientNameLabel: UILabel!
     @IBOutlet weak var payRateLabel: UILabel!
@@ -17,14 +17,24 @@ class ClientDetailsViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     
+    var client: ClientItem? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        if let details = client {
+            clientNameLabel.text = details.companyName
+            payRateLabel.text = "$\(details.payRate)/ hour"
+            contactNameTextField.text = details.contactName
+            phoneTextField.text = details.phoneNumber
+            emailTextField.text = details.email
+            addressTextField.text = details.address
+        }
     }
     
     @IBAction func editButtonPressed(_ sender: UIButton) {
+        
+        
     }
     
     @IBAction func deleteButtonPressed(_ sender: UIButton) {

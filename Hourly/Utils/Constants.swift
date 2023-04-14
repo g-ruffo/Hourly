@@ -19,15 +19,15 @@ struct K {
         static let settingsNav = "SettingsNavigation"
         static let workdayCell = "WorkdayCell"
         static let clientCell = "ClientCell"
-        static let addEditClientNav = "AddEditClientNavigation"
+        static let addClientNav = "AddClientNavigation"
+        static let editClientNav = "EditClientNavigation"
+        static let detailClientNav = "DetailClientNavigation"
         static let settingsCell = "SettingsReusableCell"
         static let settingsNibName = "SettingsCell"
         static let calendarCell = "CalendarCell"
 
-
-
     }
-    
+
     struct NavigationBar {
         static let middleButtonSize: CGFloat = 64
         static let middleButtonRadius: CGFloat = middleButtonSize / 2

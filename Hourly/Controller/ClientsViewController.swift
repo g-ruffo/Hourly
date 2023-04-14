@@ -6,15 +6,17 @@
 //
 
 import UIKit
+import CoreData
+import UIColorHexSwift
 
 class ClientsViewController: UIViewController {
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
-    private var clientList: Array<ClientItem> = []
+    private var clientList: Array<ClientItem>?
     
-    let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,37 +26,74 @@ class ClientsViewController: UIViewController {
         tableView.dataSource = self
         searchBar.delegate = self
         
-        // Register custom work day cell with table view
-        tableView.register(UINib(nibName: K.Identifiers.clientNibName, bundle: nil), forCellReuseIdentifier: K.Identifiers.clientCell)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadClientsFromDatabase()
+    }
+    
+    func loadClientsFromDatabase() {
+        let request: NSFetchRequest<ClientItem> = ClientItem.fetchRequest()
+        do{
+            clientList = try databaseContext.fetch(request)
+        } catch {
+            print("Error fetching clients from database = \(error)")
+        }
     }
     
 
     @IBAction func createClientPressed(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: K.Identifiers.addEditClientNav, sender: self)
+        performSegue(withIdentifier: K.Identifiers.addClientNav, sender: self)
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.Identifiers.detailClientNav {
+            let destinationVC = segue.destination as! ClientDetailsViewController
+            if let indexPath = tableView.indexPathForSelectedRow, let client = clientList?[indexPath.row] {
+                destinationVC.client = client
+            }
+        }
+    }
 }
+
+//MARK: - UITableViewDataSource
 
 extension ClientsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return clientList.count
+        return clientList?.count ?? 0
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.Identifiers.clientCell, for: indexPath)
+        guard let client = clientList?[indexPath.row] else {
+            fatalError("Failed getting client for table view datasource")
+        }
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.Identifiers.clientCell, for: indexPath) as! ClientCell
+
+        if let colour = client.tagColor {
+            cell.tagImageView.image = UIImage(systemName: "circle.fill")?.withTintColor(UIColor(colour), renderingMode: .alwaysOriginal)
+        }
+        
+        cell.nameLabel.text = client.companyName
+        cell.phoneLabel.text = client.phoneNumber
         
         return cell
     }
 }
 
+//MARK: - UITableViewDelegate
+
 extension ClientsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        performSegue(withIdentifier: K.Identifiers.detailClientNav, sender: self)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
 //MARK: - UISearchBarDelegate
+
 extension ClientsViewController: UISearchBarDelegate {
     
 }

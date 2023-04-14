@@ -419,13 +419,13 @@
                     <connections>
                         <outlet property="searchBar" destination="yt8-tq-LYn" id="H87-0b-RtW"/>
                         <outlet property="tableView" destination="qXq-Ny-TAf" id="GPe-db-Q48"/>
-                        <segue destination="yHG-3C-L6b" kind="show" identifier="AddEditClientNavigation" id="Ydi-Ml-fqH"/>
-                        <segue destination="EIG-Gh-Hm2" kind="presentation" id="9Mp-0b-N9L"/>
+                        <segue destination="yHG-3C-L6b" kind="show" identifier="AddClientNavigation" id="Ydi-Ml-fqH"/>
+                        <segue destination="EIG-Gh-Hm2" kind="presentation" identifier="DetailClientNavigation" id="9Mp-0b-N9L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f3S-iA-y9s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2756.4885496183206" y="441.54929577464793"/>
+            <point key="canvasLocation" x="2741" y="231"/>
         </scene>
         <!--Client Details View Controller-->
         <scene sceneID="to1-YS-dqt">
@@ -610,11 +610,12 @@
                         <outlet property="payRateLabel" destination="KIZ-DY-rG5" id="jWM-pz-u7v"/>
                         <outlet property="phoneTextField" destination="ct2-Kp-5Wx" id="brR-1n-M54"/>
                         <outlet property="tagImageView" destination="lhj-f5-WAg" id="stG-If-jwk"/>
+                        <segue destination="yHG-3C-L6b" kind="show" identifier="EditClientNavigation" id="ctQ-W1-j2d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ijw-ia-xcv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3829.770992366412" y="719.71830985915494"/>
+            <point key="canvasLocation" x="3830" y="696"/>
         </scene>
         <!--Add New Client-->
         <scene sceneID="1En-HD-8fV">
@@ -750,7 +751,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ima-Nl-hyO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3831" y="41"/>
+            <point key="canvasLocation" x="3830" y="-130"/>
         </scene>
         <!--Item-->
         <scene sceneID="18P-Jp-x7w">
@@ -916,6 +917,9 @@
             <point key="canvasLocation" x="696.94656488549617" y="695.77464788732402"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Ydi-Ml-fqH"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="chevron.left" catalog="system" width="97" height="128"/>
         <image name="chevron.right" catalog="system" width="97" height="128"/>
