@@ -975,6 +975,16 @@
                                         <color key="textColor" name="PrimaryBlueLight"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MFP-0Q-HNp">
+                                        <rect key="frame" x="327.66666666666669" y="42" width="53.333333333333314" height="35"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Edit">
+                                            <color key="baseForegroundColor" name="PrimaryYellow"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="editButtonPressed:" destination="cmG-CB-vpK" eventType="touchUpInside" id="Z2M-3B-86x"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" name="PrimaryBlueDark"/>
                                 <constraints>
@@ -988,8 +998,10 @@
                                     <constraint firstItem="LB6-Dq-M1T" firstAttribute="leading" secondItem="S6k-n9-iKz" secondAttribute="leading" id="Pfh-zP-pgJ"/>
                                     <constraint firstAttribute="trailing" secondItem="LB6-Dq-M1T" secondAttribute="trailing" id="Uja-sP-fD0"/>
                                     <constraint firstAttribute="trailing" secondItem="LRu-7i-35F" secondAttribute="trailing" id="W6Y-pt-f7D"/>
+                                    <constraint firstAttribute="trailing" secondItem="MFP-0Q-HNp" secondAttribute="trailing" constant="12" id="c3g-u8-QqL"/>
                                     <constraint firstAttribute="trailing" secondItem="nxM-Fc-SNJ" secondAttribute="trailing" constant="12" id="id0-ot-2Px"/>
                                     <constraint firstItem="LRu-7i-35F" firstAttribute="leading" secondItem="S6k-n9-iKz" secondAttribute="leading" constant="12" id="jg7-Rm-d3W"/>
+                                    <constraint firstItem="MFP-0Q-HNp" firstAttribute="centerY" secondItem="LB6-Dq-M1T" secondAttribute="centerY" id="ktC-yG-Pb6"/>
                                     <constraint firstItem="uBN-fJ-xNQ" firstAttribute="leading" secondItem="LRu-7i-35F" secondAttribute="leading" id="lFQ-HT-uuQ"/>
                                     <constraint firstItem="nxM-Fc-SNJ" firstAttribute="centerY" secondItem="LRu-7i-35F" secondAttribute="centerY" id="pY8-bl-Tu8"/>
                                     <constraint firstAttribute="trailing" secondItem="Ynf-cO-nSn" secondAttribute="trailing" id="pm2-Xj-4s6"/>
