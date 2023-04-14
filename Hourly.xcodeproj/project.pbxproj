@@ -18,6 +18,7 @@
 		7964AFC329E7C24C00065863 /* UIColorHexSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7964AFC229E7C24C00065863 /* UIColorHexSwift */; };
 		7964AFC629E88F4700065863 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7964AFC529E88F4700065863 /* IQKeyboardManagerSwift */; };
 		7964AFC829E89CDF00065863 /* AddEditClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964AFC729E89CDF00065863 /* AddEditClientManager.swift */; };
+		7964AFCA29E8CF6300065863 /* ClientDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964AFC929E8CF6300065863 /* ClientDetailsViewController.swift */; };
 		79D5F6A929E5F04D00CA2542 /* ClientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D5F6A729E5F04D00CA2542 /* ClientCell.swift */; };
 		79D5F6AC29E606F000CA2542 /* AddEditClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D5F6AB29E606F000CA2542 /* AddEditClientViewController.swift */; };
 		79F1AFC829E4BD0E004CED4E /* HourlyTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFC729E4BD0E004CED4E /* HourlyTabBar.swift */; };
@@ -70,6 +71,7 @@
 		795BB47B29E743F4000D7FB1 /* ExportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportViewController.swift; sourceTree = "<group>"; };
 		7964AFBF29E7993900065863 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		7964AFC729E89CDF00065863 /* AddEditClientManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditClientManager.swift; sourceTree = "<group>"; };
+		7964AFC929E8CF6300065863 /* ClientDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientDetailsViewController.swift; sourceTree = "<group>"; };
 		79D5F6A729E5F04D00CA2542 /* ClientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientCell.swift; sourceTree = "<group>"; };
 		79D5F6AB29E606F000CA2542 /* AddEditClientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditClientViewController.swift; sourceTree = "<group>"; };
 		79F1AFC729E4BD0E004CED4E /* HourlyTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyTabBar.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				79D5F6AB29E606F000CA2542 /* AddEditClientViewController.swift */,
 				795BB47029E66E3E000D7FB1 /* WorkListViewController.swift */,
 				795BB47B29E743F4000D7FB1 /* ExportViewController.swift */,
+				7964AFC929E8CF6300065863 /* ClientDetailsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 				79F1AFCC29E4BFBB004CED4E /* CalendarViewController.swift in Sources */,
 				79FA887229E4AD66003C6DFB /* SummaryViewController.swift in Sources */,
 				795BB46E29E65D99000D7FB1 /* SettingsCell.swift in Sources */,
+				7964AFCA29E8CF6300065863 /* ClientDetailsViewController.swift in Sources */,
 				795BB47A29E67CC8000D7FB1 /* CalendarManager.swift in Sources */,
 				79F1AFCA29E4BD32004CED4E /* HourlyTabBarController.swift in Sources */,
 				79FA886E29E4AD66003C6DFB /* AppDelegate.swift in Sources */,
