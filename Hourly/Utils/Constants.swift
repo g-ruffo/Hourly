@@ -25,7 +25,15 @@ struct K {
         static let settingsCell = "SettingsReusableCell"
         static let settingsNibName = "SettingsCell"
         static let calendarCell = "CalendarCell"
-
+        static let workDetailNav = "WorkDetailNavigation"
+    }
+    
+    struct Cell {
+        static let workDescriptionCell = "WorkDescriptionCell"
+        static let workHoursPayRateCell = "WorkHoursPayRateCell"
+        static let workLocationCell = "WorkLocationCell"
+        static let workMileageCell = "WorkMileageCell"
+        static let workStartEndTimeCell = "WorkStartEndTimeCell"
     }
 
     struct NavigationBar {
