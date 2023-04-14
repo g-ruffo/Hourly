@@ -19,6 +19,9 @@
 		7964AFC629E88F4700065863 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7964AFC529E88F4700065863 /* IQKeyboardManagerSwift */; };
 		7964AFC829E89CDF00065863 /* AddEditClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964AFC729E89CDF00065863 /* AddEditClientManager.swift */; };
 		7964AFCA29E8CF6300065863 /* ClientDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964AFC929E8CF6300065863 /* ClientDetailsViewController.swift */; };
+		7964AFCC29E9D91400065863 /* WorkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964AFCB29E9D91400065863 /* WorkDetailViewController.swift */; };
+		7964AFCF29E9F87800065863 /* DescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964AFCE29E9F87800065863 /* DescriptionCell.swift */; };
+		7964AFD129E9F89B00065863 /* PayRateHoursCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964AFD029E9F89B00065863 /* PayRateHoursCell.swift */; };
 		79D5F6A929E5F04D00CA2542 /* ClientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D5F6A729E5F04D00CA2542 /* ClientCell.swift */; };
 		79D5F6AC29E606F000CA2542 /* AddEditClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D5F6AB29E606F000CA2542 /* AddEditClientViewController.swift */; };
 		79F1AFC829E4BD0E004CED4E /* HourlyTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFC729E4BD0E004CED4E /* HourlyTabBar.swift */; };
@@ -72,6 +75,9 @@
 		7964AFBF29E7993900065863 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		7964AFC729E89CDF00065863 /* AddEditClientManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditClientManager.swift; sourceTree = "<group>"; };
 		7964AFC929E8CF6300065863 /* ClientDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientDetailsViewController.swift; sourceTree = "<group>"; };
+		7964AFCB29E9D91400065863 /* WorkDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkDetailViewController.swift; sourceTree = "<group>"; };
+		7964AFCE29E9F87800065863 /* DescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionCell.swift; sourceTree = "<group>"; };
+		7964AFD029E9F89B00065863 /* PayRateHoursCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayRateHoursCell.swift; sourceTree = "<group>"; };
 		79D5F6A729E5F04D00CA2542 /* ClientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientCell.swift; sourceTree = "<group>"; };
 		79D5F6AB29E606F000CA2542 /* AddEditClientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditClientViewController.swift; sourceTree = "<group>"; };
 		79F1AFC729E4BD0E004CED4E /* HourlyTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyTabBar.swift; sourceTree = "<group>"; };
@@ -131,6 +137,7 @@
 		795BB47229E67798000D7FB1 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				7964AFCD29E9F84900065863 /* WorkDayDetails */,
 				79F1AFDA29E52E78004CED4E /* WorkdayCell.swift */,
 				79D5F6A729E5F04D00CA2542 /* ClientCell.swift */,
 				795BB46C29E65D99000D7FB1 /* SettingsCell.swift */,
@@ -138,6 +145,15 @@
 				795BB47529E67881000D7FB1 /* CalendarCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		7964AFCD29E9F84900065863 /* WorkDayDetails */ = {
+			isa = PBXGroup;
+			children = (
+				7964AFCE29E9F87800065863 /* DescriptionCell.swift */,
+				7964AFD029E9F89B00065863 /* PayRateHoursCell.swift */,
+			);
+			path = WorkDayDetails;
 			sourceTree = "<group>";
 		};
 		79F1AFD929E51971004CED4E /* Data */ = {
@@ -244,6 +260,7 @@
 				795BB47029E66E3E000D7FB1 /* WorkListViewController.swift */,
 				795BB47B29E743F4000D7FB1 /* ExportViewController.swift */,
 				7964AFC929E8CF6300065863 /* ClientDetailsViewController.swift */,
+				7964AFCB29E9D91400065863 /* WorkDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -402,6 +419,7 @@
 			files = (
 				7964AFC029E7993900065863 /* Extensions.swift in Sources */,
 				79F1AFCC29E4BFBB004CED4E /* CalendarViewController.swift in Sources */,
+				7964AFCC29E9D91400065863 /* WorkDetailViewController.swift in Sources */,
 				79FA887229E4AD66003C6DFB /* SummaryViewController.swift in Sources */,
 				795BB46E29E65D99000D7FB1 /* SettingsCell.swift in Sources */,
 				7964AFCA29E8CF6300065863 /* ClientDetailsViewController.swift in Sources */,
@@ -410,10 +428,12 @@
 				79FA886E29E4AD66003C6DFB /* AppDelegate.swift in Sources */,
 				79F1AFDF29E53748004CED4E /* TestDay.swift in Sources */,
 				795BB47129E66E3E000D7FB1 /* WorkListViewController.swift in Sources */,
+				7964AFCF29E9F87800065863 /* DescriptionCell.swift in Sources */,
 				79F1AFD029E4C047004CED4E /* WorkdayViewController.swift in Sources */,
 				79FA88A629E4B2BD003C6DFB /* StringResource.swift in Sources */,
 				79FA887829E4AD66003C6DFB /* DataModel.xcdatamodeld in Sources */,
 				79F1AFD229E4C07A004CED4E /* ClientsViewController.swift in Sources */,
+				7964AFD129E9F89B00065863 /* PayRateHoursCell.swift in Sources */,
 				79D5F6A929E5F04D00CA2542 /* ClientCell.swift in Sources */,
 				79FA887029E4AD66003C6DFB /* SceneDelegate.swift in Sources */,
 				795BB47C29E743F4000D7FB1 /* ExportViewController.swift in Sources */,
