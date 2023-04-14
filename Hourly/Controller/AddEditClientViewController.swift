@@ -35,6 +35,7 @@ class AddEditClientViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(clientEdit?.id)
 
         manager.delegate = self
         payRateTextField.delegate = self
@@ -148,6 +149,19 @@ class AddEditClientViewController: UIViewController {
         newClient.tagColor = selectedColour
     }
     
+    func updateClient() {
+        guard let client = clientEdit else {
+            fatalError("Error geting client to perform update.")
+        }
+        client.companyName = companyNameTextField.text
+        client.contactName = contactNameTextField.text
+        client.phoneNumber = phoneNumberTextField.text
+        client.email = emailTextField.text
+        client.address = addressTextField.text
+        client.payRate = manager.currencyStringToDouble(for: payRateTextField.text) ?? 0
+        client.tagColor = selectedColour
+    }
+    
     func saveClient() -> Bool {
         if databaseContext.hasChanges {
             do {
@@ -175,6 +189,11 @@ class AddEditClientViewController: UIViewController {
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         if !companyNameTextField.isValid() || !payRateTextField.isValid() {
             showAlertDialog()
+        } else if clientEdit != nil {
+            updateClient()
+            if saveClient() {
+                navigationController?.popViewController(animated: true)
+            }
         } else {
             createClient()
             if saveClient() {
