@@ -595,8 +595,12 @@
                         <outlet property="addressTextField" destination="iFX-zp-cEV" id="oDa-cB-aBZ"/>
                         <outlet property="clientNameLabel" destination="SiX-nE-eFO" id="QIb-yy-bOL"/>
                         <outlet property="contactNameTextField" destination="rbG-7b-YE0" id="rcG-mp-SmU"/>
+                        <outlet property="emailButton" destination="AeF-DL-XrQ" id="Zke-f7-rpb"/>
                         <outlet property="emailTextField" destination="Mh7-tE-KpP" id="v46-2m-bsR"/>
+                        <outlet property="locationButton" destination="a9z-0g-sD9" id="jmZ-jn-IQd"/>
+                        <outlet property="messageButton" destination="Jbw-XT-Ru0" id="j4j-Od-CE4"/>
                         <outlet property="payRateLabel" destination="KIZ-DY-rG5" id="jWM-pz-u7v"/>
+                        <outlet property="phoneButton" destination="yDZ-BU-61E" id="S5M-i9-fYK"/>
                         <outlet property="phoneTextField" destination="ct2-Kp-5Wx" id="brR-1n-M54"/>
                         <outlet property="tagImageView" destination="lhj-f5-WAg" id="stG-If-jwk"/>
                     </connections>

@@ -16,6 +16,11 @@ class ClientDetailsViewController: UIViewController {
     @IBOutlet weak var tagImageView: UIImageView!
     @IBOutlet weak var clientNameLabel: UILabel!
     @IBOutlet weak var payRateLabel: UILabel!
+    
+    @IBOutlet weak var phoneButton: UIButton!
+    @IBOutlet weak var messageButton: UIButton!
+    @IBOutlet weak var emailButton: UIButton!
+    @IBOutlet weak var locationButton: UIButton!
     @IBOutlet weak var contactNameTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -28,6 +33,10 @@ class ClientDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setClientDetails()
+    }
+    
+    private func setClientDetails() {
         if let details = client {
             clientNameLabel.text = details.companyName
             payRateLabel.text = "$\(details.payRate)/ hour"
@@ -35,6 +44,23 @@ class ClientDetailsViewController: UIViewController {
             phoneTextField.text = details.phoneNumber
             emailTextField.text = details.email
             addressTextField.text = details.address
+        }
+        setIntentButtonState()
+    }
+    
+    private func setIntentButtonState() {
+        guard let phone = phoneTextField.text, let email = emailTextField.text, let address = addressTextField.text else {
+            fatalError("TextFields have nil values")
+        }
+        if phone.isEmpty {
+            phoneButton.isEnabled = false
+            messageButton.isEnabled = false
+        }
+        if email.isEmpty {
+            emailButton.isEnabled = false
+        }
+        if address.isEmpty {
+            locationButton.isEnabled = false
         }
     }
 
