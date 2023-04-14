@@ -421,6 +421,7 @@
                         <outlet property="tableView" destination="qXq-Ny-TAf" id="GPe-db-Q48"/>
                         <segue destination="yHG-3C-L6b" kind="show" identifier="AddClientNavigation" id="Ydi-Ml-fqH"/>
                         <segue destination="EIG-Gh-Hm2" kind="presentation" identifier="DetailClientNavigation" id="9Mp-0b-N9L"/>
+                        <segue destination="yHG-3C-L6b" kind="show" identifier="EditClientNavigation" id="T1x-7W-HWO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f3S-iA-y9s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -553,7 +554,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mEW-Kg-ThK">
-                                <rect key="frame" x="304.66666666666669" y="12" width="53.333333333333314" height="68"/>
+                                <rect key="frame" x="281.66666666666669" y="12" width="76.333333333333314" height="68"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Edit"/>
                                 <connections>
@@ -561,7 +562,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQV-Ly-2bF">
-                                <rect key="frame" x="34.999999999999993" y="12" width="73.333333333333314" height="68"/>
+                                <rect key="frame" x="38.333333333333336" y="12" width="73.333333333333314" height="68"/>
                                 <color key="tintColor" systemColor="systemRedColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Delete"/>
@@ -582,7 +583,7 @@
                             <constraint firstItem="Adt-M7-CDp" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SiX-nE-eFO" secondAttribute="trailing" id="PpW-aM-SUO"/>
                             <constraint firstItem="mEW-Kg-ThK" firstAttribute="bottom" secondItem="lhj-f5-WAg" secondAttribute="bottom" constant="-30" id="ThQ-ky-2rF"/>
                             <constraint firstItem="jQV-Ly-2bF" firstAttribute="top" secondItem="mEW-Kg-ThK" secondAttribute="top" id="TnA-wW-Xbv"/>
-                            <constraint firstItem="lhj-f5-WAg" firstAttribute="leading" secondItem="jQV-Ly-2bF" secondAttribute="trailing" constant="63.333333333333343" id="Uy4-CU-Dzz"/>
+                            <constraint firstItem="lhj-f5-WAg" firstAttribute="leading" secondItem="jQV-Ly-2bF" secondAttribute="trailing" constant="60" id="Uy4-CU-Dzz"/>
                             <constraint firstItem="SiX-nE-eFO" firstAttribute="centerX" secondItem="GPs-eL-Hgl" secondAttribute="centerX" id="W5y-JQ-4wA"/>
                             <constraint firstItem="Adt-M7-CDp" firstAttribute="trailing" secondItem="mEW-Kg-ThK" secondAttribute="trailing" constant="35" id="ZXL-UE-X9S"/>
                             <constraint firstItem="KIZ-DY-rG5" firstAttribute="top" secondItem="SiX-nE-eFO" secondAttribute="bottom" constant="8" id="bGf-PI-O87"/>
@@ -590,7 +591,7 @@
                             <constraint firstItem="Adt-M7-CDp" firstAttribute="trailing" secondItem="KIZ-DY-rG5" secondAttribute="trailing" id="egH-4a-Y2J"/>
                             <constraint firstItem="Cjd-bb-9hg" firstAttribute="top" secondItem="9cE-0y-J98" secondAttribute="bottom" constant="50" id="flQ-pP-P63"/>
                             <constraint firstItem="SiX-nE-eFO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Adt-M7-CDp" secondAttribute="leading" id="hV9-Wl-8hB"/>
-                            <constraint firstItem="mEW-Kg-ThK" firstAttribute="leading" secondItem="lhj-f5-WAg" secondAttribute="trailing" constant="83.000000000000028" id="jP7-zB-lTE"/>
+                            <constraint firstItem="mEW-Kg-ThK" firstAttribute="leading" secondItem="lhj-f5-WAg" secondAttribute="trailing" constant="60" id="jP7-zB-lTE"/>
                             <constraint firstItem="lhj-f5-WAg" firstAttribute="top" secondItem="Adt-M7-CDp" secondAttribute="top" constant="60" id="kjT-6j-rFw"/>
                             <constraint firstItem="lhj-f5-WAg" firstAttribute="centerX" secondItem="GPs-eL-Hgl" secondAttribute="centerX" id="krm-Ey-wkF"/>
                             <constraint firstItem="9cE-0y-J98" firstAttribute="leading" secondItem="Adt-M7-CDp" secondAttribute="leading" constant="16" id="l3h-Nt-QOU"/>
@@ -610,7 +611,6 @@
                         <outlet property="payRateLabel" destination="KIZ-DY-rG5" id="jWM-pz-u7v"/>
                         <outlet property="phoneTextField" destination="ct2-Kp-5Wx" id="brR-1n-M54"/>
                         <outlet property="tagImageView" destination="lhj-f5-WAg" id="stG-If-jwk"/>
-                        <segue destination="yHG-3C-L6b" kind="show" identifier="EditClientNavigation" id="ctQ-W1-j2d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ijw-ia-xcv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -918,7 +918,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Ydi-Ml-fqH"/>
+        <segue reference="T1x-7W-HWO"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="chevron.left" catalog="system" width="97" height="128"/>

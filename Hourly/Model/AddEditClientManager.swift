@@ -20,7 +20,7 @@ struct AddEditClientManager {
     var delegate: AddEditClientManagerDelegate?
     
     
-    private func updateAmount() -> String? {
+    func updateAmount() -> String? {
         let formatter = NumberFormatter()
         formatter.numberStyle = NumberFormatter.Style.currency
         let amount = Double(payRateAmount / 100) + Double(payRateAmount % 100) / 100

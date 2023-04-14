@@ -27,6 +27,9 @@ class SettingsViewController: UIViewController {
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+
         tableView.register(UINib(nibName: K.Identifiers.settingsNibName, bundle: nil), forCellReuseIdentifier: K.Identifiers.settingsCell)
 
     }

@@ -17,19 +17,21 @@ class ClientsViewController: UIViewController {
     private var clientList: Array<ClientItem>?
     
     private let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    var clientToEdit: ClientItem?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Setup view delegates
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        clientToEdit = nil
         loadClientsFromDatabase()
     }
     
@@ -47,12 +49,17 @@ class ClientsViewController: UIViewController {
         performSegue(withIdentifier: K.Identifiers.addClientNav, sender: self)
     }
     
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.Identifiers.detailClientNav {
             let destinationVC = segue.destination as! ClientDetailsViewController
             if let indexPath = tableView.indexPathForSelectedRow, let client = clientList?[indexPath.row] {
                 destinationVC.client = client
+                destinationVC.delegate = self
             }
+        } else if segue.identifier == K.Identifiers.editClientNav {
+            let destinationVC = segue.destination as! AddEditClientViewController
+            destinationVC.clientEdit = clientToEdit
         }
     }
 }
@@ -96,4 +103,13 @@ extension ClientsViewController: UITableViewDelegate {
 
 extension ClientsViewController: UISearchBarDelegate {
     
+}
+
+//MARK: - EditClientDelegate
+
+extension ClientsViewController: EditClientDelegate {
+    func editClient(_ clientDetailsViewController: ClientDetailsViewController, client: ClientItem) {
+        clientToEdit = client
+        performSegue(withIdentifier: K.Identifiers.editClientNav, sender: self)
+    }
 }

@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol EditClientDelegate {
+    func editClient(_ clientDetailsViewController: ClientDetailsViewController, client: ClientItem)
+}
+
 class ClientDetailsViewController: UIViewController {
     
     @IBOutlet weak var tagImageView: UIImageView!
@@ -17,8 +21,10 @@ class ClientDetailsViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     
-    var client: ClientItem? = nil
+    var client: ClientItem?
     
+    var delegate: EditClientDelegate?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,10 +37,15 @@ class ClientDetailsViewController: UIViewController {
             addressTextField.text = details.address
         }
     }
+
     
     @IBAction func editButtonPressed(_ sender: UIButton) {
-        
-        
+        self.dismiss(animated: true) {
+            guard let editClient = self.client else {
+                fatalError("Unable to get client to edit")
+            }
+            self.delegate?.editClient(self, client: editClient)
+        }
     }
     
     @IBAction func deleteButtonPressed(_ sender: UIButton) {
@@ -51,16 +62,5 @@ class ClientDetailsViewController: UIViewController {
     
     @IBAction func locationButtonPressed(_ sender: UIButton) {
     }
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

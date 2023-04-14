@@ -9,3 +9,6 @@
 "S_labelTitle" = "Welcome to my APP!";
 "S_exportTitle" = "Export";
 "S_clientsTitle" = "Manage Clients";
+"S_editClientTitle" = "Edit Client";
+"S_addClientTitle" = "Add Client";
+

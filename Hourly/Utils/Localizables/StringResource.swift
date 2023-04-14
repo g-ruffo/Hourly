@@ -11,7 +11,9 @@ enum S: String {
     case labelTitle
     case exportTitle
     case clientsTitle
-    
+    case editClientTitle
+    case addClientTitle
+
     var localized: String {
         NSLocalizedString(String(describing: Self.self) + "_\(rawValue)", comment: "")
     }

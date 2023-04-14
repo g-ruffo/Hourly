@@ -20,7 +20,7 @@ class AddEditClientViewController: UIViewController {
     
     private let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    private var selectedColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1).hexString()
+    private var selectedColour = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1).hexString()
     
     private var manager = AddEditClientManager()
     
@@ -29,17 +29,38 @@ class AddEditClientViewController: UIViewController {
         "#0096FF", "#941751", "#941100", "#FF9300", "#00F900", "#0433FF", "#FF2F92", "#FFFB00", "#942193", "#73FCD6", "#009193", "#FF2600", "#FF85FF", "#FFFC79"
     ]
     
+    var clientEdit: ClientItem?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         manager.delegate = self
         payRateTextField.delegate = self
+        checkForEdit()
         setupPopUpButton()
     }
     
+    func checkForEdit() {
+        if let client = clientEdit {
+            self.title = S.editClientTitle.localized
+            companyNameTextField.text = client.companyName
+            contactNameTextField.text = client.contactName
+            phoneNumberTextField.text = client.phoneNumber
+            emailTextField.text = client.email
+            addressTextField.text = client.address
+            payRateTextField.text = "$\(client.payRate)"
+            
+            if let colour = client.tagColor {
+                selectedColour = colour
+            }
+            
+        } else {
+            self.title = S.addClientTitle.localized
+        }
+    }
+    
     func setupPopUpButton() {
-        let initialImage = UIImage(systemName: "circle.fill")?.withTintColor(UIColor(selectedColor), renderingMode: .alwaysOriginal)
+        let initialImage = UIImage(systemName: "circle.fill")?.withTintColor(UIColor(selectedColour), renderingMode: .alwaysOriginal)
         popUpButton.setImage(initialImage, for: .normal)
         popUpButton.setTitle("Tag Colour", for: .normal)
         popUpButton.imageView?.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).cgColor
@@ -49,7 +70,7 @@ class AddEditClientViewController: UIViewController {
         // Called when selection is made
         let optionClosure = {(action: UIAction) in
             self.popUpButton.setImage(action.image, for: .normal)
-            self.selectedColor = action.discoverabilityTitle ?? "#0096FF"
+            self.selectedColour = action.discoverabilityTitle ?? "#0096FF"
                 }
 
         var optionsArray = [UIAction]()
@@ -103,7 +124,7 @@ class AddEditClientViewController: UIViewController {
         newClient.email = emailTextField.text
         newClient.address = addressTextField.text
         newClient.payRate = manager.currencyStringToDouble(for: payRateTextField.text) ?? 0
-        newClient.tagColor = selectedColor
+        newClient.tagColor = selectedColour
     
     }
     
@@ -128,7 +149,7 @@ class AddEditClientViewController: UIViewController {
         } else {
             createClient()
             if saveClient() {
-                self.dismiss(animated: true)
+                navigationController?.popViewController(animated: true)
             }
         }
     }
