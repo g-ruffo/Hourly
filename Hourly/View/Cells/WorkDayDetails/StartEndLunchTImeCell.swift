@@ -9,6 +9,9 @@ import UIKit
 
 class StartEndLunchTImeCell: UITableViewCell {
 
+    @IBOutlet weak var startTimeLabel: UILabel!
+    @IBOutlet weak var endTimeLabel: UILabel!
+    @IBOutlet weak var lunchTimeLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

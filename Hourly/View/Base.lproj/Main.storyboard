@@ -1074,6 +1074,9 @@
                                                 <constraint firstItem="n5P-wZ-huC" firstAttribute="top" secondItem="UsT-CO-6Qa" secondAttribute="top" constant="8" id="vfl-Di-eed"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="descriptionLabel" destination="UsT-CO-6Qa" id="BLS-HH-lcH"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="WorkStartEndTimeCell" rowHeight="60" id="Vxn-HO-KMr" customClass="StartEndLunchTImeCell" customModule="Hourly" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="173" width="393" height="60"/>
@@ -1126,6 +1129,11 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="endTimeLabel" destination="40f-HY-Thx" id="lKO-Lt-W1e"/>
+                                            <outlet property="lunchTimeLabel" destination="Xo0-yS-Ncr" id="UDo-0o-iz1"/>
+                                            <outlet property="startTimeLabel" destination="2y5-8d-TAT" id="a6p-vP-oRB"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="WorkHoursPayRateCell" rowHeight="56" id="hY0-Sb-lxA" customClass="PayRateHoursCell" customModule="Hourly" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="233" width="393" height="56"/>
@@ -1164,6 +1172,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="hoursWorkedLabel" destination="iTn-Z2-TXh" id="eq4-cV-qxI"/>
+                                            <outlet property="payRateLabel" destination="DxN-69-ecD" id="0O5-Pc-mlO"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="WorkLocationCell" rowHeight="54" id="FP4-Iv-uqK" customClass="LocationCell" customModule="Hourly" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="289" width="393" height="54"/>
@@ -1194,6 +1206,9 @@
                                                 <constraint firstAttribute="trailing" secondItem="UCU-Lt-ucx" secondAttribute="trailing" id="tbP-HV-uVb"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="locationLabel" destination="HIo-8D-dhK" id="uMH-sg-PqG"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="WorkMileageCell" id="2Ci-vn-CBg" customClass="MileageCell" customModule="Hourly" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="343" width="393" height="43.666667938232422"/>
@@ -1218,6 +1233,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="mileageCell" destination="WMm-Bw-0fi" id="7tG-tb-vPr"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -1240,6 +1258,14 @@
                             <constraint firstItem="aXB-ZE-DjD" firstAttribute="top" secondItem="tCc-NS-sxr" secondAttribute="top" constant="250" id="ukX-gB-Fch"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="clientLabel" destination="LB6-Dq-M1T" id="oku-Nz-I80"/>
+                        <outlet property="draftButton" destination="nxM-Fc-SNJ" id="gsT-Am-q8R"/>
+                        <outlet property="earningsLabel" destination="LRu-7i-35F" id="ZHL-XO-78P"/>
+                        <outlet property="photosCollectionView" destination="bLA-Bn-DYz" id="jn6-HG-Uwa"/>
+                        <outlet property="photosView" destination="aXB-ZE-DjD" id="Sve-ku-1rv"/>
+                        <outlet property="tableView" destination="Qbk-rY-ZX2" id="ltz-Ds-SpN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fch-eg-Egx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

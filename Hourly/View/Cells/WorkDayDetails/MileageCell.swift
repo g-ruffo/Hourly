@@ -9,6 +9,8 @@ import UIKit
 
 class MileageCell: UITableViewCell {
 
+    @IBOutlet weak var mileageCell: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

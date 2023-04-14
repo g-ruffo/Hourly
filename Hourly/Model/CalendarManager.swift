@@ -9,7 +9,7 @@ import Foundation
 
 struct CalendarManager {
     
-    let calendar = Calendar.current
+    private let calendar = Calendar.current
     
     func plusMonth(date: Date) -> Date {
         return calendar.date(byAdding: .month, value: 1, to: date)!

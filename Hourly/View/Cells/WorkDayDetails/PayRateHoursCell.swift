@@ -8,7 +8,9 @@
 import UIKit
 
 class PayRateHoursCell: UITableViewCell {
-
+    @IBOutlet weak var hoursWorkedLabel: UILabel!
+    
+    @IBOutlet weak var payRateLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
