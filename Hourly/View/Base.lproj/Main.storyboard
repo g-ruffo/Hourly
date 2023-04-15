@@ -913,8 +913,8 @@
                                     <constraint firstAttribute="trailing" secondItem="a5k-NP-IzD" secondAttribute="trailing" constant="12" id="qBa-mt-60v"/>
                                 </constraints>
                             </stackView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4gy-YY-HFF">
-                                <rect key="frame" x="12" y="510" width="369" height="80"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4gy-YY-HFF">
+                                <rect key="frame" x="12" y="511" width="369" height="80"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="xFn-Wp-eUt"/>
@@ -969,6 +969,18 @@
                     <navigationItem key="navigationItem" title="Add Workday" id="7G0-Q4-JuT">
                         <barButtonItem key="rightBarButtonItem" title="Save Draft" id="uJy-NP-j5s"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="clientTexfield" destination="m8I-51-OBp" id="xYd-56-eLZ"/>
+                        <outlet property="collectionView" destination="4gy-YY-HFF" id="JgR-GS-uhy"/>
+                        <outlet property="dateTexfield" destination="78q-wV-46D" id="UqV-1Z-j2e"/>
+                        <outlet property="descriptionTexfield" destination="8on-JL-IvW" id="zoL-Vn-wIR"/>
+                        <outlet property="endTimeTexfield" destination="wsV-Ii-w0b" id="Wtj-EM-9x0"/>
+                        <outlet property="locationTexfield" destination="Xwc-f2-J8Q" id="cfd-aE-2oH"/>
+                        <outlet property="lunchTexfield" destination="lNs-y6-UJX" id="6WX-hn-rl1"/>
+                        <outlet property="mileageTexfield" destination="rNY-dt-Qz6" id="tJW-3x-6vL"/>
+                        <outlet property="payRateTexfield" destination="qOO-bX-oD6" id="v3H-EY-QOF"/>
+                        <outlet property="startTimeTexfield" destination="AW9-Tc-X45" id="i0Y-55-gTg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aJ6-xO-myP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
