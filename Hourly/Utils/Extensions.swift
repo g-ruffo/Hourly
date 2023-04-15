@@ -15,18 +15,31 @@ extension UITextField {
         }
         return true
     }
+    
+    func currencyStringToDouble() -> Double? {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        if let number = formatter.number(from: self.text!) {
+            let amount = number.doubleValue
+            return amount
+        }
+        else {
+            return nil
+        }
+    }
 }
 
 extension Date {
     func formatDateToString() -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "MMMM/dd/yyyy"
+        formatter.dateFormat = "MMMM dd, yyyy"
         return formatter.string(from: self)
     }
     func formatTimeToString() -> String {
         let formatter = DateFormatter()
-        formatter.timeStyle = .medium
+        formatter.timeStyle = .short
         return formatter.string(from: self)
     }
 }
+
 

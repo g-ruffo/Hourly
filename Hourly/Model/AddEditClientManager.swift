@@ -45,16 +45,4 @@ struct AddEditClientManager {
         
         return false
     }
-    
-    func currencyStringToDouble(for string: String?) -> Double? {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        if let number = formatter.number(from: string!) {
-            let amount = number.doubleValue
-            return amount
-        }
-        else {
-            return nil
-        }
-    }
 }

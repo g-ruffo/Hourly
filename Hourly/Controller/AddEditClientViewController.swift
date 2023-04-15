@@ -144,7 +144,7 @@ class AddEditClientViewController: UIViewController {
         newClient.phoneNumber = phoneNumberTextField.text
         newClient.email = emailTextField.text
         newClient.address = addressTextField.text
-        newClient.payRate = manager.currencyStringToDouble(for: payRateTextField.text) ?? 0
+        newClient.payRate = payRateTextField.currencyStringToDouble() ?? 0
         newClient.tagColor = selectedColour
     }
     
@@ -157,7 +157,7 @@ class AddEditClientViewController: UIViewController {
         client.phoneNumber = phoneNumberTextField.text
         client.email = emailTextField.text
         client.address = addressTextField.text
-        client.payRate = manager.currencyStringToDouble(for: payRateTextField.text) ?? 0
+        client.payRate = payRateTextField.currencyStringToDouble() ?? 0
         client.tagColor = selectedColour
     }
     
