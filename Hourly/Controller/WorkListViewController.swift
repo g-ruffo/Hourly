@@ -18,20 +18,7 @@ class WorkListViewController: UIViewController {
         
     private let workDays: Array<WorkDayItem> = []
     
-    private let testDays: Array<TestDay> = [
-    TestDay(),
-    TestDay(),
-    TestDay(),
-    TestDay(),
-    TestDay(),
-    TestDay(),
-    TestDay(),
-    TestDay(),
-    TestDay(),
-    TestDay(),
-    TestDay(),
-    TestDay()]
-
+    private let manager = WorkdayListManager()
     
     let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
@@ -70,18 +57,18 @@ extension WorkListViewController: UITableViewDelegate {
 extension WorkListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return testDays.count
+        return workDays.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.Identifiers.workdayCell, for: indexPath) as! WorkdayCell
         
-        let workDay = testDays[indexPath.row]
-        cell.clientLabel.text = workDay.client
-        cell.dateLabel?.text = workDay.date
-        cell.earningsLabel?.text = workDay.earnings
-        cell.hoursLabel?.text = workDay.hoursWorked
+        let workDay = workDays[indexPath.row]
+        cell.clientLabel.text = workDay.clientName
+        cell.dateLabel?.text = manager.dateToString(date: workDay.date)
+        cell.earningsLabel?.text = manager.convertDoubleToEarnings(earnings: workDay.earnings)
+        cell.hoursLabel?.text = manager.calculateHours(startTime: workDay.startTime, endTime: workDay.endTIme, lunchTime: Int(workDay.lunchBreak))
         cell.backgroundColor = .clear
 
 

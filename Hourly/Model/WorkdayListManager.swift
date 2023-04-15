@@ -20,4 +20,25 @@ struct WorkdayListManager {
             return ""
         }
     }
+    
+    func convertDoubleToEarnings(earnings: Double?) -> String {
+        if let amount = earnings {
+            let formatter = NumberFormatter()
+            formatter.numberStyle = NumberFormatter.Style.currency
+           return formatter.string(from: NSNumber(value: amount)) ?? ""
+        } else {
+            return "$0.00"
+        }
+    }
+    
+    func calculateHours(startTime: Date?, endTime: Date?, lunchTime: Int?) -> String {
+        if let start = startTime, let end = endTime {
+            let timeWorked = Int(end.timeIntervalSince1970 - start.timeIntervalSince1970)
+            let hours = (Double(timeWorked) - Double(lunchTime ?? 0)) / 3600
+            return String(format: "%.2f hours", hours)
+        } else {
+            return "Missing time"
+        }
+    }
+    
 }
