@@ -17,3 +17,16 @@ extension UITextField {
     }
 }
 
+extension Date {
+    func formatDateToString() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM/dd/yyyy"
+        return formatter.string(from: self)
+    }
+    func formatTimeToString() -> String {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .medium
+        return formatter.string(from: self)
+    }
+}
+
