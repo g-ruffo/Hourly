@@ -35,8 +35,7 @@ class AddEditClientViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(clientEdit?.id)
-
+        
         manager.delegate = self
         payRateTextField.delegate = self
         checkForEdit()
