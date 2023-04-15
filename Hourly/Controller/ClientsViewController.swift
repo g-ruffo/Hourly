@@ -14,7 +14,7 @@ class ClientsViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
-    private var clientList: Array<ClientItem>?
+    private var clientList: Array<ClientItem> = []
     
     private let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -53,8 +53,8 @@ class ClientsViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.Identifiers.detailClientNav {
             let destinationVC = segue.destination as! ClientDetailsViewController
-            if let indexPath = tableView.indexPathForSelectedRow, let client = clientList?[indexPath.row] {
-                destinationVC.client = client
+            if let indexPath = tableView.indexPathForSelectedRow {
+                destinationVC.client = clientList[indexPath.row]
                 destinationVC.delegate = self
             }
         } else if segue.identifier == K.Identifiers.editClientNav {
@@ -68,15 +68,12 @@ class ClientsViewController: UIViewController {
 
 extension ClientsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return clientList?.count ?? 0
+        return clientList.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let client = clientList?[indexPath.row] else {
-            fatalError("Failed getting client for table view datasource")
-        }
-
+        let client = clientList[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: K.Identifiers.clientCell, for: indexPath) as! ClientCell
 
         if let colour = client.tagColor {
