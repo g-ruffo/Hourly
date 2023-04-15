@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol EditWorkdayDelegate {
+    func editClient(_ clientDetailsViewController: ClientDetailsViewController, client: ClientItem)
+}
+
 class WorkDetailViewController: UIViewController {
     
     @IBOutlet weak var draftButton: UIButton!
@@ -27,6 +31,7 @@ class WorkDetailViewController: UIViewController {
     
     var workday: WorkdayItem?
     
+    var delegate: EditWorkdayDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
