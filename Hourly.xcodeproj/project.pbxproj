@@ -28,7 +28,7 @@
 		79F1AFCA29E4BD32004CED4E /* HourlyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFC929E4BD32004CED4E /* HourlyTabBarController.swift */; };
 		79F1AFCC29E4BFBB004CED4E /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFCB29E4BFBB004CED4E /* CalendarViewController.swift */; };
 		79F1AFCE29E4BFD4004CED4E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFCD29E4BFD4004CED4E /* SettingsViewController.swift */; };
-		79F1AFD029E4C047004CED4E /* WorkdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFCF29E4C047004CED4E /* WorkdayViewController.swift */; };
+		79F1AFD029E4C047004CED4E /* AddEditWorkdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFCF29E4C047004CED4E /* AddEditWorkdayViewController.swift */; };
 		79F1AFD229E4C07A004CED4E /* ClientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFD129E4C07A004CED4E /* ClientsViewController.swift */; };
 		79F1AFD429E4C8CD004CED4E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFD329E4C8CD004CED4E /* Constants.swift */; };
 		79F1AFDC29E52E78004CED4E /* WorkdayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFDA29E52E78004CED4E /* WorkdayCell.swift */; };
@@ -84,7 +84,7 @@
 		79F1AFC929E4BD32004CED4E /* HourlyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyTabBarController.swift; sourceTree = "<group>"; };
 		79F1AFCB29E4BFBB004CED4E /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		79F1AFCD29E4BFD4004CED4E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		79F1AFCF29E4C047004CED4E /* WorkdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkdayViewController.swift; sourceTree = "<group>"; };
+		79F1AFCF29E4C047004CED4E /* AddEditWorkdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditWorkdayViewController.swift; sourceTree = "<group>"; };
 		79F1AFD129E4C07A004CED4E /* ClientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsViewController.swift; sourceTree = "<group>"; };
 		79F1AFD329E4C8CD004CED4E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		79F1AFDA29E52E78004CED4E /* WorkdayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkdayCell.swift; sourceTree = "<group>"; };
@@ -245,7 +245,7 @@
 				79F1AFC929E4BD32004CED4E /* HourlyTabBarController.swift */,
 				79F1AFCB29E4BFBB004CED4E /* CalendarViewController.swift */,
 				79F1AFCD29E4BFD4004CED4E /* SettingsViewController.swift */,
-				79F1AFCF29E4C047004CED4E /* WorkdayViewController.swift */,
+				79F1AFCF29E4C047004CED4E /* AddEditWorkdayViewController.swift */,
 				79F1AFD129E4C07A004CED4E /* ClientsViewController.swift */,
 				79D5F6AB29E606F000CA2542 /* AddEditClientViewController.swift */,
 				795BB47029E66E3E000D7FB1 /* WorkListViewController.swift */,
@@ -421,7 +421,7 @@
 				7964AFDD29EA194C00065863 /* WordayImageCell.swift in Sources */,
 				79F1AFDF29E53748004CED4E /* TestDay.swift in Sources */,
 				795BB47129E66E3E000D7FB1 /* WorkListViewController.swift in Sources */,
-				79F1AFD029E4C047004CED4E /* WorkdayViewController.swift in Sources */,
+				79F1AFD029E4C047004CED4E /* AddEditWorkdayViewController.swift in Sources */,
 				79FA88A629E4B2BD003C6DFB /* StringResource.swift in Sources */,
 				79FA887829E4AD66003C6DFB /* DataModel.xcdatamodeld in Sources */,
 				79F1AFD229E4C07A004CED4E /* ClientsViewController.swift in Sources */,
