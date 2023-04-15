@@ -17,7 +17,7 @@ class CalendarViewController: UIViewController {
     
     private let calendarManager = CalendarManager()
             
-    private let workDays: Array<WorkDayItem> = []
+    private let workDays: Array<WorkdayItem> = []
     
     private let testDays: Array<TestDay> = [
     TestDay(),
