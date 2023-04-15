@@ -775,7 +775,7 @@
         <!--Add Workday-->
         <scene sceneID="cI7-HU-Gxj">
             <objects>
-                <viewController id="q60-8t-Gij" customClass="WorkdayViewController" customModule="Hourly" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="q60-8t-Gij" customClass="AddEditWorkdayViewController" customModule="Hourly" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" restorationIdentifier="WorkdayNavigation" id="myi-Kt-Ur9">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -945,6 +945,7 @@
                                     <color key="baseForegroundColor" name="DarkGrey"/>
                                 </buttonConfiguration>
                                 <connections>
+                                    <action selector="saveButtonPressed:" destination="q60-8t-Gij" eventType="touchUpInside" id="6O9-FW-esn"/>
                                     <action selector="saveButtonPressed:" destination="yHG-3C-L6b" eventType="touchUpInside" id="nk7-Ag-a0g"/>
                                 </connections>
                             </button>
@@ -967,7 +968,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Workday" id="7G0-Q4-JuT">
-                        <barButtonItem key="rightBarButtonItem" title="Save Draft" id="uJy-NP-j5s"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save Draft" id="uJy-NP-j5s">
+                            <connections>
+                                <action selector="saveDraftButtonPressed:" destination="q60-8t-Gij" id="vHd-Ib-n78"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="clientTexfield" destination="m8I-51-OBp" id="xYd-56-eLZ"/>

@@ -7,6 +7,7 @@
 
 
 import UIKit
+import CoreData
 
 class WorkListViewController: UIViewController {
 
@@ -16,11 +17,12 @@ class WorkListViewController: UIViewController {
     
     private var isDisplayingCalendar = true
         
-    private let workDays: Array<WorkdayItem> = []
+    private var workDayList: Array<WorkdayItem> = []
+    private var workdaytToEdit: WorkdayItem?
     
     private let manager = WorkdayListManager()
     
-    let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,11 +34,27 @@ class WorkListViewController: UIViewController {
 
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        workdaytToEdit = nil
+        loadWorkdayFromDatabase()
+    }
+    
+    func loadWorkdayFromDatabase() {
+        let request: NSFetchRequest<WorkdayItem> = WorkdayItem.fetchRequest()
+        do{
+            workDayList = try databaseContext.fetch(request)
+            tableView.reloadData()
+        } catch {
+            print("Error fetching clients from database = \(error)")
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.Segue.workDetailNav {
             let destinationVC = segue.destination as! WorkDetailViewController
             if let indexPath = tableView.indexPathForSelectedRow {
-                destinationVC.workday = workDays[indexPath.row]
+                destinationVC.workday = workDayList[indexPath.row]
             }
         }
     }
@@ -57,14 +75,14 @@ extension WorkListViewController: UITableViewDelegate {
 extension WorkListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return workDays.count
+        return workDayList.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.Identifiers.workdayCell, for: indexPath) as! WorkdayCell
         
-        let workDay = workDays[indexPath.row]
+        let workDay = workDayList[indexPath.row]
         cell.clientLabel.text = workDay.clientName
         cell.dateLabel?.text = manager.dateToString(date: workDay.date)
         cell.earningsLabel?.text = manager.convertDoubleToEarnings(earnings: workDay.earnings)
