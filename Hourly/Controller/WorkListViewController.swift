@@ -42,7 +42,16 @@ class WorkListViewController: UIViewController {
         tableView.delegate = self
         searchBar.delegate = self
         tableView.dataSource = self
-        
+
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.Segue.workDetailNav {
+            let destinationVC = segue.destination as! WorkDetailViewController
+            if let indexPath = tableView.indexPathForSelectedRow {
+                destinationVC.workday = workDays[indexPath.row]
+            }
+        }
     }
 }
 
@@ -50,7 +59,8 @@ class WorkListViewController: UIViewController {
 
 extension WorkListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        performSegue(withIdentifier: K.Segue.workDetailNav, sender: self)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
@@ -58,6 +68,7 @@ extension WorkListViewController: UITableViewDelegate {
 //MARK: - UITableViewDataSource
 
 extension WorkListViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return testDays.count
     }
