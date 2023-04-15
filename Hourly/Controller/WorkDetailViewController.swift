@@ -9,7 +9,6 @@ import UIKit
 
 class WorkDetailViewController: UIViewController {
     
-
     @IBOutlet weak var draftButton: UIButton!
     @IBOutlet weak var photosCollectionView: UICollectionView!
     
@@ -26,7 +25,7 @@ class WorkDetailViewController: UIViewController {
     @IBOutlet weak var mileageLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     
-    var workday: WorkDayItem?
+    var workday: WorkdayItem?
     
     
     override func viewDidLoad() {

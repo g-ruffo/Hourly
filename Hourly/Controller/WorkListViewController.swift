@@ -16,7 +16,7 @@ class WorkListViewController: UIViewController {
     
     private var isDisplayingCalendar = true
         
-    private let workDays: Array<WorkDayItem> = []
+    private let workDays: Array<WorkdayItem> = []
     
     private let manager = WorkdayListManager()
     

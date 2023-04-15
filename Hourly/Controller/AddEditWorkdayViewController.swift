@@ -20,7 +20,7 @@ class AddEditWorkdayViewController: UIViewController {
     @IBOutlet weak var descriptionTexfield: UITextField!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var workday: WorkDayItem?
+    var workday: WorkdayItem?
 
     private let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
