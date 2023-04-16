@@ -21,6 +21,8 @@ class AddEditWorkdayViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var workday: WorkdayItem?
+    
+    private var manager = AddEditClientManager()
 
     private let datePicker = UIDatePicker()
     private let startTimePicker = UIDatePicker()
@@ -33,7 +35,8 @@ class AddEditWorkdayViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        manager.delegate = self
+        payRateTexfield.delegate = self
         setupDatePicker()
         setupTimePickers()
     }
@@ -91,12 +94,6 @@ class AddEditWorkdayViewController: UIViewController {
     }
     
     func createWorkday() -> Bool {
-        print("clientTexfield.text = \(clientTexfield.text)")
-        print("selectedDate = \(selectedDate)")
-        print("selectedStartTime = \(selectedStartTime)")
-        print("selectedEndTime = \(selectedEndTime)")
-        print("payRateTexfield.currencyStringToDouble() = \(payRateTexfield.currencyStringToDouble())")
-
         if let client = clientTexfield.text, let date = selectedDate, let start = selectedStartTime, let end = selectedEndTime, let rate = payRateTexfield.currencyStringToDouble() {
             let workday = WorkdayItem(context: databaseContext)
             workday.clientName = client
@@ -160,4 +157,14 @@ class AddEditWorkdayViewController: UIViewController {
         }
     }
     
+}
+
+extension AddEditWorkdayViewController: AddEditClientManagerDelegate {
+    func didUpdateCurrencyText(_ addEditClientManager: AddEditClientManager, newCurrencyValue: String?) {
+        payRateTexfield.text = newCurrencyValue
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        manager.validateCurrencyInput(string: string)
+    }
 }

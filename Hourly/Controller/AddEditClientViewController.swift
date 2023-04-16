@@ -105,8 +105,6 @@ class AddEditClientViewController: UIViewController {
         popUpButton.showsMenuAsPrimaryAction = true
     }
     
-
-    
     func showAlertDialog() {
         // Create a new alert
         let dialogMessage = UIAlertController(title: "Missing Information", message: "Please fill in all required fields", preferredStyle: .alert)
