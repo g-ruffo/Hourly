@@ -40,18 +40,19 @@ class AddEditWorkdayViewController: UIViewController {
     
     func setupDatePicker() {
         datePicker.datePickerMode = .date
-        datePicker.addTarget(self, action: #selector(dateValueChange(datePicker:)), for: UIControl.Event.valueChanged)
+        datePicker.addTarget(self, action: #selector(dateValueChange), for: .valueChanged)
         datePicker.frame.size = CGSize(width: 0, height: 300)
         datePicker.preferredDatePickerStyle = .wheels
         dateTexfield.inputView = datePicker
+        selectedDate = Date()
         dateTexfield.text = Date().formatDateToString()
     }
     
     func setupTimePickers() {
         startTimePicker.datePickerMode = .time
         endTimePicker.datePickerMode = .time
-        startTimePicker.addTarget(self, action: #selector(startTimeValueChange(datePicker:)), for: UIControl.Event.valueChanged)
-        endTimePicker.addTarget(self, action: #selector(endTimeValueChange(datePicker:)), for: UIControl.Event.valueChanged)
+        startTimePicker.addTarget(self, action: #selector(startTimeValueChange), for: .valueChanged)
+        endTimePicker.addTarget(self, action: #selector(endTimeValueChange), for: .valueChanged)
         startTimePicker.frame.size = CGSize(width: 0, height: 300)
         endTimePicker.frame.size = CGSize(width: 0, height: 300)
         startTimePicker.preferredDatePickerStyle = .wheels
@@ -60,17 +61,17 @@ class AddEditWorkdayViewController: UIViewController {
         endTimeTexfield.inputView = endTimePicker
     }
     
-    @objc func dateValueChange(datePicker: UIDatePicker) {
+    @objc func dateValueChange(_ datePicker: UIDatePicker) {
         dateTexfield.text = datePicker.date.formatDateToString()
         selectedDate = datePicker.date
     }
     
-    @objc func startTimeValueChange(datePicker: UIDatePicker) {
+    @objc func startTimeValueChange(_ datePicker: UIDatePicker) {
         startTimeTexfield.text = startTimePicker.date.formatTimeToString()
         selectedStartTime = datePicker.date
     }
     
-    @objc func endTimeValueChange(datePicker: UIDatePicker) {
+    @objc func endTimeValueChange(_ datePicker: UIDatePicker) {
         endTimeTexfield.text = endTimePicker.date.formatTimeToString()
         selectedEndTime = datePicker.date
     }
@@ -90,8 +91,14 @@ class AddEditWorkdayViewController: UIViewController {
     }
     
     func createWorkday() -> Bool {
+        print("clientTexfield.text = \(clientTexfield.text)")
+        print("selectedDate = \(selectedDate)")
+        print("selectedStartTime = \(selectedStartTime)")
+        print("selectedEndTime = \(selectedEndTime)")
+        print("payRateTexfield.currencyStringToDouble() = \(payRateTexfield.currencyStringToDouble())")
+
         if let client = clientTexfield.text, let date = selectedDate, let start = selectedStartTime, let end = selectedEndTime, let rate = payRateTexfield.currencyStringToDouble() {
-            var workday = WorkdayItem(context: databaseContext)
+            let workday = WorkdayItem(context: databaseContext)
             workday.clientName = client
             workday.date = date
             workday.location = locationTexfield.text
@@ -110,7 +117,7 @@ class AddEditWorkdayViewController: UIViewController {
     
     func createDraftWorkday() -> Bool {
         if let client = clientTexfield.text {
-            var workday = WorkdayItem(context: databaseContext)
+            let workday = WorkdayItem(context: databaseContext)
             workday.clientName = client
             workday.date = selectedDate
             workday.location = locationTexfield.text
@@ -126,11 +133,25 @@ class AddEditWorkdayViewController: UIViewController {
             return false
         }
     }
+    
+    func showAlertDialog() {
+        // Create a new alert
+        let dialogMessage = UIAlertController(title: "Missing Information", message: "Please fill in all required fields", preferredStyle: .alert)
+        
+        let dismissButton = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+            dialogMessage.dismiss(animated: true)
+        })
+        dialogMessage.addAction(dismissButton)
+        // Present alert to user
+        self.present(dialogMessage, animated: true, completion: nil)
+    }
 
 
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         if createWorkday() {
             dismiss(animated: true)
+        } else {
+            showAlertDialog()
         }
     }
     @IBAction func saveDraftButtonPressed(_ sender: UIBarButtonItem) {
