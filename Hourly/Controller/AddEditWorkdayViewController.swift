@@ -44,7 +44,7 @@ class AddEditWorkdayViewController: UIViewController {
         datePicker.frame.size = CGSize(width: 0, height: 300)
         datePicker.preferredDatePickerStyle = .wheels
         dateTexfield.inputView = datePicker
-        selectedDate = Date()
+        selectedDate = Date().zeroSeconds
         dateTexfield.text = Date().formatDateToString()
     }
     
@@ -63,17 +63,17 @@ class AddEditWorkdayViewController: UIViewController {
     
     @objc func dateValueChange(_ datePicker: UIDatePicker) {
         dateTexfield.text = datePicker.date.formatDateToString()
-        selectedDate = datePicker.date
+        selectedDate = datePicker.date.zeroSeconds
     }
     
     @objc func startTimeValueChange(_ datePicker: UIDatePicker) {
         startTimeTexfield.text = startTimePicker.date.formatTimeToString()
-        selectedStartTime = datePicker.date
+        selectedStartTime = datePicker.date.zeroSeconds
     }
     
     @objc func endTimeValueChange(_ datePicker: UIDatePicker) {
         endTimeTexfield.text = endTimePicker.date.formatTimeToString()
-        selectedEndTime = datePicker.date
+        selectedEndTime = datePicker.date.zeroSeconds
     }
     
     func saveWorkday() -> Bool {
