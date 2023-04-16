@@ -34,7 +34,7 @@ struct K {
     
     struct Segue {
         static let workDetailNav = "WorkDetailNavigation"
-
+        static let editWorkdayNav = "EditWorkdayNavigation"
     }
 
     struct NavigationBar {
