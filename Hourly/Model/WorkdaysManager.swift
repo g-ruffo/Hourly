@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct WorkdayListManager {
+struct WorkdaysManager {
     
     
     func dateToString(date: Date?) -> String {

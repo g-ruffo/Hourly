@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class WorkListViewController: UIViewController {
+class WorkdaysViewController: UIViewController {
 
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -20,7 +20,7 @@ class WorkListViewController: UIViewController {
     private var workDayList: Array<WorkdayItem> = []
     private var workdaytToEdit: WorkdayItem?
     
-    private let manager = WorkdayListManager()
+    private let manager = WorkdaysManager()
     
     private let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
@@ -62,7 +62,7 @@ class WorkListViewController: UIViewController {
 
 //MARK: - UITableViewDelegate
 
-extension WorkListViewController: UITableViewDelegate {
+extension WorkdaysViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: K.Segue.workDetailNav, sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
@@ -72,7 +72,7 @@ extension WorkListViewController: UITableViewDelegate {
 
 //MARK: - UITableViewDataSource
 
-extension WorkListViewController: UITableViewDataSource {
+extension WorkdaysViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return workDayList.count
@@ -95,11 +95,11 @@ extension WorkListViewController: UITableViewDataSource {
 }
 
 //MARK: - UISearchBarDelegate
-extension WorkListViewController: UISearchBarDelegate {
+extension WorkdaysViewController: UISearchBarDelegate {
     
 }
 
-extension WorkListViewController: EditWorkdayDelegate {
+extension WorkdaysViewController: EditWorkdayDelegate {
     func editWorkday(_ workDetailViewController: WorkDetailViewController, workday: WorkdayItem) {
         workdaytToEdit = workday
         performSegue(withIdentifier: K.Segue.editWorkdayNav, sender: self)
