@@ -8,7 +8,7 @@
 import UIKit
 
 protocol EditWorkdayDelegate {
-    func editClient(_ clientDetailsViewController: ClientDetailsViewController, client: ClientItem)
+    func editWorkday(_ workDetailViewController: WorkDetailViewController, workday: WorkdayItem)
 }
 
 class WorkDetailViewController: UIViewController {
@@ -44,6 +44,12 @@ class WorkDetailViewController: UIViewController {
     
 
     @IBAction func editButtonPressed(_ sender: UIButton) {
+            self.dismiss(animated: true) {
+                guard let editWorkday = self.workday else {
+                    fatalError("Unable to get workday to edit")
+                }
+                self.delegate?.editWorkday(self, workday: editWorkday)
+            }
     }
     
 }

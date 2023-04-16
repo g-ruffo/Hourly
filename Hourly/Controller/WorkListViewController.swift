@@ -99,6 +99,13 @@ extension WorkListViewController: UISearchBarDelegate {
     
 }
 
+extension WorkListViewController: EditWorkdayDelegate {
+    func editWorkday(_ workDetailViewController: WorkDetailViewController, workday: WorkdayItem) {
+        workdaytToEdit = workday
+        performSegue(withIdentifier: K.Segue.editWorkdayNav, sender: self)
+    }
+}
+
 
 
 
