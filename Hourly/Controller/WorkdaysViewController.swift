@@ -60,7 +60,7 @@ class WorkdaysViewController: UIViewController {
             }
         } else if segue.identifier == K.Segue.editWorkdayNav {
             let destinationVC = segue.destination as! AddEditWorkdayViewController
-            destinationVC.workday = workdaytToEdit
+            destinationVC.workdayEdit = workdaytToEdit
         }
     }
 }

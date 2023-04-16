@@ -36,6 +36,18 @@ struct K {
         static let workDetailNav = "WorkDetailNavigation"
         static let editWorkdayNav = "EditWorkdayNavigation"
     }
+    
+    struct UserDefaultsKey {
+        static let client = "workdayClientName"
+        static let date = "workdayDate"
+        static let location = "workdayLocation"
+        static let start = "workdayStartTime"
+        static let end = "workdayEndTime"
+        static let lunch = "workdayLunch"
+        static let rate = "workdayPayRate"
+        static let mileage = "workdayMileage"
+        static let description = "workdayDescription"
+    }
 
     struct NavigationBar {
         static let middleButtonSize: CGFloat = 64

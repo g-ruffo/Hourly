@@ -20,16 +20,20 @@ class AddEditWorkdayViewController: UIViewController {
     @IBOutlet weak var descriptionTexfield: UITextField!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var workday: WorkdayItem?
+    @IBOutlet weak var deleteClearButtonItem: UIBarButtonItem!
     
-    private var manager = AddEditClientManager()
-
     private let datePicker = UIDatePicker()
     private let startTimePicker = UIDatePicker()
     private let endTimePicker = UIDatePicker()
     private var selectedDate: Date?
     private var selectedStartTime: Date?
     private var selectedEndTime: Date?
+    
+    var workdayEdit: WorkdayItem?
+    
+    private var manager = AddEditClientManager()
+
+    let defaults = UserDefaults.standard
     
     private let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -39,6 +43,76 @@ class AddEditWorkdayViewController: UIViewController {
         payRateTexfield.delegate = self
         setupDatePicker()
         setupTimePickers()
+        checkForEdit()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("viewWillAppear")
+        checkUserDefaults()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        updateUserDefaults()
+        print("viewWillDisappear")
+    }
+    
+    func updateUserDefaults(clearValues: Bool = false) {
+        if workdayEdit == nil && !clearValues {
+            print("updateUserDefaults nil false")
+
+            defaults.set(clientTexfield.text, forKey: K.UserDefaultsKey.client)
+            defaults.set(selectedDate, forKey: K.UserDefaultsKey.date)
+            defaults.set(locationTexfield.text, forKey: K.UserDefaultsKey.location)
+            defaults.set(selectedStartTime, forKey: K.UserDefaultsKey.start)
+            defaults.set(selectedEndTime, forKey: K.UserDefaultsKey.end)
+            defaults.set(lunchTexfield.text, forKey: K.UserDefaultsKey.lunch)
+            defaults.set(payRateTexfield.text, forKey: K.UserDefaultsKey.rate)
+            defaults.set(mileageTexfield.text, forKey: K.UserDefaultsKey.mileage)
+            defaults.set(descriptionTexfield.text, forKey: K.UserDefaultsKey.description)
+        } else if workdayEdit == nil && clearValues {
+            let dictionary = defaults.dictionaryRepresentation()
+            dictionary.keys.forEach { key in
+                defaults.removeObject(forKey: key)
+            }
+        }
+    }
+    
+    func checkUserDefaults() {
+        if workdayEdit == nil {
+            print("checkUserDefaults nil")
+
+            clientTexfield.text = defaults.string(forKey: K.UserDefaultsKey.client)
+            selectedDate = defaults.object(forKey: K.UserDefaultsKey.date) as? Date
+            locationTexfield.text = defaults.string(forKey: K.UserDefaultsKey.location)
+            selectedStartTime = defaults.object(forKey: K.UserDefaultsKey.start) as? Date
+            selectedEndTime = defaults.object(forKey: K.UserDefaultsKey.end) as? Date
+            lunchTexfield.text = defaults.string(forKey: K.UserDefaultsKey.lunch)
+            payRateTexfield.text = defaults.string(forKey: K.UserDefaultsKey.rate)
+            mileageTexfield.text = defaults.string(forKey: K.UserDefaultsKey.mileage)
+            descriptionTexfield.text = defaults.string(forKey: K.UserDefaultsKey.description)
+        }
+    }
+    
+    func checkForEdit() {
+        if let workday = workdayEdit {
+            title = "Edit Workday"
+            clientTexfield.text = workday.clientName
+            locationTexfield.text = workday.location
+            payRateTexfield.text = "$\(workday.payRate)"
+            lunchTexfield.text = String(workday.lunchBreak)
+            mileageTexfield.text = String(workday.mileage)
+            descriptionTexfield.text = workday.workDescription
+            selectedDate = workday.date
+            dateTexfield.text = datePicker.date.formatDateToString()
+            selectedStartTime = workday.startTime
+            startTimeTexfield.text = startTimePicker.date.formatTimeToString()
+            selectedEndTime = workday.endTIme
+            endTimeTexfield.text = endTimePicker.date.formatTimeToString()
+        } else {
+            title = "Add Worday"
+            selectedDate = Date().zeroSeconds
+            dateTexfield.text = Date().formatDateToString()
+        }
     }
     
     func setupDatePicker() {
@@ -47,8 +121,6 @@ class AddEditWorkdayViewController: UIViewController {
         datePicker.frame.size = CGSize(width: 0, height: 300)
         datePicker.preferredDatePickerStyle = .wheels
         dateTexfield.inputView = datePicker
-        selectedDate = Date().zeroSeconds
-        dateTexfield.text = Date().formatDateToString()
     }
     
     func setupTimePickers() {
@@ -146,15 +218,24 @@ class AddEditWorkdayViewController: UIViewController {
 
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         if createWorkday() {
-            dismiss(animated: true)
+            dismiss(animated: true) {
+                self.updateUserDefaults(clearValues: true)
+            }
         } else {
             showAlertDialog()
         }
     }
     @IBAction func saveDraftButtonPressed(_ sender: UIBarButtonItem) {
         if createDraftWorkday() {
-            dismiss(animated: true)
+            dismiss(animated: true) {
+                self.updateUserDefaults(clearValues: true)
+            }
         }
+    }
+    
+    @IBAction func deleteClearButtonPressed(_ sender: UIBarButtonItem) {
+        updateUserDefaults(clearValues: true)
+        checkUserDefaults()
     }
     
 }
