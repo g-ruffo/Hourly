@@ -775,7 +775,7 @@
         <!--Add Workday-->
         <scene sceneID="cI7-HU-Gxj">
             <objects>
-                <viewController id="q60-8t-Gij" customClass="AddEditWorkdayViewController" customModule="Hourly" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="q60-8t-Gij" customClass="AddEditWorkdayViewController" customModule="Hourly" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" restorationIdentifier="WorkdayNavigation" id="myi-Kt-Ur9">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -913,8 +913,8 @@
                                     <constraint firstAttribute="trailing" secondItem="a5k-NP-IzD" secondAttribute="trailing" constant="12" id="qBa-mt-60v"/>
                                 </constraints>
                             </stackView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4gy-YY-HFF">
-                                <rect key="frame" x="12" y="511" width="369" height="80"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4gy-YY-HFF">
+                                <rect key="frame" x="12" y="510" width="369" height="80"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="xFn-Wp-eUt"/>
