@@ -1106,7 +1106,7 @@
                         <outlet property="searchBar" destination="MOL-hs-R0y" id="8r2-de-mNA"/>
                         <outlet property="tableView" destination="wHQ-zr-AuF" id="EHI-rJ-ZpO"/>
                         <segue destination="cmG-CB-vpK" kind="presentation" identifier="WorkDetailNavigation" id="tA9-Ze-nTZ"/>
-                        <segue destination="q60-8t-Gij" kind="show" id="Q5n-uq-4AC"/>
+                        <segue destination="q60-8t-Gij" kind="show" identifier="EditWorkdayNavigation" id="Q5n-uq-4AC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DiL-Gw-7oR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

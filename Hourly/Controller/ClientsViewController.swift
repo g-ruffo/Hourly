@@ -105,7 +105,6 @@ extension ClientsViewController: UISearchBarDelegate {
 //MARK: - EditClientDelegate
 
 extension ClientsViewController: EditClientDelegate {
-
     func editClient(_ clientDetailsViewController: ClientDetailsViewController, client: ClientItem) {
         clientToEdit = client
         performSegue(withIdentifier: K.Identifiers.editClientNav, sender: self)

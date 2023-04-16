@@ -28,6 +28,7 @@ class WorkdaysViewController: UIViewController {
         super.viewDidLoad()
         
         // Connect required delegates
+        
         tableView.delegate = self
         searchBar.delegate = self
         tableView.dataSource = self
@@ -55,7 +56,11 @@ class WorkdaysViewController: UIViewController {
             let destinationVC = segue.destination as! WorkDetailViewController
             if let indexPath = tableView.indexPathForSelectedRow {
                 destinationVC.workday = workDayList[indexPath.row]
+                destinationVC.delegate = self
             }
+        } else if segue.identifier == K.Segue.editWorkdayNav {
+            let destinationVC = segue.destination as! AddEditWorkdayViewController
+            destinationVC.workday = workdaytToEdit
         }
     }
 }
