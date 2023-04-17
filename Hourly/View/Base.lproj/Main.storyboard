@@ -1045,8 +1045,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Add Workday" id="7G0-Q4-JuT"/>
                     <connections>
+                        <outlet property="clientTextField" destination="m8I-51-OBp" id="xX0-vd-0Ut"/>
                         <outlet property="collectionView" destination="4gy-YY-HFF" id="JgR-GS-uhy"/>
-                        <outlet property="companyNameTextField" destination="m8I-51-OBp" id="xX0-vd-0Ut"/>
                         <outlet property="dateTexfield" destination="78q-wV-46D" id="UqV-1Z-j2e"/>
                         <outlet property="descriptionTexfield" destination="8on-JL-IvW" id="zoL-Vn-wIR"/>
                         <outlet property="endTimeTexfield" destination="wsV-Ii-w0b" id="Wtj-EM-9x0"/>

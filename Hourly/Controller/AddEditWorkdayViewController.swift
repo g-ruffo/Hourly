@@ -9,7 +9,7 @@ import UIKit
 
 class AddEditWorkdayViewController: UIViewController {
 
-    @IBOutlet weak var clientTexfield: UITextField!
+    @IBOutlet weak var clientTextField: ClientSearchTextField!
     @IBOutlet weak var dateTexfield: UITextField!
     @IBOutlet weak var locationTexfield: UITextField!
     @IBOutlet weak var startTimeTexfield: UITextField!
@@ -43,6 +43,23 @@ class AddEditWorkdayViewController: UIViewController {
 
     
     var workdayEdit: WorkdayItem?
+    var selectedClient: ClientItem? {
+        didSet {
+            if let value = selectedClient {
+                payRateTexfield.text = "$\(value.payRate)"
+                locationTexfield.text = value.address
+                clientTextField.backgroundColor = .clear
+                payRateTexfield.backgroundColor = .clear
+                locationTexfield.backgroundColor = .clear
+            } else {
+                payRateTexfield.text = nil
+                locationTexfield.text = nil
+                clientTextField.backgroundColor = .white
+                payRateTexfield.backgroundColor = .white
+                locationTexfield.backgroundColor = .white
+            }
+        }
+    }
     
     private var manager = AddEditClientManager()
     
@@ -62,6 +79,7 @@ class AddEditWorkdayViewController: UIViewController {
         lunchPicker.dataSource = self
         mileagePicker.delegate = self
         mileagePicker.dataSource = self
+        clientTextField.searchDelegate = self
         setupLunchMileagePicker()
         setupDatePicker()
         setupTimePickers()
@@ -107,7 +125,7 @@ class AddEditWorkdayViewController: UIViewController {
     
     func updateUserDefaults(clearValues: Bool = false) {
         if workdayEdit == nil && !clearValues {
-            defaults.set(clientTexfield.text, forKey: K.UserDefaultsKey.client)
+            defaults.set(clientTextField.text, forKey: K.UserDefaultsKey.client)
             defaults.set(selectedDate, forKey: K.UserDefaultsKey.date)
             defaults.set(locationTexfield.text, forKey: K.UserDefaultsKey.location)
             defaults.set(selectedStartTime, forKey: K.UserDefaultsKey.start)
@@ -126,7 +144,7 @@ class AddEditWorkdayViewController: UIViewController {
     
     func checkUserDefaults() {
         if workdayEdit == nil {
-            clientTexfield.text = defaults.string(forKey: K.UserDefaultsKey.client)
+            clientTextField.text = defaults.string(forKey: K.UserDefaultsKey.client)
             selectedDate = defaults.object(forKey: K.UserDefaultsKey.date) as? Date
             locationTexfield.text = defaults.string(forKey: K.UserDefaultsKey.location)
             selectedStartTime = defaults.object(forKey: K.UserDefaultsKey.start) as? Date
@@ -141,7 +159,7 @@ class AddEditWorkdayViewController: UIViewController {
     func checkForEdit() {
         if let workday = workdayEdit {
             title = "Edit Workday"
-            clientTexfield.text = workday.clientName
+            clientTextField.text = workday.clientName
             locationTexfield.text = workday.location
             payRateTexfield.text = "$\(workday.payRate)"
             selectedLunchTime = Int(workday.lunchBreak)
@@ -220,7 +238,7 @@ class AddEditWorkdayViewController: UIViewController {
     }
     
     func createWorkday() -> Bool {
-        if let client = clientTexfield.text, let date = selectedDate, let start = selectedStartTime, let end = selectedEndTime, let rate = payRateTexfield.currencyStringToDouble() {
+        if let client = clientTextField.text, let date = selectedDate, let start = selectedStartTime, let end = selectedEndTime, let rate = payRateTexfield.currencyStringToDouble() {
             let workday = WorkdayItem(context: databaseContext)
             workday.clientName = client
             workday.date = date
@@ -239,7 +257,7 @@ class AddEditWorkdayViewController: UIViewController {
     }
     
     func createDraftWorkday() -> Bool {
-        if let client = clientTexfield.text {
+        if let client = clientTextField.text {
             let workday = WorkdayItem(context: databaseContext)
             workday.clientName = client
             workday.date = selectedDate
@@ -299,6 +317,7 @@ class AddEditWorkdayViewController: UIViewController {
     }
 }
 
+//MARK: - AddEditClientManagerDelegate
 extension AddEditWorkdayViewController: AddEditClientManagerDelegate {
     func didUpdateCurrencyText(_ addEditClientManager: AddEditClientManager, newCurrencyValue: String?) {
         payRateTexfield.text = newCurrencyValue
@@ -309,6 +328,7 @@ extension AddEditWorkdayViewController: AddEditClientManagerDelegate {
     }
 }
 
+//MARK: - UIPickerViewDelegate
 extension AddEditWorkdayViewController: UIPickerViewDelegate {
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -321,6 +341,7 @@ extension AddEditWorkdayViewController: UIPickerViewDelegate {
     }
 }
 
+//MARK: - UIPickerViewDataSource
 extension AddEditWorkdayViewController: UIPickerViewDataSource {
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -349,5 +370,11 @@ extension AddEditWorkdayViewController: UIPickerViewDataSource {
         case 2: return String(row)
         default: return "Error getting UIPicker"
         }
+    }
+}
+
+extension AddEditWorkdayViewController: ClientSearchDelegate {
+    func selectedExistingClient(_ clientSearchTextField: ClientSearchTextField, client: ClientItem?) {
+        self.selectedClient = client
     }
 }
