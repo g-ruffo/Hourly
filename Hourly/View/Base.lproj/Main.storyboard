@@ -38,6 +38,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EzG-dd-tKF">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="jRK-G3-78r" kind="relationship" relationship="rootViewController" id="4N9-Pb-u5L"/>
                     </connections>
@@ -312,6 +315,9 @@
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pdc-dq-S0i">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="3AC-de-x4e" kind="relationship" relationship="rootViewController" id="Byk-Mi-kwl"/>
                     </connections>
@@ -764,6 +770,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uvR-Si-8kP">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="q60-8t-Gij" kind="relationship" relationship="rootViewController" id="6Zw-kC-fZp"/>
                     </connections>
@@ -1008,29 +1017,11 @@
                             <constraint firstItem="Mkl-jb-avt" firstAttribute="top" secondItem="GrK-Fo-fBJ" secondAttribute="top" constant="12" id="rJ5-xt-HBe"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Add Workday" id="7G0-Q4-JuT">
-                        <centerItemGroups>
-                            <barButtonItemGroup customizationDisposition="fixed" id="9I6-sv-hlL">
-                                <barButtonItems>
-                                    <barButtonItem title="Save Draft" image="square.and.arrow.down" catalog="system" id="PLo-d3-fhs">
-                                        <connections>
-                                            <action selector="saveDraftButtonPressed:" destination="q60-8t-Gij" id="tpI-Mm-sfd"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem title="Delete" image="trash" catalog="system" id="8oq-E9-78H">
-                                        <connections>
-                                            <action selector="deleteClearButtonPressed:" destination="q60-8t-Gij" id="9aj-Wi-Iee"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </barButtonItems>
-                            </barButtonItemGroup>
-                        </centerItemGroups>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Add Workday" id="7G0-Q4-JuT"/>
                     <connections>
                         <outlet property="clientTexfield" destination="m8I-51-OBp" id="xYd-56-eLZ"/>
                         <outlet property="collectionView" destination="4gy-YY-HFF" id="JgR-GS-uhy"/>
                         <outlet property="dateTexfield" destination="78q-wV-46D" id="UqV-1Z-j2e"/>
-                        <outlet property="deleteClearButtonItem" destination="8oq-E9-78H" id="NKI-yI-ZT6"/>
                         <outlet property="descriptionTexfield" destination="8on-JL-IvW" id="zoL-Vn-wIR"/>
                         <outlet property="endTimeTexfield" destination="wsV-Ii-w0b" id="Wtj-EM-9x0"/>
                         <outlet property="locationTexfield" destination="Xwc-f2-J8Q" id="cfd-aE-2oH"/>
@@ -1515,7 +1506,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Q5n-uq-4AC"/>
+        <segue reference="6Zw-kC-fZp"/>
         <segue reference="T1x-7W-HWO"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -1526,8 +1517,6 @@
         <image name="location.fill" catalog="system" width="128" height="119"/>
         <image name="mail.fill" catalog="system" width="128" height="93"/>
         <image name="phone.fill" catalog="system" width="128" height="114"/>
-        <image name="square.and.arrow.down" catalog="system" width="121" height="128"/>
-        <image name="trash" catalog="system" width="117" height="128"/>
         <image name="trash.fill" catalog="system" width="119" height="128"/>
         <namedColor name="BackgroundGrey">
             <color red="0.92500001192092896" green="0.94099998474121094" blue="0.94499999284744263" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

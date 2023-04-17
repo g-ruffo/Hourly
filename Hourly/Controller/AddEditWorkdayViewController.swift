@@ -20,8 +20,6 @@ class AddEditWorkdayViewController: UIViewController {
     @IBOutlet weak var descriptionTexfield: UITextField!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    @IBOutlet weak var deleteClearButtonItem: UIBarButtonItem!
-    
     private let datePicker = UIDatePicker()
     private let startTimePicker = UIDatePicker()
     private let endTimePicker = UIDatePicker()
@@ -44,22 +42,47 @@ class AddEditWorkdayViewController: UIViewController {
         setupDatePicker()
         setupTimePickers()
         checkForEdit()
+        setupMenuItems()
     }
+
     
     override func viewWillAppear(_ animated: Bool) {
-        print("viewWillAppear")
         checkUserDefaults()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         updateUserDefaults()
-        print("viewWillDisappear")
+    }
+    
+    func setupMenuItems() {
+        let menuHandler: UIActionHandler = { action in
+            switch action.title {
+            case "Save as Draft":
+                if self.createDraftWorkday() {
+                    self.dismiss(animated: true) {
+                        self.updateUserDefaults(clearValues: true)
+                }
+            }
+            case "Clear":
+                self.updateUserDefaults(clearValues: true)
+                self.checkUserDefaults()
+                
+            case "Delete":
+                print("Delete")
+            default: print("Defaulted")
+            }
+        }
+        
+        let barButtonMenu = UIMenu(title: "", children: [
+            UIAction(title: NSLocalizedString("Save as Draft", comment: ""), image: UIImage(systemName: "square.and.arrow.down"), handler: menuHandler),
+            UIAction(title: NSLocalizedString(workdayEdit == nil ? "Clear" : "Delete", comment: ""), image: UIImage(systemName: "trash"), attributes: .destructive, handler: menuHandler)
+        ])
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: nil, image: UIImage(systemName: "ellipsis"), primaryAction: nil, menu: barButtonMenu)
     }
     
     func updateUserDefaults(clearValues: Bool = false) {
         if workdayEdit == nil && !clearValues {
-            print("updateUserDefaults nil false")
-
             defaults.set(clientTexfield.text, forKey: K.UserDefaultsKey.client)
             defaults.set(selectedDate, forKey: K.UserDefaultsKey.date)
             defaults.set(locationTexfield.text, forKey: K.UserDefaultsKey.location)
@@ -74,13 +97,12 @@ class AddEditWorkdayViewController: UIViewController {
             dictionary.keys.forEach { key in
                 defaults.removeObject(forKey: key)
             }
+            print("cleared")
         }
     }
     
     func checkUserDefaults() {
         if workdayEdit == nil {
-            print("checkUserDefaults nil")
-
             clientTexfield.text = defaults.string(forKey: K.UserDefaultsKey.client)
             selectedDate = defaults.object(forKey: K.UserDefaultsKey.date) as? Date
             locationTexfield.text = defaults.string(forKey: K.UserDefaultsKey.location)
@@ -225,19 +247,6 @@ class AddEditWorkdayViewController: UIViewController {
             showAlertDialog()
         }
     }
-    @IBAction func saveDraftButtonPressed(_ sender: UIBarButtonItem) {
-        if createDraftWorkday() {
-            dismiss(animated: true) {
-                self.updateUserDefaults(clearValues: true)
-            }
-        }
-    }
-    
-    @IBAction func deleteClearButtonPressed(_ sender: UIBarButtonItem) {
-        updateUserDefaults(clearValues: true)
-        checkUserDefaults()
-    }
-    
 }
 
 extension AddEditWorkdayViewController: AddEditClientManagerDelegate {
