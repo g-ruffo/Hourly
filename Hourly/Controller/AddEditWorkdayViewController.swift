@@ -23,13 +23,28 @@ class AddEditWorkdayViewController: UIViewController {
     private let datePicker = UIDatePicker()
     private let startTimePicker = UIDatePicker()
     private let endTimePicker = UIDatePicker()
+    private let lunchPicker = UIPickerView()
+    private let mileagePicker = UIPickerView()
     private var selectedDate: Date?
     private var selectedStartTime: Date?
     private var selectedEndTime: Date?
+    private var selectedLunchTime: Int?
+    private var selectedMileage: Int? {
+        didSet {
+            if let value = selectedMileage {
+                mileageTexfield.text = "\(value) km"
+            }
+        }
+    }
+
     
     var workdayEdit: WorkdayItem?
     
     private var manager = AddEditClientManager()
+    
+    private let lunchArray = [5, 10, 15, 20, 30, 40, 45, 60, 90, 120]
+    private let mileageNumbers = [10,10,10]
+    private var mileageDigits = [0,0,0]
 
     let defaults = UserDefaults.standard
     
@@ -39,6 +54,11 @@ class AddEditWorkdayViewController: UIViewController {
         super.viewDidLoad()
         manager.delegate = self
         payRateTexfield.delegate = self
+        lunchPicker.delegate = self
+        lunchPicker.dataSource = self
+        mileagePicker.delegate = self
+        mileagePicker.dataSource = self
+        setupLunchMileagePicker()
         setupDatePicker()
         setupTimePickers()
         checkForEdit()
@@ -88,9 +108,9 @@ class AddEditWorkdayViewController: UIViewController {
             defaults.set(locationTexfield.text, forKey: K.UserDefaultsKey.location)
             defaults.set(selectedStartTime, forKey: K.UserDefaultsKey.start)
             defaults.set(selectedEndTime, forKey: K.UserDefaultsKey.end)
-            defaults.set(lunchTexfield.text, forKey: K.UserDefaultsKey.lunch)
+            defaults.set(selectedLunchTime, forKey: K.UserDefaultsKey.lunch)
             defaults.set(payRateTexfield.text, forKey: K.UserDefaultsKey.rate)
-            defaults.set(mileageTexfield.text, forKey: K.UserDefaultsKey.mileage)
+            defaults.set(selectedMileage, forKey: K.UserDefaultsKey.mileage)
             defaults.set(descriptionTexfield.text, forKey: K.UserDefaultsKey.description)
         } else if workdayEdit == nil && clearValues {
             let dictionary = defaults.dictionaryRepresentation()
@@ -134,6 +154,13 @@ class AddEditWorkdayViewController: UIViewController {
             selectedDate = Date().zeroSeconds
             dateTexfield.text = Date().formatDateToString()
         }
+    }
+    
+    func setupLunchMileagePicker() {
+        lunchTexfield.inputView = lunchPicker
+        mileageTexfield.inputView = mileagePicker
+        lunchPicker.tag = 1
+        mileagePicker.tag = 2
     }
     
     func setupDatePicker() {
@@ -282,5 +309,50 @@ extension AddEditWorkdayViewController: AddEditClientManagerDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         manager.validateCurrencyInput(string: string)
+    }
+}
+
+extension AddEditWorkdayViewController: UIPickerViewDelegate {
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        switch pickerView.tag {
+        case 1: selectedLunchTime = lunchArray[row]
+            lunchTexfield.text = "\(lunchArray[row]) min"
+        case 2: mileageDigits[component] = row
+            selectedMileage = Int("\(mileageDigits[0])\(mileageDigits[1])\(mileageDigits[2])")
+            mileageTexfield.text = String(selectedMileage!)
+        default: print("Error getting UIPicker")
+        }
+    }
+}
+
+extension AddEditWorkdayViewController: UIPickerViewDataSource {
+
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        switch pickerView.tag {
+        case 1: return 1
+        case 2: return 3
+        default:
+            print("Error getting UIPicker")
+            return 1
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        switch pickerView.tag {
+        case 1: return lunchArray.count
+        case 2: return mileageNumbers[component]
+        default:
+            print("Error getting UIPicker")
+            return 1
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        switch pickerView.tag {
+        case 1: return "\(lunchArray[row]) min"
+        case 2: return String(row)
+        default: return "Error getting UIPicker"
+        }
     }
 }
