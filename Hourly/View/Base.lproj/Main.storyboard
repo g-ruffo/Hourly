@@ -56,8 +56,21 @@
                     <view key="view" contentMode="scaleToFill" id="rIT-X4-Q1T">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter HEere" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XEw-Bc-ejC" customClass="ClientSearchTextField" customModule="Hourly" customModuleProvider="target">
+                                <rect key="frame" x="12" y="409" width="369" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="SJF-ER-bSW"/>
                         <color key="backgroundColor" name="BackgroundGrey"/>
+                        <constraints>
+                            <constraint firstItem="XEw-Bc-ejC" firstAttribute="leading" secondItem="SJF-ER-bSW" secondAttribute="leading" constant="12" id="BuJ-tO-wLb"/>
+                            <constraint firstItem="SJF-ER-bSW" firstAttribute="trailing" secondItem="XEw-Bc-ejC" secondAttribute="trailing" constant="12" id="Fyz-HW-vcZ"/>
+                            <constraint firstItem="XEw-Bc-ejC" firstAttribute="centerX" secondItem="rIT-X4-Q1T" secondAttribute="centerX" id="b3E-sQ-oaV"/>
+                            <constraint firstItem="XEw-Bc-ejC" firstAttribute="centerY" secondItem="rIT-X4-Q1T" secondAttribute="centerY" id="vsu-39-IZA"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Summary" id="wsU-xm-ZFe"/>
                 </viewController>
@@ -812,7 +825,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="uPd-Ou-2d7">
                                         <rect key="frame" x="0.0" y="25" width="357" height="34"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Company Name*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m8I-51-OBp">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Company Name*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m8I-51-OBp" customClass="ClientSearchTextField" customModule="Hourly" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="174.66666666666666" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" textContentType="organization"/>
@@ -1032,8 +1045,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Add Workday" id="7G0-Q4-JuT"/>
                     <connections>
-                        <outlet property="clientTexfield" destination="m8I-51-OBp" id="xYd-56-eLZ"/>
                         <outlet property="collectionView" destination="4gy-YY-HFF" id="JgR-GS-uhy"/>
+                        <outlet property="companyNameTextField" destination="m8I-51-OBp" id="xX0-vd-0Ut"/>
                         <outlet property="dateTexfield" destination="78q-wV-46D" id="UqV-1Z-j2e"/>
                         <outlet property="descriptionTexfield" destination="8on-JL-IvW" id="zoL-Vn-wIR"/>
                         <outlet property="endTimeTexfield" destination="wsV-Ii-w0b" id="Wtj-EM-9x0"/>
