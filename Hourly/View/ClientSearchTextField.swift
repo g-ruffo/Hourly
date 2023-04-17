@@ -8,13 +8,18 @@
 import UIKit
 import CoreData
 
-class ClientSearchTextField: UITextField {
+protocol ClientSearchDelegate {
+    func selectedExistingClient(_ clientSearchTextField: ClientSearchTextField, selectedClient: ClientItem?)
+}
 
+class ClientSearchTextField: UITextField {
 
     var clientArray: Array<ClientItem> = []
     var tableView: UITableView?
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    var searchDelegate: ClientSearchDelegate?
 
     open override func willMove(toWindow newWindow: UIWindow?) {
         super.willMove(toWindow: newWindow)
@@ -36,14 +41,13 @@ class ClientSearchTextField: UITextField {
     }
     
     @objc open func textFieldDidChange(){
+        self.searchDelegate?.selectedExistingClient(self, selectedClient: nil)
         filter()
         updateSearchTableView()
         tableView?.isHidden = false
     }
     
     @objc open func textFieldDidBeginEditing() {
-        updateSearchTableView()
-        tableView?.isHidden = false
     }
         
     @objc open func textFieldDidEndEditing() {
@@ -127,6 +131,7 @@ class ClientSearchTextField: UITextField {
 extension ClientSearchTextField: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.text = clientArray[indexPath.row].companyName
+        self.searchDelegate?.selectedExistingClient(self, selectedClient: clientArray[indexPath.row])
         tableView.isHidden = true
         self.endEditing(true)
     }
@@ -145,7 +150,7 @@ extension ClientSearchTextField: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.Cell.clientSearchCell, for: indexPath) as UITableViewCell
-        cell.backgroundColor = .clear
+        cell.backgroundColor = .white
         cell.textLabel?.text = clientArray[indexPath.row].companyName
         return cell
     }
