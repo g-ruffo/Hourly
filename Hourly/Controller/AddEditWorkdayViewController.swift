@@ -25,16 +25,20 @@ class AddEditWorkdayViewController: UIViewController {
     private let endTimePicker = UIDatePicker()
     private let lunchPicker = UIPickerView()
     private let mileagePicker = UIPickerView()
-    private var selectedDate: Date?
-    private var selectedStartTime: Date?
-    private var selectedEndTime: Date?
-    private var selectedLunchTime: Int?
+    private var selectedDate: Date? {
+        didSet { if let value = selectedDate { dateTexfield.text = value.formatDateToString() } }
+    }
+    private var selectedStartTime: Date? {
+        didSet { if let value = selectedStartTime { startTimeTexfield.text = value.formatTimeToString() } }
+    }
+    private var selectedEndTime: Date? {
+        didSet { if let value = selectedEndTime { endTimeTexfield.text = value.formatTimeToString() } }
+    }
+    private var selectedLunchTime: Int? {
+        didSet { if let value = selectedLunchTime, value > 0 { lunchTexfield.text = "\(value) min" } }
+    }
     private var selectedMileage: Int? {
-        didSet {
-            if let value = selectedMileage {
-                mileageTexfield.text = "\(value) km"
-            }
-        }
+        didSet { if let value = selectedMileage, value > 0 { mileageTexfield.text = "\(value) km" } }
     }
 
     
@@ -127,9 +131,9 @@ class AddEditWorkdayViewController: UIViewController {
             locationTexfield.text = defaults.string(forKey: K.UserDefaultsKey.location)
             selectedStartTime = defaults.object(forKey: K.UserDefaultsKey.start) as? Date
             selectedEndTime = defaults.object(forKey: K.UserDefaultsKey.end) as? Date
-            lunchTexfield.text = defaults.string(forKey: K.UserDefaultsKey.lunch)
+            selectedLunchTime = defaults.integer(forKey: K.UserDefaultsKey.lunch)
             payRateTexfield.text = defaults.string(forKey: K.UserDefaultsKey.rate)
-            mileageTexfield.text = defaults.string(forKey: K.UserDefaultsKey.mileage)
+            selectedMileage = defaults.integer(forKey: K.UserDefaultsKey.mileage)
             descriptionTexfield.text = defaults.string(forKey: K.UserDefaultsKey.description)
         }
     }
@@ -140,19 +144,15 @@ class AddEditWorkdayViewController: UIViewController {
             clientTexfield.text = workday.clientName
             locationTexfield.text = workday.location
             payRateTexfield.text = "$\(workday.payRate)"
-            lunchTexfield.text = String(workday.lunchBreak)
-            mileageTexfield.text = String(workday.mileage)
+            selectedLunchTime = Int(workday.lunchBreak)
+            selectedMileage = Int(workday.mileage)
             descriptionTexfield.text = workday.workDescription
             selectedDate = workday.date
-            dateTexfield.text = datePicker.date.formatDateToString()
             selectedStartTime = workday.startTime
-            startTimeTexfield.text = startTimePicker.date.formatTimeToString()
             selectedEndTime = workday.endTIme
-            endTimeTexfield.text = endTimePicker.date.formatTimeToString()
         } else {
             title = "Add Worday"
             selectedDate = Date().zeroSeconds
-            dateTexfield.text = Date().formatDateToString()
         }
     }
     
@@ -185,17 +185,14 @@ class AddEditWorkdayViewController: UIViewController {
     }
     
     @objc func dateValueChange(_ datePicker: UIDatePicker) {
-        dateTexfield.text = datePicker.date.formatDateToString()
         selectedDate = datePicker.date.zeroSeconds
     }
     
     @objc func startTimeValueChange(_ datePicker: UIDatePicker) {
-        startTimeTexfield.text = startTimePicker.date.formatTimeToString()
         selectedStartTime = datePicker.date.zeroSeconds
     }
     
     @objc func endTimeValueChange(_ datePicker: UIDatePicker) {
-        endTimeTexfield.text = endTimePicker.date.formatTimeToString()
         selectedEndTime = datePicker.date.zeroSeconds
     }
     
@@ -230,9 +227,9 @@ class AddEditWorkdayViewController: UIViewController {
             workday.location = locationTexfield.text
             workday.startTime = start
             workday.endTIme = end
-            workday.lunchBreak = 0
+            workday.lunchBreak = Int16(selectedLunchTime ?? 0)
             workday.payRate = rate
-            workday.mileage = 0
+            workday.mileage = Int32(selectedMileage ?? 0)
             workday.workDescription = descriptionTexfield.text
             workday.isFinalized = true
             return saveWorkday()
@@ -317,10 +314,8 @@ extension AddEditWorkdayViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch pickerView.tag {
         case 1: selectedLunchTime = lunchArray[row]
-            lunchTexfield.text = "\(lunchArray[row]) min"
         case 2: mileageDigits[component] = row
             selectedMileage = Int("\(mileageDigits[0])\(mileageDigits[1])\(mileageDigits[2])")
-            mileageTexfield.text = String(selectedMileage!)
         default: print("Error getting UIPicker")
         }
     }
