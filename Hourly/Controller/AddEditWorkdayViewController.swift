@@ -125,7 +125,7 @@ class AddEditWorkdayViewController: UIViewController {
     
     func updateUserDefaults(clearValues: Bool = false) {
         if workdayEdit == nil && !clearValues {
-            defaults.set(clientTextField.text, forKey: K.UserDefaultsKey.client)
+            defaults.set(clientTextField.text, forKey: K.UserDefaultsKey.clientName)
             defaults.set(selectedDate, forKey: K.UserDefaultsKey.date)
             defaults.set(locationTexfield.text, forKey: K.UserDefaultsKey.location)
             defaults.set(selectedStartTime, forKey: K.UserDefaultsKey.start)
@@ -134,6 +134,7 @@ class AddEditWorkdayViewController: UIViewController {
             defaults.set(payRateTexfield.text, forKey: K.UserDefaultsKey.rate)
             defaults.set(selectedMileage, forKey: K.UserDefaultsKey.mileage)
             defaults.set(descriptionTexfield.text, forKey: K.UserDefaultsKey.description)
+            defaults.set(selectedClient, forKey: K.UserDefaultsKey.client)
         } else if workdayEdit == nil && clearValues {
             let dictionary = defaults.dictionaryRepresentation()
             dictionary.keys.forEach { key in
@@ -144,7 +145,8 @@ class AddEditWorkdayViewController: UIViewController {
     
     func checkUserDefaults() {
         if workdayEdit == nil {
-            clientTextField.text = defaults.string(forKey: K.UserDefaultsKey.client)
+            selectedClient = defaults.object(forKey: K.UserDefaultsKey.client) as? ClientItem
+            clientTextField.text = defaults.string(forKey: K.UserDefaultsKey.clientName)
             selectedDate = defaults.object(forKey: K.UserDefaultsKey.date) as? Date
             locationTexfield.text = defaults.string(forKey: K.UserDefaultsKey.location)
             selectedStartTime = defaults.object(forKey: K.UserDefaultsKey.start) as? Date
@@ -250,6 +252,9 @@ class AddEditWorkdayViewController: UIViewController {
             workday.mileage = Int32(selectedMileage ?? 0)
             workday.workDescription = descriptionTexfield.text
             workday.isFinalized = true
+            if let client = selectedClient {
+                workday.client = client
+            }
             return saveWorkday()
         } else {
             return false
@@ -269,6 +274,9 @@ class AddEditWorkdayViewController: UIViewController {
             workday.mileage = 0
             workday.workDescription = descriptionTexfield.text
             workday.isFinalized = false
+            if let client = selectedClient {
+                workday.client = client
+            }
             return saveWorkday()
         } else {
             return false

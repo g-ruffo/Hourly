@@ -39,7 +39,7 @@ struct K {
     }
     
     struct UserDefaultsKey {
-        static let client = "workdayClientName"
+        static let clientName = "workdayClientName"
         static let date = "workdayDate"
         static let location = "workdayLocation"
         static let start = "workdayStartTime"
@@ -48,6 +48,8 @@ struct K {
         static let rate = "workdayPayRate"
         static let mileage = "workdayMileage"
         static let description = "workdayDescription"
+        static let client = "existingClient"
+
     }
 
     struct NavigationBar {
