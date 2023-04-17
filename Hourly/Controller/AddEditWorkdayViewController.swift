@@ -68,8 +68,8 @@ class AddEditWorkdayViewController: UIViewController {
                 self.checkUserDefaults()
                 
             case "Delete":
-                print("Delete")
-            default: print("Defaulted")
+                self.showDeleteAlertDialog()
+            default: print("Menu Handler Defaulted")
             }
         }
         
@@ -97,7 +97,6 @@ class AddEditWorkdayViewController: UIViewController {
             dictionary.keys.forEach { key in
                 defaults.removeObject(forKey: key)
             }
-            print("cleared")
         }
     }
     
@@ -187,6 +186,15 @@ class AddEditWorkdayViewController: UIViewController {
         }
     }
     
+    func deleteWorkdayFromDatabase() {
+        if let workday = workdayEdit {
+            databaseContext.delete(workday)
+            if saveWorkday() {
+                navigationController?.popViewController(animated: true)
+            }
+        }
+    }
+    
     func createWorkday() -> Bool {
         if let client = clientTexfield.text, let date = selectedDate, let start = selectedStartTime, let end = selectedEndTime, let rate = payRateTexfield.currencyStringToDouble() {
             let workday = WorkdayItem(context: databaseContext)
@@ -233,6 +241,24 @@ class AddEditWorkdayViewController: UIViewController {
             dialogMessage.dismiss(animated: true)
         })
         dialogMessage.addAction(dismissButton)
+        // Present alert to user
+        self.present(dialogMessage, animated: true, completion: nil)
+    }
+    
+    func showDeleteAlertDialog() {
+        // Create a new alert
+        let dialogMessage = UIAlertController(title: "Are You Sure?", message: "Deleting this workday can't be undone, are you sure you would like to proceed?", preferredStyle: .alert)
+        
+        let dismissButton = UIAlertAction(title: "No", style: .default, handler: { (action) -> Void in
+            dialogMessage.dismiss(animated: true)
+        })
+        let confirmButton = UIAlertAction(title: "DELETE!", style: .destructive, handler: { (action) -> Void in
+            self.deleteWorkdayFromDatabase()
+            dialogMessage.dismiss(animated: true)
+        })
+        
+        dialogMessage.addAction(dismissButton)
+        dialogMessage.addAction(confirmButton)
         // Present alert to user
         self.present(dialogMessage, animated: true, completion: nil)
     }
