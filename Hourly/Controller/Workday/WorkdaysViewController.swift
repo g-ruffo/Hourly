@@ -111,6 +111,14 @@ extension WorkdaysViewController: EditWorkdayDelegate {
     }
 }
 
+extension WorkdaysViewController: WorkdayDelegate {
+    func updatedWorkdayDatabase(_ addEditWorkdayViewController: AddEditWorkdayViewController, hasUpdated: Bool) {
+        <#code#>
+    }
+}
+
+
+
 
 
 

@@ -8,6 +8,10 @@
 import UIKit
 import CoreData
 
+protocol WorkdayDelegate {
+    func updatedWorkdayDatabase(_ addEditWorkdayViewController: AddEditWorkdayViewController, hasUpdated: Bool)
+}
+
 class AddEditWorkdayViewController: UIViewController {
 
     @IBOutlet weak var clientTextField: ClientSearchTextField!
@@ -43,8 +47,8 @@ class AddEditWorkdayViewController: UIViewController {
     }
 
     
-    var workdayEdit: WorkdayItem?
-    var selectedClient: ClientItem? {
+    private var workdayEdit: WorkdayItem?
+    private var selectedClient: ClientItem? {
         didSet {
             if let value = selectedClient {
                 payRateTexfield.text = "$\(value.payRate)"
@@ -61,7 +65,7 @@ class AddEditWorkdayViewController: UIViewController {
             }
         }
     }
-    var selectedClientID: NSManagedObjectID? {
+    private var selectedClientID: NSManagedObjectID? {
         didSet {
             if let id = selectedClientID {
                 if selectedClient == nil {
@@ -77,17 +81,19 @@ class AddEditWorkdayViewController: UIViewController {
         }
     }
     
-    private var manager = AddEditClientManager()
+    private var manager = AddEditWorkdayManager()
     
     private let lunchArray = [5, 10, 15, 20, 30, 40, 45, 60, 90, 120]
     private let mileageNumbers = [10,10,10]
     private var mileageDigits = [0,0,0]
 
-    let defaults = UserDefaults.standard
+    private let defaults = UserDefaults.standard
     
     private let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     private var completedSave: Bool = false
+    
+    var delegate: WorkdayDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,6 +128,8 @@ class AddEditWorkdayViewController: UIViewController {
                     self.dismiss(animated: true) {
                         self.completedSave = true
                         self.updateUserDefaults(clearValues: true)
+                        self.delegate?.updatedWorkdayDatabase(self, hasUpdated: true)
+
                 }
             }
             case "Clear":
@@ -344,6 +352,7 @@ class AddEditWorkdayViewController: UIViewController {
             dismiss(animated: true) {
                 self.completedSave = true
                 self.updateUserDefaults(clearValues: true)
+                self.delegate?.updatedWorkdayDatabase(self, hasUpdated: true)
             }
         } else {
             showAlertDialog()
@@ -352,8 +361,8 @@ class AddEditWorkdayViewController: UIViewController {
 }
 
 //MARK: - AddEditClientManagerDelegate
-extension AddEditWorkdayViewController: AddEditClientManagerDelegate {
-    func didUpdateCurrencyText(_ addEditClientManager: AddEditClientManager, newCurrencyValue: String?) {
+extension AddEditWorkdayViewController: AddEditWorkdayManagerDelegate {
+    func didUpdateCurrencyText(_ addEditWorkdayManager: AddEditWorkdayManager, newCurrencyValue: String?) {
         payRateTexfield.text = newCurrencyValue
     }
     
@@ -407,6 +416,7 @@ extension AddEditWorkdayViewController: UIPickerViewDataSource {
     }
 }
 
+//MARK: - ClientSearchDelegate
 extension AddEditWorkdayViewController: ClientSearchDelegate {
     func selectedExistingClient(_ clientSearchTextField: ClientSearchTextField, clientID: NSManagedObjectID?) {
         self.selectedClientID = clientID

@@ -151,6 +151,26 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		79C2929B29EE1DC300A2A8BF /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				79F1AFD129E4C07A004CED4E /* ClientsViewController.swift */,
+				79D5F6AB29E606F000CA2542 /* AddEditClientViewController.swift */,
+				7964AFC929E8CF6300065863 /* ClientDetailsViewController.swift */,
+			);
+			path = Client;
+			sourceTree = "<group>";
+		};
+		79C2929C29EE1DD200A2A8BF /* Workday */ = {
+			isa = PBXGroup;
+			children = (
+				79F1AFCF29E4C047004CED4E /* AddEditWorkdayViewController.swift */,
+				795BB47029E66E3E000D7FB1 /* WorkdaysViewController.swift */,
+				7964AFCB29E9D91400065863 /* WorkDetailViewController.swift */,
+			);
+			path = Workday;
+			sourceTree = "<group>";
+		};
 		79F1AFD929E51971004CED4E /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,13 +270,9 @@
 				79F1AFC929E4BD32004CED4E /* HourlyTabBarController.swift */,
 				79F1AFCB29E4BFBB004CED4E /* CalendarViewController.swift */,
 				79F1AFCD29E4BFD4004CED4E /* SettingsViewController.swift */,
-				79F1AFCF29E4C047004CED4E /* AddEditWorkdayViewController.swift */,
-				79F1AFD129E4C07A004CED4E /* ClientsViewController.swift */,
-				79D5F6AB29E606F000CA2542 /* AddEditClientViewController.swift */,
-				795BB47029E66E3E000D7FB1 /* WorkdaysViewController.swift */,
+				79C2929C29EE1DD200A2A8BF /* Workday */,
+				79C2929B29EE1DC300A2A8BF /* Client */,
 				795BB47B29E743F4000D7FB1 /* ExportViewController.swift */,
-				7964AFC929E8CF6300065863 /* ClientDetailsViewController.swift */,
-				7964AFCB29E9D91400065863 /* WorkDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
