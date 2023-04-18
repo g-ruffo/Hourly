@@ -45,6 +45,7 @@ class AddEditWorkdayViewController: UIViewController {
 
     
     var workdayEdit: WorkdayItem?
+    
     private var selectedClient: ClientItem? {
         didSet {
             if let value = selectedClient {

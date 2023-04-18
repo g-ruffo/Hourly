@@ -99,8 +99,11 @@ extension WorkdaysViewController: UITableViewDataSource {
         cell.earningsLabel?.text = workDay.earnings.convertToCurrency()
         cell.hoursLabel?.text = Helper.calculateHours(startTime: workDay.startTime, endTime: workDay.endTIme, lunchTime: Int(workDay.lunchBreak))
         cell.backgroundColor = .clear
-
-
+        if let colour = workDay.client?.tagColor {
+            cell.clientTagImageView.tintColor = UIColor(colour)
+        } else {
+            cell.clientTagImageView.tintColor = UIColor("#ECF0F1")
+        }
         return cell
     }
 }
