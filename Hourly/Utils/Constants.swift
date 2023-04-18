@@ -27,8 +27,10 @@ struct K {
         static let calendarCell = "CalendarCell"
     }
     
-    struct Notification{
-        static let workdaysUpdated = "workdaysUpdated"
+    struct NotificationKeys{
+        private static let workdaysUpdated = "ca.veltus.hourly.notification.workdaysUpdated"
+        static let updateWorkdaysNotification = Notification.Name(rawValue: workdaysUpdated)
+
     }
     
     struct Cell {

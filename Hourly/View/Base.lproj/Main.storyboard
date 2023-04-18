@@ -57,19 +57,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter HEere" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XEw-Bc-ejC" customClass="ClientSearchTextField" customModule="Hourly" customModuleProvider="target">
-                                <rect key="frame" x="12" y="409" width="369" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sYk-ud-Fic">
+                                <rect key="frame" x="159" y="408.66666666666669" width="75" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="SJF-ER-bSW"/>
                         <color key="backgroundColor" name="BackgroundGrey"/>
                         <constraints>
-                            <constraint firstItem="XEw-Bc-ejC" firstAttribute="leading" secondItem="SJF-ER-bSW" secondAttribute="leading" constant="12" id="BuJ-tO-wLb"/>
-                            <constraint firstItem="SJF-ER-bSW" firstAttribute="trailing" secondItem="XEw-Bc-ejC" secondAttribute="trailing" constant="12" id="Fyz-HW-vcZ"/>
-                            <constraint firstItem="XEw-Bc-ejC" firstAttribute="centerX" secondItem="rIT-X4-Q1T" secondAttribute="centerX" id="b3E-sQ-oaV"/>
-                            <constraint firstItem="XEw-Bc-ejC" firstAttribute="centerY" secondItem="rIT-X4-Q1T" secondAttribute="centerY" id="vsu-39-IZA"/>
+                            <constraint firstItem="sYk-ud-Fic" firstAttribute="centerY" secondItem="rIT-X4-Q1T" secondAttribute="centerY" id="50r-8x-bhW"/>
+                            <constraint firstItem="sYk-ud-Fic" firstAttribute="centerX" secondItem="rIT-X4-Q1T" secondAttribute="centerX" id="myV-sF-dwy"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Summary" id="wsU-xm-ZFe"/>

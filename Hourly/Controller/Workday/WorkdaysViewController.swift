@@ -11,7 +11,6 @@ import CoreData
 
 class WorkdaysViewController: UIViewController {
 
-    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
@@ -20,24 +19,31 @@ class WorkdaysViewController: UIViewController {
     private var workDayList: Array<WorkdayItem> = []
     private var workdaytToEdit: WorkdayItem?
     
-    private let manager = WorkdaysManager()
+    private var manager = WorkdaysManager()
     
     private let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
+        
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Connect required delegates
-        
         tableView.delegate = self
         searchBar.delegate = self
         tableView.dataSource = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(workdaysHaveBeenUpdated), name: K.NotificationKeys.updateWorkdaysNotification, object: nil)
 
+    }
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         workdaytToEdit = nil
+        loadWorkdayFromDatabase()
+    }
+    
+    @objc func workdaysHaveBeenUpdated(notification: NSNotification) {
         loadWorkdayFromDatabase()
     }
     
@@ -108,12 +114,6 @@ extension WorkdaysViewController: EditWorkdayDelegate {
     func editWorkday(_ workDetailViewController: WorkDetailViewController, workday: WorkdayItem) {
         workdaytToEdit = workday
         performSegue(withIdentifier: K.Segue.editWorkdayNav, sender: self)
-    }
-}
-
-extension WorkdaysViewController: WorkdayDelegate {
-    func updatedWorkdayDatabase(_ addEditWorkdayViewController: AddEditWorkdayViewController, hasUpdated: Bool) {
-        <#code#>
     }
 }
 

@@ -8,10 +8,6 @@
 import UIKit
 import CoreData
 
-protocol WorkdayDelegate {
-    func updatedWorkdayDatabase(_ addEditWorkdayViewController: AddEditWorkdayViewController, hasUpdated: Bool)
-}
-
 class AddEditWorkdayViewController: UIViewController {
 
     @IBOutlet weak var clientTextField: ClientSearchTextField!
@@ -47,7 +43,7 @@ class AddEditWorkdayViewController: UIViewController {
     }
 
     
-    private var workdayEdit: WorkdayItem?
+    var workdayEdit: WorkdayItem?
     private var selectedClient: ClientItem? {
         didSet {
             if let value = selectedClient {
@@ -82,7 +78,7 @@ class AddEditWorkdayViewController: UIViewController {
     }
     
     private var manager = AddEditWorkdayManager()
-    
+        
     private let lunchArray = [5, 10, 15, 20, 30, 40, 45, 60, 90, 120]
     private let mileageNumbers = [10,10,10]
     private var mileageDigits = [0,0,0]
@@ -92,9 +88,7 @@ class AddEditWorkdayViewController: UIViewController {
     private let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     private var completedSave: Bool = false
-    
-    var delegate: WorkdayDelegate?
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         manager.delegate = self
@@ -128,8 +122,6 @@ class AddEditWorkdayViewController: UIViewController {
                     self.dismiss(animated: true) {
                         self.completedSave = true
                         self.updateUserDefaults(clearValues: true)
-                        self.delegate?.updatedWorkdayDatabase(self, hasUpdated: true)
-
                 }
             }
             case "Clear":
@@ -352,7 +344,7 @@ class AddEditWorkdayViewController: UIViewController {
             dismiss(animated: true) {
                 self.completedSave = true
                 self.updateUserDefaults(clearValues: true)
-                self.delegate?.updatedWorkdayDatabase(self, hasUpdated: true)
+                NotificationCenter.default.post(name: K.NotificationKeys.updateWorkdaysNotification, object: nil)
             }
         } else {
             showAlertDialog()
