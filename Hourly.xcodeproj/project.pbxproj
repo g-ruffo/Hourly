@@ -25,6 +25,7 @@
 		7964AFDF29EB2CEE00065863 /* WorkdaysManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964AFDE29EB2CEE00065863 /* WorkdaysManager.swift */; };
 		7964AFE129EB368900065863 /* AddEditWorkdayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964AFE029EB368900065863 /* AddEditWorkdayManager.swift */; };
 		7964AFE429EDE21F00065863 /* ClientSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964AFE329EDE21F00065863 /* ClientSearchTextField.swift */; };
+		79C292A229EE6B5900A2A8BF /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C292A129EE6B5900A2A8BF /* Helper.swift */; };
 		79D5F6A929E5F04D00CA2542 /* ClientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D5F6A729E5F04D00CA2542 /* ClientCell.swift */; };
 		79D5F6AC29E606F000CA2542 /* AddEditClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D5F6AB29E606F000CA2542 /* AddEditClientViewController.swift */; };
 		79F1AFC829E4BD0E004CED4E /* HourlyTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFC729E4BD0E004CED4E /* HourlyTabBar.swift */; };
@@ -83,6 +84,7 @@
 		7964AFDE29EB2CEE00065863 /* WorkdaysManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkdaysManager.swift; sourceTree = "<group>"; };
 		7964AFE029EB368900065863 /* AddEditWorkdayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditWorkdayManager.swift; sourceTree = "<group>"; };
 		7964AFE329EDE21F00065863 /* ClientSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientSearchTextField.swift; sourceTree = "<group>"; };
+		79C292A129EE6B5900A2A8BF /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		79D5F6A729E5F04D00CA2542 /* ClientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientCell.swift; sourceTree = "<group>"; };
 		79D5F6AB29E606F000CA2542 /* AddEditClientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditClientViewController.swift; sourceTree = "<group>"; };
 		79F1AFC729E4BD0E004CED4E /* HourlyTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyTabBar.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				79FA88A129E4B25D003C6DFB /* Localizables */,
 				79F1AFD329E4C8CD004CED4E /* Constants.swift */,
 				7964AFBF29E7993900065863 /* Extensions.swift */,
+				79C292A129EE6B5900A2A8BF /* Helper.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 				79FA886E29E4AD66003C6DFB /* AppDelegate.swift in Sources */,
 				7964AFDD29EA194C00065863 /* WordayImageCell.swift in Sources */,
 				795BB47129E66E3E000D7FB1 /* WorkdaysViewController.swift in Sources */,
+				79C292A229EE6B5900A2A8BF /* Helper.swift in Sources */,
 				79F1AFD029E4C047004CED4E /* AddEditWorkdayViewController.swift in Sources */,
 				79FA88A629E4B2BD003C6DFB /* StringResource.swift in Sources */,
 				79FA887829E4AD66003C6DFB /* DataModel.xcdatamodeld in Sources */,

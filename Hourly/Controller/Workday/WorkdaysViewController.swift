@@ -97,7 +97,7 @@ extension WorkdaysViewController: UITableViewDataSource {
         cell.clientLabel.text = workDay.clientName
         cell.dateLabel?.text = manager.dateToString(date: workDay.date)
         cell.earningsLabel?.text = workDay.earnings.convertDoubleToEarnings()
-        cell.hoursLabel?.text = manager.calculateHours(startTime: workDay.startTime, endTime: workDay.endTIme, lunchTime: Int(workDay.lunchBreak))
+        cell.hoursLabel?.text = Helper.calculateHours(startTime: workDay.startTime, endTime: workDay.endTIme, lunchTime: Int(workDay.lunchBreak))
         cell.backgroundColor = .clear
 
 
