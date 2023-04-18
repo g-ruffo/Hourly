@@ -122,6 +122,7 @@ class AddEditWorkdayViewController: UIViewController {
                     self.dismiss(animated: true) {
                         self.completedSave = true
                         self.updateUserDefaults(clearValues: true)
+                        NotificationCenter.default.post(name: K.NotificationKeys.updateWorkdaysNotification, object: nil)
                 }
             }
             case "Clear":
@@ -266,7 +267,14 @@ class AddEditWorkdayViewController: UIViewController {
     
     func createWorkday() -> Bool {
         if let client = clientTextField.text, let date = selectedDate, let start = selectedStartTime, let end = selectedEndTime, let rate = payRateTexfield.currencyStringToDouble() {
-            let workday = WorkdayItem(context: databaseContext)
+            var workday: WorkdayItem
+            if let day = workdayEdit {
+                workday = day
+                print("Is Updating workday")
+            } else {
+                print("Creating new workday")
+                workday = WorkdayItem(context: databaseContext)
+            }
             workday.clientName = client
             workday.date = date
             workday.location = locationTexfield.text
@@ -276,6 +284,7 @@ class AddEditWorkdayViewController: UIViewController {
             workday.payRate = rate
             workday.mileage = Int32(selectedMileage ?? 0)
             workday.workDescription = descriptionTexfield.text
+            workday.earnings = manager.calculateEarnings(startTime: start, endTime: end, lunchTime: selectedLunchTime, payRate: rate)
             workday.isFinalized = true
             if let client = selectedClient {
                 workday.client = client
