@@ -20,6 +20,7 @@ class AddEditWorkdayViewController: UIViewController {
     @IBOutlet weak var mileageTexfield: UITextField!
     @IBOutlet weak var descriptionTexfield: UITextField!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var saveButton: UIButton!
     
     private let datePicker = UIDatePicker()
     private let startTimePicker = UIDatePicker()
@@ -103,6 +104,7 @@ class AddEditWorkdayViewController: UIViewController {
         setupTimePickers()
         checkForEdit()
         setupMenuItems()
+        saveButton.tintColor = UIColor("#F1C40F")
     }
 
     

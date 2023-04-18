@@ -438,7 +438,7 @@
                         <outlet property="tableView" destination="qXq-Ny-TAf" id="GPe-db-Q48"/>
                         <segue destination="yHG-3C-L6b" kind="show" identifier="AddClientNavigation" id="Ydi-Ml-fqH"/>
                         <segue destination="EIG-Gh-Hm2" kind="presentation" identifier="DetailClientNavigation" id="9Mp-0b-N9L"/>
-                        <segue destination="yHG-3C-L6b" kind="show" identifier="ClientWorkdaysNavigation" id="T1x-7W-HWO"/>
+                        <segue destination="yHG-3C-L6b" kind="show" identifier="EditClientNavigation" id="T1x-7W-HWO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f3S-iA-y9s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -764,6 +764,7 @@
                         <outlet property="payRateTextField" destination="XWb-Bd-RgS" id="YkU-R6-l2Z"/>
                         <outlet property="phoneNumberTextField" destination="j3g-Pd-XUD" id="bgs-1T-YQx"/>
                         <outlet property="popUpButton" destination="Zyc-qf-6Zc" id="5RN-Ni-D1c"/>
+                        <outlet property="saveButton" destination="0MI-A5-hd7" id="Yza-5c-Cop"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ima-Nl-hyO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1012,8 +1013,12 @@
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G5O-Og-xMy">
                                 <rect key="frame" x="150" y="772.66666666666663" width="93" height="33.333333333333371"/>
-                                <color key="tintColor" name="PrimaryYellow"/>
-                                <state key="normal" title="Button"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <color key="tintColor" red="0.94509803921568625" green="0.76862745098039209" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" name="DarkGrey"/>
+                                </state>
                                 <buttonConfiguration key="configuration" style="filled" title="Save">
                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="16"/>
                                     <color key="baseForegroundColor" name="DarkGrey"/>
@@ -1052,6 +1057,7 @@
                         <outlet property="lunchTexfield" destination="lNs-y6-UJX" id="6WX-hn-rl1"/>
                         <outlet property="mileageTexfield" destination="rNY-dt-Qz6" id="tJW-3x-6vL"/>
                         <outlet property="payRateTexfield" destination="qOO-bX-oD6" id="v3H-EY-QOF"/>
+                        <outlet property="saveButton" destination="G5O-Og-xMy" id="cjh-eJ-kSx"/>
                         <outlet property="startTimeTexfield" destination="AW9-Tc-X45" id="i0Y-55-gTg"/>
                     </connections>
                 </viewController>
@@ -1542,7 +1548,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Q5n-uq-4AC"/>
-        <segue reference="Ydi-Ml-fqH"/>
+        <segue reference="T1x-7W-HWO"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="chevron.left" catalog="system" width="97" height="128"/>

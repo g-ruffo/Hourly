@@ -20,7 +20,6 @@ struct K {
         static let workdayCell = "WorkdayCell"
         static let clientCell = "ClientCell"
         static let addClientNav = "AddClientNavigation"
-        static let editClientNav = "EditClientNavigation"
         static let detailClientNav = "DetailClientNavigation"
         static let settingsCell = "SettingsReusableCell"
         static let settingsNibName = "SettingsCell"
@@ -30,7 +29,6 @@ struct K {
     struct NotificationKeys{
         private static let workdaysUpdated = "ca.veltus.hourly.notification.workdaysUpdated"
         static let updateWorkdaysNotification = Notification.Name(rawValue: workdaysUpdated)
-
     }
     
     struct Cell {
@@ -43,6 +41,7 @@ struct K {
         static let workDetailNav = "WorkDetailNavigation"
         static let editWorkdayNav = "EditWorkdayNavigation"
         static let clientsNav = "ClientsNavigation"
+        static let editClientNav = "EditClientNavigation"
     }
     
     struct UserDefaultsKey {

@@ -10,6 +10,7 @@ import UIColorHexSwift
 
 class AddEditClientViewController: UIViewController {
 
+    @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var companyNameTextField: UITextField!
     @IBOutlet weak var contactNameTextField: UITextField!
     @IBOutlet weak var phoneNumberTextField: UITextField!
@@ -40,6 +41,7 @@ class AddEditClientViewController: UIViewController {
         payRateTextField.delegate = self
         checkForEdit()
         setupPopUpButton()
+        saveButton.tintColor = UIColor("#F1C40F")
     }
     
     func checkForEdit() {

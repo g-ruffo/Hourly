@@ -57,7 +57,7 @@ class ClientsViewController: UIViewController {
                 destinationVC.client = clientList[indexPath.row]
                 destinationVC.delegate = self
             }
-        } else if segue.identifier == K.Identifiers.editClientNav {
+        } else if segue.identifier == K.Segue.editClientNav {
             let destinationVC = segue.destination as! AddEditClientViewController
             destinationVC.clientEdit = clientToEdit
         }
@@ -107,6 +107,6 @@ extension ClientsViewController: UISearchBarDelegate {
 extension ClientsViewController: EditClientDelegate {    
     func editClient(_ clientDetailsViewController: ClientDetailsViewController, client: ClientItem) {
         clientToEdit = client
-        performSegue(withIdentifier: K.Identifiers.editClientNav, sender: self)
+        performSegue(withIdentifier: K.Segue.editClientNav, sender: self)
     }
 }
