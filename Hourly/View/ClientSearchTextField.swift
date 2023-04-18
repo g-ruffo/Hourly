@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 
 protocol ClientSearchDelegate {
-    func selectedExistingClient(_ clientSearchTextField: ClientSearchTextField, client: ClientItem?)
+    func selectedExistingClient(_ clientSearchTextField: ClientSearchTextField, clientID: NSManagedObjectID?)
 }
 
 class ClientSearchTextField: UITextField {
@@ -41,7 +41,7 @@ class ClientSearchTextField: UITextField {
     }
     
     @objc open func textFieldDidChange(){
-        self.searchDelegate?.selectedExistingClient(self, client: nil)
+        self.searchDelegate?.selectedExistingClient(self, clientID: nil)
         filter()
         updateSearchTableView()
         tableView?.isHidden = false
@@ -131,7 +131,7 @@ class ClientSearchTextField: UITextField {
 extension ClientSearchTextField: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.text = clientArray[indexPath.row].companyName
-        self.searchDelegate?.selectedExistingClient(self, client: clientArray[indexPath.row])
+        self.searchDelegate?.selectedExistingClient(self, clientID: clientArray[indexPath.row].objectID)
         tableView.isHidden = true
         self.endEditing(true)
     }

@@ -440,12 +440,12 @@
                         <outlet property="tableView" destination="qXq-Ny-TAf" id="GPe-db-Q48"/>
                         <segue destination="yHG-3C-L6b" kind="show" identifier="AddClientNavigation" id="Ydi-Ml-fqH"/>
                         <segue destination="EIG-Gh-Hm2" kind="presentation" identifier="DetailClientNavigation" id="9Mp-0b-N9L"/>
-                        <segue destination="yHG-3C-L6b" kind="show" identifier="EditClientNavigation" id="T1x-7W-HWO"/>
+                        <segue destination="yHG-3C-L6b" kind="show" identifier="ClientWorkdaysNavigation" id="T1x-7W-HWO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f3S-iA-y9s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2741" y="231"/>
+            <point key="canvasLocation" x="2741" y="280"/>
         </scene>
         <!--Client Details View Controller-->
         <scene sceneID="to1-YS-dqt">
@@ -576,7 +576,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mEW-Kg-ThK">
-                                <rect key="frame" x="281.66666666666669" y="12" width="76.333333333333314" height="48"/>
+                                <rect key="frame" x="281.66666666666669" y="12" width="99.333333333333314" height="48"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Edit"/>
                                 <connections>
@@ -595,7 +595,7 @@
                             <constraint firstItem="Adt-M7-CDp" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SiX-nE-eFO" secondAttribute="trailing" id="PpW-aM-SUO"/>
                             <constraint firstItem="mEW-Kg-ThK" firstAttribute="bottom" secondItem="lhj-f5-WAg" secondAttribute="bottom" constant="-30" id="ThQ-ky-2rF"/>
                             <constraint firstItem="SiX-nE-eFO" firstAttribute="centerX" secondItem="GPs-eL-Hgl" secondAttribute="centerX" id="W5y-JQ-4wA"/>
-                            <constraint firstItem="Adt-M7-CDp" firstAttribute="trailing" secondItem="mEW-Kg-ThK" secondAttribute="trailing" constant="35" id="ZXL-UE-X9S"/>
+                            <constraint firstItem="Adt-M7-CDp" firstAttribute="trailing" secondItem="mEW-Kg-ThK" secondAttribute="trailing" constant="12" id="ZXL-UE-X9S"/>
                             <constraint firstItem="KIZ-DY-rG5" firstAttribute="top" secondItem="SiX-nE-eFO" secondAttribute="bottom" constant="4" id="bGf-PI-O87"/>
                             <constraint firstItem="SiX-nE-eFO" firstAttribute="top" secondItem="lhj-f5-WAg" secondAttribute="bottom" constant="12" id="c3c-3y-MCy"/>
                             <constraint firstItem="Adt-M7-CDp" firstAttribute="trailing" secondItem="KIZ-DY-rG5" secondAttribute="trailing" id="egH-4a-Y2J"/>
@@ -1533,7 +1533,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="6Zw-kC-fZp"/>
-        <segue reference="T1x-7W-HWO"/>
+        <segue reference="Ydi-Ml-fqH"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="chevron.left" catalog="system" width="97" height="128"/>

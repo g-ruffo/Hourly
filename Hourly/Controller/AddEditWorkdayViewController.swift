@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class AddEditWorkdayViewController: UIViewController {
 
@@ -60,6 +61,21 @@ class AddEditWorkdayViewController: UIViewController {
             }
         }
     }
+    var selectedClientID: NSManagedObjectID? {
+        didSet {
+            if let id = selectedClientID {
+                if selectedClient == nil {
+                    do {
+                        selectedClient = try databaseContext.existingObject(with: id) as? ClientItem
+                    } catch {
+                            fatalError(error.localizedDescription)
+                    }
+                }
+            } else {
+                selectedClient = nil
+            }
+        }
+    }
     
     private var manager = AddEditClientManager()
     
@@ -70,6 +86,8 @@ class AddEditWorkdayViewController: UIViewController {
     let defaults = UserDefaults.standard
     
     private let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    private var completedSave: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,6 +120,7 @@ class AddEditWorkdayViewController: UIViewController {
             case "Save as Draft":
                 if self.createDraftWorkday() {
                     self.dismiss(animated: true) {
+                        self.completedSave = true
                         self.updateUserDefaults(clearValues: true)
                 }
             }
@@ -124,7 +143,7 @@ class AddEditWorkdayViewController: UIViewController {
     }
     
     func updateUserDefaults(clearValues: Bool = false) {
-        if workdayEdit == nil && !clearValues {
+        if workdayEdit == nil && !clearValues && !completedSave {
             defaults.set(clientTextField.text, forKey: K.UserDefaultsKey.clientName)
             defaults.set(selectedDate, forKey: K.UserDefaultsKey.date)
             defaults.set(locationTexfield.text, forKey: K.UserDefaultsKey.location)
@@ -134,7 +153,7 @@ class AddEditWorkdayViewController: UIViewController {
             defaults.set(payRateTexfield.text, forKey: K.UserDefaultsKey.rate)
             defaults.set(selectedMileage, forKey: K.UserDefaultsKey.mileage)
             defaults.set(descriptionTexfield.text, forKey: K.UserDefaultsKey.description)
-            defaults.set(selectedClient, forKey: K.UserDefaultsKey.client)
+            defaults.set(selectedClientID?.uriRepresentation(), forKey: K.UserDefaultsKey.client)
         } else if workdayEdit == nil && clearValues {
             let dictionary = defaults.dictionaryRepresentation()
             dictionary.keys.forEach { key in
@@ -145,9 +164,7 @@ class AddEditWorkdayViewController: UIViewController {
     
     func checkUserDefaults() {
         if workdayEdit == nil {
-            selectedClient = defaults.object(forKey: K.UserDefaultsKey.client) as? ClientItem
             clientTextField.text = defaults.string(forKey: K.UserDefaultsKey.clientName)
-            selectedDate = defaults.object(forKey: K.UserDefaultsKey.date) as? Date
             locationTexfield.text = defaults.string(forKey: K.UserDefaultsKey.location)
             selectedStartTime = defaults.object(forKey: K.UserDefaultsKey.start) as? Date
             selectedEndTime = defaults.object(forKey: K.UserDefaultsKey.end) as? Date
@@ -155,6 +172,14 @@ class AddEditWorkdayViewController: UIViewController {
             payRateTexfield.text = defaults.string(forKey: K.UserDefaultsKey.rate)
             selectedMileage = defaults.integer(forKey: K.UserDefaultsKey.mileage)
             descriptionTexfield.text = defaults.string(forKey: K.UserDefaultsKey.description)
+            if let url = defaults.url(forKey: K.UserDefaultsKey.client),
+               let objectId = databaseContext.persistentStoreCoordinator!.managedObjectID(forURIRepresentation: url) {
+                selectedClientID = objectId
+            }
+            if let date = defaults.object(forKey: K.UserDefaultsKey.date) as? Date {
+                selectedDate = date
+            }
+
         }
     }
     
@@ -317,6 +342,7 @@ class AddEditWorkdayViewController: UIViewController {
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         if createWorkday() {
             dismiss(animated: true) {
+                self.completedSave = true
                 self.updateUserDefaults(clearValues: true)
             }
         } else {
@@ -382,7 +408,7 @@ extension AddEditWorkdayViewController: UIPickerViewDataSource {
 }
 
 extension AddEditWorkdayViewController: ClientSearchDelegate {
-    func selectedExistingClient(_ clientSearchTextField: ClientSearchTextField, client: ClientItem?) {
-        self.selectedClient = client
+    func selectedExistingClient(_ clientSearchTextField: ClientSearchTextField, clientID: NSManagedObjectID?) {
+        self.selectedClientID = clientID
     }
 }
