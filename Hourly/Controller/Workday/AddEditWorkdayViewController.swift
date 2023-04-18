@@ -265,7 +265,7 @@ class AddEditWorkdayViewController: UIViewController {
         }
     }
     
-    func createWorkday() -> Bool {
+    func createUpdateWorkday() -> Bool {
         if let client = clientTextField.text, let date = selectedDate, let start = selectedStartTime, let end = selectedEndTime, let rate = payRateTexfield.currencyStringToDouble() {
             var workday: WorkdayItem
             if let day = workdayEdit {
@@ -349,11 +349,15 @@ class AddEditWorkdayViewController: UIViewController {
 
 
     @IBAction func saveButtonPressed(_ sender: UIButton) {
-        if createWorkday() {
-            dismiss(animated: true) {
-                self.completedSave = true
-                self.updateUserDefaults(clearValues: true)
-                NotificationCenter.default.post(name: K.NotificationKeys.updateWorkdaysNotification, object: nil)
+        if createUpdateWorkday() {
+            self.completedSave = true
+            self.updateUserDefaults(clearValues: true)
+            NotificationCenter.default.post(name: K.NotificationKeys.updateWorkdaysNotification, object: nil)
+            
+            if workdayEdit == nil {
+                dismiss(animated: true)
+            } else {
+                navigationController?.popViewController(animated: true)
             }
         } else {
             showAlertDialog()
