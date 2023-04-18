@@ -48,7 +48,7 @@ extension Date {
 }
 
 extension Double {
-    func convertDoubleToEarnings() -> String {
+    func convertToCurrency() -> String {
             let formatter = NumberFormatter()
             formatter.numberStyle = NumberFormatter.Style.currency
            return formatter.string(from: NSNumber(value: self)) ?? "$0.00"

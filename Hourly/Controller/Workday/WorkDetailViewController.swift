@@ -37,9 +37,32 @@ class WorkDetailViewController: UIViewController {
         super.viewDidLoad()
         photosCollectionView.delegate = self
         photosCollectionView.dataSource = self
+        setWorkdayDetails()
 
+    }
+    
+    private func setWorkdayDetails() {
+        guard let day = workday else { fatalError("Unable to get work day") }
+        clientLabel.text = day.clientName
+        earningsLabel.text = day.earnings.convertToCurrency()
+        dateLabel.text = day.date?.formatDateToString() ?? "No date set"
+        draftButton.isHidden = day.isFinalized
+        descriptionLabel.text = day.workDescription
+        startTimeLabel.text = day.startTime?.formatTimeToString()
+        endTimeLabel.text = day.endTIme?.formatTimeToString()
+        lunchTimeLabel.text = "\(day.lunchBreak) min"
+        hoursWorkedLabel.text = Helper.calculateHours(startTime: day.startTime, endTime: day.endTIme, lunchTime: Int(day.lunchBreak))
+        payRateLabel.text = day.payRate.convertToCurrency()
+        mileageLabel.text = "\(day.mileage) km"
+        locationLabel.text = day.location
+        if let photos = day.photos, photos.count > 0 {
+            print("photos is not nil = \(photos.count)")
+        } else {
+            photosCollectionView.isHidden = true
+            print("photos is nil")
 
-        // Do any additional setup after loading the view.
+        }
+        
     }
     
 
