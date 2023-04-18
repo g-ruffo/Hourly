@@ -13,9 +13,9 @@ struct K {
     struct Identifiers {
         static let summaryNav = "SummaryNavigation"
         static let calendarNav = "CalendarNavigation"
-        static let clientsNav = "ClientsNavigation"
+        static let workdaysNav = "ClientsNavigation"
         static let exportNav = "ExportNavigation"
-        static let workdayNav = "WorkdayNavigation"
+        static let newWorkdayNav = "WorkdayNavigation"
         static let settingsNav = "SettingsNavigation"
         static let workdayCell = "WorkdayCell"
         static let clientCell = "ClientCell"
@@ -27,6 +27,10 @@ struct K {
         static let calendarCell = "CalendarCell"
     }
     
+    struct Notification{
+        static let workdaysUpdated = "workdaysUpdated"
+    }
+    
     struct Cell {
         static let workdayImageCell = "WorkdayImageCell"
         static let clientSearchCell = "ClientSearchCell"
@@ -36,6 +40,7 @@ struct K {
     struct Segue {
         static let workDetailNav = "WorkDetailNavigation"
         static let editWorkdayNav = "EditWorkdayNavigation"
+        static let clientsNav = "ClientsNavigation"
     }
     
     struct UserDefaultsKey {

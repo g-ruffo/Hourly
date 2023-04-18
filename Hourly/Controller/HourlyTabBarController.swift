@@ -23,20 +23,20 @@ class HourlyTabBarController: UITabBarController {
         // Instantiate view controllers
         let summaryNav = self.storyboard?.instantiateViewController(withIdentifier: K.Identifiers.summaryNav) as! UINavigationController
         let calendarNav = self.storyboard?.instantiateViewController(withIdentifier: K.Identifiers.calendarNav) as! UINavigationController
-        let clientsNav = self.storyboard?.instantiateViewController(withIdentifier: K.Identifiers.clientsNav) as! UINavigationController
+        let workdaysNav = self.storyboard?.instantiateViewController(withIdentifier: K.Identifiers.workdaysNav) as! UINavigationController
         let settingsNav = self.storyboard?.instantiateViewController(withIdentifier: K.Identifiers.settingsNav) as! UINavigationController
-        let workdayNav = self.storyboard?.instantiateViewController(withIdentifier: K.Identifiers.workdayNav) as! UINavigationController
+        let newWorkdayNav = self.storyboard?.instantiateViewController(withIdentifier: K.Identifiers.newWorkdayNav) as! UINavigationController
         
         // Create Tab Bar items
         summaryNav.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house.fill"))
         calendarNav.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "calendar"), selectedImage: UIImage(systemName: "calendar"))
-        clientsNav.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "list.bullet.rectangle"), selectedImage: UIImage(systemName: "list.bullet.rectangle.fill"))
+        workdaysNav.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "list.bullet.rectangle"), selectedImage: UIImage(systemName: "list.bullet.rectangle.fill"))
         settingsNav.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "gearshape"), selectedImage: UIImage(systemName: "gearshape.fill"))
-        workdayNav.tabBarItem = UITabBarItem(title: nil, image: nil, selectedImage: nil)
+        newWorkdayNav.tabBarItem = UITabBarItem(title: nil, image: nil, selectedImage: nil)
         
         
         // Assign ViewControllers to TabBarController
-        let viewControllers = [summaryNav, calendarNav, workdayNav, clientsNav, settingsNav]
+        let viewControllers = [summaryNav, calendarNav, newWorkdayNav, workdaysNav, settingsNav]
         self.setViewControllers(viewControllers, animated: false)
         
         guard let tabBar = self.tabBar as? HourlyTabBar else { return }
@@ -47,7 +47,7 @@ class HourlyTabBarController: UITabBarController {
     }
         
         func navigateToWorday() {
-            let createAdNavController = self.storyboard?.instantiateViewController(withIdentifier: K.Identifiers.workdayNav) as! UINavigationController
+            let createAdNavController = self.storyboard?.instantiateViewController(withIdentifier: K.Identifiers.newWorkdayNav) as! UINavigationController
             createAdNavController.modalPresentationCapturesStatusBarAppearance = true
             self.present(createAdNavController, animated: true, completion: nil)
         }

@@ -43,7 +43,7 @@ extension SettingsViewController: UITableViewDelegate {
         let selection = menuItems[indexPath.row].title
         
         switch selection {
-        case S.clientsTitle.localized: performSegue(withIdentifier: K.Identifiers.clientsNav, sender: self)
+        case S.clientsTitle.localized: performSegue(withIdentifier: K.Segue.clientsNav, sender: self)
         case S.exportTitle.localized: performSegue(withIdentifier: K.Identifiers.exportNav, sender: self)
         default : print("No selection found")
         }

@@ -19,21 +19,6 @@ class CalendarViewController: UIViewController {
             
     private let workDays: Array<WorkdayItem> = []
     
-    private let testDays: Array<TestDay> = [
-    TestDay(),
-    TestDay(),
-    TestDay(),
-    TestDay(),
-    TestDay(),
-    TestDay(),
-    TestDay(),
-    TestDay(),
-    TestDay(),
-    TestDay(),
-    TestDay(),
-    TestDay()]
-
-    
     let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     override func viewDidLoad() {
