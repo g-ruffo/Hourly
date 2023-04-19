@@ -14,7 +14,7 @@ struct WorkdaysManager {
     func dateToString(date: Date?) -> String {
         if let safeDate = date {
             let formatter = DateFormatter()
-            formatter.dateFormat = "MMMM dd"
+            formatter.dateFormat = "dd/MM/yyyy"
             return formatter.string(from: safeDate)
         } else {
             return ""
