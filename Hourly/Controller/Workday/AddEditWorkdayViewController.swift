@@ -198,7 +198,7 @@ class AddEditWorkdayViewController: UIViewController {
             descriptionTexfield.text = workday.workDescription
             selectedDate = workday.date
             selectedStartTime = workday.startTime
-            selectedEndTime = workday.endTIme
+            selectedEndTime = workday.endTime
         } else {
             title = "Add Worday"
             selectedDate = Date().zeroSeconds
@@ -282,7 +282,7 @@ class AddEditWorkdayViewController: UIViewController {
             workday.date = date
             workday.location = locationTexfield.text
             workday.startTime = start
-            workday.endTIme = end
+            workday.endTime = end
             workday.lunchBreak = Int16(selectedLunchTime ?? 0)
             workday.payRate = rate
             workday.mileage = Int32(selectedMileage ?? 0)
@@ -305,7 +305,7 @@ class AddEditWorkdayViewController: UIViewController {
             workday.date = selectedDate
             workday.location = locationTexfield.text
             workday.startTime = selectedStartTime
-            workday.endTIme = selectedEndTime
+            workday.endTime = selectedEndTime
             workday.lunchBreak = 0
             workday.payRate = payRateTexfield.currencyStringToDouble() ?? 0
             workday.mileage = 0
