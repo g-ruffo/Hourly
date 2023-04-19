@@ -49,6 +49,8 @@ class WorkdaysViewController: UIViewController {
     
     func loadWorkdayFromDatabase() {
         let request: NSFetchRequest<WorkdayItem> = WorkdayItem.fetchRequest()
+        let sortDescriptor = [NSSortDescriptor(key: "date", ascending: false)]
+        request.sortDescriptors = sortDescriptor
         do{
             workDayList = try databaseContext.fetch(request)
             tableView.reloadData()
