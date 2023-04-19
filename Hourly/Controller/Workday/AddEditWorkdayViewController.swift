@@ -48,6 +48,7 @@ class AddEditWorkdayViewController: UIViewController {
     
     private var selectedClient: ClientItem? {
         didSet {
+            print("selectedClient = \(selectedClient)")
             if let value = selectedClient {
                 payRateTexfield.text = "$\(value.payRate)"
                 locationTexfield.text = value.address
@@ -65,16 +66,17 @@ class AddEditWorkdayViewController: UIViewController {
     }
     private var selectedClientID: NSManagedObjectID? {
         didSet {
+            print("selectedClientID \(selectedClientID)")
             if let id = selectedClientID {
-                if selectedClient == nil {
                     do {
                         selectedClient = try databaseContext.existingObject(with: id) as? ClientItem
                     } catch {
                             fatalError(error.localizedDescription)
                     }
-                }
             } else {
-                selectedClient = nil
+                if selectedClient != nil {
+                    selectedClient = nil
+                }
             }
         }
     }
@@ -276,13 +278,10 @@ class AddEditWorkdayViewController: UIViewController {
            let end = selectedEndTime,
            let rate = payRateTexfield.currencyStringToDouble() {
             var workday: WorkdayItem
-            if let day = workdayEdit {
-                workday = day
-                print("Is Updating workday")
-            } else {
-                print("Creating new workday")
-                workday = WorkdayItem(context: databaseContext)
-            }
+            
+            if let day = workdayEdit { workday = day }
+            else { workday = WorkdayItem(context: databaseContext) }
+            
             let adjustedStart = manager.setStartTimeDate(startTime: start, date: date)
             let adjustedEnd = manager.setEndTimeDate(startTime: adjustedStart, endTime: end, date: date)
             workday.clientName = client
@@ -296,9 +295,8 @@ class AddEditWorkdayViewController: UIViewController {
             workday.workDescription = descriptionTexfield.text
             workday.earnings = manager.calculateEarnings(startTime: adjustedStart, endTime: adjustedEnd, lunchTime: selectedLunchTime, payRate: rate)
             workday.isFinalized = true
-            if let client = selectedClient {
-                workday.client = client
-            }
+            workday.client = selectedClient
+            
             return saveWorkday()
         } else {
             return false
@@ -318,9 +316,7 @@ class AddEditWorkdayViewController: UIViewController {
             workday.mileage = 0
             workday.workDescription = descriptionTexfield.text
             workday.isFinalized = false
-            if let client = selectedClient {
-                workday.client = client
-            }
+            workday.client = selectedClient
             return saveWorkday()
         } else {
             return false
@@ -363,7 +359,7 @@ class AddEditWorkdayViewController: UIViewController {
             self.completedSave = true
             self.updateUserDefaults(clearValues: true)
             NotificationCenter.default.post(name: K.NotificationKeys.updateWorkdaysNotification, object: nil)
-            
+
             if workdayEdit == nil {
                 dismiss(animated: true)
             } else {
