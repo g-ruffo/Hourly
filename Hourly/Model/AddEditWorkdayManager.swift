@@ -52,7 +52,7 @@ struct AddEditWorkdayManager {
             let formatter = NumberFormatter()
             formatter.numberStyle = NumberFormatter.Style.currency
             let calculatedEarnings = secondsPay * Double(timeWorked)
-           return calculatedEarnings
+            return abs(calculatedEarnings)
         } else {
             return 0.00
         }

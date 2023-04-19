@@ -12,7 +12,7 @@ class Helper {
         if let start = startTime, let end = endTime {
             let timeWorked = Int(end.timeIntervalSince1970 - start.timeIntervalSince1970)
             let hours = (Double(timeWorked) - Double(lunchTime ?? 0)) / 3600
-            return String(format: "%.2f hours", hours)
+            return String(format: "%.2f hours", abs(hours))
         } else {
             return "--:--"
         }
