@@ -1168,6 +1168,10 @@
                                 <rect key="frame" x="16" y="103" width="361" height="56"/>
                                 <color key="backgroundColor" name="BackgroundGrey"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
                                 <connections>
                                     <outlet property="delegate" destination="3AC-de-x4e" id="m4e-ng-OCP"/>
                                 </connections>

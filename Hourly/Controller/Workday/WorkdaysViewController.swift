@@ -17,6 +17,7 @@ class WorkdaysViewController: UIViewController {
     private var isDisplayingCalendar = true
         
     private var workDayList: Array<WorkdayItem> = []
+
     private var workdaytToEdit: WorkdayItem?
     
     private var manager = WorkdaysManager()
@@ -26,8 +27,8 @@ class WorkdaysViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Connect required delegates
-        tableView.delegate = self
         searchBar.delegate = self
+        tableView.delegate = self
         tableView.dataSource = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(workdaysHaveBeenUpdated), name: K.NotificationKeys.updateWorkdaysNotification, object: nil)
@@ -47,10 +48,15 @@ class WorkdaysViewController: UIViewController {
         loadWorkdayFromDatabase()
     }
     
-    func loadWorkdayFromDatabase() {
+    func loadWorkdayFromDatabase(searchWorkday: String? = nil) {
         let request: NSFetchRequest<WorkdayItem> = WorkdayItem.fetchRequest()
-        let sortDescriptor = [NSSortDescriptor(key: "date", ascending: false)]
-        request.sortDescriptors = sortDescriptor
+        let sortDate = NSSortDescriptor(key: "date", ascending: false)
+        if let search = searchWorkday {
+            let predicate = NSPredicate(format: "clientName CONTAINS[cd] %@", search)
+            request.predicate = predicate
+        }
+        request.sortDescriptors = [sortDate]
+
         do{
             workDayList = try databaseContext.fetch(request)
             tableView.reloadData()
@@ -113,7 +119,17 @@ extension WorkdaysViewController: UITableViewDataSource {
 
 //MARK: - UISearchBarDelegate
 extension WorkdaysViewController: UISearchBarDelegate {
-    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        loadWorkdayFromDatabase(searchWorkday: searchBar.text)
+    }
+        
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            searchBar.resignFirstResponder()
+            loadWorkdayFromDatabase()
+        }
+    }
 }
 
 extension WorkdaysViewController: EditWorkdayDelegate {
