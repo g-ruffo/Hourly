@@ -190,6 +190,7 @@ class AddEditWorkdayViewController: UIViewController {
     func checkForEdit() {
         if let workday = workdayEdit {
             title = "Edit Workday"
+            selectedClient = workday.client
             clientTextField.text = workday.clientName
             locationTexfield.text = workday.location
             payRateTexfield.text = "$\(workday.payRate)"
