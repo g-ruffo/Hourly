@@ -270,7 +270,11 @@ class AddEditWorkdayViewController: UIViewController {
     }
     
     func createUpdateWorkday() -> Bool {
-        if let client = clientTextField.text, let date = selectedDate, let start = selectedStartTime, let end = selectedEndTime, let rate = payRateTexfield.currencyStringToDouble() {
+        if let client = clientTextField.text,
+           let date = selectedDate,
+           let start = selectedStartTime,
+           let end = selectedEndTime,
+           let rate = payRateTexfield.currencyStringToDouble() {
             var workday: WorkdayItem
             if let day = workdayEdit {
                 workday = day
@@ -279,16 +283,18 @@ class AddEditWorkdayViewController: UIViewController {
                 print("Creating new workday")
                 workday = WorkdayItem(context: databaseContext)
             }
+            let adjustedStart = manager.setStartTimeDate(startTime: start, date: date)
+            let adjustedEnd = manager.setEndTimeDate(startTime: adjustedStart, endTime: end, date: date)
             workday.clientName = client
             workday.date = date
             workday.location = locationTexfield.text
-            workday.startTime = start
-            workday.endTime = end
+            workday.startTime = adjustedStart
+            workday.endTime = adjustedEnd
             workday.lunchBreak = Int16(selectedLunchTime ?? 0)
             workday.payRate = rate
             workday.mileage = Int32(selectedMileage ?? 0)
             workday.workDescription = descriptionTexfield.text
-            workday.earnings = manager.calculateEarnings(startTime: start, endTime: end, lunchTime: selectedLunchTime, payRate: rate)
+            workday.earnings = manager.calculateEarnings(startTime: adjustedStart, endTime: adjustedEnd, lunchTime: selectedLunchTime, payRate: rate)
             workday.isFinalized = true
             if let client = selectedClient {
                 workday.client = client
