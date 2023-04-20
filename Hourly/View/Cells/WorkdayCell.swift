@@ -1,8 +1,8 @@
 //
-//  WorkDayCell.swift
+//  WorkdayCell.swift
 //  Hourly
 //
-//  Created by Grayson Ruffo on 2023-04-10.
+//  Created by Grayson Ruffo on 2023-04-20.
 //
 
 import UIKit
@@ -14,7 +14,7 @@ class WorkdayCell: UITableViewCell {
     @IBOutlet weak var earningsLabel: UILabel!
     @IBOutlet weak var hoursLabel: UILabel!
     @IBOutlet weak var clientTagImageView: UIImageView!
-    @IBOutlet weak var draftButton: UIButton!
+    
     var workday: WorkdayItem? {
         didSet {
             if let day = workday {
@@ -23,7 +23,8 @@ class WorkdayCell: UITableViewCell {
                earningsLabel?.text = day.earnings.convertToCurrency()
                hoursLabel?.text = Helper.calculateHours(startTime: day.startTime,
                                                         endTime: day.endTime, lunchTime: Int(day.lunchBreak))
-               draftButton.isHidden = day.isFinalized
+                clientTagImageView.image = day.isFinalized ? UIImage(systemName: "circle.fill") : UIImage(systemName: "pencil.circle")
+                
                 if let colour = day.client?.tagColor {
                     clientTagImageView.tintColor = UIColor(colour)
                 } else {
@@ -33,19 +34,12 @@ class WorkdayCell: UITableViewCell {
             }
         }
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        draftButton.layer.cornerRadius = 8
-        draftButton.layer.borderWidth = 1
-        draftButton.layer.borderColor = UIColor.green.cgColor
-        draftButton.backgroundColor = .green.withAlphaComponent(0.65)
-        draftButton.tintColor = UIColor.white
 
         contentView.backgroundColor = .clear
-
-        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -54,8 +48,12 @@ class WorkdayCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setWorkday(_ item: WorkdayItem) {
-        workday = item
+    static func nib() -> UINib {
+        return UINib(nibName: K.Cell.workdayCell, bundle: nil)
+    }
+    
+    public func configure(with day: WorkdayItem) {
+        workday = day
     }
     
 }

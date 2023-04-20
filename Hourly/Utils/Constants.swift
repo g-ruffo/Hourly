@@ -17,7 +17,6 @@ struct K {
         static let exportNav = "ExportNavigation"
         static let newWorkdayNav = "WorkdayNavigation"
         static let settingsNav = "SettingsNavigation"
-        static let workdayCell = "WorkdayCell"
         static let clientCell = "ClientCell"
         static let addClientNav = "AddClientNavigation"
         static let detailClientNav = "DetailClientNavigation"
@@ -32,10 +31,9 @@ struct K {
     }
     
     struct Cell {
-        static let workdayImageCell = "WorkdayImageCell"
         static let clientSearchCell = "ClientSearchCell"
         static let photoCell = "PhotoCell"
-
+        static let workdayCell = "WorkdayCell"
     }
     
     struct Segue {

@@ -26,6 +26,7 @@
 		7964AFE429EDE21F00065863 /* ClientSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964AFE329EDE21F00065863 /* ClientSearchTextField.swift */; };
 		79AED58329F0DE9F00FBF2E4 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AED58129F0DE9F00FBF2E4 /* PhotoCell.swift */; };
 		79AED58429F0DE9F00FBF2E4 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79AED58229F0DE9F00FBF2E4 /* PhotoCell.xib */; };
+		79AED58729F1E63B00FBF2E4 /* WorkdayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AED58529F1E63B00FBF2E4 /* WorkdayCell.swift */; };
 		79C292A229EE6B5900A2A8BF /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C292A129EE6B5900A2A8BF /* Helper.swift */; };
 		79D5F6A929E5F04D00CA2542 /* ClientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D5F6A729E5F04D00CA2542 /* ClientCell.swift */; };
 		79D5F6AC29E606F000CA2542 /* AddEditClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D5F6AB29E606F000CA2542 /* AddEditClientViewController.swift */; };
@@ -36,7 +37,6 @@
 		79F1AFD029E4C047004CED4E /* AddEditWorkdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFCF29E4C047004CED4E /* AddEditWorkdayViewController.swift */; };
 		79F1AFD229E4C07A004CED4E /* ClientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFD129E4C07A004CED4E /* ClientsViewController.swift */; };
 		79F1AFD429E4C8CD004CED4E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFD329E4C8CD004CED4E /* Constants.swift */; };
-		79F1AFDC29E52E78004CED4E /* WorkdayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFDA29E52E78004CED4E /* WorkdayCell.swift */; };
 		79FA886E29E4AD66003C6DFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FA886D29E4AD66003C6DFB /* AppDelegate.swift */; };
 		79FA887029E4AD66003C6DFB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FA886F29E4AD66003C6DFB /* SceneDelegate.swift */; };
 		79FA887229E4AD66003C6DFB /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FA887129E4AD66003C6DFB /* SummaryViewController.swift */; };
@@ -86,6 +86,7 @@
 		7964AFE329EDE21F00065863 /* ClientSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientSearchTextField.swift; sourceTree = "<group>"; };
 		79AED58129F0DE9F00FBF2E4 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		79AED58229F0DE9F00FBF2E4 /* PhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
+		79AED58529F1E63B00FBF2E4 /* WorkdayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkdayCell.swift; sourceTree = "<group>"; };
 		79C292A129EE6B5900A2A8BF /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		79D5F6A729E5F04D00CA2542 /* ClientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientCell.swift; sourceTree = "<group>"; };
 		79D5F6AB29E606F000CA2542 /* AddEditClientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditClientViewController.swift; sourceTree = "<group>"; };
@@ -96,7 +97,6 @@
 		79F1AFCF29E4C047004CED4E /* AddEditWorkdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditWorkdayViewController.swift; sourceTree = "<group>"; };
 		79F1AFD129E4C07A004CED4E /* ClientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsViewController.swift; sourceTree = "<group>"; };
 		79F1AFD329E4C8CD004CED4E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		79F1AFDA29E52E78004CED4E /* WorkdayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkdayCell.swift; sourceTree = "<group>"; };
 		79FA886A29E4AD66003C6DFB /* Hourly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hourly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79FA886D29E4AD66003C6DFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79FA886F29E4AD66003C6DFB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -145,13 +145,13 @@
 		795BB47229E67798000D7FB1 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				79F1AFDA29E52E78004CED4E /* WorkdayCell.swift */,
 				79D5F6A729E5F04D00CA2542 /* ClientCell.swift */,
 				795BB46C29E65D99000D7FB1 /* SettingsCell.swift */,
 				795BB46D29E65D99000D7FB1 /* SettingsCell.xib */,
 				795BB47529E67881000D7FB1 /* CalendarCell.swift */,
 				79AED58129F0DE9F00FBF2E4 /* PhotoCell.swift */,
 				79AED58229F0DE9F00FBF2E4 /* PhotoCell.xib */,
+				79AED58529F1E63B00FBF2E4 /* WorkdayCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -451,6 +451,7 @@
 				79F1AFCA29E4BD32004CED4E /* HourlyTabBarController.swift in Sources */,
 				79FA886E29E4AD66003C6DFB /* AppDelegate.swift in Sources */,
 				795BB47129E66E3E000D7FB1 /* WorkdaysViewController.swift in Sources */,
+				79AED58729F1E63B00FBF2E4 /* WorkdayCell.swift in Sources */,
 				79C292A229EE6B5900A2A8BF /* Helper.swift in Sources */,
 				79F1AFD029E4C047004CED4E /* AddEditWorkdayViewController.swift in Sources */,
 				79FA88A629E4B2BD003C6DFB /* StringResource.swift in Sources */,
@@ -466,7 +467,6 @@
 				79F1AFC829E4BD0E004CED4E /* HourlyTabBar.swift in Sources */,
 				79F1AFCE29E4BFD4004CED4E /* SettingsViewController.swift in Sources */,
 				79F1AFD429E4C8CD004CED4E /* Constants.swift in Sources */,
-				79F1AFDC29E52E78004CED4E /* WorkdayCell.swift in Sources */,
 				7964AFC829E89CDF00065863 /* AddEditClientManager.swift in Sources */,
 				795BB47729E67881000D7FB1 /* CalendarCell.swift in Sources */,
 			);

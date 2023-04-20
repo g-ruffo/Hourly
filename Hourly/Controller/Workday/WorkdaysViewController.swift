@@ -99,9 +99,9 @@ extension WorkdaysViewController: UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.Identifiers.workdayCell, for: indexPath) as! WorkdayCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.Cell.workdayCell, for: indexPath) as! WorkdayCell
         let workDay = workDayList[indexPath.row]
-        cell.setWorkday(workDay)
+        cell.configure(with: workDay)
         return cell
     }
 }
