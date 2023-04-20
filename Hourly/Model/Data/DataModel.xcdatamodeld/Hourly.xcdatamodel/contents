@@ -11,8 +11,8 @@
         <relationship name="daysWorked" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WorkdayItem" inverseName="client" inverseEntity="WorkdayItem"/>
     </entity>
     <entity name="PhotoItem" representedClassName="PhotoItem" syncable="YES" codeGenerationType="class">
+        <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="imageDescription" optional="YES" attributeType="String"/>
-        <attribute name="imagePath" optional="YES" attributeType="String"/>
         <relationship name="workingDay" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WorkdayItem" inverseName="photos" inverseEntity="WorkdayItem"/>
     </entity>
     <entity name="WorkdayItem" representedClassName=".WorkdayItem" syncable="YES" codeGenerationType="class">
