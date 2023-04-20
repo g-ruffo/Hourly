@@ -34,6 +34,7 @@ struct K {
     struct Cell {
         static let workdayImageCell = "WorkdayImageCell"
         static let clientSearchCell = "ClientSearchCell"
+        static let photoCell = "PhotoCell"
 
     }
     
