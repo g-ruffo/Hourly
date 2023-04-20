@@ -15,6 +15,11 @@ class PhotoCell: UICollectionViewCell {
         super.awakeFromNib()
     }
     
+    override func awakeFromNib() {
+        contentView.layer.cornerRadius = 20
+        contentView.layer.masksToBounds = true
+    }
+    
     public func configure(with image: UIImage) {
         imageView.image = image
     }
