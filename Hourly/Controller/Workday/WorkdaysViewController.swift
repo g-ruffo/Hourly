@@ -100,19 +100,8 @@ extension WorkdaysViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.Identifiers.workdayCell, for: indexPath) as! WorkdayCell
-        
         let workDay = workDayList[indexPath.row]
-        cell.clientLabel.text = workDay.clientName
-        cell.dateLabel?.text = manager.dateToString(date: workDay.date)
-        cell.earningsLabel?.text = workDay.earnings.convertToCurrency()
-        cell.hoursLabel?.text = Helper.calculateHours(startTime: workDay.startTime, endTime: workDay.endTime, lunchTime: Int(workDay.lunchBreak))
-        cell.draftButton.isHidden = workDay.isFinalized
-        cell.backgroundColor = .clear
-        if let colour = workDay.client?.tagColor {
-            cell.clientTagImageView.tintColor = UIColor(colour)
-        } else {
-            cell.clientTagImageView.tintColor = UIColor("#ECF0F1")
-        }
+        cell.setWorkday(workDay)
         return cell
     }
 }

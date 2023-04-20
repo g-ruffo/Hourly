@@ -15,6 +15,24 @@ class WorkdayCell: UITableViewCell {
     @IBOutlet weak var hoursLabel: UILabel!
     @IBOutlet weak var clientTagImageView: UIImageView!
     @IBOutlet weak var draftButton: UIButton!
+    var workday: WorkdayItem? {
+        didSet {
+            if let day = workday {
+                clientLabel.text = day.clientName
+                dateLabel?.text = day.date?.formatDateToString()
+               earningsLabel?.text = day.earnings.convertToCurrency()
+               hoursLabel?.text = Helper.calculateHours(startTime: day.startTime,
+                                                        endTime: day.endTime, lunchTime: Int(day.lunchBreak))
+               draftButton.isHidden = day.isFinalized
+                if let colour = day.client?.tagColor {
+                    clientTagImageView.tintColor = UIColor(colour)
+                } else {
+                    clientTagImageView.tintColor = UIColor("#ECF0F1")
+                }
+                
+            }
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,6 +52,10 @@ class WorkdayCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func setWorkday(_ item: WorkdayItem) {
+        workday = item
     }
     
 }
