@@ -121,10 +121,15 @@ class AddEditWorkdayViewController: UIViewController {
             switch action.title {
             case "Save as Draft":
                 if self.createDraftWorkday() {
-                    self.dismiss(animated: true) {
-                        self.completedSave = true
-                        self.updateUserDefaults(clearValues: true)
-                        NotificationCenter.default.post(name: K.NotificationKeys.updateWorkdaysNotification, object: nil)
+                    print("saved draft")
+                    if self.workdayEdit != nil {
+                        self.navigationController?.popViewController(animated: true)
+                    } else {
+                        self.dismiss(animated: true) {
+                            self.completedSave = true
+                            self.updateUserDefaults(clearValues: true)
+                            NotificationCenter.default.post(name: K.NotificationKeys.updateWorkdaysNotification, object: nil)
+                        }
                     }
                 }
             case "Clear":
@@ -309,10 +314,13 @@ class AddEditWorkdayViewController: UIViewController {
             
             let start = selectedStartTime
             let end = selectedEndTime
-            let rate = payRateTexfield.currencyStringToDouble()
             
             let adjustedStart = manager.setStartTimeDate(startTime: start, date: date)
             let adjustedEnd = manager.setEndTimeDate(startTime: adjustedStart, endTime: end, date: date)
+            if let rate = payRateTexfield.currencyStringToDouble() {
+                workday.payRate = rate
+                workday.earnings = manager.calculateEarnings(startTime: adjustedStart, endTime: adjustedEnd, lunchTime: selectedLunchTime, payRate: rate)
+            }
             
             workday.clientName = client
             workday.date = date
@@ -320,11 +328,9 @@ class AddEditWorkdayViewController: UIViewController {
             workday.startTime = adjustedStart
             workday.endTime = adjustedEnd
             workday.lunchBreak = Int16(selectedLunchTime ?? 0)
-            workday.payRate = rate!
             workday.mileage = Int32(selectedMileage ?? 0)
             workday.workDescription = descriptionTexfield.text
-            workday.earnings = manager.calculateEarnings(startTime: adjustedStart, endTime: adjustedEnd, lunchTime: selectedLunchTime, payRate: rate)
-            workday.isFinalized = true
+            workday.isFinalized = false
             workday.client = selectedClient
             return saveWorkday()
         } else {
