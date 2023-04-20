@@ -110,7 +110,9 @@ extension WorkdaysViewController: UITableViewDataSource {
 extension WorkdaysViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        loadWorkdayFromDatabase(searchWorkday: searchBar.text)
+        if let searchText = searchBar.text, !searchText.isEmpty {
+            loadWorkdayFromDatabase(searchWorkday: searchText)
+        }
     }
         
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
