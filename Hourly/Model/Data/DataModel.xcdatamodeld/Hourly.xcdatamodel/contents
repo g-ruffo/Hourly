@@ -28,6 +28,6 @@
         <attribute name="startTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="workDescription" optional="YES" attributeType="String"/>
         <relationship name="client" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ClientItem" inverseName="daysWorked" inverseEntity="ClientItem"/>
-        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PhotoItem" inverseName="workingDay" inverseEntity="PhotoItem"/>
+        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="PhotoItem" inverseName="workingDay" inverseEntity="PhotoItem"/>
     </entity>
 </model>
