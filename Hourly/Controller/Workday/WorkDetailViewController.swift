@@ -14,7 +14,7 @@ protocol EditWorkdayDelegate {
 class WorkDetailViewController: UIViewController {
     
     @IBOutlet weak var draftButton: UIButton!
-    @IBOutlet weak var photosCollectionView: UICollectionView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     //MARK: - Fields to set
     @IBOutlet weak var clientLabel: UILabel!
@@ -29,16 +29,18 @@ class WorkDetailViewController: UIViewController {
     @IBOutlet weak var mileageLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     
+    private var savedPhotos: Array<PhotoItem> = []
+    
     var workday: WorkdayItem?
     
     var delegate: EditWorkdayDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        photosCollectionView.delegate = self
-        photosCollectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
         setWorkdayDetails()
-
+        collectionView.register(PhotoCell.nib(), forCellWithReuseIdentifier: K.Cell.photoCell)
     }
     
     private func setWorkdayDetails() {
@@ -47,22 +49,24 @@ class WorkDetailViewController: UIViewController {
         earningsLabel.text = day.earnings.convertToCurrency()
         dateLabel.text = day.date?.formatDateToString() ?? "No date set"
         draftButton.isHidden = day.isFinalized
-        descriptionLabel.text = day.workDescription
         startTimeLabel.text = day.startTime?.formatTimeToString()
         endTimeLabel.text = day.endTime?.formatTimeToString()
         lunchTimeLabel.text = "\(day.lunchBreak) min"
         hoursWorkedLabel.text = Helper.calculateHours(startTime: day.startTime, endTime: day.endTime, lunchTime: Int(day.lunchBreak))
         payRateLabel.text = day.payRate.convertToCurrency()
         mileageLabel.text = "\(day.mileage) km"
-        locationLabel.text = day.location
-        if let photos = day.photos, photos.count > 0 {
-            print("photos is not nil = \(photos.count)")
+//        if let description = day.workDescription, description.isEmpty {
+//            descriptionLabel.text = "No description found"
+//        } else {
+//            descriptionLabel.text = day.workDescription
+//        }
+        if let location = day.location, location.isEmpty {
+            locationLabel.text = "No location set"
         } else {
-            photosCollectionView.isHidden = true
-            print("photos is nil")
-
+            locationLabel.text = day.location
         }
-        
+        savedPhotos = day.photos?.allObjects as? Array<PhotoItem> ?? []
+        collectionView.isHidden = savedPhotos.count < 1
     }
     
 
@@ -81,19 +85,30 @@ class WorkDetailViewController: UIViewController {
 
 extension WorkDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return savedPhotos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.Cell.workdayImageCell, for: indexPath) as! PhotoCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.Cell.photoCell, for: indexPath) as! PhotoCell
+        if let image = UIImage(data: savedPhotos[indexPath.row].image!) {
+            cell.imageView.image = image
+        } else {
+            cell.imageView.image = UIImage(systemName: "externaldrive.badge.questionmark")
+        }
+        cell.backgroundColor = .green
         return cell
     }
-    
-    
 }
 
 //MARK: - UICollectionViewDelegate
 
 extension WorkDetailViewController: UICollectionViewDelegate {
     
+}
+
+//MARK: - UICollectionViewDelegateFlowLayout
+extension WorkDetailViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 100, height: 100)
+    }
 }

@@ -214,7 +214,7 @@ class AddEditWorkdayViewController: UIViewController {
             selectedDate = workday.date
             selectedStartTime = workday.startTime
             selectedEndTime = workday.endTime
-            savedPhotos = (workday.photos?.allObjects as? Array<PhotoItem>)!
+            savedPhotos = workday.photos?.allObjects as? Array<PhotoItem> ?? []
         } else {
             title = "Add Worday"
             selectedDate = Date().zeroSeconds
@@ -475,8 +475,10 @@ extension AddEditWorkdayViewController: UICollectionViewDataSource {
             cell.imageView.layoutMargins = UIEdgeInsets(top: 40, left: 40, bottom: 40, right: 40)
             
         } else {
-            if let photo = UIImage(data: savedPhotos[indexPath.row - 1].image!) {
-                cell.configure(with: photo)
+            if let image = UIImage(data: savedPhotos[indexPath.row - 1].image!) {
+                cell.imageView.image = image
+            } else {
+                cell.imageView.image = UIImage(systemName: "externaldrive.badge.questionmark")
             }
         }
         return cell
