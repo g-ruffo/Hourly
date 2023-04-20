@@ -8,7 +8,7 @@
 import UIKit
 
 protocol AddEditWorkdayManagerDelegate: UITextFieldDelegate {
-
+    
     func didUpdateCurrencyText(_ addEditWorkdayManager: AddEditWorkdayManager, newCurrencyValue: String?)
 }
 
@@ -58,34 +58,38 @@ struct AddEditWorkdayManager {
         }
     }
     
-    func setStartTimeDate(startTime: Date, date: Date) -> Date {
-        let calendar = Calendar.current
-        var dateComponents = DateComponents()
-        dateComponents.day = Calendar.current.component(.day, from: date)
-        dateComponents.month = Calendar.current.component(.month, from: date)
-        dateComponents.year = Calendar.current.component(.year, from: date)
-        dateComponents.hour = Calendar.current.component(.hour, from: startTime)
-        dateComponents.minute = Calendar.current.component(.minute, from: startTime)
-        dateComponents.second = Calendar.current.component(.second, from: startTime)
-        let resultTime = calendar.date(from: dateComponents)
-        if let result = resultTime { return result }
-        else { fatalError() }
+    func setStartTimeDate(startTime: Date?, date: Date) -> Date? {
+        var resultTime: Date?
+        if let start = startTime {
+            let calendar = Calendar.current
+            var dateComponents = DateComponents()
+            dateComponents.day = Calendar.current.component(.day, from: date)
+            dateComponents.month = Calendar.current.component(.month, from: date)
+            dateComponents.year = Calendar.current.component(.year, from: date)
+            dateComponents.hour = Calendar.current.component(.hour, from: start)
+            dateComponents.minute = Calendar.current.component(.minute, from: start)
+            dateComponents.second = Calendar.current.component(.second, from: start)
+            resultTime = calendar.date(from: dateComponents)
+        }
+        return resultTime
     }
     
-    func setEndTimeDate(startTime: Date, endTime: Date, date: Date) -> Date {
-        let calendar = Calendar.current
-        var dateComponents = DateComponents()
-        dateComponents.day = Calendar.current.component(.day, from: date)
-        dateComponents.month = Calendar.current.component(.month, from: date)
-        dateComponents.year = Calendar.current.component(.year, from: date)
-        dateComponents.hour = Calendar.current.component(.hour, from: endTime)
-        dateComponents.minute = Calendar.current.component(.minute, from: endTime)
-        dateComponents.second = Calendar.current.component(.second, from: endTime)
-        var resultTime = calendar.date(from: dateComponents)
-        if let addDay = resultTime, startTime > addDay {
-            resultTime = Calendar.current.date(byAdding: .day, value: 1, to: addDay)
+    func setEndTimeDate(startTime: Date?, endTime: Date?, date: Date) -> Date? {
+        var resultTime: Date?
+        if let start = startTime, let end = endTime {
+            let calendar = Calendar.current
+            var dateComponents = DateComponents()
+            dateComponents.day = Calendar.current.component(.day, from: date)
+            dateComponents.month = Calendar.current.component(.month, from: date)
+            dateComponents.year = Calendar.current.component(.year, from: date)
+            dateComponents.hour = Calendar.current.component(.hour, from: end)
+            dateComponents.minute = Calendar.current.component(.minute, from: end)
+            dateComponents.second = Calendar.current.component(.second, from: end)
+            resultTime = calendar.date(from: dateComponents)
+            if let addDay = resultTime, start > addDay {
+                resultTime = Calendar.current.date(byAdding: .day, value: 1, to: addDay)
+            }
         }
-        if let result = resultTime { return result }
-        else { fatalError() }
+        return resultTime
     }
 }

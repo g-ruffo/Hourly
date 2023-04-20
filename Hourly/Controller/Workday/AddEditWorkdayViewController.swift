@@ -48,7 +48,6 @@ class AddEditWorkdayViewController: UIViewController {
     
     private var selectedClient: ClientItem? {
         didSet {
-            print("selectedClient = \(selectedClient)")
             if let value = selectedClient {
                 payRateTexfield.text = "$\(value.payRate)"
                 locationTexfield.text = value.address
@@ -66,13 +65,12 @@ class AddEditWorkdayViewController: UIViewController {
     }
     private var selectedClientID: NSManagedObjectID? {
         didSet {
-            print("selectedClientID \(selectedClientID)")
             if let id = selectedClientID {
-                    do {
-                        selectedClient = try databaseContext.existingObject(with: id) as? ClientItem
-                    } catch {
-                            fatalError(error.localizedDescription)
-                    }
+                do {
+                    selectedClient = try databaseContext.existingObject(with: id) as? ClientItem
+                } catch {
+                    fatalError(error.localizedDescription)
+                }
             } else {
                 if selectedClient != nil {
                     selectedClient = nil
@@ -82,17 +80,17 @@ class AddEditWorkdayViewController: UIViewController {
     }
     
     private var manager = AddEditWorkdayManager()
-        
+    
     private let lunchArray = [5, 10, 15, 20, 30, 40, 45, 60, 90, 120]
     private let mileageNumbers = [10,10,10]
     private var mileageDigits = [0,0,0]
-
+    
     private let defaults = UserDefaults.standard
     
     private let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     private var completedSave: Bool = false
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         manager.delegate = self
@@ -109,7 +107,6 @@ class AddEditWorkdayViewController: UIViewController {
         setupMenuItems()
         saveButton.tintColor = UIColor("#F1C40F")
     }
-
     
     override func viewWillAppear(_ animated: Bool) {
         checkUserDefaults()
@@ -128,8 +125,8 @@ class AddEditWorkdayViewController: UIViewController {
                         self.completedSave = true
                         self.updateUserDefaults(clearValues: true)
                         NotificationCenter.default.post(name: K.NotificationKeys.updateWorkdaysNotification, object: nil)
+                    }
                 }
-            }
             case "Clear":
                 self.updateUserDefaults(clearValues: true)
                 self.checkUserDefaults()
@@ -277,8 +274,8 @@ class AddEditWorkdayViewController: UIViewController {
            let start = selectedStartTime,
            let end = selectedEndTime,
            let rate = payRateTexfield.currencyStringToDouble() {
-            var workday: WorkdayItem
             
+            var workday: WorkdayItem
             if let day = workdayEdit { workday = day }
             else { workday = WorkdayItem(context: databaseContext) }
             
@@ -304,18 +301,30 @@ class AddEditWorkdayViewController: UIViewController {
     }
     
     func createDraftWorkday() -> Bool {
-        if let client = clientTextField.text {
-            let workday = WorkdayItem(context: databaseContext)
+        if let client = clientTextField.text, let date = selectedDate {
+            
+            var workday: WorkdayItem
+            if let day = workdayEdit { workday = day }
+            else { workday = WorkdayItem(context: databaseContext) }
+            
+            let start = selectedStartTime
+            let end = selectedEndTime
+            let rate = payRateTexfield.currencyStringToDouble()
+            
+            let adjustedStart = manager.setStartTimeDate(startTime: start, date: date)
+            let adjustedEnd = manager.setEndTimeDate(startTime: adjustedStart, endTime: end, date: date)
+            
             workday.clientName = client
-            workday.date = selectedDate
+            workday.date = date
             workday.location = locationTexfield.text
-            workday.startTime = selectedStartTime
-            workday.endTime = selectedEndTime
-            workday.lunchBreak = 0
-            workday.payRate = payRateTexfield.currencyStringToDouble() ?? 0
-            workday.mileage = 0
+            workday.startTime = adjustedStart
+            workday.endTime = adjustedEnd
+            workday.lunchBreak = Int16(selectedLunchTime ?? 0)
+            workday.payRate = rate!
+            workday.mileage = Int32(selectedMileage ?? 0)
             workday.workDescription = descriptionTexfield.text
-            workday.isFinalized = false
+            workday.earnings = manager.calculateEarnings(startTime: adjustedStart, endTime: adjustedEnd, lunchTime: selectedLunchTime, payRate: rate)
+            workday.isFinalized = true
             workday.client = selectedClient
             return saveWorkday()
         } else {
@@ -353,13 +362,11 @@ class AddEditWorkdayViewController: UIViewController {
         self.present(dialogMessage, animated: true, completion: nil)
     }
 
-
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         if createUpdateWorkday() {
             self.completedSave = true
             self.updateUserDefaults(clearValues: true)
             NotificationCenter.default.post(name: K.NotificationKeys.updateWorkdaysNotification, object: nil)
-
             if workdayEdit == nil {
                 dismiss(animated: true)
             } else {
@@ -384,7 +391,7 @@ extension AddEditWorkdayViewController: AddEditWorkdayManagerDelegate {
 
 //MARK: - UIPickerViewDelegate
 extension AddEditWorkdayViewController: UIPickerViewDelegate {
-
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch pickerView.tag {
         case 1: selectedLunchTime = lunchArray[row]
