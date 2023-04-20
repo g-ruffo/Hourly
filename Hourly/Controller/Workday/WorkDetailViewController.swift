@@ -97,7 +97,6 @@ extension WorkDetailViewController: UICollectionViewDataSource {
         } else {
             cell.imageView.image = UIImage(systemName: "externaldrive.badge.questionmark")
         }
-        cell.backgroundColor = .green
         return cell
     }
 }
