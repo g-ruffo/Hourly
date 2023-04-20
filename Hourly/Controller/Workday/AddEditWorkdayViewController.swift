@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import PhotosUI
 
 class AddEditWorkdayViewController: UIViewController {
 
@@ -88,8 +89,10 @@ class AddEditWorkdayViewController: UIViewController {
     private let defaults = UserDefaults.standard
     
     private let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
+            
     private var completedSave: Bool = false
+    
+    private var photos: Array<UIImage> = [UIImage(systemName: "plus")!]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,12 +103,15 @@ class AddEditWorkdayViewController: UIViewController {
         mileagePicker.delegate = self
         mileagePicker.dataSource = self
         clientTextField.searchDelegate = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
         setupLunchMileagePicker()
         setupDatePicker()
         setupTimePickers()
         checkForEdit()
         setupMenuItems()
         saveButton.tintColor = UIColor("#F1C40F")
+        createCollectionView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -115,6 +121,11 @@ class AddEditWorkdayViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         updateUserDefaults()
     }
+    
+    func createCollectionView() {
+        collectionView.register(PhotoCell.nib(), forCellWithReuseIdentifier: K.Cell.photoCell)
+    }
+
     
     func setupMenuItems() {
         let menuHandler: UIActionHandler = { action in
@@ -382,6 +393,15 @@ class AddEditWorkdayViewController: UIViewController {
             showAlertDialog()
         }
     }
+    
+    func createPhotoPicker() {
+        var config = PHPickerConfiguration(photoLibrary: .shared())
+        config.selectionLimit = 10
+        config.filter = PHPickerFilter.images
+        let pickerVC = PHPickerViewController(configuration: config)
+        pickerVC.delegate = self
+        present(pickerVC, animated: true)
+    }
 }
 
 //MARK: - AddEditClientManagerDelegate
@@ -392,6 +412,67 @@ extension AddEditWorkdayViewController: AddEditWorkdayManagerDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         manager.validateCurrencyInput(string: string)
+    }
+}
+
+//MARK: - PHPickerViewControllerDelegate
+extension AddEditWorkdayViewController: PHPickerViewControllerDelegate {
+    
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        picker.dismiss(animated: true)
+        let group = DispatchGroup()
+        results.forEach { result in
+            group.enter()
+            result.itemProvider.loadObject(ofClass: UIImage.self) { [weak self] reading, error in
+                defer {
+                    group.leave()
+                }
+                guard let image = reading as? UIImage, error == nil else {
+                    print("didFinishPicking error = \(error?.localizedDescription)")
+                    return
+                }
+                self?.photos.append(image)
+            }
+        }
+        group.notify(queue: .main) {
+            print("Image count = \(self.photos.count)")
+            self.collectionView.reloadData()
+        }
+    }
+}
+
+//MARK: - UICollectionViewDelegate
+extension AddEditWorkdayViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        if indexPath.row == 0 {
+            createPhotoPicker()
+        }
+    }
+}
+
+//MARK: - UICollectionViewDataSource
+extension AddEditWorkdayViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return photos.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.Cell.photoCell, for: indexPath) as! PhotoCell
+        cell.backgroundColor = .green
+        if indexPath.row == 0 {
+            cell.imageView.contentMode = .center
+            cell.imageView.layoutMargins = UIEdgeInsets(top: 40, left: 40, bottom: 40, right: 40)
+        }
+        cell.configure(with: photos[indexPath.row])
+        return cell
+    }
+}
+
+//MARK: - UICollectionViewDelegateFlowLayout
+extension AddEditWorkdayViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 100, height: 100)
     }
 }
 

@@ -85,7 +85,7 @@ extension WorkDetailViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.Cell.workdayImageCell, for: indexPath) as! WordayImageCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.Cell.workdayImageCell, for: indexPath) as! PhotoCell
         return cell
     }
     
