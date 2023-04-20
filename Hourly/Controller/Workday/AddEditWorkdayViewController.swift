@@ -44,7 +44,6 @@ class AddEditWorkdayViewController: UIViewController {
         didSet { if let value = selectedMileage, value > 0 { mileageTexfield.text = "\(value) km" } }
     }
 
-    
     var workdayEdit: WorkdayItem?
     
     private var selectedClient: ClientItem? {
@@ -92,7 +91,7 @@ class AddEditWorkdayViewController: UIViewController {
             
     private var completedSave: Bool = false
     
-    private var photos: Array<UIImage> = [UIImage(systemName: "plus")!]
+    private var savedPhotos: Array<PhotoItem> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -111,7 +110,7 @@ class AddEditWorkdayViewController: UIViewController {
         checkForEdit()
         setupMenuItems()
         saveButton.tintColor = UIColor("#F1C40F")
-        createCollectionView()
+        createCollectionView()        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -215,12 +214,13 @@ class AddEditWorkdayViewController: UIViewController {
             selectedDate = workday.date
             selectedStartTime = workday.startTime
             selectedEndTime = workday.endTime
+            savedPhotos = (workday.photos?.allObjects as? Array<PhotoItem>)!
         } else {
             title = "Add Worday"
             selectedDate = Date().zeroSeconds
         }
     }
-    
+
     func setupLunchMileagePicker() {
         lunchTexfield.inputView = lunchPicker
         mileageTexfield.inputView = mileagePicker
@@ -309,7 +309,7 @@ class AddEditWorkdayViewController: UIViewController {
             workday.earnings = manager.calculateEarnings(startTime: adjustedStart, endTime: adjustedEnd, lunchTime: selectedLunchTime, payRate: rate)
             workday.isFinalized = true
             workday.client = selectedClient
-            
+            createPhotoItems(workday: workday)
             return saveWorkday()
         } else {
             return false
@@ -343,9 +343,16 @@ class AddEditWorkdayViewController: UIViewController {
             workday.workDescription = descriptionTexfield.text
             workday.isFinalized = false
             workday.client = selectedClient
+            createPhotoItems(workday: workday)
             return saveWorkday()
         } else {
             return false
+        }
+    }
+    
+    func createPhotoItems(workday: WorkdayItem) {
+            for photo in savedPhotos {
+                photo.workingDay = workday
         }
     }
     
@@ -431,11 +438,13 @@ extension AddEditWorkdayViewController: PHPickerViewControllerDelegate {
                     print("didFinishPicking error = \(error?.localizedDescription)")
                     return
                 }
-                self?.photos.append(image)
+                let jpegImage = image.jpegData(compressionQuality: 1.0)
+                let photoItem = PhotoItem(context: self!.databaseContext)
+                photoItem.image = jpegImage
+                self?.savedPhotos.append(photoItem)
             }
         }
         group.notify(queue: .main) {
-            print("Image count = \(self.photos.count)")
             self.collectionView.reloadData()
         }
     }
@@ -454,17 +463,22 @@ extension AddEditWorkdayViewController: UICollectionViewDelegate {
 //MARK: - UICollectionViewDataSource
 extension AddEditWorkdayViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photos.count
+        return savedPhotos.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.Cell.photoCell, for: indexPath) as! PhotoCell
         cell.backgroundColor = .green
         if indexPath.row == 0 {
+            cell.configure(with: UIImage(systemName: "plus")!)
             cell.imageView.contentMode = .center
             cell.imageView.layoutMargins = UIEdgeInsets(top: 40, left: 40, bottom: 40, right: 40)
+            
+        } else {
+            if let photo = UIImage(data: savedPhotos[indexPath.row - 1].image!) {
+                cell.configure(with: photo)
+            }
         }
-        cell.configure(with: photos[indexPath.row])
         return cell
     }
 }
