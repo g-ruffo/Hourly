@@ -9,8 +9,13 @@ import Foundation
 
 struct WorkdayDetailsManager {
     
-    var numberOfDetailCells: Int = 0
-    
-    
-    
+    func timeToDisplayString(_ date: Date?) -> String {
+        if let time = date {
+            let formatter = DateFormatter()
+            formatter.timeStyle = .short
+            return formatter.string(from: time)
+        } else {
+            return "--:--"
+        }
+    }
 }

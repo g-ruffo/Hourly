@@ -29,6 +29,8 @@ class WorkDetailViewController: UIViewController {
     @IBOutlet weak var mileageLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     
+    private let manager = WorkdayDetailsManager()
+    
     private var savedPhotos: Array<PhotoItem> = []
     
     var workday: WorkdayItem?
@@ -49,17 +51,17 @@ class WorkDetailViewController: UIViewController {
         earningsLabel.text = day.earnings.convertToCurrency()
         dateLabel.text = day.date?.formatDateToString() ?? "No date set"
         draftButton.isHidden = day.isFinalized
-        startTimeLabel.text = day.startTime?.formatTimeToString()
-        endTimeLabel.text = day.endTime?.formatTimeToString()
+        startTimeLabel.text = manager.timeToDisplayString(day.startTime)
+        endTimeLabel.text = manager.timeToDisplayString(day.endTime)
         lunchTimeLabel.text = "\(day.lunchBreak) min"
         hoursWorkedLabel.text = Helper.calculateHours(startTime: day.startTime, endTime: day.endTime, lunchTime: Int(day.lunchBreak))
         payRateLabel.text = day.payRate.convertToCurrency()
         mileageLabel.text = "\(day.mileage) km"
-//        if let description = day.workDescription, description.isEmpty {
-//            descriptionLabel.text = "No description found"
-//        } else {
-//            descriptionLabel.text = day.workDescription
-//        }
+        if let description = day.workDescription, description.isEmpty {
+            descriptionLabel.text = "No description found"
+        } else {
+            descriptionLabel.text = day.workDescription
+        }
         if let location = day.location, location.isEmpty {
             locationLabel.text = "No location set"
         } else {
