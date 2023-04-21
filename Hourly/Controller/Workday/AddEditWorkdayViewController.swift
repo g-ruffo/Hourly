@@ -134,6 +134,8 @@ class AddEditWorkdayViewController: UIViewController {
     
     func createCollectionView() {
         collectionView.register(PhotoCell.nib(), forCellWithReuseIdentifier: K.Cell.photoCell)
+        collectionView.register(AddPhotoCell.nib(), forCellWithReuseIdentifier: K.Cell.addPhotoCell)
+
     }
 
     
@@ -466,10 +468,10 @@ extension AddEditWorkdayViewController: PHPickerViewControllerDelegate {
 extension AddEditWorkdayViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        if indexPath.row == 0 {
+        if indexPath.item == savedPhotos.count {
             createPhotoPicker()
         } else {
-            performSegue(withIdentifier: K.Segue.editPhotoCollectionNav, sender: indexPath.row - 1)
+            performSegue(withIdentifier: K.Segue.editPhotoCollectionNav, sender: indexPath.row)
         }
     }
 }
@@ -481,22 +483,18 @@ extension AddEditWorkdayViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.Cell.photoCell, for: indexPath) as! PhotoCell
-
-        if indexPath.row == 0 {
-            let insets = UIEdgeInsets(top: -35, left: -35, bottom: -35, right: -35)
-            let image = UIImage(systemName: "plus")!
-            cell.configure(with: image.withAlignmentRectInsets(insets))
-            cell.imageView.tintColor = UIColor(named: "PrimaryBlueDark")
-            
+        if indexPath.item == savedPhotos.count {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.Cell.addPhotoCell, for: indexPath) as! AddPhotoCell
+            return cell
         } else {
-            if let image = UIImage(data: savedPhotos[indexPath.row - 1].image!) {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.Cell.photoCell, for: indexPath) as! PhotoCell
+            if let image = UIImage(data: savedPhotos[indexPath.row].image!) {
                 cell.imageView.image = image
             } else {
                 cell.imageView.image = UIImage(systemName: "externaldrive.badge.questionmark")
             }
+            return cell
         }
-        return cell
     }
 }
 
