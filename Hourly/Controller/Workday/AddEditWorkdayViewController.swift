@@ -129,6 +129,7 @@ class AddEditWorkdayViewController: UIViewController {
             destinationVC.photos = savedPhotos
             destinationVC.startingRow = sender as? Int
             destinationVC.allowEditing = true
+            destinationVC.delegate = self
         }
     }
     
@@ -554,5 +555,13 @@ extension AddEditWorkdayViewController: UIPickerViewDataSource {
 extension AddEditWorkdayViewController: ClientSearchDelegate {
     func selectedExistingClient(_ clientSearchTextField: ClientSearchTextField, clientID: NSManagedObjectID?) {
         self.selectedClientID = clientID
+    }
+}
+
+//MARK: - PhotoCollectionDelegate
+extension AddEditWorkdayViewController: PhotoCollectionDelegate {
+    func photoHasBeenDeleted(_ photoViewController: PhotoViewController, index: Int) {
+        savedPhotos.remove(at: index)
+        collectionView.reloadData()
     }
 }
