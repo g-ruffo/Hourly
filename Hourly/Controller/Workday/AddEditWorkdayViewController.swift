@@ -123,6 +123,15 @@ class AddEditWorkdayViewController: UIViewController {
         updateUserDefaults()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.Segue.editPhotoCollectionNav {
+            let destinationVC = segue.destination as! PhotoViewController
+            destinationVC.photos = savedPhotos
+            destinationVC.startingRow = sender as? Int
+            destinationVC.allowEditing = true
+        }
+    }
+    
     func createCollectionView() {
         collectionView.register(PhotoCell.nib(), forCellWithReuseIdentifier: K.Cell.photoCell)
     }
@@ -443,7 +452,7 @@ extension AddEditWorkdayViewController: PHPickerViewControllerDelegate {
                 let jpegImage = image.jpegData(compressionQuality: 1.0)
                 let photoItem = PhotoItem(context: self!.databaseContext)
                 photoItem.image = jpegImage
-                photoItem.imageDescription = "Date: \(String(describing: self?.selectedDate?.formatDateToString()))"
+                photoItem.imageDescription = "Date: \(self!.selectedDate!.formatDateToString())"
                 self?.savedPhotos.append(photoItem)
             }
         }
@@ -459,6 +468,8 @@ extension AddEditWorkdayViewController: UICollectionViewDelegate {
         collectionView.deselectItem(at: indexPath, animated: true)
         if indexPath.row == 0 {
             createPhotoPicker()
+        } else {
+            performSegue(withIdentifier: K.Segue.editPhotoCollectionNav, sender: indexPath.row - 1)
         }
     }
 }
@@ -471,11 +482,12 @@ extension AddEditWorkdayViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.Cell.photoCell, for: indexPath) as! PhotoCell
-        cell.backgroundColor = .green
+
         if indexPath.row == 0 {
-            cell.configure(with: UIImage(systemName: "plus")!)
-            cell.imageView.contentMode = .center
-            cell.imageView.layoutMargins = UIEdgeInsets(top: 40, left: 40, bottom: 40, right: 40)
+            let insets = UIEdgeInsets(top: -35, left: -35, bottom: -35, right: -35)
+            let image = UIImage(systemName: "plus")!
+            cell.configure(with: image.withAlignmentRectInsets(insets))
+            cell.imageView.tintColor = UIColor(named: "PrimaryBlueDark")
             
         } else {
             if let image = UIImage(data: savedPhotos[indexPath.row - 1].image!) {

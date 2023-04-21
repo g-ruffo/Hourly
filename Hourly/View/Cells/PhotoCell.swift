@@ -18,6 +18,9 @@ class PhotoCell: UICollectionViewCell {
     override func awakeFromNib() {
         contentView.layer.cornerRadius = 20
         contentView.layer.masksToBounds = true
+        contentView.backgroundColor = .white
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
     }
     
     public func configure(with image: UIImage) {
