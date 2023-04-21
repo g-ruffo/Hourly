@@ -16,4 +16,11 @@ class PhotoCollectionCell: UICollectionViewCell {
     override func awakeFromNib() {
         textView.layer.cornerRadius = 10
     }
+    
+    func setEditingState(_ isEditing: Bool) {
+        textView.isEditable = isEditing
+        textView.isSelectable = isEditing
+        textView.backgroundColor = isEditing ? .white.withAlphaComponent(0.9) : .white.withAlphaComponent(0.1)
+        textView.textColor = isEditing ? .black : .white
+    }
 }
