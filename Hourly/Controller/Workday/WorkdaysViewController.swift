@@ -16,7 +16,7 @@ class WorkdaysViewController: UIViewController {
     
     private var isDisplayingCalendar = true
         
-    private var workDayList: Array<WorkdayItem> = []
+    private var workdayList: Array<WorkdayItem> = []
 
     private var workdaytToEdit: WorkdayItem?
     
@@ -58,7 +58,7 @@ class WorkdaysViewController: UIViewController {
         request.sortDescriptors = [sortDate]
 
         do{
-            workDayList = try databaseContext.fetch(request)
+            workdayList = try databaseContext.fetch(request)
             tableView.reloadData()
         } catch {
             print("Error fetching clients from database = \(error)")
@@ -69,7 +69,7 @@ class WorkdaysViewController: UIViewController {
         if segue.identifier == K.Segue.workDetailNav {
             let destinationVC = segue.destination as! WorkDetailViewController
             if let indexPath = tableView.indexPathForSelectedRow {
-                destinationVC.workday = workDayList[indexPath.row]
+                destinationVC.workday = workdayList[indexPath.row]
                 destinationVC.delegate = self
             }
         } else if segue.identifier == K.Segue.editWorkdayNav {
@@ -94,13 +94,13 @@ extension WorkdaysViewController: UITableViewDelegate {
 extension WorkdaysViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return workDayList.count
+        return workdayList.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.Cell.workdayCell, for: indexPath) as! WorkdayCell
-        let workDay = workDayList[indexPath.row]
+        let workDay = workdayList[indexPath.row]
         cell.configure(with: workDay)
         return cell
     }
