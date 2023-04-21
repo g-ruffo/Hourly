@@ -13,4 +13,7 @@ class PhotoCollectionCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     
     
+    override func awakeFromNib() {
+        textView.layer.cornerRadius = 10
+    }
 }
