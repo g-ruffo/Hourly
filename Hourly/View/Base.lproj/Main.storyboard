@@ -216,7 +216,7 @@
                                         </collectionViewCellContentView>
                                         <connections>
                                             <outlet property="dayOfMonthLabel" destination="eq7-tf-cjy" id="Ojh-78-C7e"/>
-                                            <outlet property="stackVIew" destination="U5B-AD-xQ4" id="UyF-zi-aHS"/>
+                                            <outlet property="stackView" destination="U5B-AD-xQ4" id="UyF-zi-aHS"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
