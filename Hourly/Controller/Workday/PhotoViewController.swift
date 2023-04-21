@@ -23,13 +23,13 @@ class PhotoViewController: UIViewController {
         
         collectionView.dataSource = self
         collectionView.delegate = self
-        saveButton.isHidden = !isEditing
-        deleteButton.isHidden = !isEditing
+        saveButton.isHidden = !allowEditing
+        deleteButton.isHidden = !allowEditing
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         if !hasSetToIndexPath {
-            super.viewDidAppear(animated)
             collectionView.scrollToItem(at: IndexPath(row: startingRow!, section: 0), at: .top, animated: true)
             hasSetToIndexPath = true
         }
