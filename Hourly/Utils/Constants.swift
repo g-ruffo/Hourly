@@ -35,6 +35,7 @@ struct K {
         static let photoCell = "PhotoCell"
         static let workdayCell = "WorkdayCell"
         static let photoCollectionCell = "PhotoCollectionCell"
+        static let addPhotoCell = "AddPhotoCell"
     }
     
     struct Segue {
