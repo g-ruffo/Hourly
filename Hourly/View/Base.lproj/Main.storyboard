@@ -1276,8 +1276,9 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pxr-fk-fRr">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home-hero-swift-hero.png" translatesAutoresizingMaskIntoConstraints="NO" id="pxr-fk-fRr">
                                                     <rect key="frame" x="0.0" y="0.0" width="393" height="630"/>
+                                                    <color key="backgroundColor" red="0.32549019610000002" green="0.63137254899999995" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -1660,7 +1661,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gAs-an-Vsm"/>
+        <segue reference="4ew-TS-7hL"/>
         <segue reference="Q5n-uq-4AC"/>
         <segue reference="T1x-7W-HWO"/>
     </inferredMetricsTieBreakers>
@@ -1669,6 +1670,7 @@
         <image name="chevron.right" catalog="system" width="97" height="128"/>
         <image name="circle.fill" catalog="system" width="128" height="123"/>
         <image name="envelope.fill" catalog="system" width="128" height="93"/>
+        <image name="home-hero-swift-hero.png" width="200" height="200"/>
         <image name="location.fill" catalog="system" width="128" height="119"/>
         <image name="mail.fill" catalog="system" width="128" height="93"/>
         <image name="phone.fill" catalog="system" width="128" height="114"/>
