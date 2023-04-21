@@ -71,6 +71,14 @@ class WorkDetailViewController: UIViewController {
         collectionView.isHidden = savedPhotos.count < 1
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.Segue.detailsPhotoCollectionNav {
+            let destinationVC = segue.destination as! PhotoViewController
+            destinationVC.photos = savedPhotos
+            destinationVC.startingIndexPath = sender as? IndexPath
+        }
+    }
+    
 
     @IBAction func editButtonPressed(_ sender: UIButton) {
             self.dismiss(animated: true) {
@@ -104,12 +112,15 @@ extension WorkDetailViewController: UICollectionViewDataSource {
 //MARK: - UICollectionViewDelegate
 
 extension WorkDetailViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        performSegue(withIdentifier: K.Segue.detailsPhotoCollectionNav, sender: indexPath)
+    }
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
 extension WorkDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: 100)
+        return CGSize(width: 110, height: 110)
     }
 }
