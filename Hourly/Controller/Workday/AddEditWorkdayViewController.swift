@@ -114,10 +114,12 @@ class AddEditWorkdayViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         checkUserDefaults()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         updateUserDefaults()
     }
     
