@@ -11,7 +11,11 @@ class PhotoViewController: UIViewController {
     
     var photos: Array<PhotoItem> = []
     var startingIndexPath: IndexPath?
+    var allowEditing = false
+    private var hasSetToIndexPath = false
     
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -19,12 +23,16 @@ class PhotoViewController: UIViewController {
         
         collectionView.dataSource = self
         collectionView.delegate = self
-        
+        saveButton.isHidden = !isEditing
+        deleteButton.isHidden = !isEditing
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        collectionView.scrollToItem(at: startingIndexPath!, at: .centeredVertically, animated: true)
+        if !hasSetToIndexPath {
+            super.viewDidAppear(animated)
+            collectionView.scrollToItem(at: startingIndexPath!, at: .top, animated: true)
+            hasSetToIndexPath = true
+        }
     }
 }
 
@@ -32,21 +40,17 @@ class PhotoViewController: UIViewController {
 //MARK: - UICollectionViewDataSource
 extension PhotoViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("photos.count = \(photos.count)")
-
         return photos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.Cell.photoCollectionCell, for: indexPath) as! PhotoCollectionCell
         
         if let photo = UIImage(data: (photos[indexPath.row].image)!) {
             cell.imageView.image = photo
         }
-                               
         cell.textView.text = photos[indexPath.row].imageDescription
-        
+        cell.setEditingState(false)
         return cell
     }
     
@@ -62,19 +66,6 @@ extension PhotoViewController: UICollectionViewDelegate {
 //MARK: - UICollectionViewFlowLayout
 extension PhotoViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let screenSize = UIScreen.main.bounds
-        return CGSize(width: screenSize.width, height: screenSize.height)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)
     }
 }
