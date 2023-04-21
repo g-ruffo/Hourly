@@ -1240,6 +1240,9 @@
                                     <imageReference key="image" image="trash.fill" catalog="system" symbolScale="large"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="deleteButtonPressed:" destination="gX6-8D-Vts" eventType="touchUpInside" id="LMm-c9-Qpy"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cgd-w4-8f8">
                                 <rect key="frame" x="12" y="12" width="49" height="35"/>
@@ -1248,6 +1251,9 @@
                                 <buttonConfiguration key="configuration" style="plain">
                                     <imageReference key="image" image="square.and.arrow.down.fill" catalog="system" symbolScale="large"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="saveButtonPressed:" destination="gX6-8D-Vts" eventType="touchUpInside" id="OQs-Oc-cqv"/>
+                                </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Rs5-k2-weB">
                                 <rect key="frame" x="0.0" y="47" width="393" height="795"/>
