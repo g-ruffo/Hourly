@@ -1251,6 +1251,7 @@
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Rs5-k2-weB">
                                 <rect key="frame" x="0.0" y="47" width="393" height="795"/>
+                                <color key="backgroundColor" name="DarkGrey"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="7uv-xA-ora">
                                     <size key="itemSize" width="393" height="782"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -1266,12 +1267,12 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="pxr-fk-fRr">
-                                                    <rect key="frame" x="0.0" y="19.333333333333314" width="393" height="643.66666666666674"/>
+                                                    <rect key="frame" x="0.0" y="19.333333333333314" width="393" height="649.66666666666674"/>
                                                     <color key="tintColor" name="BackgroundGrey"/>
                                                 </imageView>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="QJb-M7-l8i">
                                                     <rect key="frame" x="24" y="682" width="345" height="80"/>
-                                                    <color key="backgroundColor" red="0.27909524466350155" green="0.29770830710709989" blue="0.33349941283782603" alpha="0.7987112713675214" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="backgroundColor" red="0.27909524466350155" green="0.29770830710709989" blue="0.33349941283782603" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="80" id="PRu-aj-aNz"/>
                                                     </constraints>
@@ -1287,7 +1288,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="pxr-fk-fRr" secondAttribute="trailing" id="GDL-cO-ais"/>
                                                 <constraint firstItem="QJb-M7-l8i" firstAttribute="leading" secondItem="5xN-hk-jpM" secondAttribute="leading" constant="24" id="TJj-4V-ylF"/>
                                                 <constraint firstAttribute="trailing" secondItem="QJb-M7-l8i" secondAttribute="trailing" constant="24" id="iBv-G7-TFG"/>
-                                                <constraint firstItem="QJb-M7-l8i" firstAttribute="top" secondItem="pxr-fk-fRr" secondAttribute="bottom" constant="18" id="wUP-MO-ewa"/>
+                                                <constraint firstItem="QJb-M7-l8i" firstAttribute="top" secondItem="pxr-fk-fRr" secondAttribute="bottom" constant="12" id="wUP-MO-ewa"/>
                                                 <constraint firstItem="pxr-fk-fRr" firstAttribute="top" secondItem="5xN-hk-jpM" secondAttribute="top" constant="18" id="xhs-KK-70u"/>
                                             </constraints>
                                         </collectionViewCellContentView>
@@ -1317,7 +1318,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="Rs5-k2-weB" id="RpW-t2-8bO"/>
-                        <outlet property="deleteBUtton" destination="Rci-3j-QEX" id="2l9-89-vjg"/>
+                        <outlet property="deleteButton" destination="Rci-3j-QEX" id="2l9-89-vjg"/>
                         <outlet property="saveButton" destination="cgd-w4-8f8" id="fJf-Ib-MeA"/>
                     </connections>
                 </viewController>
