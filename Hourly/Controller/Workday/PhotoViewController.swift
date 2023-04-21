@@ -9,28 +9,44 @@ import UIKit
 
 class PhotoViewController: UIViewController {
     
-    var photos: Array<PhotoItem>?
-    var startingIndex: Int?
+    var photos: Array<PhotoItem> = []
+    var startingIndexPath: IndexPath?
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: K.Cell.photoCollectionCell)
+        
+        collectionView.dataSource = self
+        collectionView.delegate = self
         
     }
-    
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        collectionView.scrollToItem(at: startingIndexPath!, at: .centeredVertically, animated: true)
+    }
 }
+
 
 //MARK: - UICollectionViewDataSource
 extension PhotoViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photos?.count ?? 0
+        print("photos.count = \(photos.count)")
+
+        return photos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.Cell.photoCollectionCell, for: indexPath)
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.Cell.photoCollectionCell, for: indexPath) as! PhotoCollectionCell
+        
+        if let photo = UIImage(data: (photos[indexPath.row].image)!) {
+            cell.imageView.image = photo
+        }
+                               
+        cell.textView.text = photos[indexPath.row].imageDescription
+        
         return cell
     }
     
