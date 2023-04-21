@@ -46,9 +46,13 @@ struct CalendarManager {
         return calendar.date(from: components)!
     }
     
+    func lastOfMonth(date: Date) -> Date {
+        let lastDay = calendar.date(byAdding: DateComponents(month: 1, day: -1), to: firstOfMonth(date: date))
+        return lastDay!
+    }
+    
     func weekDay(date: Date) -> Int {
         let components = calendar.dateComponents([.weekday], from: date)
         return components.weekday! - 1
     }
-    
 }
