@@ -14,6 +14,7 @@ class CalendarViewController: UIViewController {
     
     private var selectedDate = Date()
     private var totalSquares = [String]()
+    private var todaysDate = Date()
     
     private let calendarManager = CalendarManager()
             
@@ -109,8 +110,19 @@ extension CalendarViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.Identifiers.calendarCell, for: indexPath) as! CalendarCell
         
-        cell.dayOfMonthLabel.text = totalSquares[indexPath.item]
-        if !totalSquares[indexPath.item].isEmpty {
+        let day = totalSquares[indexPath.item]
+        if selectedDate.get(.year, .month) == todaysDate.get(.year, .month){
+            if let today = Int(day), today == todaysDate.get(.day) {
+                cell.dayOfMonthLabel.backgroundColor = .systemCyan.withAlphaComponent(0.4)
+                cell.dayOfMonthLabel.layer.cornerRadius = cell.dayOfMonthLabel.frame.height / 2
+                cell.dayOfMonthLabel.clipsToBounds = true
+            }
+        } else {
+            cell.dayOfMonthLabel.backgroundColor = .clear
+        }
+        
+        cell.dayOfMonthLabel.text = day
+        if !day.isEmpty {
 //            let image = UIImageView(image: UIImage(systemName: "square.fill"))
 //            image.tintColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
 //
