@@ -10,7 +10,7 @@ import UIKit
 class PhotoViewController: UIViewController {
     
     var photos: Array<PhotoItem> = []
-    var startingIndexPath: IndexPath?
+    var startingRow: Int?
     var allowEditing = false
     private var hasSetToIndexPath = false
     
@@ -30,7 +30,7 @@ class PhotoViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         if !hasSetToIndexPath {
             super.viewDidAppear(animated)
-            collectionView.scrollToItem(at: startingIndexPath!, at: .top, animated: true)
+            collectionView.scrollToItem(at: IndexPath(row: startingRow!, section: 0), at: .top, animated: true)
             hasSetToIndexPath = true
         }
     }
@@ -50,12 +50,9 @@ extension PhotoViewController: UICollectionViewDataSource {
             cell.imageView.image = photo
         }
         cell.textView.text = photos[indexPath.row].imageDescription
-        cell.setEditingState(false)
+        cell.setEditingState(allowEditing)
         return cell
     }
-    
-
-    
 }
 
 //MARK: - UICollectionViewDelegate

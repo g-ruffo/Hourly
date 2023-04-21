@@ -45,6 +45,14 @@ class WorkDetailViewController: UIViewController {
         collectionView.register(PhotoCell.nib(), forCellWithReuseIdentifier: K.Cell.photoCell)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.Segue.detailsPhotoCollectionNav {
+            let destinationVC = segue.destination as! PhotoViewController
+            destinationVC.photos = savedPhotos
+            destinationVC.startingRow = sender as? Int
+        }
+    }
+    
     private func setWorkdayDetails() {
         guard let day = workday else { fatalError("Unable to get work day") }
         clientLabel.text = day.clientName
@@ -70,15 +78,6 @@ class WorkDetailViewController: UIViewController {
         savedPhotos = day.photos?.allObjects as? Array<PhotoItem> ?? []
         collectionView.isHidden = savedPhotos.count < 1
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == K.Segue.detailsPhotoCollectionNav {
-            let destinationVC = segue.destination as! PhotoViewController
-            destinationVC.photos = savedPhotos
-            destinationVC.startingIndexPath = sender as? IndexPath
-        }
-    }
-    
 
     @IBAction func editButtonPressed(_ sender: UIButton) {
             self.dismiss(animated: true) {
@@ -113,8 +112,7 @@ extension WorkDetailViewController: UICollectionViewDataSource {
 
 extension WorkDetailViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        performSegue(withIdentifier: K.Segue.detailsPhotoCollectionNav, sender: indexPath)
+        performSegue(withIdentifier: K.Segue.detailsPhotoCollectionNav, sender: indexPath.row)
     }
 }
 
