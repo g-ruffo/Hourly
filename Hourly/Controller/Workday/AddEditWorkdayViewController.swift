@@ -426,7 +426,6 @@ extension AddEditWorkdayViewController: AddEditWorkdayManagerDelegate {
 
 //MARK: - PHPickerViewControllerDelegate
 extension AddEditWorkdayViewController: PHPickerViewControllerDelegate {
-    
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         picker.dismiss(animated: true)
         let group = DispatchGroup()
@@ -437,12 +436,14 @@ extension AddEditWorkdayViewController: PHPickerViewControllerDelegate {
                     group.leave()
                 }
                 guard let image = reading as? UIImage, error == nil else {
-                    print("didFinishPicking error = \(error?.localizedDescription)")
+                    print("didFinishPicking error = \(String(describing: error?.localizedDescription))")
                     return
                 }
+                
                 let jpegImage = image.jpegData(compressionQuality: 1.0)
                 let photoItem = PhotoItem(context: self!.databaseContext)
                 photoItem.image = jpegImage
+                photoItem.imageDescription = "Date: \(String(describing: self?.selectedDate?.formatDateToString()))"
                 self?.savedPhotos.append(photoItem)
             }
         }
