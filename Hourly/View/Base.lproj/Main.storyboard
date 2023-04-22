@@ -126,6 +126,7 @@
                         <outlet property="earningsLabel" destination="ZNx-cQ-C8b" id="2br-ei-2BU"/>
                         <outlet property="filterResultsButton" destination="rkP-9w-GeY" id="v3y-jF-PGV"/>
                         <outlet property="tableView" destination="BB6-EV-jbA" id="eB8-dF-GNm"/>
+                        <segue destination="cmG-CB-vpK" kind="presentation" identifier="SummaryWorkdayDetailNavigation" id="olG-vz-Or0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="evq-6A-sP8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1801,6 +1802,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="olG-vz-Or0"/>
         <segue reference="4ew-TS-7hL"/>
         <segue reference="Q5n-uq-4AC"/>
         <segue reference="T1x-7W-HWO"/>

@@ -47,6 +47,7 @@ struct K {
         static let detailsPhotoCollectionNav = "DetailsPhotoCollectionNavigation"
         static let editPhotoCollectionNav = "EditPhotoCollectionNavigation"
         static let calendarDetailNav = "CalendarDetailNavigation"
+        static let summaryWorkdayDetailNav = "SummaryWorkdayDetailNavigation"
     }
     
     struct UserDefaultsKey {

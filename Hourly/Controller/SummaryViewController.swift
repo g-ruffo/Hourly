@@ -22,6 +22,9 @@ class SummaryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(WorkdayCell.nib(), forCellReuseIdentifier: K.Cell.workdayCell)
 
     }
     
@@ -29,15 +32,20 @@ class SummaryViewController: UIViewController {
 
 extension SummaryViewController: UITableViewDelegate {
     
+    
 }
 
 extension SummaryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return workdays.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.Cell.workdayCell, for: indexPath) as! WorkdayCell
+        
+        cell.configure(with: workdays[indexPath.row])
+        
+        return cell
     }
     
     
