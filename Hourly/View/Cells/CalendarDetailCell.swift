@@ -31,7 +31,7 @@ class CalendarDetailCell: UITableViewCell {
                 payRateLabel.text = day.payRate.convertToCurrency()
                 mileageLabel.text = "\(day.mileage) km"
                 if let clientTag = day.client?.tagColor {
-                    headerStackView.backgroundColor = UIColor(clientTag)
+                    headerStackView.backgroundColor = UIColor(clientTag).withAlphaComponent(0.8)
                 }
             }
         }
@@ -41,6 +41,7 @@ class CalendarDetailCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        headerStackView.backgroundColor?.withAlphaComponent(0.8)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

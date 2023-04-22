@@ -32,6 +32,13 @@ class CalendarViewController: UIViewController {
         createCalendarGestureRecognizer()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.Segue.calendarDetailNav {
+            let destinationNav = segue.destination as? CalendarDetailController
+            destinationNav?.workdays = (sender as? Array<WorkdayItem>)!
+        }
+    }
+    
     private func createCalendarGestureRecognizer() {
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(onSwipe(_:)))
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(onSwipe(_:)))
@@ -141,6 +148,12 @@ class CalendarViewController: UIViewController {
 //MARK: - CalendarViewController
 
 extension CalendarViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        if totalSquares[indexPath.row].items.count > 0 {
+            performSegue(withIdentifier: K.Segue.calendarDetailNav, sender: totalSquares[indexPath.row].items)
+        }
+    }
 }
 
 
