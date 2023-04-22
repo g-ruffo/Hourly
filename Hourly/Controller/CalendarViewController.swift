@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class CalendarViewController: UIViewController {
     
@@ -13,12 +14,12 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     private var selectedDate = Date()
-    private var totalSquares = [String]()
+    private var totalSquares: Array<(day: String, items: [WorkdayItem])> = []
     private var todaysDate = Date()
     
-    private let calendarManager = CalendarManager()
+    private let manager = CalendarManager()
             
-    private let workDays: Array<WorkdayItem> = []
+    private var workdays: Array<WorkdayItem> = []
     
     let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
@@ -27,9 +28,9 @@ class CalendarViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
     
-        setCellsView()
-        setMonthView()
+        loadWorkdayFromDatabase()
         createCalendarGestureRecognizer()
+
     }
     
     private func createCalendarGestureRecognizer() {
@@ -45,51 +46,57 @@ class CalendarViewController: UIViewController {
     
     @objc func onSwipe(_ pan: UISwipeGestureRecognizer) {
         if pan.direction == .right {
-            selectedDate = calendarManager.minusMonth(date: selectedDate)
-            setMonthView()
+            selectedDate = manager.minusMonth(date: selectedDate)
+            loadWorkdayFromDatabase()
         } else if pan.direction == .left {
-            selectedDate = calendarManager.plusMonth(date: selectedDate)
-            setMonthView()
+            selectedDate = manager.plusMonth(date: selectedDate)
+            loadWorkdayFromDatabase()
         }
-    }
-    
-    func setCellsView() {
-        let width = (collectionView.frame.size.width - 2) / 8
-        let height = (collectionView.frame.size.height - 2) / 8
-        
-        let flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        flowLayout.itemSize = CGSize(width: width, height: height)
-
     }
     
     func setMonthView() {
         totalSquares.removeAll()
-        let daysInMonth = calendarManager.daysInMonth(date: selectedDate)
-        let firstDayOfMonth = calendarManager.firstOfMonth(date: selectedDate)
-        let startingSpaces = calendarManager.weekDay(date: firstDayOfMonth)
+        let daysInMonth = manager.daysInMonth(date: selectedDate)
+        let firstDayOfMonth = manager.firstOfMonth(date: selectedDate)
+        let startingSpaces = manager.weekDay(date: firstDayOfMonth)
         
         var count: Int = 1
         while count <= 42 {
             if(count <= startingSpaces || count - startingSpaces > daysInMonth) {
-                totalSquares.append("")
+                totalSquares.append((day: "", items: []))
             } else {
-                totalSquares.append(String(count - startingSpaces))
+                let dayOfMonth = count - startingSpaces
+                let daysWorked = workdays.filter { $0.date?.get(.day) == dayOfMonth }
+                totalSquares.append((day: String(dayOfMonth), items: daysWorked))
             }
             count += 1
         }
-        monthLabel.text = calendarManager.monthString(date: selectedDate) + " " + calendarManager.yearString(date: selectedDate)
+        monthLabel.text = manager.monthString(date: selectedDate) + " " + manager.yearString(date: selectedDate)
         collectionView.reloadData()
     }
     
     
     @IBAction func nextMonthPressed(_ sender: UIButton) {
-        selectedDate = calendarManager.plusMonth(date: selectedDate)
-        setMonthView()
+        selectedDate = manager.plusMonth(date: selectedDate)
+        loadWorkdayFromDatabase()
     }
     
     @IBAction func previousMonthPressed(_ sender: UIButton) {
-        selectedDate = calendarManager.minusMonth(date: selectedDate)
-        setMonthView()
+        selectedDate = manager.minusMonth(date: selectedDate)
+        loadWorkdayFromDatabase()
+    }
+    
+    func loadWorkdayFromDatabase() {
+        let startDate = manager.firstOfMonth(date: selectedDate)
+        let endDate = manager.lastOfMonth(date: selectedDate)
+        let request: NSFetchRequest<WorkdayItem> = WorkdayItem.fetchRequest()
+        request.predicate = NSPredicate(format: "date >= %@ AND date <= %@", startDate as NSDate, endDate as NSDate)
+        do{
+            workdays = try databaseContext.fetch(request)
+            setMonthView()
+        } catch {
+            print("Error fetching clients from database = \(error)")
+        }
     }
 }
 
@@ -100,7 +107,6 @@ extension CalendarViewController: UICollectionViewDelegate {
 
 
 //MARK: - CalendarViewController
-
 extension CalendarViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return totalSquares.count
@@ -110,30 +116,35 @@ extension CalendarViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.Identifiers.calendarCell, for: indexPath) as! CalendarCell
         
-        let day = totalSquares[indexPath.item]
+        let dayObject = totalSquares[indexPath.item]
         if selectedDate.get(.year, .month) == todaysDate.get(.year, .month){
-            if let today = Int(day), today == todaysDate.get(.day) {
+            if let today = Int(dayObject.day), today == todaysDate.get(.day) {
                 cell.dayOfMonthLabel.backgroundColor = .systemCyan.withAlphaComponent(0.4)
-                cell.dayOfMonthLabel.layer.cornerRadius = cell.dayOfMonthLabel.frame.height / 2
-                cell.dayOfMonthLabel.clipsToBounds = true
             }
         } else {
             cell.dayOfMonthLabel.backgroundColor = .clear
         }
-        
-        cell.dayOfMonthLabel.text = day
-        if !day.isEmpty {
-//            let image = UIImageView(image: UIImage(systemName: "square.fill"))
-//            image.tintColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
-//
-//            image.translatesAutoresizingMaskIntoConstraints = false
-//
-//            cell.stackVIew.addArrangedSubview(image)
-        }
+        cell.configure(title: dayObject.day, with: dayObject.items)
         
         return cell
     }
 
+}
+
+//MARK: - UICollectionViewDelegateFlowLayout
+extension CalendarViewController: UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: (self.collectionView.bounds.width - 7) / 7, height: (self.collectionView.bounds.height) / 5)
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1.0
+    }
 }
 
 
