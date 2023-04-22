@@ -134,11 +134,11 @@ extension CalendarViewController: UICollectionViewDataSource {
 //MARK: - UICollectionViewDelegateFlowLayout
 extension CalendarViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0.0
+        return 1.0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (self.collectionView.bounds.width - 7) / 7, height: (self.collectionView.bounds.height) / 5)
+        return CGSize(width: (floor(self.collectionView.bounds.width - 9)) / 7, height: (self.collectionView.bounds.height) / 5)
     }
     
     

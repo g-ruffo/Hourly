@@ -17,11 +17,12 @@ class CalendarCell: UICollectionViewCell {
         // Initialization code
         dayOfMonthLabel.layer.cornerRadius = dayOfMonthLabel.frame.height / 2
         dayOfMonthLabel.clipsToBounds = true
-        contentView.backgroundColor = .white
     }
     
     func configure(title: String, with days: [WorkdayItem]) {
         dayOfMonthLabel.text = title
+        contentView.backgroundColor = title.isEmpty ? .white.withAlphaComponent(0.5) : .white
+        
         if days.count > 0 {
             for day in days {
                 let image = UIImageView(image: UIImage(systemName: "square.fill"))
