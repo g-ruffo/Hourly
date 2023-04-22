@@ -17,6 +17,7 @@ class CalendarCell: UICollectionViewCell {
         // Initialization code
         dayOfMonthLabel.layer.cornerRadius = dayOfMonthLabel.frame.height / 2
         dayOfMonthLabel.clipsToBounds = true
+        contentView.backgroundColor = .white
     }
     
     func configure(title: String, with days: [WorkdayItem]) {
