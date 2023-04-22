@@ -26,9 +26,10 @@
 		7964AFDF29EB2CEE00065863 /* WorkdaysManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964AFDE29EB2CEE00065863 /* WorkdaysManager.swift */; };
 		7964AFE129EB368900065863 /* AddEditWorkdayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964AFE029EB368900065863 /* AddEditWorkdayManager.swift */; };
 		7964AFE429EDE21F00065863 /* ClientSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964AFE329EDE21F00065863 /* ClientSearchTextField.swift */; };
+		7983B00429F4A09900F2D76E /* WorkdayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7983B00229F4A09900F2D76E /* WorkdayCell.swift */; };
+		7983B00529F4A09900F2D76E /* WorkdayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7983B00329F4A09900F2D76E /* WorkdayCell.xib */; };
 		79AED58329F0DE9F00FBF2E4 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AED58129F0DE9F00FBF2E4 /* PhotoCell.swift */; };
 		79AED58429F0DE9F00FBF2E4 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79AED58229F0DE9F00FBF2E4 /* PhotoCell.xib */; };
-		79AED58729F1E63B00FBF2E4 /* WorkdayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AED58529F1E63B00FBF2E4 /* WorkdayCell.swift */; };
 		79AED58A29F1FBD800FBF2E4 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AED58929F1FBD800FBF2E4 /* PhotoViewController.swift */; };
 		79AED58C29F2042900FBF2E4 /* PhotoCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AED58B29F2042900FBF2E4 /* PhotoCollectionCell.swift */; };
 		79C292A229EE6B5900A2A8BF /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C292A129EE6B5900A2A8BF /* Helper.swift */; };
@@ -93,9 +94,10 @@
 		7964AFDE29EB2CEE00065863 /* WorkdaysManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkdaysManager.swift; sourceTree = "<group>"; };
 		7964AFE029EB368900065863 /* AddEditWorkdayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditWorkdayManager.swift; sourceTree = "<group>"; };
 		7964AFE329EDE21F00065863 /* ClientSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientSearchTextField.swift; sourceTree = "<group>"; };
+		7983B00229F4A09900F2D76E /* WorkdayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkdayCell.swift; sourceTree = "<group>"; };
+		7983B00329F4A09900F2D76E /* WorkdayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkdayCell.xib; sourceTree = "<group>"; };
 		79AED58129F0DE9F00FBF2E4 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		79AED58229F0DE9F00FBF2E4 /* PhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
-		79AED58529F1E63B00FBF2E4 /* WorkdayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkdayCell.swift; sourceTree = "<group>"; };
 		79AED58929F1FBD800FBF2E4 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		79AED58B29F2042900FBF2E4 /* PhotoCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionCell.swift; sourceTree = "<group>"; };
 		79C292A129EE6B5900A2A8BF /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
@@ -165,12 +167,13 @@
 				795BB47529E67881000D7FB1 /* CalendarCell.swift */,
 				79AED58129F0DE9F00FBF2E4 /* PhotoCell.swift */,
 				79AED58229F0DE9F00FBF2E4 /* PhotoCell.xib */,
-				79AED58529F1E63B00FBF2E4 /* WorkdayCell.swift */,
 				79AED58B29F2042900FBF2E4 /* PhotoCollectionCell.swift */,
 				7912FB3129F25DE4008BEA14 /* AddPhotoCell.swift */,
 				7912FB3229F25DE4008BEA14 /* AddPhotoCell.xib */,
 				79E4B9F429F3ADF000BE04FC /* CalendarDetailCell.swift */,
 				79E4B9F529F3ADF000BE04FC /* CalendarDetailCell.xib */,
+				7983B00229F4A09900F2D76E /* WorkdayCell.swift */,
+				7983B00329F4A09900F2D76E /* WorkdayCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				79E4B9F729F3ADF000BE04FC /* CalendarDetailCell.xib in Resources */,
 				79FA88A929E4B37E003C6DFB /* Localizable.strings in Resources */,
 				79FA887A29E4AD67003C6DFB /* Assets.xcassets in Resources */,
+				7983B00529F4A09900F2D76E /* WorkdayCell.xib in Resources */,
 				79FA887529E4AD66003C6DFB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -486,7 +490,6 @@
 				79E4B9FA29F3AE2100BE04FC /* CalendarDetailController.swift in Sources */,
 				79FA886E29E4AD66003C6DFB /* AppDelegate.swift in Sources */,
 				795BB47129E66E3E000D7FB1 /* WorkdaysViewController.swift in Sources */,
-				79AED58729F1E63B00FBF2E4 /* WorkdayCell.swift in Sources */,
 				79C292A229EE6B5900A2A8BF /* Helper.swift in Sources */,
 				79F1AFD029E4C047004CED4E /* AddEditWorkdayViewController.swift in Sources */,
 				79FA88A629E4B2BD003C6DFB /* StringResource.swift in Sources */,
@@ -499,6 +502,7 @@
 				795BB46B29E63FB1000D7FB1 /* ColorTagButton.swift in Sources */,
 				7964AFD929E9FEA000065863 /* WorkdayDetailsManager.swift in Sources */,
 				79AED58329F0DE9F00FBF2E4 /* PhotoCell.swift in Sources */,
+				7983B00429F4A09900F2D76E /* WorkdayCell.swift in Sources */,
 				79F1AFC829E4BD0E004CED4E /* HourlyTabBar.swift in Sources */,
 				79F1AFCE29E4BFD4004CED4E /* SettingsViewController.swift in Sources */,
 				79F1AFD429E4C8CD004CED4E /* Constants.swift in Sources */,
