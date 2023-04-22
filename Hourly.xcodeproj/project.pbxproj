@@ -34,6 +34,9 @@
 		79C292A229EE6B5900A2A8BF /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C292A129EE6B5900A2A8BF /* Helper.swift */; };
 		79D5F6A929E5F04D00CA2542 /* ClientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D5F6A729E5F04D00CA2542 /* ClientCell.swift */; };
 		79D5F6AC29E606F000CA2542 /* AddEditClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D5F6AB29E606F000CA2542 /* AddEditClientViewController.swift */; };
+		79E4B9F629F3ADF000BE04FC /* CalendarDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E4B9F429F3ADF000BE04FC /* CalendarDetailCell.swift */; };
+		79E4B9F729F3ADF000BE04FC /* CalendarDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79E4B9F529F3ADF000BE04FC /* CalendarDetailCell.xib */; };
+		79E4B9FA29F3AE2100BE04FC /* CalendarDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E4B9F929F3AE2100BE04FC /* CalendarDetailController.swift */; };
 		79F1AFC829E4BD0E004CED4E /* HourlyTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFC729E4BD0E004CED4E /* HourlyTabBar.swift */; };
 		79F1AFCA29E4BD32004CED4E /* HourlyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFC929E4BD32004CED4E /* HourlyTabBarController.swift */; };
 		79F1AFCC29E4BFBB004CED4E /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFCB29E4BFBB004CED4E /* CalendarViewController.swift */; };
@@ -98,6 +101,9 @@
 		79C292A129EE6B5900A2A8BF /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		79D5F6A729E5F04D00CA2542 /* ClientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientCell.swift; sourceTree = "<group>"; };
 		79D5F6AB29E606F000CA2542 /* AddEditClientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditClientViewController.swift; sourceTree = "<group>"; };
+		79E4B9F429F3ADF000BE04FC /* CalendarDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDetailCell.swift; sourceTree = "<group>"; };
+		79E4B9F529F3ADF000BE04FC /* CalendarDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarDetailCell.xib; sourceTree = "<group>"; };
+		79E4B9F929F3AE2100BE04FC /* CalendarDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDetailController.swift; sourceTree = "<group>"; };
 		79F1AFC729E4BD0E004CED4E /* HourlyTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyTabBar.swift; sourceTree = "<group>"; };
 		79F1AFC929E4BD32004CED4E /* HourlyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyTabBarController.swift; sourceTree = "<group>"; };
 		79F1AFCB29E4BFBB004CED4E /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -163,6 +169,8 @@
 				79AED58B29F2042900FBF2E4 /* PhotoCollectionCell.swift */,
 				7912FB3129F25DE4008BEA14 /* AddPhotoCell.swift */,
 				7912FB3229F25DE4008BEA14 /* AddPhotoCell.xib */,
+				79E4B9F429F3ADF000BE04FC /* CalendarDetailCell.swift */,
+				79E4B9F529F3ADF000BE04FC /* CalendarDetailCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -186,6 +194,15 @@
 				79AED58929F1FBD800FBF2E4 /* PhotoViewController.swift */,
 			);
 			path = Workday;
+			sourceTree = "<group>";
+		};
+		79E4B9F829F3AE0100BE04FC /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				79F1AFCB29E4BFBB004CED4E /* CalendarViewController.swift */,
+				79E4B9F929F3AE2100BE04FC /* CalendarDetailController.swift */,
+			);
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 		79F1AFD929E51971004CED4E /* Data */ = {
@@ -284,9 +301,9 @@
 		79FA88A329E4B282003C6DFB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				79E4B9F829F3AE0100BE04FC /* Calendar */,
 				79FA887129E4AD66003C6DFB /* SummaryViewController.swift */,
 				79F1AFC929E4BD32004CED4E /* HourlyTabBarController.swift */,
-				79F1AFCB29E4BFBB004CED4E /* CalendarViewController.swift */,
 				79F1AFCD29E4BFD4004CED4E /* SettingsViewController.swift */,
 				79C2929C29EE1DD200A2A8BF /* Workday */,
 				79C2929B29EE1DC300A2A8BF /* Client */,
@@ -424,6 +441,7 @@
 				79AED58429F0DE9F00FBF2E4 /* PhotoCell.xib in Resources */,
 				795BB46F29E65D99000D7FB1 /* SettingsCell.xib in Resources */,
 				79FA887D29E4AD67003C6DFB /* LaunchScreen.storyboard in Resources */,
+				79E4B9F729F3ADF000BE04FC /* CalendarDetailCell.xib in Resources */,
 				79FA88A929E4B37E003C6DFB /* Localizable.strings in Resources */,
 				79FA887A29E4AD67003C6DFB /* Assets.xcassets in Resources */,
 				79FA887529E4AD66003C6DFB /* Main.storyboard in Resources */,
@@ -464,6 +482,8 @@
 				7964AFCA29E8CF6300065863 /* ClientDetailsViewController.swift in Sources */,
 				795BB47A29E67CC8000D7FB1 /* CalendarManager.swift in Sources */,
 				79F1AFCA29E4BD32004CED4E /* HourlyTabBarController.swift in Sources */,
+				79E4B9F629F3ADF000BE04FC /* CalendarDetailCell.swift in Sources */,
+				79E4B9FA29F3AE2100BE04FC /* CalendarDetailController.swift in Sources */,
 				79FA886E29E4AD66003C6DFB /* AppDelegate.swift in Sources */,
 				795BB47129E66E3E000D7FB1 /* WorkdaysViewController.swift in Sources */,
 				79AED58729F1E63B00FBF2E4 /* WorkdayCell.swift in Sources */,

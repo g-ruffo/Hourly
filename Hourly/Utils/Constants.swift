@@ -36,6 +36,7 @@ struct K {
         static let workdayCell = "WorkdayCell"
         static let photoCollectionCell = "PhotoCollectionCell"
         static let addPhotoCell = "AddPhotoCell"
+        static let calendarDetailCell = "CalendarDetailCell"
     }
     
     struct Segue {
@@ -45,6 +46,7 @@ struct K {
         static let editClientNav = "EditClientNavigation"
         static let detailsPhotoCollectionNav = "DetailsPhotoCollectionNavigation"
         static let editPhotoCollectionNav = "EditPhotoCollectionNavigation"
+        static let calendarDetailNav = "CalendarDetailNavigation"
     }
     
     struct UserDefaultsKey {
