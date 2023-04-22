@@ -6,11 +6,11 @@
 //
 
 import UIKit
+import CoreData
 
 class SummaryViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var earningsLabel: UILabel!
     @IBOutlet weak var filterResultsButton: UIButton!
     
@@ -28,10 +28,30 @@ class SummaryViewController: UIViewController {
 
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.Segue.summaryWorkdayDetailNav {
+            let destinationVC = segue.destination as? WorkDetailViewController
+            destinationVC?.workday = sender as? WorkdayItem
+        }
+    }
+    
+    func loadWorkdaysFromDatabase() {
+        let startDate = Date()
+        let endDate = Date()
+        let request: NSFetchRequest<WorkdayItem> = WorkdayItem.fetchRequest()
+        request.predicate = NSPredicate(format: "date >= %@ AND date <= %@", startDate as NSDate, endDate as NSDate)
+        do{
+            workdays = try databaseContext.fetch(request)
+        } catch {
+            print("Error fetching workdays from database = \(error)")
+        }
+    }
 }
 
 extension SummaryViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: K.Segue.summaryWorkdayDetailNav, sender: workdays[indexPath.row])
+    }
     
 }
 

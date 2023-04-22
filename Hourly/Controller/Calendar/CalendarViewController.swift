@@ -28,7 +28,7 @@ class CalendarViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        loadWorkdayFromDatabase()
+        loadWorkdaysFromDatabase()
         createCalendarGestureRecognizer()
     }
     
@@ -100,7 +100,7 @@ class CalendarViewController: UIViewController {
         } completion: { completed in
             if completed {
                 self.selectedDate = self.manager.plusMonth(date: self.selectedDate)
-                self.loadWorkdayFromDatabase(slideInDirection: 400)
+                self.loadWorkdaysFromDatabase(slideInDirection: 400)
             }
         }
     }
@@ -113,7 +113,7 @@ class CalendarViewController: UIViewController {
         } completion: { completed in
             if completed {
                 self.selectedDate = self.manager.minusMonth(date: self.selectedDate)
-                self.loadWorkdayFromDatabase(slideInDirection: -400)
+                self.loadWorkdaysFromDatabase(slideInDirection: -400)
             }
         }
     }
@@ -127,7 +127,7 @@ class CalendarViewController: UIViewController {
         } completion: { completed in
             if completed {
                 self.selectedDate = self.manager.plusMonth(date: self.selectedDate)
-                self.loadWorkdayFromDatabase(slideInDirection: 400)
+                self.loadWorkdaysFromDatabase(slideInDirection: 400)
             }
         }
     }
@@ -139,12 +139,12 @@ class CalendarViewController: UIViewController {
         } completion: { completed in
             if completed {
                 self.selectedDate = self.manager.minusMonth(date: self.selectedDate)
-                self.loadWorkdayFromDatabase(slideInDirection: -400)
+                self.loadWorkdaysFromDatabase(slideInDirection: -400)
             }
         }
     }
     
-    func loadWorkdayFromDatabase(slideInDirection: CGFloat? = nil) {
+    func loadWorkdaysFromDatabase(slideInDirection: CGFloat? = nil) {
         let startDate = manager.firstOfMonth(date: selectedDate)
         let endDate = manager.lastOfMonth(date: selectedDate)
         let request: NSFetchRequest<WorkdayItem> = WorkdayItem.fetchRequest()
