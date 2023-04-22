@@ -53,9 +53,9 @@ class CalendarViewController: UIViewController {
         let daysInMonth = manager.daysInMonth(date: selectedDate)
         let firstDayOfMonth = manager.firstOfMonth(date: selectedDate)
         let startingSpaces = manager.weekDay(date: firstDayOfMonth)
-        print(startingSpaces)
+        let numberOfCells = (startingSpaces <= 4) || (startingSpaces <= 5 && daysInMonth < 31) ? 35 : 42
         var count: Int = 1
-        while count <= 42 {
+        while count <= numberOfCells {
             if(count <= startingSpaces || count - startingSpaces > daysInMonth) {
                 totalSquares.append((day: "", items: []))
             } else {
