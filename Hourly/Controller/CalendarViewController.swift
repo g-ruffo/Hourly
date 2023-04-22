@@ -18,19 +18,18 @@ class CalendarViewController: UIViewController {
     private var todaysDate = Date()
     
     private let manager = CalendarManager()
-            
+    
     private var workdays: Array<WorkdayItem> = []
     
     let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
-    
+        
         loadWorkdayFromDatabase()
         createCalendarGestureRecognizer()
-
     }
     
     private func createCalendarGestureRecognizer() {
@@ -45,21 +44,16 @@ class CalendarViewController: UIViewController {
     }
     
     @objc func onSwipe(_ pan: UISwipeGestureRecognizer) {
-        if pan.direction == .right {
-            selectedDate = manager.minusMonth(date: selectedDate)
-            loadWorkdayFromDatabase()
-        } else if pan.direction == .left {
-            selectedDate = manager.plusMonth(date: selectedDate)
-            loadWorkdayFromDatabase()
-        }
+        if pan.direction == .right { setPreviousMonthSlide() }
+        else if pan.direction == .left { setNextMonthSlide() }
     }
     
-    func setMonthView() {
+    func setMonthView(_ slideInDirection: CGFloat? = nil) {
         totalSquares.removeAll()
         let daysInMonth = manager.daysInMonth(date: selectedDate)
         let firstDayOfMonth = manager.firstOfMonth(date: selectedDate)
         let startingSpaces = manager.weekDay(date: firstDayOfMonth)
-        
+        print(startingSpaces)
         var count: Int = 1
         while count <= 42 {
             if(count <= startingSpaces || count - startingSpaces > daysInMonth) {
@@ -72,28 +66,72 @@ class CalendarViewController: UIViewController {
             count += 1
         }
         monthLabel.text = manager.monthString(date: selectedDate) + " " + manager.yearString(date: selectedDate)
-        collectionView.reloadData()
+        
+        guard let direction = slideInDirection else {
+            collectionView.reloadData()
+            return
+        }
+        
+        self.collectionView.alpha = 1
+
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut) {
+            self.collectionView.center = CGPoint(x: self.collectionView.center.x - direction, y: self.collectionView.center.y)
+            self.collectionView.reloadData()
+        }
     }
     
     
-    @IBAction func nextMonthPressed(_ sender: UIButton) {
-        selectedDate = manager.plusMonth(date: selectedDate)
-        loadWorkdayFromDatabase()
+    @IBAction func nextMonthPressed(_ sender: UIButton) { setMonthFade(slideInDirection: 400) }
+    
+    @IBAction func previousMonthPressed(_ sender: UIButton) { setMonthFade(slideInDirection: -400) }
+    
+    func setMonthFade(slideInDirection: CGFloat) {
+        self.view.layoutIfNeeded()
+        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut) {
+            self.collectionView.alpha = 0
+            self.view.layoutIfNeeded()
+        } completion: { completed in
+            if completed {
+                self.selectedDate = self.manager.plusMonth(date: self.selectedDate)
+                self.loadWorkdayFromDatabase(slideInDirection: slideInDirection)
+            }
+        }
     }
     
-    @IBAction func previousMonthPressed(_ sender: UIButton) {
-        selectedDate = manager.minusMonth(date: selectedDate)
-        loadWorkdayFromDatabase()
+    func setNextMonthSlide() {
+        self.view.layoutIfNeeded()
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut) {
+            self.collectionView.center.x = self.collectionView.center.x - 400
+            self.view.layoutIfNeeded()
+            
+        } completion: { completed in
+            if completed {
+                self.selectedDate = self.manager.plusMonth(date: self.selectedDate)
+                self.loadWorkdayFromDatabase(slideInDirection: 400)
+            }
+        }
     }
     
-    func loadWorkdayFromDatabase() {
+    func setPreviousMonthSlide() {
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut) {
+            self.collectionView.center.x = self.collectionView.center.x + 400
+            self.view.layoutIfNeeded()
+        } completion: { completed in
+            if completed {
+                self.selectedDate = self.manager.minusMonth(date: self.selectedDate)
+                self.loadWorkdayFromDatabase(slideInDirection: -400)
+            }
+        }
+    }
+    
+    func loadWorkdayFromDatabase(slideInDirection: CGFloat? = nil) {
         let startDate = manager.firstOfMonth(date: selectedDate)
         let endDate = manager.lastOfMonth(date: selectedDate)
         let request: NSFetchRequest<WorkdayItem> = WorkdayItem.fetchRequest()
         request.predicate = NSPredicate(format: "date >= %@ AND date <= %@", startDate as NSDate, endDate as NSDate)
         do{
             workdays = try databaseContext.fetch(request)
-            setMonthView()
+            setMonthView(slideInDirection)
         } catch {
             print("Error fetching clients from database = \(error)")
         }
@@ -128,7 +166,7 @@ extension CalendarViewController: UICollectionViewDataSource {
         
         return cell
     }
-
+    
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
