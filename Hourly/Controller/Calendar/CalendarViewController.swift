@@ -88,11 +88,11 @@ class CalendarViewController: UIViewController {
     }
     
     
-    @IBAction func nextMonthPressed(_ sender: UIButton) { setMonthFade(slideInDirection: 400) }
+    @IBAction func nextMonthPressed(_ sender: UIButton) { setNextMonthFade() }
     
-    @IBAction func previousMonthPressed(_ sender: UIButton) { setMonthFade(slideInDirection: -400) }
+    @IBAction func previousMonthPressed(_ sender: UIButton) { setPreviousMonthFade() }
     
-    func setMonthFade(slideInDirection: CGFloat) {
+    func setNextMonthFade() {
         self.view.layoutIfNeeded()
         UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut) {
             self.collectionView.alpha = 0
@@ -100,7 +100,20 @@ class CalendarViewController: UIViewController {
         } completion: { completed in
             if completed {
                 self.selectedDate = self.manager.plusMonth(date: self.selectedDate)
-                self.loadWorkdayFromDatabase(slideInDirection: slideInDirection)
+                self.loadWorkdayFromDatabase(slideInDirection: 400)
+            }
+        }
+    }
+    
+    func setPreviousMonthFade() {
+        self.view.layoutIfNeeded()
+        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut) {
+            self.collectionView.alpha = 0
+            self.view.layoutIfNeeded()
+        } completion: { completed in
+            if completed {
+                self.selectedDate = self.manager.minusMonth(date: self.selectedDate)
+                self.loadWorkdayFromDatabase(slideInDirection: -400)
             }
         }
     }
