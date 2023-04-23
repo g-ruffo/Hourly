@@ -356,6 +356,7 @@
                         <outlet property="totalHoursLabel" destination="mdU-hj-sca" id="66y-cw-FBA"/>
                         <outlet property="workedDaysView" destination="uhO-ia-eg1" id="H8W-Rb-QqM"/>
                         <segue destination="cmG-CB-vpK" kind="presentation" identifier="SummaryWorkdayDetailNavigation" id="olG-vz-Or0"/>
+                        <segue destination="q60-8t-Gij" kind="show" identifier="SummaryEditWorkdayNavigation" id="pqR-vS-0xj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="evq-6A-sP8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1690,7 +1691,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ub-k5-1az" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-176.33587786259542" y="1605.6338028169014"/>
+            <point key="canvasLocation" x="-177" y="1729"/>
         </scene>
         <!--Work Detail View Controller-->
         <scene sceneID="WuB-oZ-7Qt">
@@ -2027,13 +2028,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fch-eg-Egx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="696.79999999999995" y="1424.6305418719212"/>
+            <point key="canvasLocation" x="697" y="1670"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="olG-vz-Or0"/>
         <segue reference="4ew-TS-7hL"/>
-        <segue reference="Q5n-uq-4AC"/>
+        <segue reference="pqR-vS-0xj"/>
         <segue reference="T1x-7W-HWO"/>
     </inferredMetricsTieBreakers>
     <resources>
