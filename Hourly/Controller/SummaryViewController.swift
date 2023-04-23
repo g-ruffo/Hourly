@@ -24,10 +24,15 @@ class SummaryViewController: UIViewController {
     
     let filterOptions = ["This Week", "This Month", "This Year"]
     
+    var manager = SummaryManager()
+    
+    private let todaysDate = Date()
+    
     var workdays: Array<WorkdayItem> = [] {
         didSet {
                 let totalEarnings = workdays.compactMap { $0.earnings }.reduce(0, +)
                 earningsLabel.text = totalEarnings.convertToCurrency()
+            timesheetsLabel.text = String(workdays.count)
         }
     }
     
@@ -43,6 +48,8 @@ class SummaryViewController: UIViewController {
         hoursWorkedView.layer.cornerRadius = 20
         
         setupPopUpButton()
+        loadWorkdaysFromDatabase()
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -53,12 +60,25 @@ class SummaryViewController: UIViewController {
     }
     
     func loadWorkdaysFromDatabase() {
-        let startDate = Date()
-        let endDate = Date()
+        var startDate = todaysDate
+        var endDate = todaysDate
+        switch filterResultsButton.titleLabel?.text {
+        case filterOptions[0] : startDate = manager.firstOfWeek(date: todaysDate)
+            endDate = manager.lastOfWeek(date: todaysDate)
+        case filterOptions[1] : startDate = manager.firstOfMonth(date: todaysDate)
+            endDate = manager.lastOfMonth(date: todaysDate)
+        case filterOptions[2] : startDate = manager.firstOfYear(date: todaysDate)
+            endDate = manager.lastOfYear(date: todaysDate)
+        default: print("Error getting start and end dates")
+        }
+        
         let request: NSFetchRequest<WorkdayItem> = WorkdayItem.fetchRequest()
-        request.predicate = NSPredicate(format: "date >= %@ AND date <= %@", startDate as NSDate, endDate as NSDate)
+        let sortDate = NSSortDescriptor(key: "date", ascending: false)
+        request.predicate = NSPredicate(format: "date >= %@ AND date <= %@ AND isFinalized == true", startDate as NSDate, endDate as NSDate)
+        request.sortDescriptors = [sortDate]
         do{
             workdays = try databaseContext.fetch(request)
+            tableView.reloadData()
         } catch {
             print("Error fetching workdays from database = \(error)")
         }
@@ -66,10 +86,8 @@ class SummaryViewController: UIViewController {
     
     func setupPopUpButton() {
         // Called when selection is made
-        let optionClosure = {(action: UIAction) in
-
-                }
-
+        let optionClosure = {(action: UIAction) in self.loadWorkdaysFromDatabase() }
+        
         var optionsArray = [UIAction]()
 
         for filter in filterOptions {
@@ -101,9 +119,9 @@ class SummaryViewController: UIViewController {
 
 extension SummaryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: K.Segue.summaryWorkdayDetailNav, sender: workdays[indexPath.row])
     }
-    
 }
 
 extension SummaryViewController: UITableViewDataSource {
@@ -118,7 +136,5 @@ extension SummaryViewController: UITableViewDataSource {
         
         return cell
     }
-    
-    
 }
 
