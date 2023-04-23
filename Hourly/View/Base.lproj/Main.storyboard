@@ -36,6 +36,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="iEg-Uo-MQh">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EzG-dd-tKF">
@@ -322,7 +325,7 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="SJF-ER-bSW"/>
-                        <color key="backgroundColor" name="PrimaryBlueLight"/>
+                        <color key="backgroundColor" name="PrimaryBlueDark"/>
                         <constraints>
                             <constraint firstItem="Mjk-7A-2bI" firstAttribute="top" secondItem="SJF-ER-bSW" secondAttribute="top" constant="130" id="0g6-lB-Slc"/>
                             <constraint firstItem="BB6-EV-jbA" firstAttribute="top" secondItem="Mjk-7A-2bI" secondAttribute="bottom" constant="16" id="5hQ-8G-vRA"/>
