@@ -13,15 +13,19 @@ class SummaryViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var earningsLabel: UILabel!
     @IBOutlet weak var filterResultsButton: UIButton!
+    @IBOutlet weak var billableTImeLabel: UILabel!
+    @IBOutlet weak var daysWorkedLabel: UILabel!
+    @IBOutlet weak var timesheetsLabel: UILabel!
+    @IBOutlet weak var clientsLabel: UILabel!
     
+    @IBOutlet weak var workedDaysView: UIView!
+    @IBOutlet weak var hoursWorkedView: UIView!
     let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var workdays: Array<WorkdayItem> = [] {
         didSet {
-            if workdays.count > 0 {
                 let totalEarnings = workdays.compactMap { $0.earnings }.reduce(0, +)
                 earningsLabel.text = totalEarnings.convertToCurrency()
-            }
         }
     }
     
