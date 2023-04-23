@@ -22,6 +22,8 @@ class SummaryViewController: UIViewController {
     @IBOutlet weak var hoursWorkedView: UIView!
     let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    let filterOptions = ["This Week", "This Month", "This Year"]
+    
     var workdays: Array<WorkdayItem> = [] {
         didSet {
                 let totalEarnings = workdays.compactMap { $0.earnings }.reduce(0, +)
@@ -36,7 +38,11 @@ class SummaryViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(WorkdayCell.nib(), forCellReuseIdentifier: K.Cell.workdayCell)
-
+        
+        workedDaysView.layer.cornerRadius = 20
+        hoursWorkedView.layer.cornerRadius = 20
+        
+        setupPopUpButton()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -56,6 +62,40 @@ class SummaryViewController: UIViewController {
         } catch {
             print("Error fetching workdays from database = \(error)")
         }
+    }
+    
+    func setupPopUpButton() {
+        // Called when selection is made
+        let optionClosure = {(action: UIAction) in
+
+                }
+
+        var optionsArray = [UIAction]()
+
+        for filter in filterOptions {
+
+            // Create each action and insert the coloured image
+            let action = UIAction(title: filter, handler: optionClosure)
+
+            // Add created action to action array
+            optionsArray.append(action)
+        
+        }
+                
+                
+        // set the state of first country in the array as ON
+        optionsArray[0].state = .on
+
+        // create an options menu
+        let optionsMenu = UIMenu(options: .displayInline, children: optionsArray)
+        
+                
+        // add everything to your button
+        filterResultsButton.menu = optionsMenu
+
+        // make sure the popup button shows the selected value
+        filterResultsButton.changesSelectionAsPrimaryAction = true
+        filterResultsButton.showsMenuAsPrimaryAction = true
     }
 }
 
