@@ -43,7 +43,6 @@ struct SummaryManager {
     
     func minutesToHours(minutes: Int) -> String {
         let hours = minutes / 60
-        return String(format: "%.2f hours", hours)
+        return String(format: "%.2f Hours", hours)
     }
-
 }
