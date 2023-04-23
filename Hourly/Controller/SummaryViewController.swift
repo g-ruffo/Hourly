@@ -16,7 +16,14 @@ class SummaryViewController: UIViewController {
     
     let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    var workdays: Array<WorkdayItem> = []
+    var workdays: Array<WorkdayItem> = [] {
+        didSet {
+            if workdays.count > 0 {
+                let totalEarnings = workdays.compactMap { $0.earnings }.reduce(0, +)
+                earningsLabel.text = totalEarnings.convertToCurrency()
+            }
+        }
+    }
     
 
     override func viewDidLoad() {
