@@ -13,13 +13,15 @@ class SummaryViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var earningsLabel: UILabel!
     @IBOutlet weak var filterResultsButton: UIButton!
-    @IBOutlet weak var billableTImeLabel: UILabel!
+    @IBOutlet weak var billableTimeLabel: UILabel!
+    @IBOutlet weak var breakTimeLabel: UILabel!
+    @IBOutlet weak var totalHoursLabel: UILabel!
     @IBOutlet weak var daysWorkedLabel: UILabel!
     @IBOutlet weak var timesheetsLabel: UILabel!
     @IBOutlet weak var clientsLabel: UILabel!
-    
     @IBOutlet weak var workedDaysView: UIView!
     @IBOutlet weak var hoursWorkedView: UIView!
+    
     let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     let filterOptions = ["This Week", "This Month", "This Year"]
@@ -32,6 +34,22 @@ class SummaryViewController: UIViewController {
         didSet {
                 let totalEarnings = workdays.compactMap { $0.earnings }.reduce(0, +)
                 earningsLabel.text = totalEarnings.convertToCurrency()
+            
+            let billedHours = workdays.compactMap { Helper.calculateHours(startTime: $0.startTime, endTime: $0.endTime, lunchTime: Int($0.lunchBreak)) }.reduce(0, +)
+            billableTimeLabel.text = String(format: "%.2f Hours", billedHours)
+            
+            let totalBreak = workdays.compactMap { $0.lunchBreak }.reduce(0, +)
+            breakTimeLabel.text = manager.minutesToHours(minutes: Int(totalBreak))
+            
+            let totalHours = workdays.compactMap { Helper.calculateHours(startTime: $0.startTime, endTime: $0.endTime, lunchTime: nil) }.reduce(0, +)
+            totalHoursLabel.text = String(format: "%.2f hours", totalHours)
+            
+            let calendarWorked = Set(workdays.compactMap { $0.date?.formatDateToString() })
+            daysWorkedLabel.text = "\(calendarWorked.count) Days"
+            
+            let clients = Set(workdays.compactMap { $0.clientName })
+            clientsLabel.text = String(clients.count)
+            
             timesheetsLabel.text = String(workdays.count)
         }
     }

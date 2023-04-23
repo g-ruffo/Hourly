@@ -40,5 +40,10 @@ struct SummaryManager {
         let lastDay = calendar.date(byAdding: DateComponents(month: 12, day: -1), to: firstOfYear(date: date))
         return lastDay!
     }
+    
+    func minutesToHours(minutes: Int) -> String {
+        let hours = minutes / 60
+        return String(format: "%.2f hours", hours)
+    }
 
 }

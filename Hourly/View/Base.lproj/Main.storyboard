@@ -341,7 +341,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Summary" id="wsU-xm-ZFe"/>
                     <connections>
-                        <outlet property="billableTImeLabel" destination="20k-f7-nMI" id="kOZ-Y3-V26"/>
+                        <outlet property="billableTimeLabel" destination="20k-f7-nMI" id="kOZ-Y3-V26"/>
+                        <outlet property="breakTimeLabel" destination="TxL-ma-LrA" id="nte-hN-dBv"/>
                         <outlet property="clientsLabel" destination="Bct-yU-qoc" id="b78-lg-fRe"/>
                         <outlet property="daysWorkedLabel" destination="LMn-vH-6K3" id="PTZ-ft-Jsb"/>
                         <outlet property="earningsLabel" destination="ZNx-cQ-C8b" id="2br-ei-2BU"/>
@@ -349,6 +350,7 @@
                         <outlet property="hoursWorkedView" destination="sot-ff-0aW" id="ox1-MQ-cIT"/>
                         <outlet property="tableView" destination="BB6-EV-jbA" id="eB8-dF-GNm"/>
                         <outlet property="timesheetsLabel" destination="Lux-lI-PpU" id="kru-H4-bYQ"/>
+                        <outlet property="totalHoursLabel" destination="mdU-hj-sca" id="66y-cw-FBA"/>
                         <outlet property="workedDaysView" destination="uhO-ia-eg1" id="H8W-Rb-QqM"/>
                         <segue destination="cmG-CB-vpK" kind="presentation" identifier="SummaryWorkdayDetailNavigation" id="olG-vz-Or0"/>
                     </connections>
