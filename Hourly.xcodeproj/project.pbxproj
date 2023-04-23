@@ -28,6 +28,7 @@
 		7964AFE429EDE21F00065863 /* ClientSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964AFE329EDE21F00065863 /* ClientSearchTextField.swift */; };
 		7983B00429F4A09900F2D76E /* WorkdayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7983B00229F4A09900F2D76E /* WorkdayCell.swift */; };
 		7983B00529F4A09900F2D76E /* WorkdayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7983B00329F4A09900F2D76E /* WorkdayCell.xib */; };
+		7983B00729F4C12700F2D76E /* SummaryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7983B00629F4C12700F2D76E /* SummaryManager.swift */; };
 		79AED58329F0DE9F00FBF2E4 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AED58129F0DE9F00FBF2E4 /* PhotoCell.swift */; };
 		79AED58429F0DE9F00FBF2E4 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79AED58229F0DE9F00FBF2E4 /* PhotoCell.xib */; };
 		79AED58A29F1FBD800FBF2E4 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AED58929F1FBD800FBF2E4 /* PhotoViewController.swift */; };
@@ -96,6 +97,7 @@
 		7964AFE329EDE21F00065863 /* ClientSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientSearchTextField.swift; sourceTree = "<group>"; };
 		7983B00229F4A09900F2D76E /* WorkdayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkdayCell.swift; sourceTree = "<group>"; };
 		7983B00329F4A09900F2D76E /* WorkdayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkdayCell.xib; sourceTree = "<group>"; };
+		7983B00629F4C12700F2D76E /* SummaryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryManager.swift; sourceTree = "<group>"; };
 		79AED58129F0DE9F00FBF2E4 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		79AED58229F0DE9F00FBF2E4 /* PhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
 		79AED58929F1FBD800FBF2E4 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 				7964AFC729E89CDF00065863 /* AddEditClientManager.swift */,
 				7964AFD829E9FEA000065863 /* WorkdayDetailsManager.swift */,
 				7964AFDE29EB2CEE00065863 /* WorkdaysManager.swift */,
+				7983B00629F4C12700F2D76E /* SummaryManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -478,6 +481,7 @@
 				79F1AFCC29E4BFBB004CED4E /* CalendarViewController.swift in Sources */,
 				7964AFCC29E9D91400065863 /* WorkDetailViewController.swift in Sources */,
 				79AED58A29F1FBD800FBF2E4 /* PhotoViewController.swift in Sources */,
+				7983B00729F4C12700F2D76E /* SummaryManager.swift in Sources */,
 				7964AFE129EB368900065863 /* AddEditWorkdayManager.swift in Sources */,
 				7912FB3329F25DE4008BEA14 /* AddPhotoCell.swift in Sources */,
 				79FA887229E4AD66003C6DFB /* SummaryViewController.swift in Sources */,
