@@ -12,9 +12,24 @@ class ExportViewController: UIViewController {
     
     
     @IBOutlet weak var clientTextField: ClientSearchTextField!
-    @IBOutlet weak var startDatePicker: UIDatePicker!
-    @IBOutlet weak var endDatePicker: UIDatePicker!
+    @IBOutlet weak var startDatePicker: UIDatePicker! {
+        didSet {
+            var calendar = Calendar(identifier: .gregorian)
+            calendar.timeZone = TimeZone(secondsFromGMT: 0)!
+            startDatePicker.date = calendar.startOfDay(for: startDatePicker.date)
+        }
+    }
+    @IBOutlet weak var endDatePicker: UIDatePicker! {
+        didSet {
+            var calendar = Calendar(identifier: .gregorian)
+            calendar.timeZone = TimeZone(secondsFromGMT: 0)!
+            endDatePicker.date = calendar.startOfDay(for: endDatePicker.date)
+        }
+    }
     
+    private var selectedStartDate: Date?
+    private var selectedEndDate: Date?
+
     private var workdays: Array<WorkdayItem> = []
     
     private var selectedClient: ClientItem?
@@ -40,6 +55,24 @@ class ExportViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         clientTextField.searchDelegate = self
+        startDatePicker.tag = 0
+        endDatePicker.tag = 1
+        startDatePicker.addTarget(self, action: #selector(datePickerChanged(picker:)), for: .valueChanged)
+        endDatePicker.addTarget(self, action: #selector(datePickerChanged(picker:)), for: .valueChanged)
+
+    }
+    
+    @objc func datePickerChanged(picker: UIDatePicker) {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = TimeZone(secondsFromGMT: 0)!
+        if startDatePicker.date.timeIntervalSince1970 > endDatePicker.date.timeIntervalSince1970 {
+            endDatePicker.date = startDatePicker.date
+        }
+        switch picker.tag {
+        case 0: startDatePicker.date = calendar.startOfDay(for: startDatePicker.date)
+        case 1: endDatePicker.date = calendar.startOfDay(for: endDatePicker.date)
+        default: print("Error unknow date picker tag")
+        }
     }
     
     
@@ -64,11 +97,9 @@ class ExportViewController: UIViewController {
     }
     
     func loadWorkdaysFromDatabase() -> Bool {
-        var startDate = startDatePicker.date
-        var endDate = endDatePicker.date
         let request: NSFetchRequest<WorkdayItem> = WorkdayItem.fetchRequest()
         let sortDate = NSSortDescriptor(key: "date", ascending: false)
-        request.predicate = NSPredicate(format: "date >= %@ AND date <= %@ AND isFinalized == true", startDate as NSDate, endDate as NSDate)
+        request.predicate = NSPredicate(format: "date >= %@ AND date <= %@ AND isFinalized == true", startDatePicker.date as NSDate, endDatePicker.date as NSDate)
         request.sortDescriptors = [sortDate]
         do{
             workdays = try databaseContext.fetch(request)
