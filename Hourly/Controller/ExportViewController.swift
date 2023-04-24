@@ -52,6 +52,8 @@ class ExportViewController: UIViewController {
     
     private let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
+    private var manager = ExportManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         clientTextField.searchDelegate = self
