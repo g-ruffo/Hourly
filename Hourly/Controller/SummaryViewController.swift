@@ -68,6 +68,12 @@ class SummaryViewController: UIViewController {
         setupPopUpButton()
         loadWorkdaysFromDatabase()
 
+        NotificationCenter.default.addObserver(self, selector: #selector(workdaysHaveBeenUpdated), name: K.NotificationKeys.updateWorkdaysNotification, object: nil)
+
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -75,6 +81,10 @@ class SummaryViewController: UIViewController {
             let destinationVC = segue.destination as? WorkDetailViewController
             destinationVC?.workday = sender as? WorkdayItem
         }
+    }
+    
+    @objc func workdaysHaveBeenUpdated(notification: NSNotification) {
+        loadWorkdaysFromDatabase()
     }
     
     func loadWorkdaysFromDatabase() {
