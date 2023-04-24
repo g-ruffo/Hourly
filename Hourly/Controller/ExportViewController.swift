@@ -15,6 +15,8 @@ class ExportViewController: UIViewController {
     @IBOutlet weak var startDatePicker: UIDatePicker!
     @IBOutlet weak var endDatePicker: UIDatePicker!
     
+    private var workdays: Array<WorkdayItem> = []
+    
     private var selectedClient: ClientItem?
     
     private var selectedClientID: NSManagedObjectID? {
@@ -42,7 +44,39 @@ class ExportViewController: UIViewController {
     
     
     @IBAction func exportButtonPressed(_ sender: UIButton) {
-        
+        if loadWorkdaysFromDatabase() {
+            if workdays.count > 0 {
+                
+            } else {
+                showAlertDialog()
+            }
+        } else {
+            showAlertDialog()
+        }
+    }
+    
+    func showAlertDialog() {
+        let alert = UIAlertController(title: "No Data Found", message: "There are no workdays found for the client and dates you have selected", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            alert.dismiss(animated: true)
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func loadWorkdaysFromDatabase() -> Bool {
+        var startDate = startDatePicker.date
+        var endDate = endDatePicker.date
+        let request: NSFetchRequest<WorkdayItem> = WorkdayItem.fetchRequest()
+        let sortDate = NSSortDescriptor(key: "date", ascending: false)
+        request.predicate = NSPredicate(format: "date >= %@ AND date <= %@ AND isFinalized == true", startDate as NSDate, endDate as NSDate)
+        request.sortDescriptors = [sortDate]
+        do{
+            workdays = try databaseContext.fetch(request)
+            return true
+        } catch {
+            print("Error fetching workdays from database = \(error)")
+            return false
+        }
     }
     
     
