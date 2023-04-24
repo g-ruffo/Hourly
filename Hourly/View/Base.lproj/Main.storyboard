@@ -638,14 +638,106 @@
                     <view key="view" contentMode="scaleToFill" id="Ffc-Wo-pvG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="gMr-tN-C05">
+                                <rect key="frame" x="12" y="88" width="351" height="58.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Client" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5wb-ho-TKV">
+                                        <rect key="frame" x="0.0" y="0.0" width="44" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Company name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HSW-Fo-Va0" customClass="ClientSearchTextField" customModule="Hourly" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="24.5" width="351" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="HSW-Fo-Va0" firstAttribute="leading" secondItem="gMr-tN-C05" secondAttribute="leading" id="kb7-sY-cMe"/>
+                                    <constraint firstAttribute="trailing" secondItem="HSW-Fo-Va0" secondAttribute="trailing" id="lze-Ko-Ure"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="bWu-IP-87j">
+                                <rect key="frame" x="12" y="170.5" width="351" height="70.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Ot0-Do-De1">
+                                        <rect key="frame" x="0.0" y="0.0" width="169.5" height="70.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="29M-4a-f3h">
+                                                <rect key="frame" x="0.0" y="0.0" width="39.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="bLm-Sj-exR">
+                                                <rect key="frame" x="0.0" y="20.5" width="169.5" height="50"/>
+                                            </datePicker>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="bLm-Sj-exR" firstAttribute="leading" secondItem="Ot0-Do-De1" secondAttribute="leading" id="Pt4-oe-MpH"/>
+                                            <constraint firstAttribute="trailing" secondItem="bLm-Sj-exR" secondAttribute="trailing" id="bAB-Hu-z7m"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="bSz-ZE-rdB">
+                                        <rect key="frame" x="181.5" y="0.0" width="169.5" height="70.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jKU-Lg-q5m">
+                                                <rect key="frame" x="0.0" y="0.0" width="18.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="bBB-7Q-jzl">
+                                                <rect key="frame" x="0.0" y="20.5" width="169.5" height="50"/>
+                                            </datePicker>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="bBB-7Q-jzl" secondAttribute="trailing" id="KgK-lZ-Slc"/>
+                                            <constraint firstItem="bBB-7Q-jzl" firstAttribute="width" secondItem="bSz-ZE-rdB" secondAttribute="width" id="ecf-pX-q6h"/>
+                                            <constraint firstItem="bBB-7Q-jzl" firstAttribute="leading" secondItem="bSz-ZE-rdB" secondAttribute="leading" id="nFe-Rd-ToD"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPV-eN-Z3h">
+                                <rect key="frame" x="147" y="566" width="81.5" height="35.5"/>
+                                <color key="tintColor" name="PrimaryYellow"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Export">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="18"/>
+                                    <color key="baseForegroundColor" name="DarkGrey"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="exportButtonPressed:" destination="uEf-bV-X3D" eventType="touchUpInside" id="aPD-RX-0Vn"/>
+                                    <action selector="saveButtonPressed:" destination="yHG-3C-L6b" eventType="touchUpInside" id="Xrd-8P-jQF"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Dyd-fy-21l"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="gMr-tN-C05" firstAttribute="top" secondItem="Dyd-fy-21l" secondAttribute="top" constant="24" id="6TB-Zq-SGV"/>
+                            <constraint firstItem="SPV-eN-Z3h" firstAttribute="centerX" secondItem="Ffc-Wo-pvG" secondAttribute="centerX" id="Ac4-xE-Zgi"/>
+                            <constraint firstItem="SPV-eN-Z3h" firstAttribute="centerY" secondItem="Ffc-Wo-pvG" secondAttribute="centerY" constant="250" id="Fmh-WK-CeV"/>
+                            <constraint firstItem="bWu-IP-87j" firstAttribute="top" secondItem="gMr-tN-C05" secondAttribute="bottom" constant="24" id="QZW-nD-TO9"/>
+                            <constraint firstItem="bWu-IP-87j" firstAttribute="leading" secondItem="Dyd-fy-21l" secondAttribute="leading" constant="12" id="RO8-pd-aIY"/>
+                            <constraint firstItem="Dyd-fy-21l" firstAttribute="trailing" secondItem="bWu-IP-87j" secondAttribute="trailing" constant="12" id="eHm-dd-0cB"/>
+                            <constraint firstItem="gMr-tN-C05" firstAttribute="leading" secondItem="Dyd-fy-21l" secondAttribute="leading" constant="12" id="eLV-dl-jS0"/>
+                            <constraint firstItem="Dyd-fy-21l" firstAttribute="trailing" secondItem="gMr-tN-C05" secondAttribute="trailing" constant="12" id="hwK-WC-8jf"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Export" id="ByU-uq-w3b"/>
+                    <connections>
+                        <outlet property="clientTextField" destination="HSW-Fo-Va0" id="s36-8A-Dx8"/>
+                        <outlet property="endDatePicker" destination="bBB-7Q-jzl" id="EXV-qW-QZv"/>
+                        <outlet property="startDatePicker" destination="bLm-Sj-exR" id="RA3-ke-atd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2aT-V1-A13" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2742" y="1178"/>
+            <point key="canvasLocation" x="2741.5999999999999" y="1177.961019490255"/>
         </scene>
         <!--Item-->
         <scene sceneID="HdE-xf-bT6">
@@ -2030,7 +2122,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="olG-vz-Or0"/>
-        <segue reference="4ew-TS-7hL"/>
+        <segue reference="gAs-an-Vsm"/>
         <segue reference="pqR-vS-0xj"/>
         <segue reference="T1x-7W-HWO"/>
     </inferredMetricsTieBreakers>
