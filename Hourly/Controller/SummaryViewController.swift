@@ -64,9 +64,6 @@ class SummaryViewController: UIViewController {
         
         workedDaysView.layer.cornerRadius = 20
         hoursWorkedView.layer.cornerRadius = 20
-        
-        setupPopUpButton()
-        loadWorkdaysFromDatabase()
 
         NotificationCenter.default.addObserver(self, selector: #selector(workdaysHaveBeenUpdated), name: K.NotificationKeys.updateWorkdaysNotification, object: nil)
 
@@ -76,10 +73,20 @@ class SummaryViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupPopUpButton()
+        loadWorkdaysFromDatabase()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.Segue.summaryWorkdayDetailNav {
-            let destinationVC = segue.destination as? WorkDetailViewController
-            destinationVC?.workday = sender as? WorkdayItem
+            let destinationVC = segue.destination as! WorkDetailViewController
+            destinationVC.workday = sender as? WorkdayItem
+            destinationVC.delegate = self
+        } else if segue.identifier == K.Segue.summaryEditWorkdayNav {
+            let destinationVC = segue.destination as! AddEditWorkdayViewController
+            destinationVC.workdayEdit = sender as? WorkdayItem
         }
     }
     
@@ -128,13 +135,11 @@ class SummaryViewController: UIViewController {
         
         }
                 
-                
         // set the state of first country in the array as ON
         optionsArray[0].state = .on
 
         // create an options menu
         let optionsMenu = UIMenu(options: .displayInline, children: optionsArray)
-        
                 
         // add everything to your button
         filterResultsButton.menu = optionsMenu
@@ -145,6 +150,7 @@ class SummaryViewController: UIViewController {
     }
 }
 
+//MARK: - UITableViewDelegate
 extension SummaryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -152,6 +158,7 @@ extension SummaryViewController: UITableViewDelegate {
     }
 }
 
+//MARK: - UITableViewDataSource
 extension SummaryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return workdays.count
@@ -163,6 +170,13 @@ extension SummaryViewController: UITableViewDataSource {
         cell.configure(with: workdays[indexPath.row])
         
         return cell
+    }
+}
+
+//MARK: - EditWorkdayDelegate
+extension SummaryViewController: EditWorkdayDelegate {
+    func editWorkday(_ workDetailViewController: WorkDetailViewController, workday: WorkdayItem) {
+        performSegue(withIdentifier: K.Segue.summaryEditWorkdayNav, sender: workday)
     }
 }
 
