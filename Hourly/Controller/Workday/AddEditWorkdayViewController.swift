@@ -110,7 +110,9 @@ class AddEditWorkdayViewController: UIViewController {
         checkForEdit()
         setupMenuItems()
         saveButton.tintColor = UIColor("#F1C40F")
-        createCollectionView()        
+        createCollectionView()
+        
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
     }
     
     override func viewWillAppear(_ animated: Bool) {
