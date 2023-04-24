@@ -30,6 +30,13 @@ class CalendarViewController: UIViewController {
         
         loadWorkdaysFromDatabase()
         createCalendarGestureRecognizer()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(workdaysHaveBeenUpdated), name: K.NotificationKeys.updateWorkdaysNotification, object: nil)
+
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -37,6 +44,10 @@ class CalendarViewController: UIViewController {
             let destinationNav = segue.destination as? CalendarDetailController
             destinationNav?.workdays = (sender as? Array<WorkdayItem>)!
         }
+    }
+    
+    @objc func workdaysHaveBeenUpdated(notification: NSNotification) {
+        loadWorkdaysFromDatabase()
     }
     
     private func createCalendarGestureRecognizer() {
