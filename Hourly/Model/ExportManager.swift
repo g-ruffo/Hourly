@@ -30,7 +30,7 @@ struct ExportManager {
             let date = String(describing: item.date?.formatDateToDayOfWeekString())
             let start = String(describing: item.startTime?.formatTimeToString())
             let end = String(describing: item.endTime?.formatTimeToString())
-            let lunch = "\(String(describing: item.lunchBreak)) min"
+            let lunch = "\(String(describing: item.lunchMinutes)) min"
             let hours = String(describing: Helper.minutesToHoursWorkedString(minutesWorked: item.minutesWorked))
             let mileage = String(describing: item.mileage)
             let location = String(describing: item.location)

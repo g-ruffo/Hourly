@@ -26,7 +26,7 @@ class CalendarDetailCell: UITableViewCell {
                 dateLabel.text = day.date?.formatDateToString()
                 startTimeLabel.text = day.startTime?.formatTimeToString()
                 endTimeLabel.text = day.endTime?.formatTimeToString()
-                lunchTimeLabel.text = "\(day.lunchBreak) min"
+                lunchTimeLabel.text = "\(day.lunchMinutes) min"
                 hoursWorkedLabel.text = Helper.minutesToHoursWorkedString(minutesWorked: day.minutesWorked)
                 payRateLabel.text = day.payRate.convertToCurrency()
                 mileageLabel.text = "\(day.mileage) km"

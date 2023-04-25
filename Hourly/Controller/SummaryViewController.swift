@@ -39,7 +39,7 @@ class SummaryViewController: UIViewController {
             let billedHours = workdays.compactMap { $0.minutesWorked }.reduce(0, +)
             billableTimeLabel.text = String(format: "%.2f Hours", billedHours)
             
-            let totalBreak = workdays.compactMap { $0.lunchBreak }.reduce(0, +)
+            let totalBreak = workdays.compactMap { $0.lunchMinutes }.reduce(0, +)
             breakTimeLabel.text = manager.minutesToHours(minutes: Int(totalBreak))
             
             let totalTime = Int(billedHours + totalBreak)
