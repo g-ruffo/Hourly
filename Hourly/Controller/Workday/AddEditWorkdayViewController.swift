@@ -323,6 +323,7 @@ class AddEditWorkdayViewController: UIViewController {
             workday.mileage = Int32(selectedMileage ?? 0)
             workday.workDescription = descriptionTexfield.text
             workday.earnings = manager.calculateEarnings(startTime: adjustedStart, endTime: adjustedEnd, lunchTime: selectedLunchTime, payRate: rate)
+            workday.minutesWorked = manager.calculateTimeWorkedInMinutes(startTime: adjustedStart, endTime: adjustedEnd, lunchTime: selectedLunchTime ?? 0)
             workday.isFinalized = true
             workday.client = selectedClient
             createPhotoItems(workday: workday)
