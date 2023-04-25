@@ -8,9 +8,9 @@
 import Foundation
 
 class Helper {
-    static func calculateHoursWorkedToString(minutesWorked: Int16?, lunchTime: Int16?) -> String {
+    static func calculateHoursWorkedToString(minutesWorked: Int16?) -> String {
         if let worked = minutesWorked {
-            let hours = (Double(worked) - Double(lunchTime ?? 0)) / 60
+            let hours = Double(worked) / 60
             return String(format: "%.2f hours", abs(hours))
         } else {
             return "--:--"

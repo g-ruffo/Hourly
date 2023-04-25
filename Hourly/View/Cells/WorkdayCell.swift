@@ -20,8 +20,8 @@ class WorkdayCell: UITableViewCell {
             if let day = workday {
                 clientLabel.text = day.clientName
                 dateLabel?.text = day.date?.formatDateToString()
-               earningsLabel?.text = day.earnings.convertToCurrency()
-                hoursLabel?.text = Helper.calculateHoursWorkedToString(minutesWorked: day.minutesWorked, lunchTime: day.lunchBreak)
+                earningsLabel?.text = day.earnings.convertToCurrency()
+                hoursLabel?.text = Helper.calculateHoursWorkedToString(minutesWorked: day.minutesWorked)
                 clientTagImageView.image = day.isFinalized ? UIImage(systemName: "circle.fill") : UIImage(systemName: "pencil.circle")
                 
                 if let colour = day.client?.tagColor {
