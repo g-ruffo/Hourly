@@ -30,10 +30,10 @@ extension UITextField {
 }
 
 extension Date {
-    var zeroSeconds: Date? {
+    var zeroSeconds: Date {
         let calendar = Calendar.current
         let dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: self)
-        return calendar.date(from: dateComponents)
+        return calendar.date(from: dateComponents) ?? calendar.startOfDay(for: self)
     }
     func formatDateToString() -> String {
         let formatter = DateFormatter()
