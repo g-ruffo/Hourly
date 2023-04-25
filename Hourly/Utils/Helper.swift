@@ -8,7 +8,7 @@
 import Foundation
 
 class Helper {
-    static func minutesToHoursWorkedString(minutesWorked: Int16?) -> String {
+    static func minutesToHoursWorkedString(minutesWorked: Int32?) -> String {
         if let worked = minutesWorked {
             let hours = Double(worked) / 60
             return String(format: "%.2f hours", abs(hours))

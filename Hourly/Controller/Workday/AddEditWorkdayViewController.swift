@@ -318,7 +318,7 @@ class AddEditWorkdayViewController: UIViewController {
             workday.location = locationTexfield.text
             workday.startTime = adjustedStart
             workday.endTime = adjustedEnd
-            workday.lunchBreak = Int16(selectedLunchTime ?? 0)
+            workday.lunchBreak = Int32(selectedLunchTime ?? 0)
             workday.payRate = rate
             workday.mileage = Int32(selectedMileage ?? 0)
             workday.workDescription = descriptionTexfield.text
@@ -355,7 +355,7 @@ class AddEditWorkdayViewController: UIViewController {
             workday.location = locationTexfield.text
             workday.startTime = adjustedStart
             workday.endTime = adjustedEnd
-            workday.lunchBreak = Int16(selectedLunchTime ?? 0)
+            workday.lunchBreak = Int32(selectedLunchTime ?? 0)
             workday.mileage = Int32(selectedMileage ?? 0)
             workday.workDescription = descriptionTexfield.text
             workday.isFinalized = false
