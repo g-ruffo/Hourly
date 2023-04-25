@@ -41,8 +41,8 @@ struct SummaryManager {
         return lastDay!
     }
     
-    func minutesToHours(minutes: Int) -> String {
-        let hours = minutes / 60
+    func minutesToHours(minutes: Int32) -> String {
+        let hours = Double(minutes) / 60.0
         return String(format: "%.2f Hours", hours)
     }
 }
