@@ -9,34 +9,35 @@ import UIKit
 import CoreData
 import PhotosUI
 
+enum PickerTags: Int {
+    case date, startTime, endTime
+}
+
 class AddEditWorkdayViewController: UIViewController {
 
     @IBOutlet weak var clientTextField: ClientSearchTextField!
-    @IBOutlet weak var dateTexfield: UITextField!
     @IBOutlet weak var locationTexfield: UITextField!
-    @IBOutlet weak var startTimeTexfield: UITextField!
-    @IBOutlet weak var endTimeTexfield: UITextField!
     @IBOutlet weak var lunchTexfield: UITextField!
     @IBOutlet weak var payRateTexfield: UITextField!
     @IBOutlet weak var mileageTexfield: UITextField!
     @IBOutlet weak var descriptionTexfield: UITextField!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var saveButton: UIButton!
-    
-    private let datePicker = UIDatePicker()
-    private let startTimePicker = UIDatePicker()
-    private let endTimePicker = UIDatePicker()
+    @IBOutlet weak var datePicker: UIDatePicker! {
+            didSet {
+                print("datePicker did set")
+
+                var calendar = Calendar(identifier: .gregorian)
+                calendar.timeZone = TimeZone(secondsFromGMT: 0)!
+                datePicker.date = calendar.startOfDay(for: datePicker.date)
+            }
+        }
+    @IBOutlet weak var startTimeDatePicker: UIDatePicker!
+    @IBOutlet weak var endTimeDatePicker: UIDatePicker!
+
     private let lunchPicker = UIPickerView()
     private let mileagePicker = UIPickerView()
-    private var selectedDate: Date? {
-        didSet { if let value = selectedDate { dateTexfield.text = value.formatDateToString() } }
-    }
-    private var selectedStartTime: Date? {
-        didSet { if let value = selectedStartTime { startTimeTexfield.text = value.formatTimeToString() } }
-    }
-    private var selectedEndTime: Date? {
-        didSet { if let value = selectedEndTime { endTimeTexfield.text = value.formatTimeToString() } }
-    }
+
     private var selectedLunchTimeMinutes: Int? {
         didSet { if let value = selectedLunchTimeMinutes, value > 0 { lunchTexfield.text = "\(value) min" } }
     }
@@ -106,7 +107,6 @@ class AddEditWorkdayViewController: UIViewController {
         collectionView.dataSource = self
         setupLunchMileagePicker()
         setupDatePicker()
-        setupTimePickers()
         checkForEdit()
         setupMenuItems()
         saveButton.tintColor = UIColor("#F1C40F")
@@ -146,7 +146,7 @@ class AddEditWorkdayViewController: UIViewController {
         let menuHandler: UIActionHandler = { action in
             switch action.title {
             case "Save as Draft":
-                if self.createDraftWorkday() {
+                if self.createUpdateWorkday(isDraft: true) {
                     print("saved draft")
                     if self.workdayEdit != nil {
                         self.navigationController?.popViewController(animated: true)
@@ -179,10 +179,10 @@ class AddEditWorkdayViewController: UIViewController {
     func updateUserDefaults(clearValues: Bool = false) {
         if workdayEdit == nil && !clearValues && !completedSave {
             defaults.set(clientTextField.text, forKey: K.UserDefaultsKey.clientName)
-            defaults.set(selectedDate, forKey: K.UserDefaultsKey.date)
+            defaults.set(datePicker.date, forKey: K.UserDefaultsKey.date)
             defaults.set(locationTexfield.text, forKey: K.UserDefaultsKey.location)
-            defaults.set(selectedStartTime, forKey: K.UserDefaultsKey.start)
-            defaults.set(selectedEndTime, forKey: K.UserDefaultsKey.end)
+            defaults.set(startTimeDatePicker.date, forKey: K.UserDefaultsKey.start)
+            defaults.set(endTimeDatePicker.date, forKey: K.UserDefaultsKey.end)
             defaults.set(selectedLunchTimeMinutes, forKey: K.UserDefaultsKey.lunch)
             defaults.set(payRateTexfield.text, forKey: K.UserDefaultsKey.rate)
             defaults.set(selectedMileage, forKey: K.UserDefaultsKey.mileage)
@@ -200,8 +200,8 @@ class AddEditWorkdayViewController: UIViewController {
         if workdayEdit == nil {
             clientTextField.text = defaults.string(forKey: K.UserDefaultsKey.clientName)
             locationTexfield.text = defaults.string(forKey: K.UserDefaultsKey.location)
-            selectedStartTime = defaults.object(forKey: K.UserDefaultsKey.start) as? Date
-            selectedEndTime = defaults.object(forKey: K.UserDefaultsKey.end) as? Date
+            startTimeDatePicker.date = defaults.object(forKey: K.UserDefaultsKey.start) as! Date
+            endTimeDatePicker.date = defaults.object(forKey: K.UserDefaultsKey.end) as! Date
             selectedLunchTimeMinutes = defaults.integer(forKey: K.UserDefaultsKey.lunch)
             payRateTexfield.text = defaults.string(forKey: K.UserDefaultsKey.rate)
             selectedMileage = defaults.integer(forKey: K.UserDefaultsKey.mileage)
@@ -211,15 +211,15 @@ class AddEditWorkdayViewController: UIViewController {
                 selectedClientID = objectId
             }
             if let date = defaults.object(forKey: K.UserDefaultsKey.date) as? Date {
-                selectedDate = date
+                datePicker.date = date
             }
 
         }
     }
     
     func checkForEdit() {
+        title = workdayEdit == nil ? "Add Worday" : "Edit Workday"
         if let workday = workdayEdit {
-            title = "Edit Workday"
             selectedClient = workday.client
             clientTextField.text = workday.clientName
             locationTexfield.text = workday.location
@@ -227,13 +227,10 @@ class AddEditWorkdayViewController: UIViewController {
             selectedLunchTimeMinutes = Int(workday.lunchMinutes)
             selectedMileage = Int(workday.mileage)
             descriptionTexfield.text = workday.workDescription
-            selectedDate = workday.date
-            selectedStartTime = workday.startTime
-            selectedEndTime = workday.endTime
             savedPhotos = workday.photos?.allObjects as? Array<PhotoItem> ?? []
-        } else {
-            title = "Add Worday"
-            selectedDate = Date().zeroSeconds
+            if let date = workday.date { datePicker.date = date }
+            if let start = workday.startTime { startTimeDatePicker.date = start }
+            if let end = workday.endTime { endTimeDatePicker.date = end }
         }
     }
 
@@ -245,36 +242,22 @@ class AddEditWorkdayViewController: UIViewController {
     }
     
     func setupDatePicker() {
-        datePicker.datePickerMode = .date
-        datePicker.addTarget(self, action: #selector(dateValueChange), for: .valueChanged)
-        datePicker.frame.size = CGSize(width: 0, height: 300)
-        datePicker.preferredDatePickerStyle = .wheels
-        dateTexfield.inputView = datePicker
+        datePicker.tag = PickerTags.date.rawValue
+        startTimeDatePicker.tag = PickerTags.startTime.rawValue
+        endTimeDatePicker.tag = PickerTags.endTime.rawValue
+        datePicker.addTarget(self, action: #selector(datePickerChanged(picker:)), for: .valueChanged)
+        startTimeDatePicker.addTarget(self, action: #selector(datePickerChanged(picker:)), for: .valueChanged)
+        endTimeDatePicker.addTarget(self, action: #selector(datePickerChanged(picker:)), for: .valueChanged)
     }
     
-    func setupTimePickers() {
-        startTimePicker.datePickerMode = .time
-        endTimePicker.datePickerMode = .time
-        startTimePicker.addTarget(self, action: #selector(startTimeValueChange), for: .valueChanged)
-        endTimePicker.addTarget(self, action: #selector(endTimeValueChange), for: .valueChanged)
-        startTimePicker.frame.size = CGSize(width: 0, height: 300)
-        endTimePicker.frame.size = CGSize(width: 0, height: 300)
-        startTimePicker.preferredDatePickerStyle = .wheels
-        endTimePicker.preferredDatePickerStyle = .wheels
-        startTimeTexfield.inputView = startTimePicker
-        endTimeTexfield.inputView = endTimePicker
-    }
-    
-    @objc func dateValueChange(_ datePicker: UIDatePicker) {
-        selectedDate = datePicker.date.zeroSeconds
-    }
-    
-    @objc func startTimeValueChange(_ datePicker: UIDatePicker) {
-        selectedStartTime = datePicker.date.zeroSeconds
-    }
-    
-    @objc func endTimeValueChange(_ datePicker: UIDatePicker) {
-        selectedEndTime = datePicker.date.zeroSeconds
+    @objc func datePickerChanged(picker: UIDatePicker) {
+        print("Picker date changed")
+        switch picker.tag {
+            case PickerTags.date.rawValue: datePicker.date = datePicker.date.zeroSeconds
+            case PickerTags.startTime.rawValue: startTimeDatePicker.date = startTimeDatePicker.date.zeroSeconds
+            case PickerTags.endTime.rawValue: endTimeDatePicker.date = endTimeDatePicker.date.zeroSeconds
+            default: print("Error unknown picker selected")
+        }
     }
     
     func saveWorkday() -> Bool {
@@ -300,67 +283,31 @@ class AddEditWorkdayViewController: UIViewController {
         }
     }
     
-    func createUpdateWorkday() -> Bool {
-        if let client = clientTextField.text,
-           let date = selectedDate,
-           let start = selectedStartTime,
-           let end = selectedEndTime,
-           let rate = payRateTexfield.currencyStringToDouble() {
+    func createUpdateWorkday(isDraft: Bool = false) -> Bool {
+        if let client = clientTextField.text {
             
             var workday: WorkdayItem
             if let day = workdayEdit { workday = day }
             else { workday = WorkdayItem(context: databaseContext) }
             
-            let adjustedStart = manager.setStartTimeDate(startTime: start, date: date)
-            let adjustedEnd = manager.setEndTimeDate(startTime: adjustedStart, endTime: end, date: date)
+            let rate = payRateTexfield.currencyStringToDouble()
+            let adjustedStart = manager.setStartTimeDate(startTime: startTimeDatePicker.date, date: datePicker.date)
+            let adjustedEnd = manager.setEndTimeDate(startTime: adjustedStart, endTime: endTimeDatePicker.date, date: datePicker.date)
             workday.clientName = client
-            workday.date = date
-            workday.location = locationTexfield.text
+            workday.date = datePicker.date
             workday.startTime = adjustedStart
             workday.endTime = adjustedEnd
             workday.lunchMinutes = Int32(selectedLunchTimeMinutes ?? 0)
-            workday.payRate = rate
             workday.mileage = Int32(selectedMileage ?? 0)
+            workday.location = locationTexfield.text
             workday.workDescription = descriptionTexfield.text
-            workday.earnings = manager.calculateEarnings(startTime: adjustedStart, endTime: adjustedEnd, lunchMinutes: selectedLunchTimeMinutes, payRate: rate)
-            workday.minutesWorked = manager.calculateTimeWorkedInMinutes(startTime: adjustedStart, endTime: adjustedEnd, lunchMinutes: selectedLunchTimeMinutes ?? 0)
-            workday.isFinalized = true
+            workday.isFinalized = !isDraft
             workday.client = selectedClient
             createPhotoItems(workday: workday)
-            return saveWorkday()
-        } else {
-            return false
-        }
-    }
-    
-    func createDraftWorkday() -> Bool {
-        if let client = clientTextField.text, let date = selectedDate {
-            
-            var workday: WorkdayItem
-            if let day = workdayEdit { workday = day }
-            else { workday = WorkdayItem(context: databaseContext) }
-            
-            let start = selectedStartTime
-            let end = selectedEndTime
-            
-            let adjustedStart = manager.setStartTimeDate(startTime: start, date: date)
-            let adjustedEnd = manager.setEndTimeDate(startTime: adjustedStart, endTime: end, date: date)
-            if let rate = payRateTexfield.currencyStringToDouble() {
-                workday.payRate = rate
+            workday.payRate = rate ?? 0.00
                 workday.earnings = manager.calculateEarnings(startTime: adjustedStart, endTime: adjustedEnd, lunchMinutes: selectedLunchTimeMinutes, payRate: rate)
-            }
+            workday.minutesWorked = manager.calculateTimeWorkedInMinutes(startTime: adjustedStart, endTime: adjustedEnd, lunchMinutes: selectedLunchTimeMinutes ?? 0)
             
-            workday.clientName = client
-            workday.date = date
-            workday.location = locationTexfield.text
-            workday.startTime = adjustedStart
-            workday.endTime = adjustedEnd
-            workday.lunchMinutes = Int32(selectedLunchTimeMinutes ?? 0)
-            workday.mileage = Int32(selectedMileage ?? 0)
-            workday.workDescription = descriptionTexfield.text
-            workday.isFinalized = false
-            workday.client = selectedClient
-            createPhotoItems(workday: workday)
             return saveWorkday()
         } else {
             return false
@@ -458,7 +405,7 @@ extension AddEditWorkdayViewController: PHPickerViewControllerDelegate {
                 let jpegImage = image.jpegData(compressionQuality: 1.0)
                 let photoItem = PhotoItem(context: self!.databaseContext)
                 photoItem.image = jpegImage
-                photoItem.imageDescription = "Date: \(self!.selectedDate!.formatDateToString())"
+                photoItem.imageDescription = "Date: \(self!.datePicker.date.formatDateToString())"
                 self?.savedPhotos.append(photoItem)
             }
         }
