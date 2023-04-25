@@ -35,14 +35,14 @@ class SummaryViewController: UIViewController {
                 let totalEarnings = workdays.compactMap { $0.earnings }.reduce(0, +)
                 earningsLabel.text = totalEarnings.convertToCurrency()
             
-            let billedHours = workdays.compactMap { Helper.calculateHours(startTime: $0.startTime, endTime: $0.endTime, lunchTime: Int($0.lunchBreak)) }.reduce(0, +)
+            let billedHours = workdays.compactMap { $0.minutesWorked }.reduce(0, +)
             billableTimeLabel.text = String(format: "%.2f Hours", billedHours)
             
             let totalBreak = workdays.compactMap { $0.lunchBreak }.reduce(0, +)
             breakTimeLabel.text = manager.minutesToHours(minutes: Int(totalBreak))
             
-            let totalHours = workdays.compactMap { Helper.calculateHours(startTime: $0.startTime, endTime: $0.endTime, lunchTime: nil) }.reduce(0, +)
-            totalHoursLabel.text = String(format: "%.2f Hours", totalHours)
+            let totalTime = Int(billedHours + totalBreak)
+            totalHoursLabel.text = String(format: "%.2f Hours", totalTime.minutesToHoursDouble())
             
             let calendarWorked = Set(workdays.compactMap { $0.date?.formatDateToString() })
             daysWorkedLabel.text = "\(calendarWorked.count) Days"

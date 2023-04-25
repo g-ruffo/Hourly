@@ -62,7 +62,7 @@ class WorkDetailViewController: UIViewController {
         startTimeLabel.text = manager.timeToDisplayString(day.startTime)
         endTimeLabel.text = manager.timeToDisplayString(day.endTime)
         lunchTimeLabel.text = "\(day.lunchBreak) min"
-        hoursWorkedLabel.text = Helper.calculateHours(startTime: day.startTime, endTime: day.endTime, lunchTime: Int(day.lunchBreak))
+        hoursWorkedLabel.text = Helper.calculateHoursWorkedToString(minutesWorked: day.minutesWorked, lunchTime: day.lunchBreak)
         payRateLabel.text = day.payRate.convertToCurrency()
         mileageLabel.text = "\(day.mileage) km"
         if let description = day.workDescription, description.isEmpty {
