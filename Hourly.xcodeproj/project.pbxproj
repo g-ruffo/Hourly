@@ -34,6 +34,7 @@
 		79AED58429F0DE9F00FBF2E4 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79AED58229F0DE9F00FBF2E4 /* PhotoCell.xib */; };
 		79AED58A29F1FBD800FBF2E4 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AED58929F1FBD800FBF2E4 /* PhotoViewController.swift */; };
 		79AED58C29F2042900FBF2E4 /* PhotoCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AED58B29F2042900FBF2E4 /* PhotoCollectionCell.swift */; };
+		79B0243729F88C6900162878 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B0243629F88C6900162878 /* CoreDataService.swift */; };
 		79C292A229EE6B5900A2A8BF /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C292A129EE6B5900A2A8BF /* Helper.swift */; };
 		79D5F6A929E5F04D00CA2542 /* ClientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D5F6A729E5F04D00CA2542 /* ClientCell.swift */; };
 		79D5F6AC29E606F000CA2542 /* AddEditClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D5F6AB29E606F000CA2542 /* AddEditClientViewController.swift */; };
@@ -104,6 +105,7 @@
 		79AED58229F0DE9F00FBF2E4 /* PhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
 		79AED58929F1FBD800FBF2E4 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		79AED58B29F2042900FBF2E4 /* PhotoCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionCell.swift; sourceTree = "<group>"; };
+		79B0243629F88C6900162878 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		79C292A129EE6B5900A2A8BF /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		79D5F6A729E5F04D00CA2542 /* ClientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientCell.swift; sourceTree = "<group>"; };
 		79D5F6AB29E606F000CA2542 /* AddEditClientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditClientViewController.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				79FA887629E4AD66003C6DFB /* DataModel.xcdatamodeld */,
+				79B0243629F88C6900162878 /* CoreDataService.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -480,6 +483,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7964AFE429EDE21F00065863 /* ClientSearchTextField.swift in Sources */,
+				79B0243729F88C6900162878 /* CoreDataService.swift in Sources */,
 				7964AFC029E7993900065863 /* Extensions.swift in Sources */,
 				79F1AFCC29E4BFBB004CED4E /* CalendarViewController.swift in Sources */,
 				7964AFCC29E9D91400065863 /* WorkDetailViewController.swift in Sources */,
