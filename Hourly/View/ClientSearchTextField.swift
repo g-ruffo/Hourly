@@ -10,12 +10,19 @@ import CoreData
 
 protocol ClientSearchDelegate {
     func selectedExistingClient(_ clientSearchTextField: ClientSearchTextField, clientID: NSManagedObjectID?)
+    func didEndEditing(_ clientSearchTextField: ClientSearchTextField)
+}
+
+extension ClientSearchDelegate {
+    func didEndEditing(_ clientSearchTextField: ClientSearchTextField) {}
 }
 
 class ClientSearchTextField: UITextField {
 
     var clientArray: Array<ClientItem> = []
     var tableView: UITableView?
+    
+    var selectedClient: ClientItem?
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -51,6 +58,7 @@ class ClientSearchTextField: UITextField {
     }
         
     @objc open func textFieldDidEndEditing() {
+        searchDelegate?.didEndEditing(self)
     }
         
     @objc open func textFieldDidEndEditingOnExit() {

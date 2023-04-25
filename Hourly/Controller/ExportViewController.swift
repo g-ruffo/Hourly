@@ -64,6 +64,7 @@ class ExportViewController: UIViewController {
         endDatePicker.addTarget(self, action: #selector(datePickerChanged(picker:)), for: .valueChanged)
         exportButton.tintColor = UIColor("#F1C40F")
 
+        clientTextField.textFieldDidEndEditing()
     }
     
     @objc func datePickerChanged(picker: UIDatePicker) {
@@ -134,6 +135,12 @@ class ExportViewController: UIViewController {
 extension ExportViewController: ClientSearchDelegate {
     func selectedExistingClient(_ clientSearchTextField: ClientSearchTextField, clientID: NSManagedObjectID?) {
         self.selectedClientID = clientID
+    }
+    func didEndEditing(_ clientSearchTextField: ClientSearchTextField) {
+        guard let client = self.selectedClient else {
+            self.clientTextField.text = nil
+            return
+        }
     }
 }
 
