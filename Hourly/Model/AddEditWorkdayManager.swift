@@ -93,10 +93,10 @@ struct AddEditWorkdayManager {
         return resultTime
     }
     
-    func calculateHours(startTime: Date?, endTime: Date?, lunchTime: Int?) -> Double {
+    func calculateTimeWorkedInMinutes(startTime: Date?, endTime: Date?, lunchTime: Int?) -> Int16 {
         if let start = startTime, let end = endTime {
-            let timeWorked = Int(end.timeIntervalSince1970 - start.timeIntervalSince1970)
-            let hours = (Double(timeWorked) - Double(lunchTime ?? 0)) / 3600
+            let timeWorked = Int16(end.timeIntervalSince1970 - start.timeIntervalSince1970)
+            let hours = (timeWorked - Int16(lunchTime ?? 0)) / 60
             return abs(hours)
         } else {
             return 0
