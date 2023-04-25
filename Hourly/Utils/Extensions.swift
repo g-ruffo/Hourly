@@ -45,6 +45,12 @@ extension Date {
         formatter.dateFormat = "dd-MM-yyyy"
         return formatter.string(from: self)
     }
+    func formatDateToDayOfWeekString() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE, MMMM d"
+        return formatter.string(from: self)
+    }
+    
     func formatTimeToString() -> String {
         let formatter = DateFormatter()
         formatter.timeStyle = .short
