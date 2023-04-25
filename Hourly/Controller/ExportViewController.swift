@@ -82,6 +82,14 @@ class ExportViewController: UIViewController {
         if loadWorkdaysFromDatabase() {
             if workdays.count > 0 {
                 
+                // Create a document picker for directories.
+                let documentPicker =
+                UIDocumentPickerViewController(forOpeningContentTypes: [.folder])
+                documentPicker.delegate = self
+                
+                // Present the document picker.
+                present(documentPicker, animated: true, completion: nil)
+                
             } else {
                 showAlertDialog()
             }
@@ -111,8 +119,6 @@ class ExportViewController: UIViewController {
             return false
         }
     }
-    
-    
 }
 
 
@@ -120,5 +126,21 @@ class ExportViewController: UIViewController {
 extension ExportViewController: ClientSearchDelegate {
     func selectedExistingClient(_ clientSearchTextField: ClientSearchTextField, clientID: NSManagedObjectID?) {
         self.selectedClientID = clientID
+    }
+}
+
+//MARK: - UIDocumentPickerDelegate
+extension ExportViewController: UIDocumentPickerDelegate {
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
+        // Start accessing a security-scoped resource.
+        guard url.startAccessingSecurityScopedResource() else {
+            // Handle the failure here.
+            return
+        }
+        // Make sure you release the security-scoped resource when you finish.
+        defer { url.stopAccessingSecurityScopedResource() }
+        
+        manager.exportWorkdaysToCSV(withObjects: workdays, toPath: url)
+        url.stopAccessingSecurityScopedResource()
     }
 }
