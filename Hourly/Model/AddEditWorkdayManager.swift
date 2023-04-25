@@ -45,10 +45,13 @@ struct AddEditWorkdayManager {
         return false
     }
     
-    func calculateEarnings(startTime: Date?, endTime: Date?, lunchTime: Int?, payRate: Double?) -> Double {
+    func calculateEarnings(startTime: Date?, endTime: Date?, lunchMinutes: Int?, payRate: Double?) -> Double {
         if let start = startTime, let end = endTime, let rate = payRate {
             let secondsPay = rate / 3600
-            let timeWorked = Int(end.timeIntervalSince1970 - start.timeIntervalSince1970)
+            var timeWorked = Int(end.timeIntervalSince1970 - start.timeIntervalSince1970)
+            if let lunch = lunchMinutes {
+                timeWorked -= lunch.minutesToSeconds()
+            }
             let formatter = NumberFormatter()
             formatter.numberStyle = NumberFormatter.Style.currency
             let calculatedEarnings = secondsPay * Double(timeWorked)
@@ -93,10 +96,10 @@ struct AddEditWorkdayManager {
         return resultTime
     }
     
-    func calculateTimeWorkedInMinutes(startTime: Date?, endTime: Date?, lunchTime: Int?) -> Int32 {
+    func calculateTimeWorkedInMinutes(startTime: Date?, endTime: Date?, lunchMinutes: Int?) -> Int32 {
         if let start = startTime, let end = endTime {
             let timeWorked = end.timeIntervalSince1970 - start.timeIntervalSince1970
-            let hours = (Int(timeWorked) - (lunchTime ?? 0)) / 60
+            let hours = (Int(timeWorked) - (lunchMinutes?.minutesToSeconds() ?? 0)) / 60
             return Int32(abs(hours))
         } else {
             return 0

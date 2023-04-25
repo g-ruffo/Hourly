@@ -37,8 +37,8 @@ class AddEditWorkdayViewController: UIViewController {
     private var selectedEndTime: Date? {
         didSet { if let value = selectedEndTime { endTimeTexfield.text = value.formatTimeToString() } }
     }
-    private var selectedLunchTime: Int? {
-        didSet { if let value = selectedLunchTime, value > 0 { lunchTexfield.text = "\(value) min" } }
+    private var selectedLunchTimeMinutes: Int? {
+        didSet { if let value = selectedLunchTimeMinutes, value > 0 { lunchTexfield.text = "\(value) min" } }
     }
     private var selectedMileage: Int? {
         didSet { if let value = selectedMileage, value > 0 { mileageTexfield.text = "\(value) km" } }
@@ -183,7 +183,7 @@ class AddEditWorkdayViewController: UIViewController {
             defaults.set(locationTexfield.text, forKey: K.UserDefaultsKey.location)
             defaults.set(selectedStartTime, forKey: K.UserDefaultsKey.start)
             defaults.set(selectedEndTime, forKey: K.UserDefaultsKey.end)
-            defaults.set(selectedLunchTime, forKey: K.UserDefaultsKey.lunch)
+            defaults.set(selectedLunchTimeMinutes, forKey: K.UserDefaultsKey.lunch)
             defaults.set(payRateTexfield.text, forKey: K.UserDefaultsKey.rate)
             defaults.set(selectedMileage, forKey: K.UserDefaultsKey.mileage)
             defaults.set(descriptionTexfield.text, forKey: K.UserDefaultsKey.description)
@@ -202,7 +202,7 @@ class AddEditWorkdayViewController: UIViewController {
             locationTexfield.text = defaults.string(forKey: K.UserDefaultsKey.location)
             selectedStartTime = defaults.object(forKey: K.UserDefaultsKey.start) as? Date
             selectedEndTime = defaults.object(forKey: K.UserDefaultsKey.end) as? Date
-            selectedLunchTime = defaults.integer(forKey: K.UserDefaultsKey.lunch)
+            selectedLunchTimeMinutes = defaults.integer(forKey: K.UserDefaultsKey.lunch)
             payRateTexfield.text = defaults.string(forKey: K.UserDefaultsKey.rate)
             selectedMileage = defaults.integer(forKey: K.UserDefaultsKey.mileage)
             descriptionTexfield.text = defaults.string(forKey: K.UserDefaultsKey.description)
@@ -224,7 +224,7 @@ class AddEditWorkdayViewController: UIViewController {
             clientTextField.text = workday.clientName
             locationTexfield.text = workday.location
             payRateTexfield.text = "$\(workday.payRate)"
-            selectedLunchTime = Int(workday.lunchBreak)
+            selectedLunchTimeMinutes = Int(workday.lunchMinutes)
             selectedMileage = Int(workday.mileage)
             descriptionTexfield.text = workday.workDescription
             selectedDate = workday.date
@@ -318,12 +318,12 @@ class AddEditWorkdayViewController: UIViewController {
             workday.location = locationTexfield.text
             workday.startTime = adjustedStart
             workday.endTime = adjustedEnd
-            workday.lunchBreak = Int32(selectedLunchTime ?? 0)
+            workday.lunchMinutes = Int32(selectedLunchTimeMinutes ?? 0)
             workday.payRate = rate
             workday.mileage = Int32(selectedMileage ?? 0)
             workday.workDescription = descriptionTexfield.text
-            workday.earnings = manager.calculateEarnings(startTime: adjustedStart, endTime: adjustedEnd, lunchTime: selectedLunchTime, payRate: rate)
-            workday.minutesWorked = manager.calculateTimeWorkedInMinutes(startTime: adjustedStart, endTime: adjustedEnd, lunchTime: selectedLunchTime ?? 0)
+            workday.earnings = manager.calculateEarnings(startTime: adjustedStart, endTime: adjustedEnd, lunchMinutes: selectedLunchTimeMinutes, payRate: rate)
+            workday.minutesWorked = manager.calculateTimeWorkedInMinutes(startTime: adjustedStart, endTime: adjustedEnd, lunchMinutes: selectedLunchTimeMinutes ?? 0)
             workday.isFinalized = true
             workday.client = selectedClient
             createPhotoItems(workday: workday)
@@ -347,7 +347,7 @@ class AddEditWorkdayViewController: UIViewController {
             let adjustedEnd = manager.setEndTimeDate(startTime: adjustedStart, endTime: end, date: date)
             if let rate = payRateTexfield.currencyStringToDouble() {
                 workday.payRate = rate
-                workday.earnings = manager.calculateEarnings(startTime: adjustedStart, endTime: adjustedEnd, lunchTime: selectedLunchTime, payRate: rate)
+                workday.earnings = manager.calculateEarnings(startTime: adjustedStart, endTime: adjustedEnd, lunchMinutes: selectedLunchTimeMinutes, payRate: rate)
             }
             
             workday.clientName = client
@@ -355,7 +355,7 @@ class AddEditWorkdayViewController: UIViewController {
             workday.location = locationTexfield.text
             workday.startTime = adjustedStart
             workday.endTime = adjustedEnd
-            workday.lunchBreak = Int32(selectedLunchTime ?? 0)
+            workday.lunchMinutes = Int32(selectedLunchTimeMinutes ?? 0)
             workday.mileage = Int32(selectedMileage ?? 0)
             workday.workDescription = descriptionTexfield.text
             workday.isFinalized = false
@@ -514,7 +514,7 @@ extension AddEditWorkdayViewController: UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch pickerView.tag {
-        case 1: selectedLunchTime = lunchArray[row]
+        case 1: selectedLunchTimeMinutes = lunchArray[row]
         case 2: mileageDigits[component] = row
             selectedMileage = Int("\(mileageDigits[0])\(mileageDigits[1])\(mileageDigits[2])")
         default: print("Error getting UIPicker")

@@ -61,7 +61,7 @@ class WorkDetailViewController: UIViewController {
         draftButton.isHidden = day.isFinalized
         startTimeLabel.text = manager.timeToDisplayString(day.startTime)
         endTimeLabel.text = manager.timeToDisplayString(day.endTime)
-        lunchTimeLabel.text = "\(day.lunchBreak) min"
+        lunchTimeLabel.text = "\(day.lunchMinutes) min"
         hoursWorkedLabel.text = Helper.minutesToHoursWorkedString(minutesWorked: day.minutesWorked)
         payRateLabel.text = day.payRate.convertToCurrency()
         mileageLabel.text = "\(day.mileage) km"

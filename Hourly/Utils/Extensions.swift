@@ -77,4 +77,7 @@ extension Int {
     func minutesToHoursDouble() -> Double {
         return Double (self / 60)
     }
+    func minutesToSeconds() -> Int {
+        return Int (self * 60)
+    }
 }
