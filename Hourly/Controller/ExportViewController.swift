@@ -11,6 +11,7 @@ import CoreData
 class ExportViewController: UIViewController {
     
     
+    @IBOutlet weak var exportButton: UIButton!
     @IBOutlet weak var clientTextField: ClientSearchTextField!
     @IBOutlet weak var startDatePicker: UIDatePicker! {
         didSet {
@@ -61,6 +62,7 @@ class ExportViewController: UIViewController {
         endDatePicker.tag = 1
         startDatePicker.addTarget(self, action: #selector(datePickerChanged(picker:)), for: .valueChanged)
         endDatePicker.addTarget(self, action: #selector(datePickerChanged(picker:)), for: .valueChanged)
+        exportButton.tintColor = UIColor("#F1C40F")
 
     }
     
@@ -75,6 +77,7 @@ class ExportViewController: UIViewController {
         case 1: endDatePicker.date = calendar.startOfDay(for: endDatePicker.date)
         default: print("Error unknow date picker tag")
         }
+        presentedViewController?.dismiss(animated: true, completion: nil)
     }
     
     

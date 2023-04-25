@@ -743,6 +743,7 @@
                     <connections>
                         <outlet property="clientTextField" destination="HSW-Fo-Va0" id="s36-8A-Dx8"/>
                         <outlet property="endDatePicker" destination="bBB-7Q-jzl" id="EXV-qW-QZv"/>
+                        <outlet property="exportButton" destination="SPV-eN-Z3h" id="iC0-so-BJf"/>
                         <outlet property="startDatePicker" destination="bLm-Sj-exR" id="RA3-ke-atd"/>
                     </connections>
                 </viewController>
