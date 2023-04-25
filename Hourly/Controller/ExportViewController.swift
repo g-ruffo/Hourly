@@ -107,9 +107,14 @@ class ExportViewController: UIViewController {
     }
     
     func loadWorkdaysFromDatabase() -> Bool {
+        guard let client = selectedClient else {
+            showAlertDialog()
+            print("Error no client selected!")
+            return false
+        }
         let request: NSFetchRequest<WorkdayItem> = WorkdayItem.fetchRequest()
         let sortDate = NSSortDescriptor(key: "date", ascending: false)
-        request.predicate = NSPredicate(format: "date >= %@ AND date <= %@ AND isFinalized == true", startDatePicker.date as NSDate, endDatePicker.date as NSDate)
+        request.predicate = NSPredicate(format: "date >= %@ AND date <= %@ AND isFinalized == true AND client == %@", startDatePicker.date as NSDate, endDatePicker.date as NSDate, client)
         request.sortDescriptors = [sortDate]
         do{
             workdays = try databaseContext.fetch(request)
@@ -140,7 +145,7 @@ extension ExportViewController: UIDocumentPickerDelegate {
         // Make sure you release the security-scoped resource when you finish.
         defer { url.stopAccessingSecurityScopedResource() }
         
-        manager.exportWorkdaysToCSV(withObjects: workdays, toPath: url)
+        manager.exportWorkdaysToCSV(withObjects: workdays, client: (selectedClient?.companyName)!, startDate: startDatePicker.date, endDate: endDatePicker.date, toPath: url)
         url.stopAccessingSecurityScopedResource()
     }
 }
