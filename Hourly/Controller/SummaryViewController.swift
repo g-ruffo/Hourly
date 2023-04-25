@@ -21,6 +21,7 @@ class SummaryViewController: UIViewController {
     @IBOutlet weak var clientsLabel: UILabel!
     @IBOutlet weak var workedDaysView: UIView!
     @IBOutlet weak var hoursWorkedView: UIView!
+    @IBOutlet weak var noDataLabel: UILabel!
     
     let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -51,6 +52,8 @@ class SummaryViewController: UIViewController {
             clientsLabel.text = String(clients.count)
             
             timesheetsLabel.text = String(workdays.count)
+            
+            noDataLabel.isHidden = workdays.count > 0
         }
     }
     
@@ -169,9 +172,7 @@ extension SummaryViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.Cell.workdayCell, for: indexPath) as! WorkdayCell
-        
         cell.configure(with: workdays[indexPath.row])
-        
         return cell
     }
 }
