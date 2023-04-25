@@ -49,7 +49,7 @@ struct AddEditWorkdayManager {
         if let start = startTime, let end = endTime, let rate = payRate {
             let secondsPay = rate / 3600
             var timeWorked = Int(end.timeIntervalSince1970 - start.timeIntervalSince1970)
-            if let lunch = lunchMinutes {
+            if let lunch = lunchMinutes, lunch.minutesToSeconds() < timeWorked {
                 timeWorked -= lunch.minutesToSeconds()
             }
             let formatter = NumberFormatter()
@@ -89,7 +89,7 @@ struct AddEditWorkdayManager {
             dateComponents.minute = Calendar.current.component(.minute, from: end)
             dateComponents.second = Calendar.current.component(.second, from: end)
             resultTime = calendar.date(from: dateComponents)
-            if let addDay = resultTime, start > addDay {
+            if let addDay = resultTime, start >= addDay {
                 resultTime = Calendar.current.date(byAdding: .day, value: 1, to: addDay)
             }
         }
@@ -98,8 +98,13 @@ struct AddEditWorkdayManager {
     
     func calculateTimeWorkedInMinutes(startTime: Date?, endTime: Date?, lunchMinutes: Int?) -> Int32 {
         if let start = startTime, let end = endTime {
-            let timeWorked = end.timeIntervalSince1970 - start.timeIntervalSince1970
-            let hours = (Int(timeWorked) - (lunchMinutes?.minutesToSeconds() ?? 0)) / 60
+            var hours = 0
+            let timeWorked = Int(end.timeIntervalSince1970 - start.timeIntervalSince1970)
+            if let lunchSeconds = lunchMinutes?.minutesToSeconds(), lunchSeconds < timeWorked {
+                hours = (timeWorked - (lunchMinutes?.minutesToSeconds() ?? 0)) / 60
+            } else {
+                hours = timeWorked / 60
+            }
             return Int32(abs(hours))
         } else {
             return 0
