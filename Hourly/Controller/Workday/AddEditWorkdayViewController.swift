@@ -23,15 +23,7 @@ class AddEditWorkdayViewController: UIViewController {
     @IBOutlet weak var descriptionTexfield: UITextField!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet weak var datePicker: UIDatePicker! {
-            didSet {
-                print("datePicker did set")
-
-                var calendar = Calendar(identifier: .gregorian)
-                calendar.timeZone = TimeZone(secondsFromGMT: 0)!
-                datePicker.date = calendar.startOfDay(for: datePicker.date)
-            }
-        }
+    @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var startTimeDatePicker: UIDatePicker!
     @IBOutlet weak var endTimeDatePicker: UIDatePicker!
 
@@ -111,7 +103,6 @@ class AddEditWorkdayViewController: UIViewController {
         setupMenuItems()
         saveButton.tintColor = UIColor("#F1C40F")
         createCollectionView()
-        
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
     }
     
@@ -200,8 +191,8 @@ class AddEditWorkdayViewController: UIViewController {
         if workdayEdit == nil {
             clientTextField.text = defaults.string(forKey: K.UserDefaultsKey.clientName)
             locationTexfield.text = defaults.string(forKey: K.UserDefaultsKey.location)
-            startTimeDatePicker.date = defaults.object(forKey: K.UserDefaultsKey.start) as! Date
-            endTimeDatePicker.date = defaults.object(forKey: K.UserDefaultsKey.end) as! Date
+            startTimeDatePicker.date = defaults.object(forKey: K.UserDefaultsKey.start) as? Date ?? Date()
+            endTimeDatePicker.date = defaults.object(forKey: K.UserDefaultsKey.end) as? Date ?? Date()
             selectedLunchTimeMinutes = defaults.integer(forKey: K.UserDefaultsKey.lunch)
             payRateTexfield.text = defaults.string(forKey: K.UserDefaultsKey.rate)
             selectedMileage = defaults.integer(forKey: K.UserDefaultsKey.mileage)
@@ -251,9 +242,9 @@ class AddEditWorkdayViewController: UIViewController {
     }
     
     @objc func datePickerChanged(picker: UIDatePicker) {
-        print("Picker date changed")
         switch picker.tag {
             case PickerTags.date.rawValue: datePicker.date = datePicker.date.zeroSeconds
+            presentedViewController?.dismiss(animated: true, completion: nil)
             case PickerTags.startTime.rawValue: startTimeDatePicker.date = startTimeDatePicker.date.zeroSeconds
             case PickerTags.endTime.rawValue: endTimeDatePicker.date = endTimeDatePicker.date.zeroSeconds
             default: print("Error unknown picker selected")
@@ -290,11 +281,16 @@ class AddEditWorkdayViewController: UIViewController {
             if let day = workdayEdit { workday = day }
             else { workday = WorkdayItem(context: databaseContext) }
             
+            var date = datePicker.date
+            var calendar = Calendar(identifier: .gregorian)
+            calendar.timeZone = TimeZone(secondsFromGMT: 0)!
+            date = calendar.startOfDay(for: date)
+            
             let rate = payRateTexfield.currencyStringToDouble()
-            let adjustedStart = manager.setStartTimeDate(startTime: startTimeDatePicker.date, date: datePicker.date)
-            let adjustedEnd = manager.setEndTimeDate(startTime: adjustedStart, endTime: endTimeDatePicker.date, date: datePicker.date)
+            let adjustedStart = manager.setStartTimeDate(startTime: startTimeDatePicker.date, date: date)
+            let adjustedEnd = manager.setEndTimeDate(startTime: adjustedStart, endTime: endTimeDatePicker.date, date: date)
             workday.clientName = client
-            workday.date = datePicker.date
+            workday.date = date
             workday.startTime = adjustedStart
             workday.endTime = adjustedEnd
             workday.lunchMinutes = Int32(selectedLunchTimeMinutes ?? 0)
