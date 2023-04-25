@@ -47,7 +47,7 @@ extension Date {
     }
     func formatDateToDayOfWeekString() -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE, MMMM d"
+        formatter.dateFormat = "EEEE, MMMM d, yyyy"
         return formatter.string(from: self)
     }
     
