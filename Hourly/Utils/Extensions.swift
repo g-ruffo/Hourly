@@ -40,6 +40,11 @@ extension Date {
         formatter.dateFormat = "MMMM dd, yyyy"
         return formatter.string(from: self)
     }
+    func formatDateToCSVString() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy"
+        return formatter.string(from: self)
+    }
     func formatTimeToString() -> String {
         let formatter = DateFormatter()
         formatter.timeStyle = .short
