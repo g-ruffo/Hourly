@@ -65,11 +65,12 @@ final class CoreDataService {
         }
     }
     
-    func createPhotoItems(photos: Array<(jpegImage: Data?, description: String)>) {
-        photos.forEach { jpegImage, description in
+    func createPhotoItems(from jpegImages: Array<Data?>) {
+        let date = Date()
+        jpegImages.forEach { jpegImage in
             let photoItem = PhotoItem(context: databaseContext)
             photoItem.image = jpegImage
-            photoItem.imageDescription = description
+            photoItem.imageDescription = "Date: \(date.formatDateToString())"
             workdayPhotos.append(photoItem)
         }
     }

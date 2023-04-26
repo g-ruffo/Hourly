@@ -317,10 +317,10 @@ extension AddEditWorkdayViewController: PHPickerViewControllerDelegate {
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         picker.dismiss(animated: true)
         let group = DispatchGroup()
-        var images: Array<(jpegImage: Data?, description: String)> = []
+        var jpegImages: Array<Data?> = []
         results.forEach { result in
             group.enter()
-            result.itemProvider.loadObject(ofClass: UIImage.self) { [weak self] reading, error in
+            result.itemProvider.loadObject(ofClass: UIImage.self) { reading, error in
                 defer {
                     group.leave()
                 }
@@ -330,12 +330,11 @@ extension AddEditWorkdayViewController: PHPickerViewControllerDelegate {
                 }
                 
                 let jpegImage = image.jpegData(compressionQuality: 1.0)
-                let description = "Date: \(self!.datePicker.date.formatDateToString())"
-                images.append((jpegImage: jpegImage, description: description))
+                jpegImages.append(jpegImage)
             }
         }
         group.notify(queue: .main) {
-            self.coreDataService.createPhotoItems(photos: images)
+            self.coreDataService.createPhotoItems(from: jpegImages)
         }
     }
 }
