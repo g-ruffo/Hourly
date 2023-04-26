@@ -21,10 +21,11 @@ class CalendarViewController: UIViewController {
     
     private var workdays: Array<WorkdayItem> = []
     
-    let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
+    private let coreDataService = CoreDataService()
+        
     override func viewDidLoad() {
         super.viewDidLoad()
+        coreDataService.delegate = self
         collectionView.delegate = self
         collectionView.dataSource = self
         
@@ -160,12 +161,8 @@ class CalendarViewController: UIViewController {
         let endDate = manager.lastOfMonth(date: selectedDate)
         let request: NSFetchRequest<WorkdayItem> = WorkdayItem.fetchRequest()
         request.predicate = NSPredicate(format: "date >= %@ AND date <= %@", startDate as NSDate, endDate as NSDate)
-        do{
-            workdays = try databaseContext.fetch(request)
-            setMonthView(slideInDirection)
-        } catch {
-            print("Error fetching clients from database = \(error)")
-        }
+        coreDataService.getWorkdays(withRequest: request)
+        setMonthView(slideInDirection)
     }
 }
 
@@ -222,6 +219,11 @@ extension CalendarViewController: UICollectionViewDelegateFlowLayout{
     }
 }
 
-
+//MARK: - CoreDataServiceDelegate
+extension CalendarViewController: CoreDataServiceDelegate {
+        func loadedWorkdays(_ coreDataService: CoreDataService, workdayItems: Array<WorkdayItem>) {
+            workdays = workdayItems
+    }
+}
 
 

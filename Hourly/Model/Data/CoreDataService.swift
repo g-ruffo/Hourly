@@ -137,6 +137,13 @@ final class CoreDataService {
             }
     }
     
+    func getWorkdays(withRequest request : NSFetchRequest<WorkdayItem>) {
+        do{
+            workdays = try databaseContext.fetch(request)
+        } catch {
+            print("Error fetching clients from database = \(error)")
+        }
+    }
     
     //MARK: - Client Get Methods
     
