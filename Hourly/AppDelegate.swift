@@ -63,6 +63,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
+        
+        // Automatically manage changes as silent notifications come in.
+        container.viewContext.automaticallyMergesChangesFromParent = true
+        // Merges conflicts between the persistent stores version of the object and the locally stored version.
+        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        
         return container
     }()
 
