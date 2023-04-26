@@ -14,7 +14,7 @@ enum PickerTags: Int {
 }
 
 class AddEditWorkdayViewController: UIViewController {
-
+    
     @IBOutlet weak var clientTextField: ClientSearchTextField!
     @IBOutlet weak var locationTexfield: UITextField!
     @IBOutlet weak var lunchTexfield: UITextField!
@@ -26,53 +26,19 @@ class AddEditWorkdayViewController: UIViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var startTimeDatePicker: UIDatePicker!
     @IBOutlet weak var endTimeDatePicker: UIDatePicker!
-
+    
     private let lunchPicker = UIPickerView()
     private let mileagePicker = UIPickerView()
-
+    
     private var selectedLunchTimeMinutes: Int? {
         didSet { if let value = selectedLunchTimeMinutes, value > 0 { lunchTexfield.text = "\(value) min" } }
     }
     private var selectedMileage: Int? {
         didSet { if let value = selectedMileage, value > 0 { mileageTexfield.text = "\(value) km" } }
     }
-
-    var workdayEdit: WorkdayItem?
-    
-    private var selectedClient: ClientItem? {
-        didSet {
-            if let value = selectedClient {
-                payRateTexfield.text = "$\(value.payRate)"
-                locationTexfield.text = value.address
-                clientTextField.backgroundColor = .clear
-                payRateTexfield.backgroundColor = .clear
-                locationTexfield.backgroundColor = .clear
-            } else {
-                payRateTexfield.text = nil
-                locationTexfield.text = nil
-                clientTextField.backgroundColor = .white
-                payRateTexfield.backgroundColor = .white
-                locationTexfield.backgroundColor = .white
-            }
-        }
-    }
-    private var selectedClientID: NSManagedObjectID? {
-        didSet {
-            if let id = selectedClientID {
-                do {
-                    selectedClient = try databaseContext.existingObject(with: id) as? ClientItem
-                } catch {
-                    fatalError(error.localizedDescription)
-                }
-            } else {
-                if selectedClient != nil {
-                    selectedClient = nil
-                }
-            }
-        }
-    }
-    
+        
     private var manager = AddEditWorkdayManager()
+    private let coreDataService = CoreDataService()
     
     private let lunchArray = [5, 10, 15, 20, 30, 40, 45, 60, 90, 120]
     private let mileageNumbers = [10,10,10]
@@ -80,11 +46,17 @@ class AddEditWorkdayViewController: UIViewController {
     
     private let defaults = UserDefaults.standard
     
-    private let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            
+    private var isEditingWorkday: Bool = false
     private var completedSave: Bool = false
-    
     private var savedPhotos: Array<PhotoItem> = []
+    
+    var editWorkdayId: NSManagedObjectID? {
+        didSet {
+            if let id = editWorkdayId {
+                coreDataService.getWorkdayFromObjectId(id)
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,9 +69,9 @@ class AddEditWorkdayViewController: UIViewController {
         clientTextField.searchDelegate = self
         collectionView.delegate = self
         collectionView.dataSource = self
+        coreDataService.delegate = self
         setupLunchMileagePicker()
         setupDatePicker()
-        checkForEdit()
         setupMenuItems()
         saveButton.tintColor = UIColor("#F1C40F")
         createCollectionView()
@@ -129,17 +101,18 @@ class AddEditWorkdayViewController: UIViewController {
     func createCollectionView() {
         collectionView.register(PhotoCell.nib(), forCellWithReuseIdentifier: K.Cell.photoCell)
         collectionView.register(AddPhotoCell.nib(), forCellWithReuseIdentifier: K.Cell.addPhotoCell)
-
+        
     }
-
+    
     
     func setupMenuItems() {
+        title = isEditingWorkday ? "Edit Workday" : "Add Worday"
         let menuHandler: UIActionHandler = { action in
             switch action.title {
             case "Save as Draft":
                 if self.createUpdateWorkday(isDraft: true) {
                     print("saved draft")
-                    if self.workdayEdit != nil {
+                    if self.isEditingWorkday {
                         self.navigationController?.popViewController(animated: true)
                     } else {
                         self.dismiss(animated: true) {
@@ -161,14 +134,14 @@ class AddEditWorkdayViewController: UIViewController {
         
         let barButtonMenu = UIMenu(title: "", children: [
             UIAction(title: NSLocalizedString("Save as Draft", comment: ""), image: UIImage(systemName: "square.and.arrow.down"), handler: menuHandler),
-            UIAction(title: NSLocalizedString(workdayEdit == nil ? "Clear" : "Delete", comment: ""), image: UIImage(systemName: "trash"), attributes: .destructive, handler: menuHandler)
+            UIAction(title: NSLocalizedString(isEditingWorkday ? "Delete" : "Clear", comment: ""), image: UIImage(systemName: "trash"), attributes: .destructive, handler: menuHandler)
         ])
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: nil, image: UIImage(systemName: "ellipsis"), primaryAction: nil, menu: barButtonMenu)
     }
     
     func updateUserDefaults(clearValues: Bool = false) {
-        if workdayEdit == nil && !clearValues && !completedSave {
+        if !isEditingWorkday && !clearValues && !completedSave {
             defaults.set(clientTextField.text, forKey: K.UserDefaultsKey.clientName)
             defaults.set(datePicker.date, forKey: K.UserDefaultsKey.date)
             defaults.set(locationTexfield.text, forKey: K.UserDefaultsKey.location)
@@ -178,8 +151,8 @@ class AddEditWorkdayViewController: UIViewController {
             defaults.set(payRateTexfield.text, forKey: K.UserDefaultsKey.rate)
             defaults.set(selectedMileage, forKey: K.UserDefaultsKey.mileage)
             defaults.set(descriptionTexfield.text, forKey: K.UserDefaultsKey.description)
-            defaults.set(selectedClientID?.uriRepresentation(), forKey: K.UserDefaultsKey.client)
-        } else if workdayEdit == nil && clearValues {
+            defaults.set(coreDataService.getWorkdayClientID(), forKey: K.UserDefaultsKey.client)
+        } else if !isEditingWorkday && clearValues {
             let dictionary = defaults.dictionaryRepresentation()
             dictionary.keys.forEach { key in
                 defaults.removeObject(forKey: key)
@@ -188,7 +161,7 @@ class AddEditWorkdayViewController: UIViewController {
     }
     
     func checkUserDefaults() {
-        if workdayEdit == nil {
+        if !isEditingWorkday {
             clientTextField.text = defaults.string(forKey: K.UserDefaultsKey.clientName)
             locationTexfield.text = defaults.string(forKey: K.UserDefaultsKey.location)
             startTimeDatePicker.date = defaults.object(forKey: K.UserDefaultsKey.start) as? Date ?? Date()
@@ -197,34 +170,16 @@ class AddEditWorkdayViewController: UIViewController {
             payRateTexfield.text = defaults.string(forKey: K.UserDefaultsKey.rate)
             selectedMileage = defaults.integer(forKey: K.UserDefaultsKey.mileage)
             descriptionTexfield.text = defaults.string(forKey: K.UserDefaultsKey.description)
-            if let url = defaults.url(forKey: K.UserDefaultsKey.client),
-               let objectId = databaseContext.persistentStoreCoordinator!.managedObjectID(forURIRepresentation: url) {
-                selectedClientID = objectId
+            if let url = defaults.url(forKey: K.UserDefaultsKey.client) {
+                coreDataService.getClientFromURL(url: url)
             }
             if let date = defaults.object(forKey: K.UserDefaultsKey.date) as? Date {
                 datePicker.date = date
             }
-
+            
         }
     }
-    
-    func checkForEdit() {
-        title = workdayEdit == nil ? "Add Worday" : "Edit Workday"
-        if let workday = workdayEdit {
-            selectedClient = workday.client
-            clientTextField.text = workday.clientName
-            locationTexfield.text = workday.location
-            payRateTexfield.text = "$\(workday.payRate)"
-            selectedLunchTimeMinutes = Int(workday.lunchMinutes)
-            selectedMileage = Int(workday.mileage)
-            descriptionTexfield.text = workday.workDescription
-            savedPhotos = workday.photos?.allObjects as? Array<PhotoItem> ?? []
-            if let date = workday.date { datePicker.date = date }
-            if let start = workday.startTime { startTimeDatePicker.date = start }
-            if let end = workday.endTime { endTimeDatePicker.date = end }
-        }
-    }
-
+ 
     func setupLunchMileagePicker() {
         lunchTexfield.inputView = lunchPicker
         mileageTexfield.inputView = mileagePicker
@@ -243,76 +198,50 @@ class AddEditWorkdayViewController: UIViewController {
     
     @objc func datePickerChanged(picker: UIDatePicker) {
         switch picker.tag {
-            case PickerTags.date.rawValue: datePicker.date = datePicker.date.zeroSeconds
+        case PickerTags.date.rawValue: datePicker.date = datePicker.date.zeroSeconds
             presentedViewController?.dismiss(animated: true, completion: nil)
-            case PickerTags.startTime.rawValue: startTimeDatePicker.date = startTimeDatePicker.date.zeroSeconds
-            case PickerTags.endTime.rawValue: endTimeDatePicker.date = endTimeDatePicker.date.zeroSeconds
-            default: print("Error unknown picker selected")
+        case PickerTags.startTime.rawValue: startTimeDatePicker.date = startTimeDatePicker.date.zeroSeconds
+        case PickerTags.endTime.rawValue: endTimeDatePicker.date = endTimeDatePicker.date.zeroSeconds
+        default: print("Error unknown picker selected")
         }
     }
     
     func saveWorkday() -> Bool {
-        if databaseContext.hasChanges {
-            do {
-                try databaseContext.save()
-                return true
-            } catch {
-                print("Error saving workday to database = \(error)")
-                return false
-            }
-        } else {
-            return true
-        }
+        return coreDataService.saveWorkday()
     }
     
     func deleteWorkdayFromDatabase() {
-        if let workday = workdayEdit {
-            databaseContext.delete(workday)
-            if saveWorkday() {
-                navigationController?.popViewController(animated: true)
-            }
-        }
+        if coreDataService.deleteWorkdayFromDatabase() { navigationController?.popViewController(animated: true) }
     }
     
     func createUpdateWorkday(isDraft: Bool = false) -> Bool {
         if let client = clientTextField.text {
-            
-            var workday: WorkdayItem
-            if let day = workdayEdit { workday = day }
-            else { workday = WorkdayItem(context: databaseContext) }
-            
-            var date = datePicker.date
-            var calendar = Calendar(identifier: .gregorian)
-            calendar.timeZone = TimeZone(secondsFromGMT: 0)!
-            date = calendar.startOfDay(for: date)
-            
-            let rate = payRateTexfield.currencyStringToDouble()
+            let date = datePicker.date.startOfDay
             let adjustedStart = manager.setStartTimeDate(startTime: startTimeDatePicker.date, date: date)
             let adjustedEnd = manager.setEndTimeDate(startTime: adjustedStart, endTime: endTimeDatePicker.date, date: date)
-            workday.clientName = client
-            workday.date = date
-            workday.startTime = adjustedStart
-            workday.endTime = adjustedEnd
-            workday.lunchMinutes = Int32(selectedLunchTimeMinutes ?? 0)
-            workday.mileage = Int32(selectedMileage ?? 0)
-            workday.location = locationTexfield.text
-            workday.workDescription = descriptionTexfield.text
-            workday.isFinalized = !isDraft
-            workday.client = selectedClient
-            createPhotoItems(workday: workday)
-            workday.payRate = rate ?? 0.00
-                workday.earnings = manager.calculateEarnings(startTime: adjustedStart, endTime: adjustedEnd, lunchMinutes: selectedLunchTimeMinutes, payRate: rate)
-            workday.minutesWorked = manager.calculateTimeWorkedInMinutes(startTime: adjustedStart, endTime: adjustedEnd, lunchMinutes: selectedLunchTimeMinutes ?? 0)
+            let lunch = Int32(selectedLunchTimeMinutes ?? 0)
+            let rate = payRateTexfield.currencyStringToDouble() ?? 0.00
+            let mileage = Int32(selectedMileage ?? 0)
+            let location = locationTexfield.text
+            let workDescription = descriptionTexfield.text
+            let earnings = manager.calculateEarnings(startTime: adjustedStart, endTime: adjustedEnd, lunchMinutes: selectedLunchTimeMinutes, payRate: rate)
+            let minutesWorked = manager.calculateTimeWorkedInMinutes(startTime: adjustedStart, endTime: adjustedEnd, lunchMinutes: selectedLunchTimeMinutes ?? 0)
             
-            return saveWorkday()
+            return coreDataService.createUpdateWorkday(
+                clientName: client,
+                date: date, start: adjustedStart,
+                end: adjustedEnd,
+                lunch: lunch,
+                mileage: mileage,
+                rate: rate,
+                location: location,
+                description: workDescription,
+                timeWorked: minutesWorked,
+                earnings: earnings,
+                isDraft: isDraft
+            )
         } else {
             return false
-        }
-    }
-    
-    func createPhotoItems(workday: WorkdayItem) {
-            for photo in savedPhotos {
-                photo.workingDay = workday
         }
     }
     
@@ -345,13 +274,13 @@ class AddEditWorkdayViewController: UIViewController {
         // Present alert to user
         self.present(dialogMessage, animated: true, completion: nil)
     }
-
+    
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         if createUpdateWorkday() {
             self.completedSave = true
             self.updateUserDefaults(clearValues: true)
             NotificationCenter.default.post(name: K.NotificationKeys.updateWorkdaysNotification, object: nil)
-            if workdayEdit == nil {
+            if !isEditingWorkday {
                 dismiss(animated: true)
             } else {
                 navigationController?.popViewController(animated: true)
@@ -399,10 +328,8 @@ extension AddEditWorkdayViewController: PHPickerViewControllerDelegate {
                 }
                 
                 let jpegImage = image.jpegData(compressionQuality: 1.0)
-                let photoItem = PhotoItem(context: self!.databaseContext)
-                photoItem.image = jpegImage
-                photoItem.imageDescription = "Date: \(self!.datePicker.date.formatDateToString())"
-                self?.savedPhotos.append(photoItem)
+                let description = "Date: \(self!.datePicker.date.formatDateToString())"
+                self?.coreDataService.createPhotoItem(image: jpegImage, description: description)
             }
         }
         group.notify(queue: .main) {
@@ -467,7 +394,7 @@ extension AddEditWorkdayViewController: UIPickerViewDelegate {
 
 //MARK: - UIPickerViewDataSource
 extension AddEditWorkdayViewController: UIPickerViewDataSource {
-
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         switch pickerView.tag {
         case 1: return 1
@@ -500,7 +427,7 @@ extension AddEditWorkdayViewController: UIPickerViewDataSource {
 //MARK: - ClientSearchDelegate
 extension AddEditWorkdayViewController: ClientSearchDelegate {
     func selectedExistingClient(_ clientSearchTextField: ClientSearchTextField, clientID: NSManagedObjectID?) {
-        self.selectedClientID = clientID
+        self.coreDataService.getClientFromID(clientID)
     }
 }
 
@@ -509,5 +436,31 @@ extension AddEditWorkdayViewController: PhotoCollectionDelegate {
     func photoHasBeenDeleted(_ photoViewController: PhotoViewController, index: Int) {
         savedPhotos.remove(at: index)
         collectionView.reloadData()
+    }
+}
+
+extension AddEditWorkdayViewController: CoreDataServiceDelegate {
+    func loadedWorkday(_ coreDataService: CoreDataService, workday: WorkdayItem?) {
+        if let day = workday {
+            isEditingWorkday = true
+            clientTextField.text = day.clientName
+            locationTexfield.text = day.location
+            payRateTexfield.text = "$\(day.payRate)"
+            selectedLunchTimeMinutes = Int(day.lunchMinutes)
+            selectedMileage = Int(day.mileage)
+            descriptionTexfield.text = day.workDescription
+            savedPhotos = day.photos?.allObjects as? Array<PhotoItem> ?? []
+            if let date = day.date { datePicker.date = date }
+            if let start = day.startTime { startTimeDatePicker.date = start }
+            if let end = day.endTime { endTimeDatePicker.date = end }
+        } else { isEditingWorkday = false }
+    }
+    
+    func loadedClient(_ coreDataService: CoreDataService, client: ClientItem?) {
+        payRateTexfield.text = client != nil ? "$\(client!.payRate)" : nil
+        locationTexfield.text = client != nil ? client!.address : nil
+        clientTextField.backgroundColor = client != nil ? .clear : .white
+        payRateTexfield.backgroundColor = client != nil ? .clear : .white
+        locationTexfield.backgroundColor = client != nil ? .clear : .white
     }
 }
