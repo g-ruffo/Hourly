@@ -50,13 +50,7 @@ class AddEditWorkdayViewController: UIViewController {
     private var completedSave: Bool = false
     private var savedPhotos: Array<PhotoItem> = []
     
-    var editWorkdayId: NSManagedObjectID? {
-        didSet {
-            if let id = editWorkdayId {
-                coreDataService.getWorkdayFromObjectId(id)
-            }
-        }
-    }
+    var editWorkdayId: NSManagedObjectID?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,6 +66,7 @@ class AddEditWorkdayViewController: UIViewController {
         coreDataService.delegate = self
         setupLunchMileagePicker()
         setupDatePicker()
+        checkForEdit()
         setupMenuItems()
         saveButton.tintColor = UIColor("#F1C40F")
         createCollectionView()
@@ -98,6 +93,12 @@ class AddEditWorkdayViewController: UIViewController {
         }
     }
     
+    func checkForEdit() {
+        if let id = editWorkdayId {
+            coreDataService.getWorkdayFromObjectId(id)
+            isEditingWorkday = true
+        } else { isEditingWorkday = false}
+    }
     func createCollectionView() {
         collectionView.register(PhotoCell.nib(), forCellWithReuseIdentifier: K.Cell.photoCell)
         collectionView.register(AddPhotoCell.nib(), forCellWithReuseIdentifier: K.Cell.addPhotoCell)
@@ -442,7 +443,6 @@ extension AddEditWorkdayViewController: PhotoCollectionDelegate {
 extension AddEditWorkdayViewController: CoreDataServiceDelegate {
     func loadedWorkday(_ coreDataService: CoreDataService, workday: WorkdayItem?) {
         if let day = workday {
-            isEditingWorkday = true
             clientTextField.text = day.clientName
             locationTexfield.text = day.location
             payRateTexfield.text = "$\(day.payRate)"
@@ -453,7 +453,7 @@ extension AddEditWorkdayViewController: CoreDataServiceDelegate {
             if let date = day.date { datePicker.date = date }
             if let start = day.startTime { startTimeDatePicker.date = start }
             if let end = day.endTime { endTimeDatePicker.date = end }
-        } else { isEditingWorkday = false }
+        }
     }
     
     func loadedClient(_ coreDataService: CoreDataService, client: ClientItem?) {

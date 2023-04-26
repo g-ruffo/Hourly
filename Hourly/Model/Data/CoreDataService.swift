@@ -118,7 +118,10 @@ final class CoreDataService {
             } catch {
                 fatalError(error.localizedDescription)
             }
-        } else if client != nil { client = nil}
+        } else if client != nil {
+            client = nil
+            delegate?.loadedClient(self, client: client)
+        }
     }
     
     func getWorkdayClientID() -> URL? {
