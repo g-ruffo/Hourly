@@ -17,8 +17,6 @@ class WorkdaysViewController: UIViewController {
     private var isDisplayingCalendar = true
         
     private var workdayList: Array<WorkdayItem> = []
-
-    private var workdaytToEdit: WorkdayItem?
     
     private var manager = WorkdaysManager()
     
@@ -40,7 +38,6 @@ class WorkdaysViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        workdaytToEdit = nil
         loadWorkdayFromDatabase()
     }
     
@@ -74,7 +71,7 @@ class WorkdaysViewController: UIViewController {
             }
         } else if segue.identifier == K.Segue.editWorkdayNav {
             let destinationVC = segue.destination as! AddEditWorkdayViewController
-            destinationVC.workdayEdit = workdaytToEdit
+            destinationVC.editWorkdayId = sender as? NSManagedObjectID
         }
     }
 }
@@ -126,8 +123,7 @@ extension WorkdaysViewController: UISearchBarDelegate {
 //MARK: - EditWorkdayDelegate
 extension WorkdaysViewController: EditWorkdayDelegate {
     func editWorkday(_ workDetailViewController: WorkDetailViewController, workday: WorkdayItem) {
-        workdaytToEdit = workday
-        performSegue(withIdentifier: K.Segue.editWorkdayNav, sender: self)
+        performSegue(withIdentifier: K.Segue.editWorkdayNav, sender: workday.objectID)
     }
 }
 

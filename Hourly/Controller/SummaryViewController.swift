@@ -92,7 +92,7 @@ class SummaryViewController: UIViewController {
             destinationVC.delegate = self
         } else if segue.identifier == K.Segue.summaryEditWorkdayNav {
             let destinationVC = segue.destination as! AddEditWorkdayViewController
-            destinationVC.workdayEdit = sender as? WorkdayItem
+            destinationVC.editWorkdayId = sender as? NSManagedObjectID
         }
     }
     
@@ -180,7 +180,7 @@ extension SummaryViewController: UITableViewDataSource {
 //MARK: - EditWorkdayDelegate
 extension SummaryViewController: EditWorkdayDelegate {
     func editWorkday(_ workDetailViewController: WorkDetailViewController, workday: WorkdayItem) {
-        performSegue(withIdentifier: K.Segue.summaryEditWorkdayNav, sender: workday)
+        performSegue(withIdentifier: K.Segue.summaryEditWorkdayNav, sender: workday.objectID)
     }
 }
 
