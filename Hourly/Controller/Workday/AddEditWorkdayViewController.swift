@@ -259,7 +259,7 @@ class AddEditWorkdayViewController: UIViewController {
         })
         let confirmButton = UIAlertAction(title: "DELETE!", style: .destructive, handler: { (action) -> Void in
             dialogMessage.dismiss(animated: true)
-            if self.coreDataService.deleteWorkdayFromDatabase() { self.navigationController?.popViewController(animated: true) }
+            if self.coreDataService.deleteWorkday() { self.navigationController?.popViewController(animated: true) }
         })
         
         dialogMessage.addAction(dismissButton)

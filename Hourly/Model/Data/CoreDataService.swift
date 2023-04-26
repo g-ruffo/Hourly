@@ -110,7 +110,7 @@ final class CoreDataService {
     }
     
     //MARK: - Delete Workday Methods
-    func deleteWorkdayFromDatabase() -> Bool {
+    func deleteWorkday() -> Bool {
         if let day = workday {
             databaseContext.delete(day)
             return saveToDatabase()
@@ -168,16 +168,34 @@ final class CoreDataService {
     func getClientFromID(_ id: NSManagedObjectID?) {
         clientId = id
         if let clientId = id {
-            do {
-                client = try databaseContext.existingObject(with: clientId) as? ClientItem
-                delegate?.loadedClient(self, clientItem: client)
-            } catch {
-                fatalError(error.localizedDescription)
-            }
-        } else if client != nil {
-            client = nil
-            delegate?.loadedClient(self, clientItem: client)
-        }
+            do { client = try databaseContext.existingObject(with: clientId) as? ClientItem }
+            catch { fatalError(error.localizedDescription) }
+        } else if client != nil { client = nil }
+    }
+    
+    //MARK: - Client Delete Methods
+    
+    func deleteClient() -> Bool {
+        if let deleteClient = client {
+            databaseContext.delete(deleteClient)
+            return saveToDatabase()
+        } else { return false }
+    }
+    
+    //MARK: - Create Client Methods
+    
+    func createUpdateClient(companyName: String, contactName: String?, phone: String?, email: String?, address: String?, rate: Double, tagColour: String?) -> Bool {
+        
+        let client = client ?? ClientItem(context: databaseContext)
+        client.companyName = companyName
+        client.contactName = contactName
+        client.phoneNumber = phone
+        client.email = email
+        client.address = address
+        client.payRate = rate
+        client.tagColor = tagColour
+        return saveToDatabase()
+        
     }
 }
 

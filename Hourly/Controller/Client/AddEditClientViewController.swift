@@ -7,6 +7,7 @@
 
 import UIKit
 import UIColorHexSwift
+import CoreData
 
 class AddEditClientViewController: UIViewController {
 
@@ -21,22 +22,23 @@ class AddEditClientViewController: UIViewController {
     
     @IBOutlet weak var deleteBarButton: UIBarButtonItem!
     
-    private let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private let coreDataService = CoreDataService()
     
     private var selectedColour = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1).hexString()
     
     private var manager = AddEditClientManager()
+    private var isEditingClient = false
     
 
     private let tagStringColours: Array<String> = [
         "#0096FF", "#941751", "#941100", "#FF9300", "#00F900", "#0433FF", "#FF2F92", "#FFFB00", "#942193", "#73FCD6", "#009193", "#FF2600", "#FF85FF", "#FFFC79"
     ]
     
-    var clientEdit: ClientItem?
+    var editClientId: NSManagedObjectID?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        coreDataService.delegate = self
         manager.delegate = self
         payRateTextField.delegate = self
         checkForEdit()
@@ -45,23 +47,14 @@ class AddEditClientViewController: UIViewController {
     }
     
     func checkForEdit() {
-        if let client = clientEdit {
-            self.title = S.editClientTitle.localized
-            companyNameTextField.text = client.companyName
-            contactNameTextField.text = client.contactName
-            phoneNumberTextField.text = client.phoneNumber
-            emailTextField.text = client.email
-            addressTextField.text = client.address
-            payRateTextField.text = "$\(client.payRate)"
-            
-            if let colour = client.tagColor {
-                selectedColour = colour
-            }
-        } else {
-            deleteBarButton.isEnabled = false
-            deleteBarButton.tintColor = .clear
-            self.title = S.addClientTitle.localized
-        }
+        if let id = editClientId {
+            coreDataService.getClientFromID(id)
+            isEditingClient = true
+        } else { isEditingClient = false }
+        
+        self.title = isEditingClient ? S.editClientTitle.localized : S.addClientTitle.localized
+        deleteBarButton.isEnabled = isEditingClient
+        deleteBarButton.tintColor = isEditingClient ? .red : .clear
     }
     
     func setupPopUpButton() {
@@ -127,8 +120,8 @@ class AddEditClientViewController: UIViewController {
             dialogMessage.dismiss(animated: true)
         })
         let confirmButton = UIAlertAction(title: "DELETE!", style: .destructive, handler: { (action) -> Void in
-            self.deleteClientFromDatabase()
             dialogMessage.dismiss(animated: true)
+            if self.coreDataService.deleteClient() { self.navigationController?.popViewController(animated: true) }
         })
         
         dialogMessage.addAction(dismissButton)
@@ -137,67 +130,30 @@ class AddEditClientViewController: UIViewController {
         self.present(dialogMessage, animated: true, completion: nil)
     }
     
-    func createClient() {
-        let newClient = ClientItem(context: databaseContext)
-        newClient.companyName = companyNameTextField.text
-        newClient.contactName = contactNameTextField.text
-        newClient.phoneNumber = phoneNumberTextField.text
-        newClient.email = emailTextField.text
-        newClient.address = addressTextField.text
-        newClient.payRate = payRateTextField.currencyStringToDouble() ?? 0
-        newClient.tagColor = selectedColour
-    }
-    
-    func updateClient() {
-        guard let client = clientEdit else {
-            fatalError("Error geting client to perform update.")
+    func createUpdateClient() {
+        guard let company = companyNameTextField.text else {
+            showAlertDialog()
+            return
         }
-        client.companyName = companyNameTextField.text
-        client.contactName = contactNameTextField.text
-        client.phoneNumber = phoneNumberTextField.text
-        client.email = emailTextField.text
-        client.address = addressTextField.text
-        client.payRate = payRateTextField.currencyStringToDouble() ?? 0
-        client.tagColor = selectedColour
-    }
-    
-    func saveClient() -> Bool {
-        if databaseContext.hasChanges {
-            do {
-                try databaseContext.save()
-                return true
-            } catch {
-                print("Error saving client to database = \(error)")
-                return false
-            }
-        } else {
-            return true
+        let contact = contactNameTextField.text
+        let phoneNumber = phoneNumberTextField.text
+        let email = emailTextField.text
+        let address = addressTextField.text
+        let rate = payRateTextField.currencyStringToDouble() ?? 0
+        let colour = selectedColour
+        
+        if coreDataService.createUpdateClient(companyName: company, contactName: contact, phone: phoneNumber, email: email, address: address, rate: rate, tagColour: colour) {
+            navigationController?.popViewController(animated: true)
         }
     }
     
-    func deleteClientFromDatabase() {
-        if let client = clientEdit {
-            databaseContext.delete(client)
-            if saveClient() {
-                navigationController?.popViewController(animated: true)
-            }
-        }
-    }
-    
+    func saveClient() -> Bool { return coreDataService.saveToDatabase() }
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
-        if !companyNameTextField.isValid() || !payRateTextField.isValid() {
+        if !companyNameTextField.isValid() {
             showAlertDialog()
-        } else if clientEdit != nil {
-            updateClient()
-            if saveClient() {
-                navigationController?.popViewController(animated: true)
-            }
         } else {
-            createClient()
-            if saveClient() {
-                navigationController?.popViewController(animated: true)
-            }
+            createUpdateClient()
         }
     }
     @IBAction func deleteButtonPressed(_ sender: UIBarButtonItem) {
@@ -206,7 +162,7 @@ class AddEditClientViewController: UIViewController {
     }
     
 }
-
+//MARK: - AddEditClientManagerDelegate
 extension AddEditClientViewController: AddEditClientManagerDelegate {
     func didUpdateCurrencyText(_ addEditClientManager: AddEditClientManager, newCurrencyValue: String?) {
         payRateTextField.text = newCurrencyValue
@@ -214,6 +170,21 @@ extension AddEditClientViewController: AddEditClientManagerDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         manager.validateCurrencyInput(string: string)
+    }
+}
+
+//MARK: - CoreDataServiceDelegate
+extension AddEditClientViewController: CoreDataServiceDelegate {
+    func loadedClient(_ coreDataService: CoreDataService, clientItem: ClientItem?) {
+        if let client = clientItem {
+            companyNameTextField.text = client.companyName
+            contactNameTextField.text = client.contactName
+            phoneNumberTextField.text = client.phoneNumber
+            emailTextField.text = client.email
+            addressTextField.text = client.address
+            payRateTextField.text = client.payRate.convertToCurrency()
+            if let colour = client.tagColor { selectedColour = colour }
+        }
     }
 }
 
