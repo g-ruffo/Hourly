@@ -69,7 +69,7 @@ class ClientSearchTextField: UITextField {
         request.predicate = predicate
 
         //Loading the data into the dataList
-        coreDataService.getClientItems(withRequest: request)
+        coreDataService.getClients(withRequest: request)
      }
     
     func buildSearchTableView() {

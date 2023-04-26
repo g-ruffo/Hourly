@@ -151,9 +151,13 @@ final class CoreDataService {
         }
     }
     
+    func getWorkdayClientID() -> URL? {
+        return clientId?.uriRepresentation()
+    }
+    
     //MARK: - Client Get Methods
     
-    func getClientItems(withRequest request : NSFetchRequest<ClientItem>) {
+    func getClients(withRequest request : NSFetchRequest<ClientItem>) {
         do {
             clients = try databaseContext.fetch(request)
         } catch {
@@ -174,10 +178,6 @@ final class CoreDataService {
             client = nil
             delegate?.loadedClient(self, clientItem: client)
         }
-    }
-    
-    func getWorkdayClientID() -> URL? {
-        return clientId?.uriRepresentation()
     }
 }
 
