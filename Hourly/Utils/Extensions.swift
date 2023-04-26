@@ -31,9 +31,9 @@ extension UITextField {
 
 extension Date {
     var startOfDay: Date {
-        var calendar = Calendar(identifier: .gregorian)
-        calendar.timeZone = TimeZone(secondsFromGMT: 0)!
-        return calendar.startOfDay(for: self)
+        let calendar = Calendar.current
+        let dateComponents = calendar.dateComponents([.year, .month, .day], from: self)
+        return calendar.date(from: dateComponents) ?? self
     }
     var zeroSeconds: Date {
         let calendar = Calendar.current

@@ -209,9 +209,9 @@ class AddEditWorkdayViewController: UIViewController {
     
     func createUpdateWorkday(isDraft: Bool = false) -> Bool {
         if let client = clientTextField.text {
-            let date = datePicker.date.startOfDay
-            let adjustedStart = manager.setStartTimeDate(startTime: startTimeDatePicker.date, date: date)
-            let adjustedEnd = manager.setEndTimeDate(startTime: adjustedStart, endTime: endTimeDatePicker.date, date: date)
+            let workDate = datePicker.date.startOfDay
+            let adjustedStart = manager.setStartTimeDate(startTime: startTimeDatePicker.date, date: workDate)
+            let adjustedEnd = manager.setEndTimeDate(startTime: adjustedStart, endTime: endTimeDatePicker.date, date: workDate)
             let lunch = Int32(selectedLunchTimeMinutes ?? 0)
             let rate = payRateTexfield.currencyStringToDouble() ?? 0.00
             let mileage = Int32(selectedMileage ?? 0)
@@ -219,10 +219,12 @@ class AddEditWorkdayViewController: UIViewController {
             let workDescription = descriptionTexfield.text
             let earnings = manager.calculateEarnings(startTime: adjustedStart, endTime: adjustedEnd, lunchMinutes: selectedLunchTimeMinutes, payRate: rate)
             let minutesWorked = manager.calculateTimeWorkedInMinutes(startTime: adjustedStart, endTime: adjustedEnd, lunchMinutes: selectedLunchTimeMinutes ?? 0)
-            
+            print("Date = \(datePicker.date.formatDateToString())")
+
             return coreDataService.createUpdateWorkday(
                 clientName: client,
-                date: date, start: adjustedStart,
+                date: workDate,
+                start: adjustedStart,
                 end: adjustedEnd,
                 lunch: lunch,
                 mileage: mileage,

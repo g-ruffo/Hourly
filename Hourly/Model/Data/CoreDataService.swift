@@ -72,11 +72,10 @@ final class CoreDataService {
 
     
     //MARK: - Create Workday Methods
-    func createUpdateWorkday(clientName: String, date: Date, start: Date?, end: Date?, lunch: Int32, mileage: Int32, rate: Double, location: String?, description: String?, timeWorked: Int32, earnings: Double, isDraft: Bool) -> Bool {
-        
+    func createUpdateWorkday(clientName: String, date workDate: Date, start: Date?, end: Date?, lunch: Int32, mileage: Int32, rate: Double, location: String?, description: String?, timeWorked: Int32, earnings: Double, isDraft: Bool) -> Bool {
         let workday = workday ?? WorkdayItem(context: databaseContext)
         workday.clientName = clientName
-        workday.date = date
+        workday.date = workDate
         workday.startTime = start
         workday.endTime = end
         workday.lunchMinutes = lunch
@@ -90,7 +89,6 @@ final class CoreDataService {
         workday.client = client
         addPhotoItemsToWorkday(workday)
         return saveToDatabase()
-        
     }
 
     func addPhotoItemsToWorkday(_ workday: WorkdayItem) {
