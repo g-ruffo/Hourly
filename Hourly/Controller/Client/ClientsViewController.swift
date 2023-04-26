@@ -33,8 +33,12 @@ class ClientsViewController: UIViewController {
         loadClientsFromDatabase()
     }
     
-    func loadClientsFromDatabase() {
+    func loadClientsFromDatabase(searchClients: String? = nil) {
         let request: NSFetchRequest<ClientItem> = ClientItem.fetchRequest()
+        if let search = searchClients {
+            let predicate = NSPredicate(format: "companyName CONTAINS[cd] %@", search)
+            request.predicate = predicate
+        }
         coreDataService.getClients(withRequest: request)
     }    
 
@@ -87,7 +91,19 @@ extension ClientsViewController: UITableViewDelegate {
 
 //MARK: - UISearchBarDelegate
 extension ClientsViewController: UISearchBarDelegate {
-    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        if let searchText = searchBar.text, !searchText.isEmpty {
+            loadClientsFromDatabase(searchClients: searchText)
+        }
+    }
+        
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            searchBar.resignFirstResponder()
+            loadClientsFromDatabase()
+        }
+    }
 }
 
 //MARK: - EditClientDelegate

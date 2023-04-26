@@ -43,10 +43,10 @@ class WorkdaysViewController: UIViewController {
         loadWorkdayFromDatabase()
     }
     
-    func loadWorkdayFromDatabase(searchWorkday: String? = nil) {
+    func loadWorkdayFromDatabase(searchWorkdays: String? = nil) {
         let request: NSFetchRequest<WorkdayItem> = WorkdayItem.fetchRequest()
         let sortDate = NSSortDescriptor(key: "date", ascending: false)
-        if let search = searchWorkday {
+        if let search = searchWorkdays {
             let predicate = NSPredicate(format: "clientName CONTAINS[cd] %@", search)
             request.predicate = predicate
         }
@@ -98,7 +98,7 @@ extension WorkdaysViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         if let searchText = searchBar.text, !searchText.isEmpty {
-            loadWorkdayFromDatabase(searchWorkday: searchText)
+            loadWorkdayFromDatabase(searchWorkdays: searchText)
         }
     }
         
