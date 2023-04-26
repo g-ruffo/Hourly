@@ -75,15 +75,29 @@ class ClientDetailsViewController: UIViewController {
     }
     
     @IBAction func phoneButtonPressed(_ sender: UIButton) {
+        if let phone = phoneTextField.text { performIntent(for: "tel:", address: phone) }
     }
     
     @IBAction func messageButtonPressed(_ sender: UIButton) {
+        if let phone = phoneTextField.text { performIntent(for: "sms:", address: phone) }
     }
     
     @IBAction func emailButtonPressed(_ sender: UIButton) {
+        if let email = emailTextField.text { performIntent(for: "mailTo:", address: email) }
     }
     
     @IBAction func locationButtonPressed(_ sender: UIButton) {
+        if let location = addressTextField.text {
+            let formattedAddress = location.replacingOccurrences(of: " ", with: "+")
+            performIntent(for: "http://maps.apple.com/?q=", address: formattedAddress)
+        }
+    }
+    
+    func performIntent(for action: String, address: String) {
+        if let url = URL(string: "\(action)\(address)"),
+           UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else { print("Unable to perform client intent") }
     }
 
 }
