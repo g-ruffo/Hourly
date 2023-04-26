@@ -48,7 +48,7 @@ class AddEditWorkdayViewController: UIViewController {
     
     private var isEditingWorkday: Bool = false
     private var completedSave: Bool = false
-    private var savedPhotos: Array<PhotoItem> = []
+    private var photos: Array<PhotoItem> = []
     
     var editWorkdayId: NSManagedObjectID?
     
@@ -86,7 +86,7 @@ class AddEditWorkdayViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.Segue.editPhotoCollectionNav {
             let destinationVC = segue.destination as! PhotoViewController
-            destinationVC.photos = savedPhotos
+            destinationVC.photos = photos
             destinationVC.startingRow = sender as? Int
             destinationVC.allowEditing = true
             destinationVC.delegate = self
@@ -317,6 +317,7 @@ extension AddEditWorkdayViewController: PHPickerViewControllerDelegate {
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         picker.dismiss(animated: true)
         let group = DispatchGroup()
+        var images: Array<(jpegImage: Data?, description: String)> = []
         results.forEach { result in
             group.enter()
             result.itemProvider.loadObject(ofClass: UIImage.self) { [weak self] reading, error in
@@ -330,11 +331,11 @@ extension AddEditWorkdayViewController: PHPickerViewControllerDelegate {
                 
                 let jpegImage = image.jpegData(compressionQuality: 1.0)
                 let description = "Date: \(self!.datePicker.date.formatDateToString())"
-                self?.coreDataService.createPhotoItem(image: jpegImage, description: description)
+                images.append((jpegImage: jpegImage, description: description))
             }
         }
         group.notify(queue: .main) {
-            self.collectionView.reloadData()
+            self.coreDataService.createPhotoItems(photos: images)
         }
     }
 }
@@ -343,7 +344,7 @@ extension AddEditWorkdayViewController: PHPickerViewControllerDelegate {
 extension AddEditWorkdayViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        if indexPath.item == savedPhotos.count {
+        if indexPath.item == photos.count {
             createPhotoPicker()
         } else {
             performSegue(withIdentifier: K.Segue.editPhotoCollectionNav, sender: indexPath.row)
@@ -354,16 +355,16 @@ extension AddEditWorkdayViewController: UICollectionViewDelegate {
 //MARK: - UICollectionViewDataSource
 extension AddEditWorkdayViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return savedPhotos.count + 1
+        return photos.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.item == savedPhotos.count {
+        if indexPath.item == photos.count {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.Cell.addPhotoCell, for: indexPath) as! AddPhotoCell
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.Cell.photoCell, for: indexPath) as! PhotoCell
-            if let image = UIImage(data: savedPhotos[indexPath.row].image!) {
+            if let image = UIImage(data: photos[indexPath.row].image!) {
                 cell.imageView.image = image
             } else {
                 cell.imageView.image = UIImage(systemName: "externaldrive.badge.questionmark")
@@ -435,32 +436,35 @@ extension AddEditWorkdayViewController: ClientSearchDelegate {
 //MARK: - PhotoCollectionDelegate
 extension AddEditWorkdayViewController: PhotoCollectionDelegate {
     func photoHasBeenDeleted(_ photoViewController: PhotoViewController, index: Int) {
-        savedPhotos.remove(at: index)
-        collectionView.reloadData()
+        coreDataService.deletePhoto(at: index)
     }
 }
 
 extension AddEditWorkdayViewController: CoreDataServiceDelegate {
-    func loadedWorkday(_ coreDataService: CoreDataService, workday: WorkdayItem?) {
-        if let day = workday {
+    func loadedWorkday(_ coreDataService: CoreDataService, workdayItem: WorkdayItem?) {
+        if let day = workdayItem {
             clientTextField.text = day.clientName
             locationTexfield.text = day.location
             payRateTexfield.text = "$\(day.payRate)"
             selectedLunchTimeMinutes = Int(day.lunchMinutes)
             selectedMileage = Int(day.mileage)
             descriptionTexfield.text = day.workDescription
-            savedPhotos = day.photos?.allObjects as? Array<PhotoItem> ?? []
             if let date = day.date { datePicker.date = date }
             if let start = day.startTime { startTimeDatePicker.date = start }
             if let end = day.endTime { endTimeDatePicker.date = end }
         }
     }
     
-    func loadedClient(_ coreDataService: CoreDataService, client: ClientItem?) {
-        payRateTexfield.text = client != nil ? "$\(client!.payRate)" : nil
-        locationTexfield.text = client != nil ? client!.address : nil
-        clientTextField.backgroundColor = client != nil ? .clear : .white
-        payRateTexfield.backgroundColor = client != nil ? .clear : .white
-        locationTexfield.backgroundColor = client != nil ? .clear : .white
+    func loadedClient(_ coreDataService: CoreDataService, clientItem: ClientItem?) {
+        payRateTexfield.text = clientItem != nil ? "$\(clientItem!.payRate)" : nil
+        locationTexfield.text = clientItem != nil ? clientItem!.address : nil
+        clientTextField.backgroundColor = clientItem != nil ? .clear : .white
+        payRateTexfield.backgroundColor = clientItem != nil ? .clear : .white
+        locationTexfield.backgroundColor = clientItem != nil ? .clear : .white
+    }
+    
+    func loadedPhotos(_ coreDataService: CoreDataService, photoItems: Array<PhotoItem>) {
+        photos = photoItems
+        collectionView.reloadData()
     }
 }

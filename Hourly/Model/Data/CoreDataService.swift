@@ -10,20 +10,27 @@ import UIKit
 import CoreData
 
 protocol CoreDataServiceDelegate {
-    func loadedWorkday(_ coreDataService: CoreDataService, workday: WorkdayItem?)
-    func loadedClient(_ coreDataService: CoreDataService, client: ClientItem?)
-
+    func loadedWorkday(_ coreDataService: CoreDataService, workdayItem: WorkdayItem?)
+    func loadedClient(_ coreDataService: CoreDataService, clientItem: ClientItem?)
+    func loadedPhotos(_ coreDataService: CoreDataService, photoItems: Array<PhotoItem>)
 }
 
 extension CoreDataServiceDelegate {
-    func loadedWorkday(_ coreDataService: CoreDataService, workday: WorkdayItem?) {}
-    func loadedClient(_ coreDataService: CoreDataService, client: ClientItem?) {}
+    func loadedWorkday(_ coreDataService: CoreDataService, workdayItem: WorkdayItem?) {}
+    func loadedClient(_ coreDataService: CoreDataService, clientItem: ClientItem?) {}
+    func loadedPhotos(_ coreDataService: CoreDataService, photoItems: Array<PhotoItem>) {}
 }
 final class CoreDataService {
     
-    private var workday: WorkdayItem?
-    private var workdayPhotos: Array<PhotoItem> = []
-    private var client: ClientItem?
+    private var workday: WorkdayItem? {
+        didSet { delegate?.loadedWorkday(self, workdayItem: workday) }
+    }
+    private var workdayPhotos: Array<PhotoItem> = [] {
+        didSet { delegate?.loadedPhotos(self, photoItems: workdayPhotos) }
+    }
+    private var client: ClientItem? {
+        didSet { delegate?.loadedClient(self, clientItem: client) }
+    }
     private var clientId: NSManagedObjectID?
     
     private let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -58,11 +65,13 @@ final class CoreDataService {
         }
     }
     
-    func createPhotoItem(image jpegImage: Data?, description: String) {
-        let photoItem = PhotoItem(context: databaseContext)
-        photoItem.image = jpegImage
-        photoItem.imageDescription = description
-        workdayPhotos.append(photoItem)
+    func createPhotoItems(photos: Array<(jpegImage: Data?, description: String)>) {
+        photos.forEach { jpegImage, description in
+            let photoItem = PhotoItem(context: databaseContext)
+            photoItem.image = jpegImage
+            photoItem.imageDescription = description
+            workdayPhotos.append(photoItem)
+        }
     }
     
     //MARK: - Delete Workday Methods
@@ -71,6 +80,12 @@ final class CoreDataService {
             databaseContext.delete(day)
             return saveWorkday()
         } else { return false }
+    }
+    
+    func deletePhoto(at index: Int) {
+        let photo = workdayPhotos[index]
+        databaseContext.delete(photo)
+        workdayPhotos.remove(at: index)
     }
     
     
@@ -100,8 +115,7 @@ final class CoreDataService {
             do {
                 workday = try databaseContext.existingObject(with: id) as? WorkdayItem
                 client = workday?.client
-                delegate?.loadedClient(self, client: client)
-                delegate?.loadedWorkday(self, workday: workday)
+                workdayPhotos = workday?.photos?.allObjects as? Array<PhotoItem> ?? []
             } catch {
                 fatalError(error.localizedDescription)
             }
@@ -114,13 +128,13 @@ final class CoreDataService {
         if let clientId = id {
             do {
                 client = try databaseContext.existingObject(with: clientId) as? ClientItem
-                delegate?.loadedClient(self, client: client)
+                delegate?.loadedClient(self, clientItem: client)
             } catch {
                 fatalError(error.localizedDescription)
             }
         } else if client != nil {
             client = nil
-            delegate?.loadedClient(self, client: client)
+            delegate?.loadedClient(self, clientItem: client)
         }
     }
     
