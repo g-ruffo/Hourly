@@ -101,6 +101,6 @@ extension PhotoViewController: UITextViewDelegate {
 extension PhotoViewController: CoreDataServiceDelegate {
     func loadedPhotos(_ coreDataService: CoreDataService, photoItems: Array<PhotoItem>) {
         photos = photoItems
-        collectionView.reloadData()
+        DispatchQueue.main.async { self.collectionView.reloadData() }
     }
 }

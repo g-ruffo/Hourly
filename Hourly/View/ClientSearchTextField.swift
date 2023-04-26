@@ -117,7 +117,7 @@ class ClientSearchTextField: UITextField {
                  superview?.bringSubviewToFront(self)
              }
              
-             tableView.reloadData()
+             DispatchQueue.main.async { tableView.reloadData() }
          }
      }
 }
@@ -155,6 +155,6 @@ extension ClientSearchTextField: UITableViewDataSource {
 extension ClientSearchTextField: CoreDataServiceDelegate {
     func loadedClients(_ coreDataService: CoreDataService, clientItems: Array<ClientItem>) {
         clientArray = clientItems
-        tableView?.reloadData()
+        DispatchQueue.main.async { self.tableView?.reloadData() }
     }
 }

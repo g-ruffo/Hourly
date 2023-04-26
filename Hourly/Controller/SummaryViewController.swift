@@ -185,7 +185,7 @@ extension SummaryViewController: EditWorkdayDelegate {
 extension SummaryViewController: CoreDataServiceDelegate {
     func loadedWorkdays(_ coreDataService: CoreDataService, workdayItems: Array<WorkdayItem>) {
         workdays = workdayItems
-        tableView.reloadData()
+        DispatchQueue.main.async { self.tableView.reloadData() }
     }
 }
 

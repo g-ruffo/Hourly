@@ -87,7 +87,7 @@ class CalendarViewController: UIViewController {
         monthLabel.text = manager.monthString(date: selectedDate) + " " + manager.yearString(date: selectedDate)
         
         guard let direction = slideInDirection else {
-            collectionView.reloadData()
+            DispatchQueue.main.async { self.collectionView.reloadData() }
             return
         }
         
@@ -95,7 +95,7 @@ class CalendarViewController: UIViewController {
 
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut) {
             self.collectionView.center = CGPoint(x: self.collectionView.center.x - direction, y: self.collectionView.center.y)
-            self.collectionView.reloadData()
+            DispatchQueue.main.async { self.collectionView.reloadData() }
         }
     }
     

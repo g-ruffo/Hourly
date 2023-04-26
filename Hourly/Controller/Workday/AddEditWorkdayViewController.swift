@@ -428,7 +428,7 @@ extension AddEditWorkdayViewController: ClientSearchDelegate {
 extension AddEditWorkdayViewController: PhotoCollectionDelegate {
     func photoHasBeenDeleted(_ photoViewController: PhotoViewController) {
         photos = coreDataService.workdayPhotos
-        collectionView.reloadData()
+        DispatchQueue.main.async { self.collectionView.reloadData() }
     }
 }
 
@@ -457,6 +457,6 @@ extension AddEditWorkdayViewController: CoreDataServiceDelegate {
     
     func loadedPhotos(_ coreDataService: CoreDataService, photoItems: Array<PhotoItem>) {
         photos = photoItems
-        collectionView.reloadData()
+        DispatchQueue.main.async { self.collectionView.reloadData() }
     }
 }
