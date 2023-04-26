@@ -8,7 +8,7 @@
 import UIKit
 
 protocol PhotoCollectionDelegate {
-    func photoHasBeenDeleted(_ photoViewController: PhotoViewController, index: Int)
+    func photoHasBeenDeleted(_ photoViewController: PhotoViewController)
 }
 
 class PhotoViewController: UIViewController {
@@ -24,11 +24,11 @@ class PhotoViewController: UIViewController {
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    private let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var coreDataService: CoreDataService? { didSet { photos = coreDataService?.workdayPhotos ?? [] } }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        coreDataService?.delegate = self
         collectionView.dataSource = self
         collectionView.delegate = self
         saveButton.isHidden = !allowEditing
@@ -45,36 +45,16 @@ class PhotoViewController: UIViewController {
     
     @IBAction func deleteButtonPressed(_ sender: UIButton) {
         guard let index = collectionView.indexPathsForVisibleItems.first?.row else {
-            print("Error deleting photo")
-            return }
-        deletePhotoFromDatabase(index: index)
-        
+            print("Error deleting photo, unable to get index path")
+            return
+        }
+        coreDataService?.deletePhoto(at: index)
+        delegate?.photoHasBeenDeleted(self)
     }
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
-        if savePhotoToDatabase() {
+        if ((coreDataService?.saveToDatabase()) != nil) {
             dismiss(animated: true)
-        }
-    }
-    
-    func deletePhotoFromDatabase(index: Int) {
-        databaseContext.delete(photos[index])
-        photos.remove(at: index)
-        collectionView.reloadData()
-        delegate?.photoHasBeenDeleted(self, index: index)
-    }
-    
-    func savePhotoToDatabase() -> Bool {
-        if databaseContext.hasChanges {
-            do {
-                try databaseContext.save()
-                return true
-            } catch {
-                print("Error saving workday to database = \(error)")
-                return false
-            }
-        } else {
-            return true
         }
     }
 }
@@ -111,7 +91,16 @@ extension PhotoViewController: UICollectionViewDelegateFlowLayout {
 extension PhotoViewController: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         if let text = textView.text {
-            photos[textView.tag].imageDescription = text
+            let index = textView.tag
+            coreDataService?.updatePhoto(at: index, text: text)
         }
+    }
+}
+
+//MARK: - CoreDataServiceDelegate
+extension PhotoViewController: CoreDataServiceDelegate {
+    func loadedPhotos(_ coreDataService: CoreDataService, photoItems: Array<PhotoItem>) {
+        photos = photoItems
+        collectionView.reloadData()
     }
 }

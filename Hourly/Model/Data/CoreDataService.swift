@@ -35,9 +35,12 @@ final class CoreDataService {
         didSet { delegate?.loadedWorkdays(self, workdayItems: workdays) }
     }
     
-    private var workdayPhotos: Array<PhotoItem> = [] {
-        didSet { delegate?.loadedPhotos(self, photoItems: workdayPhotos) }
+    private var _workdayPhotos: Array<PhotoItem> = [] {
+        didSet { delegate?.loadedPhotos(self, photoItems: _workdayPhotos) }
     }
+    
+    var workdayPhotos: Array<PhotoItem> { get { return _workdayPhotos } }
+     
     private var client: ClientItem? {
         didSet { delegate?.loadedClient(self, clientItem: client) }
     }
@@ -51,6 +54,22 @@ final class CoreDataService {
     private let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var delegate: CoreDataServiceDelegate?
+    
+    //MARK: - Save Methods
+    func saveToDatabase() -> Bool {
+        if databaseContext.hasChanges {
+            do {
+                try databaseContext.save()
+                return true
+            } catch {
+                print("Error saving files to core data = \(error)")
+                return false
+            }
+        } else {
+            return true
+        }
+    }
+
     
     //MARK: - Create Workday Methods
     func createUpdateWorkday(clientName: String, date: Date, start: Date?, end: Date?, lunch: Int32, mileage: Int32, rate: Double, location: String?, description: String?, timeWorked: Int32, earnings: Double, isDraft: Bool) -> Bool {
@@ -70,12 +89,12 @@ final class CoreDataService {
         workday.isFinalized = !isDraft
         workday.client = client
         addPhotoItemsToWorkday(workday)
-        return saveWorkday()
+        return saveToDatabase()
         
     }
 
     func addPhotoItemsToWorkday(_ workday: WorkdayItem) {
-            for photo in workdayPhotos {
+            for photo in _workdayPhotos {
                 photo.workingDay = workday
         }
     }
@@ -86,7 +105,7 @@ final class CoreDataService {
             let photoItem = PhotoItem(context: databaseContext)
             photoItem.image = jpegImage
             photoItem.imageDescription = "Date: \(date.formatDateToString())"
-            workdayPhotos.append(photoItem)
+            _workdayPhotos.append(photoItem)
         }
     }
     
@@ -94,44 +113,31 @@ final class CoreDataService {
     func deleteWorkdayFromDatabase() -> Bool {
         if let day = workday {
             databaseContext.delete(day)
-            return saveWorkday()
+            return saveToDatabase()
         } else { return false }
     }
     
     func deletePhoto(at index: Int) {
-        let photo = workdayPhotos[index]
-        databaseContext.delete(photo)
-        workdayPhotos.remove(at: index)
+        databaseContext.delete(_workdayPhotos[index])
+        _workdayPhotos.remove(at: index)
     }
     
-    
-    //MARK: - Workday Save Methods
-    func saveWorkday() -> Bool {
-        if databaseContext.hasChanges {
-            do {
-                try databaseContext.save()
-                return true
-            } catch {
-                print("Error saving workday to database = \(error)")
-                return false
-            }
-        } else {
-            return true
-        }
+    //MARK: - Update Workday Methods
+    func updatePhoto(at index: Int, text: String) {
+        _workdayPhotos[index].imageDescription = text
     }
-    
+        
     //MARK: - Workday Get Methods
     func getClientFromURL(url: URL) {
         let clientObjectId = databaseContext.persistentStoreCoordinator!.managedObjectID(forURIRepresentation: url)
         if let id = clientObjectId { getClientFromID(id) }
-        
     }
     
     func getWorkdayFromObjectId(_ id: NSManagedObjectID) {
             do {
                 workday = try databaseContext.existingObject(with: id) as? WorkdayItem
                 client = workday?.client
-                workdayPhotos = workday?.photos?.allObjects as? Array<PhotoItem> ?? []
+                _workdayPhotos = workday?.photos?.allObjects as? Array<PhotoItem> ?? []
             } catch {
                 fatalError(error.localizedDescription)
             }

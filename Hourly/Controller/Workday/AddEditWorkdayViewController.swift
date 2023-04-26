@@ -86,9 +86,9 @@ class AddEditWorkdayViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.Segue.editPhotoCollectionNav {
             let destinationVC = segue.destination as! PhotoViewController
-            destinationVC.photos = photos
             destinationVC.startingRow = sender as? Int
             destinationVC.allowEditing = true
+            destinationVC.coreDataService = coreDataService
             destinationVC.delegate = self
         }
     }
@@ -207,14 +207,6 @@ class AddEditWorkdayViewController: UIViewController {
         }
     }
     
-    func saveWorkday() -> Bool {
-        return coreDataService.saveWorkday()
-    }
-    
-    func deleteWorkdayFromDatabase() {
-        if coreDataService.deleteWorkdayFromDatabase() { navigationController?.popViewController(animated: true) }
-    }
-    
     func createUpdateWorkday(isDraft: Bool = false) -> Bool {
         if let client = clientTextField.text {
             let date = datePicker.date.startOfDay
@@ -266,8 +258,8 @@ class AddEditWorkdayViewController: UIViewController {
             dialogMessage.dismiss(animated: true)
         })
         let confirmButton = UIAlertAction(title: "DELETE!", style: .destructive, handler: { (action) -> Void in
-            self.deleteWorkdayFromDatabase()
             dialogMessage.dismiss(animated: true)
+            if self.coreDataService.deleteWorkdayFromDatabase() { self.navigationController?.popViewController(animated: true) }
         })
         
         dialogMessage.addAction(dismissButton)
@@ -434,8 +426,9 @@ extension AddEditWorkdayViewController: ClientSearchDelegate {
 
 //MARK: - PhotoCollectionDelegate
 extension AddEditWorkdayViewController: PhotoCollectionDelegate {
-    func photoHasBeenDeleted(_ photoViewController: PhotoViewController, index: Int) {
-        coreDataService.deletePhoto(at: index)
+    func photoHasBeenDeleted(_ photoViewController: PhotoViewController) {
+        photos = coreDataService.workdayPhotos
+        collectionView.reloadData()
     }
 }
 
