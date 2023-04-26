@@ -23,7 +23,7 @@ class SummaryViewController: UIViewController {
     @IBOutlet weak var hoursWorkedView: UIView!
     @IBOutlet weak var noDataLabel: UILabel!
     
-    let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private let coreDataService = CoreDataService()
     
     let filterOptions = ["This Week", "This Month", "This Year"]
     
@@ -61,6 +61,7 @@ class SummaryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        coreDataService.delegate = self
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(WorkdayCell.nib(), forCellReuseIdentifier: K.Cell.workdayCell)
@@ -117,12 +118,8 @@ class SummaryViewController: UIViewController {
         let sortDate = NSSortDescriptor(key: "date", ascending: false)
         request.predicate = NSPredicate(format: "date >= %@ AND date <= %@ AND isFinalized == true", startDate as NSDate, endDate as NSDate)
         request.sortDescriptors = [sortDate]
-        do{
-            workdays = try databaseContext.fetch(request)
-            tableView.reloadData()
-        } catch {
-            print("Error fetching workdays from database = \(error)")
-        }
+        
+        coreDataService.getWorkdays(withRequest: request)
     }
     
     func setupPopUpButton() {
@@ -181,6 +178,14 @@ extension SummaryViewController: UITableViewDataSource {
 extension SummaryViewController: EditWorkdayDelegate {
     func editWorkday(_ workDetailViewController: WorkDetailViewController, workday: WorkdayItem) {
         performSegue(withIdentifier: K.Segue.summaryEditWorkdayNav, sender: workday.objectID)
+    }
+}
+
+//MARK: - CoreDataServiceDelegate
+extension SummaryViewController: CoreDataServiceDelegate {
+    func loadedWorkdays(_ coreDataService: CoreDataService, workdayItems: Array<WorkdayItem>) {
+        workdays = workdayItems
+        tableView.reloadData()
     }
 }
 
