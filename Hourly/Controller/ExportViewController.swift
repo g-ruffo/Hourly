@@ -10,7 +10,6 @@ import CoreData
 
 class ExportViewController: UIViewController {
     
-    
     @IBOutlet weak var exportButton: UIButton!
     @IBOutlet weak var clientTextField: ClientSearchTextField!
     @IBOutlet weak var startDatePicker: UIDatePicker! {
@@ -30,40 +29,25 @@ class ExportViewController: UIViewController {
     
     private var selectedStartDate: Date?
     private var selectedEndDate: Date?
-
+    
     private var workdays: Array<WorkdayItem> = []
     
     private var selectedClient: ClientItem?
     
-    private var selectedClientID: NSManagedObjectID? {
-        didSet {
-            if let id = selectedClientID {
-                do {
-                    selectedClient = try databaseContext.existingObject(with: id) as? ClientItem
-                } catch {
-                    fatalError(error.localizedDescription)
-                }
-            } else {
-                if selectedClient != nil {
-                    selectedClient = nil
-                }
-            }
-        }
-    }
+    private let coreDataService = CoreDataService()
     
-    private let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
     private var manager = ExportManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        coreDataService.delegate = self
         clientTextField.searchDelegate = self
         startDatePicker.tag = 0
         endDatePicker.tag = 1
         startDatePicker.addTarget(self, action: #selector(datePickerChanged(picker:)), for: .valueChanged)
         endDatePicker.addTarget(self, action: #selector(datePickerChanged(picker:)), for: .valueChanged)
         exportButton.tintColor = UIColor("#F1C40F")
-
+        
         clientTextField.textFieldDidEndEditing()
     }
     
@@ -82,25 +66,7 @@ class ExportViewController: UIViewController {
     }
     
     
-    @IBAction func exportButtonPressed(_ sender: UIButton) {
-        if loadWorkdaysFromDatabase() {
-            if workdays.count > 0 {
-                
-                // Create a document picker for directories.
-                let documentPicker =
-                UIDocumentPickerViewController(forOpeningContentTypes: [.folder])
-                documentPicker.delegate = self
-                
-                // Present the document picker.
-                present(documentPicker, animated: true, completion: nil)
-                
-            } else {
-                showAlertDialog()
-            }
-        } else {
-            showAlertDialog()
-        }
-    }
+    @IBAction func exportButtonPressed(_ sender: UIButton) { loadWorkdaysFromDatabase() }
     
     func showAlertDialog() {
         let alert = UIAlertController(title: "No Data Found", message: "There are no workdays found for the client and dates you have selected", preferredStyle: .alert)
@@ -110,23 +76,17 @@ class ExportViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func loadWorkdaysFromDatabase() -> Bool {
+    func loadWorkdaysFromDatabase() {
         guard let client = selectedClient else {
             showAlertDialog()
             print("Error no client selected!")
-            return false
+            return
         }
         let request: NSFetchRequest<WorkdayItem> = WorkdayItem.fetchRequest()
         let sortDate = NSSortDescriptor(key: "date", ascending: false)
         request.predicate = NSPredicate(format: "date >= %@ AND date <= %@ AND isFinalized == true AND client == %@", startDatePicker.date as NSDate, endDatePicker.date as NSDate, client)
         request.sortDescriptors = [sortDate]
-        do{
-            workdays = try databaseContext.fetch(request)
-            return true
-        } catch {
-            print("Error fetching workdays from database = \(error)")
-            return false
-        }
+        coreDataService.getWorkdays(withRequest: request)
     }
 }
 
@@ -134,10 +94,10 @@ class ExportViewController: UIViewController {
 //MARK: - ClientSearchDelegate
 extension ExportViewController: ClientSearchDelegate {
     func selectedExistingClient(_ clientSearchTextField: ClientSearchTextField, clientID: NSManagedObjectID?) {
-        self.selectedClientID = clientID
+        coreDataService.getClientFromID(clientID)
     }
     func didEndEditing(_ clientSearchTextField: ClientSearchTextField) {
-        guard let client = self.selectedClient else {
+        guard let _ = self.selectedClient else {
             self.clientTextField.text = nil
             return
         }
@@ -157,5 +117,28 @@ extension ExportViewController: UIDocumentPickerDelegate {
         
         manager.exportWorkdaysToCSV(withObjects: workdays, client: (selectedClient?.companyName)!, startDate: startDatePicker.date, endDate: endDatePicker.date, toPath: url)
         url.stopAccessingSecurityScopedResource()
+    }
+}
+
+//MARK: - CoreDataServiceDelegate
+extension ExportViewController: CoreDataServiceDelegate {
+    func loadedClient(_ coreDataService: CoreDataService, clientItem: ClientItem?) {
+        selectedClient = clientItem
+    }
+    
+    func loadedWorkdays(_ coreDataService: CoreDataService, workdayItems: Array<WorkdayItem>) {
+        workdays = workdayItems
+        if workdays.count > 0 {
+            // Create a document picker for directories.
+            let documentPicker =
+            UIDocumentPickerViewController(forOpeningContentTypes: [.folder])
+            documentPicker.delegate = self
+            
+            // Present the document picker.
+            present(documentPicker, animated: true, completion: nil)
+            
+        } else {
+            showAlertDialog()
+        }
     }
 }
