@@ -21,10 +21,8 @@ class ClientSearchTextField: UITextField {
 
     var clientArray: Array<ClientItem> = []
     var tableView: UITableView?
-    
-    var selectedClient: ClientItem?
-    
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+    private let coreDataService = CoreDataService()
     
     var searchDelegate: ClientSearchDelegate?
 
@@ -64,15 +62,6 @@ class ClientSearchTextField: UITextField {
     @objc open func textFieldDidEndEditingOnExit() {
     }
     
-    func loadItems(withRequest request : NSFetchRequest<ClientItem>) {
-        do {
-            self.clientArray = try context.fetch(request)
-            
-        } catch {
-            print("Error while fetching data: \(error)")
-        }
-    }
-    
     // MARK : Filtering methods
     fileprivate func filter() {
         let predicate = NSPredicate(format: "companyName CONTAINS[cd] %@", self.text!)
@@ -80,13 +69,12 @@ class ClientSearchTextField: UITextField {
         request.predicate = predicate
 
         //Loading the data into the dataList
-        loadItems(withRequest : request)
-        
-        tableView?.reloadData()
+        coreDataService.getClientItems(withRequest: request)
      }
     
     func buildSearchTableView() {
         if let tableView = tableView {
+            coreDataService.delegate = self
             tableView.register(UITableViewCell.self, forCellReuseIdentifier: K.Cell.clientSearchCell)
             tableView.delegate = self
             tableView.dataSource = self
@@ -160,5 +148,13 @@ extension ClientSearchTextField: UITableViewDataSource {
         cell.backgroundColor = .white
         cell.textLabel?.text = clientArray[indexPath.row].companyName
         return cell
+    }
+}
+
+
+extension ClientSearchTextField: CoreDataServiceDelegate {
+    func loadedClients(_ coreDataService: CoreDataService, clientItems: Array<ClientItem>) {
+        clientArray = clientItems
+        tableView?.reloadData()
     }
 }

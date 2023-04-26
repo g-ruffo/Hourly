@@ -11,26 +11,41 @@ import CoreData
 
 protocol CoreDataServiceDelegate {
     func loadedWorkday(_ coreDataService: CoreDataService, workdayItem: WorkdayItem?)
-    func loadedClient(_ coreDataService: CoreDataService, clientItem: ClientItem?)
+    func loadedWorkdays(_ coreDataService: CoreDataService, workdayItems: Array<WorkdayItem>)
     func loadedPhotos(_ coreDataService: CoreDataService, photoItems: Array<PhotoItem>)
+    func loadedClient(_ coreDataService: CoreDataService, clientItem: ClientItem?)
+    func loadedClients(_ coreDataService: CoreDataService, clientItems: Array<ClientItem>)
 }
 
 extension CoreDataServiceDelegate {
     func loadedWorkday(_ coreDataService: CoreDataService, workdayItem: WorkdayItem?) {}
-    func loadedClient(_ coreDataService: CoreDataService, clientItem: ClientItem?) {}
+    func loadedWorkdays(_ coreDataService: CoreDataService, workdayItems: Array<WorkdayItem>) {}
     func loadedPhotos(_ coreDataService: CoreDataService, photoItems: Array<PhotoItem>) {}
+    func loadedClient(_ coreDataService: CoreDataService, clientItem: ClientItem?) {}
+    func loadedClients(_ coreDataService: CoreDataService, clientItems: Array<ClientItem>) {}
+
 }
 final class CoreDataService {
     
     private var workday: WorkdayItem? {
         didSet { delegate?.loadedWorkday(self, workdayItem: workday) }
     }
+    
+    private var workdays: Array<WorkdayItem> = [] {
+        didSet { delegate?.loadedWorkdays(self, workdayItems: workdays) }
+    }
+    
     private var workdayPhotos: Array<PhotoItem> = [] {
         didSet { delegate?.loadedPhotos(self, photoItems: workdayPhotos) }
     }
     private var client: ClientItem? {
         didSet { delegate?.loadedClient(self, clientItem: client) }
     }
+    
+    private var clients: Array<ClientItem> = [] {
+        didSet { delegate?.loadedClients(self, clientItems: clients) }
+    }
+    
     private var clientId: NSManagedObjectID?
     
     private let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -124,6 +139,15 @@ final class CoreDataService {
     
     
     //MARK: - Client Get Methods
+    
+    func getClientItems(withRequest request : NSFetchRequest<ClientItem>) {
+        do {
+            clients = try databaseContext.fetch(request)
+        } catch {
+            print("Error while fetching data: \(error)")
+        }
+    }
+    
     func getClientFromID(_ id: NSManagedObjectID?) {
         clientId = id
         if let clientId = id {
