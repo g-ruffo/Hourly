@@ -19,24 +19,28 @@ class ColourTagButton: UIButton {
         "#0096FF", "#941751", "#941100", "#FF9300", "#00F900", "#0433FF", "#FF2F92", "#FFFB00", "#942193", "#73FCD6", "#009193", "#FF2600", "#FF85FF", "#FFFC79"
     ]
     
-    var selectedColour: String = "#0096FF"
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        configureButton()
+    var selectedColour: String! {
+        didSet {
+            if let colour = selectedColour { configureButton()}
+        }
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        configureButton()
-    }
-    
+//    override init(frame: CGRect) {
+//        super.init(frame: frame)
+//        configureButton()
+//    }
+//
+//    required init?(coder aDecoder: NSCoder) {
+//        super.init(coder: aDecoder)
+//        configureButton()
+//    }
+//
     func configureButton() {
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor(.gray).withAlphaComponent(0.3).cgColor
         self.layer.cornerRadius = 4
         self.titleLabel?.tintColor = .black
-        self.imageView?.tintColor = UIColor(selectedColour)
+        self.tintColor = UIColor(selectedColour)
         // Called when selection is made
         let optionClosure = {(action: UIAction) in
             self.setImage(action.image, for: .normal)
@@ -60,7 +64,7 @@ class ColourTagButton: UIButton {
                 
                 
         // Set the starting menu item
-        let startingItem = optionsArray[0]
+        let startingItem = optionsArray.first { $0.discoverabilityTitle == selectedColour } ?? optionsArray[0]
         startingItem.title = "Tag Colour"
         startingItem.state = .on
 
