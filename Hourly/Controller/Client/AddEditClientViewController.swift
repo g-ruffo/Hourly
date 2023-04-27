@@ -13,12 +13,11 @@ class AddEditClientViewController: UIViewController {
 
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var companyNameTextField: UITextField!
-    @IBOutlet weak var contactNameTextField: UITextField!
+    @IBOutlet weak var contactNameTextField: FloatingLabelTextField!
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var payRateTextField: UITextField!
-    @IBOutlet weak var popUpButton: UIButton!
     
     @IBOutlet weak var deleteBarButton: UIBarButtonItem!
     
@@ -42,16 +41,6 @@ class AddEditClientViewController: UIViewController {
         tagButton.selectedColour = selectedColour
         checkForEdit()
         saveButton.tintColor = UIColor("#F1C40F")
-        setupTextFields()
-    }
-    
-    func setupTextFields() {
-        companyNameTextField.addDoneButtonOnKeyboard()
-        contactNameTextField.addDoneButtonOnKeyboard()
-        phoneNumberTextField.addDoneButtonOnKeyboard()
-        emailTextField.addDoneButtonOnKeyboard()
-        addressTextField.addDoneButtonOnKeyboard()
-        payRateTextField.addDoneButtonOnKeyboard()
     }
     
     func checkForEdit() {
