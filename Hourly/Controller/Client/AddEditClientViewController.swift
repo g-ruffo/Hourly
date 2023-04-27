@@ -22,6 +22,7 @@ class AddEditClientViewController: UIViewController {
     
     @IBOutlet weak var deleteBarButton: UIBarButtonItem!
     
+    @IBOutlet weak var tagButton: ColourTagButton!
     @IBOutlet weak var tagView: UIView!
     @IBOutlet weak var stackView: UIStackView!
     private let coreDataService = CoreDataService()
@@ -31,11 +32,6 @@ class AddEditClientViewController: UIViewController {
     private var manager = AddEditClientManager()
     private var isEditingClient = false
     
-
-    private let tagStringColours: Array<String> = [
-        "#0096FF", "#941751", "#941100", "#FF9300", "#00F900", "#0433FF", "#FF2F92", "#FFFB00", "#942193", "#73FCD6", "#009193", "#FF2600", "#FF85FF", "#FFFC79"
-    ]
-    
     var editClientId: NSManagedObjectID?
 
     override func viewDidLoad() {
@@ -43,10 +39,14 @@ class AddEditClientViewController: UIViewController {
         coreDataService.delegate = self
         manager.delegate = self
         payRateTextField.delegate = self
+        tagButton.delegate = self
+        tagButton.selectedColour = selectedColour
         checkForEdit()
-        setupPopUpButton()
         saveButton.tintColor = UIColor("#F1C40F")
-        
+        setupTextFields()
+    }
+    
+    func setupTextFields() {
         companyNameTextField.addDoneButtonOnKeyboard()
         contactNameTextField.addDoneButtonOnKeyboard()
         phoneNumberTextField.addDoneButtonOnKeyboard()
@@ -65,50 +65,7 @@ class AddEditClientViewController: UIViewController {
         deleteBarButton.isEnabled = isEditingClient
         deleteBarButton.tintColor = isEditingClient ? .red : .clear
     }
-    
-    func setupPopUpButton() {
-        let initialImage = UIImage(systemName: "circle.fill")?.withTintColor(UIColor(selectedColour), renderingMode: .alwaysOriginal)
-        popUpButton.setImage(initialImage, for: .normal)
-        popUpButton.setTitle("Tag Colour", for: .normal)
-        popUpButton.imageView?.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).cgColor
-        popUpButton.layer.borderWidth = 1
-        popUpButton.layer.cornerRadius = 8
-        
-        // Called when selection is made
-        let optionClosure = {(action: UIAction) in
-            self.popUpButton.setImage(action.image, for: .normal)
-            self.selectedColour = action.discoverabilityTitle ?? "#0096FF"
-                }
 
-        var optionsArray = [UIAction]()
-
-        for hex in tagStringColours {
-            let image = UIImage(systemName: "circle.fill")?.withTintColor(UIColor(hex), renderingMode: .alwaysOriginal)
-            
-            // Create each action and insert the coloured image
-            let action = UIAction(image: image, discoverabilityTitle: hex, state: .off, handler: optionClosure)
-
-            // Add created action to action array
-            optionsArray.append(action)
-        
-        }
-                
-                
-        // set the state of first country in the array as ON
-        optionsArray[0].state = .on
-
-        // create an options menu
-        let optionsMenu = UIMenu(options: .displayInline, children: optionsArray)
-        
-                
-        // add everything to your button
-        popUpButton.menu = optionsMenu
-
-        // make sure the popup button shows the selected value
-        popUpButton.changesSelectionAsPrimaryAction = true
-        popUpButton.showsMenuAsPrimaryAction = true
-    }
-    
     func showAlertDialog() {
         // Create a new alert
         let dialogMessage = UIAlertController(title: "Missing Information", message: "Please fill in all required fields", preferredStyle: .alert)
@@ -194,6 +151,13 @@ extension AddEditClientViewController: CoreDataServiceDelegate {
             payRateTextField.text = client.payRate.convertToCurrency()
             if let colour = client.tagColor { selectedColour = colour }
         }
+    }
+}
+
+//MARK: - ColourTagButtonDelegate
+extension AddEditClientViewController: ColourTagButtonDelegate {
+    func didUpdateColourTag(_ colourTagButton: ColourTagButton, hexString: String) {
+        selectedColour = hexString
     }
 }
 
