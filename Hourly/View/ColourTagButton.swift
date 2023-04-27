@@ -21,7 +21,7 @@ class ColourTagButton: UIButton {
     
     var selectedColour: String! {
         didSet {
-            if let colour = selectedColour { configureButton()}
+            if let _ = selectedColour { configureButton()}
         }
     }
     
@@ -41,11 +41,11 @@ class ColourTagButton: UIButton {
         self.layer.cornerRadius = 4
         self.titleLabel?.tintColor = .black
         self.tintColor = UIColor(selectedColour)
+
         // Called when selection is made
         let optionClosure = {(action: UIAction) in
             self.setImage(action.image, for: .normal)
             self.selectedColour = action.discoverabilityTitle ?? "#0096FF"
-            self.setTitle("Tag Colour", for: .normal)
             self.delegate?.didUpdateColourTag(self, hexString: self.selectedColour)
                 }
 
@@ -56,26 +56,18 @@ class ColourTagButton: UIButton {
             // Create each action and insert the coloured image
             let action = UIAction(image: image, discoverabilityTitle: hex, state: .off, handler: optionClosure)
 
-            // Add created action to action array
-            
             optionsArray.append(action)
-        
         }
-                
                 
         // Set the starting menu item
         let startingItem = optionsArray.first { $0.discoverabilityTitle == selectedColour } ?? optionsArray[0]
-        startingItem.title = "Tag Colour"
         startingItem.state = .on
 
         // Create the options menu
         let optionsMenu = UIMenu(options: .displayInline, children: optionsArray)
 
-        // add everything to your button
         self.menu = optionsMenu
         
-        // make sure the popup button shows the selected value
-        self.changesSelectionAsPrimaryAction = true
         self.showsMenuAsPrimaryAction = true
     }
 }

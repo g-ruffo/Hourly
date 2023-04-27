@@ -23,7 +23,6 @@ class AddEditClientViewController: UIViewController {
     @IBOutlet weak var deleteBarButton: UIBarButtonItem!
     
     @IBOutlet weak var tagButton: ColourTagButton!
-    @IBOutlet weak var tagView: UIView!
     @IBOutlet weak var stackView: UIStackView!
     private let coreDataService = CoreDataService()
     
