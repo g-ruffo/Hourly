@@ -15,6 +15,7 @@ class PhotoCollectionCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         textView.layer.cornerRadius = 10
+        textView.addDoneButtonOnKeyboard()
         textView.bottomAnchor.constraint(equalTo: contentView.keyboardLayoutGuide.topAnchor, constant: -28).isActive = true
     }
     
