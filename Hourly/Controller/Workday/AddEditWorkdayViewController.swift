@@ -26,6 +26,7 @@ class AddEditWorkdayViewController: UIViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var startTimeDatePicker: UIDatePicker!
     @IBOutlet weak var endTimeDatePicker: UIDatePicker!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     private let lunchPicker = UIPickerView()
     private let mileagePicker = UIPickerView()
@@ -71,6 +72,9 @@ class AddEditWorkdayViewController: UIViewController {
         saveButton.tintColor = UIColor("#F1C40F")
         createCollectionView()
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
+        
+        scrollView.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor, constant: -28).isActive = true
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -209,6 +213,10 @@ class AddEditWorkdayViewController: UIViewController {
     
     func createUpdateWorkday(isDraft: Bool = false) -> Bool {
         if let client = clientTextField.text {
+            guard !client.isEmpty else {
+                showAlertDialog()
+                return false
+            }
             let workDate = datePicker.date.startOfDay
             let adjustedStart = manager.setStartTimeDate(startTime: startTimeDatePicker.date, date: workDate)
             let adjustedEnd = manager.setEndTimeDate(startTime: adjustedStart, endTime: endTimeDatePicker.date, date: workDate)
