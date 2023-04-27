@@ -65,6 +65,14 @@ class AddEditWorkdayViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         coreDataService.delegate = self
+        
+        clientTextField.addDoneButtonOnKeyboard()
+        payRateTexfield.addDoneButtonOnKeyboard()
+        lunchTexfield.addDoneButtonOnKeyboard()
+        mileageTexfield.addDoneButtonOnKeyboard()
+        locationTexfield.addDoneButtonOnKeyboard()
+        descriptionTexfield.addDoneButtonOnKeyboard()
+
         setupLunchMileagePicker()
         setupDatePicker()
         checkForEdit()
@@ -73,7 +81,7 @@ class AddEditWorkdayViewController: UIViewController {
         createCollectionView()
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
         
-        scrollView.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor, constant: -28).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor).isActive = true
         
     }
     
@@ -86,6 +94,7 @@ class AddEditWorkdayViewController: UIViewController {
         super.viewWillDisappear(animated)
         updateUserDefaults()
     }
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.Segue.editPhotoCollectionNav {
@@ -301,6 +310,8 @@ class AddEditWorkdayViewController: UIViewController {
         pickerVC.delegate = self
         present(pickerVC, animated: true)
     }
+    
+    
 }
 
 //MARK: - AddEditClientManagerDelegate
@@ -442,6 +453,7 @@ extension AddEditWorkdayViewController: PhotoCollectionDelegate {
     }
 }
 
+//MARK: - CoreDataServiceDelegate
 extension AddEditWorkdayViewController: CoreDataServiceDelegate {
     func loadedWorkday(_ coreDataService: CoreDataService, workdayItem: WorkdayItem?) {
         if let day = workdayItem {
