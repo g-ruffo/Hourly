@@ -15,7 +15,7 @@ class PhotoCollectionCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         textView.layer.cornerRadius = 10
-        imageView.clipsToBounds = true
+        textView.bottomAnchor.constraint(equalTo: contentView.keyboardLayoutGuide.topAnchor, constant: -28).isActive = true
     }
     
     func setEditingState(_ isEditing: Bool) {

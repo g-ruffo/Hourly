@@ -33,6 +33,7 @@ class PhotoViewController: UIViewController {
         collectionView.delegate = self
         saveButton.isHidden = !allowEditing
         deleteButton.isHidden = !allowEditing
+        collectionView.contentInsetAdjustmentBehavior = .never
     }
 
     override func viewDidAppear(_ animated: Bool) {

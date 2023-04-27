@@ -1739,11 +1739,11 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="pxr-fk-fRr">
-                                                    <rect key="frame" x="0.0" y="19" width="393" height="650"/>
+                                                    <rect key="frame" x="0.0" y="19" width="393" height="670"/>
                                                     <color key="tintColor" name="BackgroundGrey"/>
                                                 </imageView>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="QJb-M7-l8i">
-                                                    <rect key="frame" x="24" y="682" width="345" height="80"/>
+                                                    <rect key="frame" x="24" y="702" width="345" height="80"/>
                                                     <color key="backgroundColor" red="0.27909524466350155" green="0.29770830710709989" blue="0.33349941283782603" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="80" id="PRu-aj-aNz"/>
@@ -1754,8 +1754,9 @@
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                             </subviews>
+                                            <keyboardLayoutGuide key="keyboard" id="eoM-FY-V21"/>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="QJb-M7-l8i" secondAttribute="bottom" constant="20" id="4KQ-BW-Y5b"/>
+                                                <constraint firstItem="QJb-M7-l8i" firstAttribute="bottom" secondItem="5xN-hk-jpM" secondAttribute="bottom" placeholder="YES" id="4KQ-BW-Y5b"/>
                                                 <constraint firstItem="pxr-fk-fRr" firstAttribute="leading" secondItem="5xN-hk-jpM" secondAttribute="leading" id="A1K-g6-UUl"/>
                                                 <constraint firstAttribute="trailing" secondItem="pxr-fk-fRr" secondAttribute="trailing" id="GDL-cO-ais"/>
                                                 <constraint firstItem="QJb-M7-l8i" firstAttribute="leading" secondItem="5xN-hk-jpM" secondAttribute="leading" constant="24" id="TJj-4V-ylF"/>
@@ -2138,7 +2139,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="olG-vz-Or0"/>
-        <segue reference="gAs-an-Vsm"/>
+        <segue reference="4ew-TS-7hL"/>
         <segue reference="Q5n-uq-4AC"/>
         <segue reference="T1x-7W-HWO"/>
     </inferredMetricsTieBreakers>
