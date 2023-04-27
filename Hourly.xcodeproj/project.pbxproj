@@ -29,6 +29,7 @@
 		7983B00529F4A09900F2D76E /* WorkdayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7983B00329F4A09900F2D76E /* WorkdayCell.xib */; };
 		7983B00729F4C12700F2D76E /* SummaryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7983B00629F4C12700F2D76E /* SummaryManager.swift */; };
 		7983B00929F7285600F2D76E /* ExportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7983B00829F7285600F2D76E /* ExportManager.swift */; };
+		79A563F429FAE9D1004E8A7E /* FloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A563F329FAE9D1004E8A7E /* FloatingLabelTextField.swift */; };
 		79AED58329F0DE9F00FBF2E4 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AED58129F0DE9F00FBF2E4 /* PhotoCell.swift */; };
 		79AED58429F0DE9F00FBF2E4 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79AED58229F0DE9F00FBF2E4 /* PhotoCell.xib */; };
 		79AED58A29F1FBD800FBF2E4 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AED58929F1FBD800FBF2E4 /* PhotoViewController.swift */; };
@@ -100,6 +101,7 @@
 		7983B00329F4A09900F2D76E /* WorkdayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkdayCell.xib; sourceTree = "<group>"; };
 		7983B00629F4C12700F2D76E /* SummaryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryManager.swift; sourceTree = "<group>"; };
 		7983B00829F7285600F2D76E /* ExportManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportManager.swift; sourceTree = "<group>"; };
+		79A563F329FAE9D1004E8A7E /* FloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLabelTextField.swift; sourceTree = "<group>"; };
 		79AED58129F0DE9F00FBF2E4 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		79AED58229F0DE9F00FBF2E4 /* PhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
 		79AED58929F1FBD800FBF2E4 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 				79FA887329E4AD66003C6DFB /* Main.storyboard */,
 				79F1AFC729E4BD0E004CED4E /* HourlyTabBar.swift */,
 				795BB46A29E63FB1000D7FB1 /* ColorTagButton.swift */,
+				79A563F329FAE9D1004E8A7E /* FloatingLabelTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -482,6 +485,7 @@
 				79B0243729F88C6900162878 /* CoreDataService.swift in Sources */,
 				7964AFC029E7993900065863 /* Extensions.swift in Sources */,
 				79F1AFCC29E4BFBB004CED4E /* CalendarViewController.swift in Sources */,
+				79A563F429FAE9D1004E8A7E /* FloatingLabelTextField.swift in Sources */,
 				7964AFCC29E9D91400065863 /* WorkDetailViewController.swift in Sources */,
 				79AED58A29F1FBD800FBF2E4 /* PhotoViewController.swift in Sources */,
 				7983B00729F4C12700F2D76E /* SummaryManager.swift in Sources */,
