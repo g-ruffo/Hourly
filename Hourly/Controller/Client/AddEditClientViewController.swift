@@ -44,6 +44,13 @@ class AddEditClientViewController: UIViewController {
         checkForEdit()
         setupPopUpButton()
         saveButton.tintColor = UIColor("#F1C40F")
+        
+        companyNameTextField.addDoneButtonOnKeyboard()
+        contactNameTextField.addDoneButtonOnKeyboard()
+        phoneNumberTextField.addDoneButtonOnKeyboard()
+        emailTextField.addDoneButtonOnKeyboard()
+        addressTextField.addDoneButtonOnKeyboard()
+        payRateTextField.addDoneButtonOnKeyboard()
     }
     
     func checkForEdit() {
