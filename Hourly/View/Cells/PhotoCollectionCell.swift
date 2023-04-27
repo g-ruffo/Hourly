@@ -12,7 +12,6 @@ class PhotoCollectionCell: UICollectionViewCell {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var imageView: UIImageView!
     
-    
     override func awakeFromNib() {
         textView.layer.cornerRadius = 10
         textView.addDoneButtonOnKeyboard()
