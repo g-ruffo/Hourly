@@ -16,11 +16,11 @@ enum PickerTags: Int {
 class AddEditWorkdayViewController: UIViewController {
     
     @IBOutlet weak var clientTextField: ClientSearchTextField!
-    @IBOutlet weak var locationTexfield: UITextField!
-    @IBOutlet weak var lunchTexfield: UITextField!
-    @IBOutlet weak var payRateTexfield: UITextField!
-    @IBOutlet weak var mileageTexfield: UITextField!
-    @IBOutlet weak var descriptionTexfield: UITextField!
+    @IBOutlet weak var locationTexfield: FloatingLabelTextField!
+    @IBOutlet weak var lunchTexfield: FloatingLabelTextField!
+    @IBOutlet weak var payRateTexfield: FloatingLabelTextField!
+    @IBOutlet weak var mileageTexfield: FloatingLabelTextField!
+    @IBOutlet weak var descriptionTexfield: FloatingLabelTextField!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -65,14 +65,6 @@ class AddEditWorkdayViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         coreDataService.delegate = self
-        
-        clientTextField.addDoneButtonOnKeyboard()
-        payRateTexfield.addDoneButtonOnKeyboard()
-        lunchTexfield.addDoneButtonOnKeyboard()
-        mileageTexfield.addDoneButtonOnKeyboard()
-        locationTexfield.addDoneButtonOnKeyboard()
-        descriptionTexfield.addDoneButtonOnKeyboard()
-
         setupLunchMileagePicker()
         setupDatePicker()
         checkForEdit()
@@ -82,7 +74,6 @@ class AddEditWorkdayViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
         
         scrollView.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor).isActive = true
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -202,6 +193,7 @@ class AddEditWorkdayViewController: UIViewController {
     }
     
     func setupDatePicker() {
+        
         datePicker.tag = PickerTags.date.rawValue
         startTimeDatePicker.tag = PickerTags.startTime.rawValue
         endTimeDatePicker.tag = PickerTags.endTime.rawValue
@@ -288,18 +280,18 @@ class AddEditWorkdayViewController: UIViewController {
     }
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
-        if createUpdateWorkday() {
-            self.completedSave = true
-            self.updateUserDefaults(clearValues: true)
-            NotificationCenter.default.post(name: K.NotificationKeys.updateWorkdaysNotification, object: nil)
-            if !isEditingWorkday {
-                dismiss(animated: true)
-            } else {
-                navigationController?.popViewController(animated: true)
-            }
-        } else {
-            showAlertDialog()
-        }
+//        if createUpdateWorkday() {
+//            self.completedSave = true
+//            self.updateUserDefaults(clearValues: true)
+//            NotificationCenter.default.post(name: K.NotificationKeys.updateWorkdaysNotification, object: nil)
+//            if !isEditingWorkday {
+//                dismiss(animated: true)
+//            } else {
+//                navigationController?.popViewController(animated: true)
+//            }
+//        } else {
+//            showAlertDialog()
+//        }
     }
     
     func createPhotoPicker() {

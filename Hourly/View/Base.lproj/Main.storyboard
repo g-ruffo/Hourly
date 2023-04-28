@@ -1076,13 +1076,13 @@
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Company Name*" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BRn-fm-xKK" customClass="FloatingLabelTextField" customModule="Hourly" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="237.5" height="45"/>
-                                                <color key="backgroundColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="0.097589476499999994" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" textContentType="organization"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3O-f2-Mnr" customClass="ColourTagButton" customModule="Hourly" customModuleProvider="target">
                                                 <rect key="frame" x="245.5" y="0.0" width="93.5" height="45"/>
-                                                <color key="backgroundColor" red="0.20399999620000001" green="0.59600001570000005" blue="0.85900002720000002" alpha="0.098440838680000003" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="circle.fill" catalog="system" imagePlacement="trailing" title="Tag" imagePadding="8">
                                                     <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
@@ -1100,7 +1100,7 @@
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Contact Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="45P-6j-EOj" customClass="FloatingLabelTextField" customModule="Hourly" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="220.5" height="45"/>
-                                                <color key="backgroundColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="0.098440838680000003" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="vhK-Ax-BmW"/>
                                                 </constraints>
@@ -1109,7 +1109,7 @@
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pay Rate*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XWb-Bd-RgS" customClass="FloatingLabelTextField" customModule="Hourly" customModuleProvider="target">
                                                 <rect key="frame" x="228.5" y="0.0" width="110.5" height="45"/>
-                                                <color key="backgroundColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="0.097589476499999994" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad"/>
                                             </textField>
@@ -1123,13 +1123,13 @@
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="agl-ve-lg2" customClass="FloatingLabelTextField" customModule="Hourly" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="169.5" height="45"/>
-                                                <color key="backgroundColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="0.097589476499999994" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="email"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j3g-Pd-XUD" customClass="FloatingLabelTextField" customModule="Hourly" customModuleProvider="target">
                                                 <rect key="frame" x="177.5" y="0.0" width="161.5" height="45"/>
-                                                <color key="backgroundColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="0.097589476499999994" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
                                             </textField>
@@ -1141,7 +1141,7 @@
                                     </stackView>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SV6-6o-6zQ" customClass="FloatingLabelTextField" customModule="Hourly" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="177" width="339" height="45"/>
-                                        <color key="backgroundColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="0.097589476499999994" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="Bmb-77-Bo3"/>
                                         </constraints>
@@ -1175,7 +1175,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Dtb-rL-Rep"/>
                         <keyboardLayoutGuide key="keyboard" followsUndockedKeyboard="YES" id="BCA-p1-6EU"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="BackgroundGrey"/>
                         <constraints>
                             <constraint firstItem="Osg-Le-SRa" firstAttribute="top" secondItem="Dtb-rL-Rep" secondAttribute="top" constant="24" id="8yp-IR-RUf"/>
                             <constraint firstItem="Dtb-rL-Rep" firstAttribute="bottom" secondItem="0MI-A5-hd7" secondAttribute="bottom" constant="32" id="9yB-Zy-PXM"/>
@@ -1243,118 +1243,93 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Mkl-jb-avt">
-                                        <rect key="frame" x="18" y="0.0" width="339" height="395"/>
+                                        <rect key="frame" x="18" y="0.0" width="339" height="333"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Fh3-rN-PY2">
-                                                <rect key="frame" x="0.0" y="0.0" width="339" height="50"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="-4" translatesAutoresizingMaskIntoConstraints="NO" id="jO1-bE-J7o">
+                                                <rect key="frame" x="0.0" y="0.0" width="339" height="113"/>
                                                 <subviews>
                                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="yg3-wK-RKI">
                                                         <rect key="frame" x="0.0" y="0.0" width="339" height="50"/>
                                                     </datePicker>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="68b-tb-mX7">
+                                                        <rect key="frame" x="12" y="46" width="315" height="67"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Ohf-3J-WLC">
+                                                                <rect key="frame" x="0.0" y="0.0" width="157.5" height="67"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="82g-Sw-jUa">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="67.5" height="17"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="compact" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YSX-Ef-gHI">
+                                                                        <rect key="frame" x="0.0" y="17" width="157.5" height="50"/>
+                                                                        <date key="date" timeIntervalSinceReferenceDate="704138853.045228">
+                                                                            <!--2023-04-25 18:07:33 +0000-->
+                                                                        </date>
+                                                                    </datePicker>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="slY-ft-Gh1">
+                                                                <rect key="frame" x="157.5" y="0.0" width="157.5" height="67"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End Time" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Csw-oO-Xnz">
+                                                                        <rect key="frame" x="97" y="0.0" width="60.5" height="17"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="compact" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6z2-eM-NGl">
+                                                                        <rect key="frame" x="0.0" y="17" width="157.5" height="50"/>
+                                                                        <date key="date" timeIntervalSinceReferenceDate="704138853.045228">
+                                                                            <!--2023-04-25 18:07:33 +0000-->
+                                                                        </date>
+                                                                    </datePicker>
+                                                                </subviews>
+                                                            </stackView>
+                                                        </subviews>
+                                                    </stackView>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="yg3-wK-RKI" secondAttribute="trailing" id="0Pu-OI-eRo"/>
-                                                    <constraint firstItem="yg3-wK-RKI" firstAttribute="leading" secondItem="Fh3-rN-PY2" secondAttribute="leading" id="6ie-sL-k4j"/>
+                                                    <constraint firstAttribute="trailing" secondItem="68b-tb-mX7" secondAttribute="trailing" constant="12" id="2Cd-sY-Ilf"/>
+                                                    <constraint firstItem="68b-tb-mX7" firstAttribute="leading" secondItem="jO1-bE-J7o" secondAttribute="leading" constant="12" id="VeU-3g-632"/>
                                                 </constraints>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TZA-yg-Ciy">
-                                                <rect key="frame" x="0.0" y="60" width="339" height="17"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Client" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZB-5w-z4m">
-                                                        <rect key="frame" x="0.0" y="0.0" width="173.5" height="17"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hM2-DU-7o1">
-                                                        <rect key="frame" x="173.5" y="0.0" width="165.5" height="17"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="uPd-Ou-2d7">
-                                                <rect key="frame" x="0.0" y="87" width="339" height="34"/>
+                                                <rect key="frame" x="0.0" y="123" width="339" height="45"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Company Name*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m8I-51-OBp" customClass="ClientSearchTextField" customModule="Hourly" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="165.5" height="34"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="165.5" height="45"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="45" id="lEI-Qx-7bK"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="done" textContentType="organization"/>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pay Rate*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qOO-bX-oD6">
-                                                        <rect key="frame" x="173.5" y="0.0" width="165.5" height="34"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pay Rate*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qOO-bX-oD6" customClass="FloatingLabelTextField" customModule="Hourly" customModuleProvider="target">
+                                                        <rect key="frame" x="173.5" y="0.0" width="165.5" height="45"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="a5k-NP-IzD">
-                                                <rect key="frame" x="0.0" y="131" width="339" height="130"/>
+                                                <rect key="frame" x="0.0" y="178" width="339" height="45"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8eg-7B-A9T">
-                                                        <rect key="frame" x="0.0" y="0.0" width="339" height="17"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4q-Pk-9My">
-                                                                <rect key="frame" x="0.0" y="0.0" width="169.5" height="17"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DqN-DQ-ypf">
-                                                                <rect key="frame" x="169.5" y="0.0" width="169.5" height="17"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="68b-tb-mX7">
-                                                        <rect key="frame" x="0.0" y="21" width="339" height="50"/>
-                                                        <subviews>
-                                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="compact" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YSX-Ef-gHI">
-                                                                <rect key="frame" x="0.0" y="0.0" width="169.5" height="50"/>
-                                                                <date key="date" timeIntervalSinceReferenceDate="704138853.045228">
-                                                                    <!--2023-04-25 18:07:33 +0000-->
-                                                                </date>
-                                                            </datePicker>
-                                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="compact" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6z2-eM-NGl">
-                                                                <rect key="frame" x="169.5" y="0.0" width="169.5" height="50"/>
-                                                                <date key="date" timeIntervalSinceReferenceDate="704138853.045228">
-                                                                    <!--2023-04-25 18:07:33 +0000-->
-                                                                </date>
-                                                            </datePicker>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qSm-TO-Qru">
-                                                        <rect key="frame" x="0.0" y="75" width="339" height="17"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lunch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j1s-1F-cCG">
-                                                                <rect key="frame" x="0.0" y="0.0" width="173.5" height="17"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mileage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9u-3Q-cnl">
-                                                                <rect key="frame" x="173.5" y="0.0" width="165.5" height="17"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                    </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="v1B-bX-Eg0">
-                                                        <rect key="frame" x="0.0" y="96" width="339" height="34"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="339" height="45"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Lunch Break" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lNs-y6-UJX">
-                                                                <rect key="frame" x="0.0" y="0.0" width="165.5" height="34"/>
-                                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Lunch Break" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lNs-y6-UJX" customClass="FloatingLabelTextField" customModule="Hourly" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="165.5" height="45"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="45" id="inB-UL-gkg"/>
+                                                                </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                             </textField>
-                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mileage" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rNY-dt-Qz6">
-                                                                <rect key="frame" x="173.5" y="0.0" width="165.5" height="34"/>
-                                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mileage" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rNY-dt-Qz6" customClass="FloatingLabelTextField" customModule="Hourly" customModuleProvider="target">
+                                                                <rect key="frame" x="173.5" y="0.0" width="165.5" height="45"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -1362,29 +1337,18 @@
                                                     </stackView>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstItem="qSm-TO-Qru" firstAttribute="leading" secondItem="a5k-NP-IzD" secondAttribute="leading" id="1e4-Wn-KUo"/>
-                                                    <constraint firstAttribute="trailing" secondItem="qSm-TO-Qru" secondAttribute="trailing" id="4sM-m9-74e"/>
-                                                    <constraint firstAttribute="trailing" secondItem="68b-tb-mX7" secondAttribute="trailing" id="MFU-dz-u13"/>
-                                                    <constraint firstItem="68b-tb-mX7" firstAttribute="leading" secondItem="a5k-NP-IzD" secondAttribute="leading" id="Ud2-qa-ud5"/>
                                                     <constraint firstAttribute="trailing" secondItem="v1B-bX-Eg0" secondAttribute="trailing" id="c6I-qd-03O"/>
-                                                    <constraint firstItem="8eg-7B-A9T" firstAttribute="leading" secondItem="a5k-NP-IzD" secondAttribute="leading" id="eX5-w4-reC"/>
                                                     <constraint firstItem="v1B-bX-Eg0" firstAttribute="leading" secondItem="a5k-NP-IzD" secondAttribute="leading" id="h3S-3Y-Ndi"/>
-                                                    <constraint firstItem="DqN-DQ-ypf" firstAttribute="leading" secondItem="6z2-eM-NGl" secondAttribute="leading" id="mIc-DV-uTq"/>
-                                                    <constraint firstItem="A9u-3Q-cnl" firstAttribute="leading" secondItem="rNY-dt-Qz6" secondAttribute="leading" id="t8L-cp-hpU"/>
-                                                    <constraint firstAttribute="trailing" secondItem="8eg-7B-A9T" secondAttribute="trailing" id="wcI-Bz-NHA"/>
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="HBi-0I-mm5">
-                                                <rect key="frame" x="0.0" y="271" width="339" height="57"/>
+                                                <rect key="frame" x="0.0" y="233" width="339" height="45"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mrg-h8-Rzz">
-                                                        <rect key="frame" x="0.0" y="0.0" width="55.5" height="17"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xwc-f2-J8Q">
-                                                        <rect key="frame" x="0.0" y="23" width="339" height="34"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xwc-f2-J8Q" customClass="FloatingLabelTextField" customModule="Hourly" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="339" height="45"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="45" id="SQ1-G2-Y4E"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                     </textField>
@@ -1395,16 +1359,13 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="08P-fR-8ay">
-                                                <rect key="frame" x="0.0" y="338" width="339" height="57"/>
+                                                <rect key="frame" x="0.0" y="288" width="339" height="45"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gFh-NW-rJh">
-                                                        <rect key="frame" x="0.0" y="0.0" width="44.5" height="17"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8on-JL-IvW">
-                                                        <rect key="frame" x="0.0" y="23" width="339" height="34"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8on-JL-IvW" customClass="FloatingLabelTextField" customModule="Hourly" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="339" height="45"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="45" id="bcH-D0-Tfc"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" spellCheckingType="yes" returnKeyType="done"/>
                                                     </textField>
@@ -1417,15 +1378,11 @@
                                         <constraints>
                                             <constraint firstItem="08P-fR-8ay" firstAttribute="leading" secondItem="Mkl-jb-avt" secondAttribute="leading" id="6Yj-EX-RZa"/>
                                             <constraint firstAttribute="trailing" secondItem="HBi-0I-mm5" secondAttribute="trailing" id="C8k-jb-5XS"/>
-                                            <constraint firstAttribute="trailing" secondItem="TZA-yg-Ciy" secondAttribute="trailing" id="Qp2-Pq-ARH"/>
                                             <constraint firstAttribute="trailing" secondItem="08P-fR-8ay" secondAttribute="trailing" id="jU2-Os-kq5"/>
-                                            <constraint firstItem="hM2-DU-7o1" firstAttribute="leading" secondItem="qOO-bX-oD6" secondAttribute="leading" id="jWS-KD-X9m"/>
-                                            <constraint firstItem="eZB-5w-z4m" firstAttribute="leading" secondItem="m8I-51-OBp" secondAttribute="leading" id="mhi-cp-9pU"/>
-                                            <constraint firstItem="TZA-yg-Ciy" firstAttribute="leading" secondItem="Mkl-jb-avt" secondAttribute="leading" id="uhN-LY-ghe"/>
                                         </constraints>
                                     </stackView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4gy-YY-HFF">
-                                        <rect key="frame" x="0.0" y="407" width="375" height="100"/>
+                                        <rect key="frame" x="0.0" y="345" width="375" height="100"/>
                                         <color key="backgroundColor" name="BackgroundGrey"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="Ojz-WF-mZE"/>
@@ -1477,15 +1434,19 @@
                                         </cells>
                                     </collectionView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G5O-Og-xMy">
-                                        <rect key="frame" x="130" y="557" width="115" height="33.5"/>
+                                        <rect key="frame" x="117.5" y="495" width="140" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="OjW-iS-TW9"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="ipV-dF-Zpc"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                         <color key="tintColor" red="0.94509803921568625" green="0.76862745098039209" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Save">
                                             <color key="titleColor" name="DarkGrey"/>
                                         </state>
-                                        <buttonConfiguration key="configuration" style="filled" title="Save">
-                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="16"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="SAVE">
+                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="18"/>
                                             <color key="baseForegroundColor" name="DarkGrey"/>
                                         </buttonConfiguration>
                                         <connections>
@@ -1494,18 +1455,18 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <color key="backgroundColor" name="BackgroundGrey"/>
                                 <constraints>
                                     <constraint firstItem="Mkl-jb-avt" firstAttribute="top" secondItem="Z1t-FX-csy" secondAttribute="top" id="2WH-Dd-3qx"/>
                                     <constraint firstItem="4gy-YY-HFF" firstAttribute="width" secondItem="pLu-cw-HWm" secondAttribute="width" id="D6r-Ty-Sbz"/>
                                     <constraint firstItem="4gy-YY-HFF" firstAttribute="top" secondItem="Mkl-jb-avt" secondAttribute="bottom" constant="12" id="GYg-pK-ZZD"/>
-                                    <constraint firstItem="Z1t-FX-csy" firstAttribute="trailing" secondItem="G5O-Og-xMy" secondAttribute="trailing" constant="130" id="Hfy-tc-eHL"/>
                                     <constraint firstItem="G5O-Og-xMy" firstAttribute="top" secondItem="4gy-YY-HFF" secondAttribute="bottom" constant="50" id="IHc-ji-hpD"/>
                                     <constraint firstItem="4gy-YY-HFF" firstAttribute="leading" secondItem="Z1t-FX-csy" secondAttribute="leading" id="Jrs-7L-MUO"/>
-                                    <constraint firstItem="G5O-Og-xMy" firstAttribute="leading" secondItem="Z1t-FX-csy" secondAttribute="leading" constant="130" id="Rk5-lh-JsX"/>
                                     <constraint firstItem="G5O-Og-xMy" firstAttribute="bottom" secondItem="Z1t-FX-csy" secondAttribute="bottom" id="cCx-eZ-BbV"/>
                                     <constraint firstItem="Mkl-jb-avt" firstAttribute="trailing" secondItem="Z1t-FX-csy" secondAttribute="trailing" constant="-18" id="dG8-Gk-gIj"/>
                                     <constraint firstItem="Z1t-FX-csy" firstAttribute="trailing" secondItem="4gy-YY-HFF" secondAttribute="trailing" id="mGw-vZ-HVJ"/>
                                     <constraint firstItem="Mkl-jb-avt" firstAttribute="leading" secondItem="Z1t-FX-csy" secondAttribute="leading" constant="18" id="ofY-zN-mnq"/>
+                                    <constraint firstItem="G5O-Og-xMy" firstAttribute="centerX" secondItem="OQf-e4-L4Z" secondAttribute="centerX" id="w8g-sr-rK7"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="Z1t-FX-csy"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="pLu-cw-HWm"/>
@@ -1523,15 +1484,15 @@
                     </view>
                     <navigationItem key="navigationItem" title="Add Workday" id="7G0-Q4-JuT"/>
                     <connections>
-                        <outlet property="clientTextField" destination="m8I-51-OBp" id="xX0-vd-0Ut"/>
+                        <outlet property="clientTextField" destination="m8I-51-OBp" id="fan-9N-hH9"/>
                         <outlet property="collectionView" destination="4gy-YY-HFF" id="JgR-GS-uhy"/>
                         <outlet property="datePicker" destination="yg3-wK-RKI" id="7kv-tZ-223"/>
-                        <outlet property="descriptionTexfield" destination="8on-JL-IvW" id="zoL-Vn-wIR"/>
+                        <outlet property="descriptionTexfield" destination="8on-JL-IvW" id="Ooz-0d-7Hv"/>
                         <outlet property="endTimeDatePicker" destination="6z2-eM-NGl" id="cL6-kf-wt8"/>
-                        <outlet property="locationTexfield" destination="Xwc-f2-J8Q" id="cfd-aE-2oH"/>
-                        <outlet property="lunchTexfield" destination="lNs-y6-UJX" id="6WX-hn-rl1"/>
-                        <outlet property="mileageTexfield" destination="rNY-dt-Qz6" id="tJW-3x-6vL"/>
-                        <outlet property="payRateTexfield" destination="qOO-bX-oD6" id="v3H-EY-QOF"/>
+                        <outlet property="locationTexfield" destination="Xwc-f2-J8Q" id="RCb-0O-gCS"/>
+                        <outlet property="lunchTexfield" destination="lNs-y6-UJX" id="WEL-bu-DbR"/>
+                        <outlet property="mileageTexfield" destination="rNY-dt-Qz6" id="RTB-Ol-HDq"/>
+                        <outlet property="payRateTexfield" destination="qOO-bX-oD6" id="alj-8X-biJ"/>
                         <outlet property="saveButton" destination="G5O-Og-xMy" id="cjh-eJ-kSx"/>
                         <outlet property="scrollView" destination="OQf-e4-L4Z" id="zN2-eC-f3Q"/>
                         <outlet property="startTimeDatePicker" destination="YSX-Ef-gHI" id="vzb-Zl-cmt"/>
@@ -1540,7 +1501,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aJ6-xO-myP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-176.33587786259542" y="803.52112676056345"/>
+            <point key="canvasLocation" x="-176.80000000000001" y="802.848575712144"/>
         </scene>
         <!--Work Days-->
         <scene sceneID="jJM-lr-SQ7">

@@ -25,16 +25,6 @@ class ColourTagButton: UIButton {
         }
     }
     
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//        configureButton()
-//    }
-//
-//    required init?(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//        configureButton()
-//    }
-//
     func configureButton() {
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor(.gray).withAlphaComponent(0.3).cgColor
