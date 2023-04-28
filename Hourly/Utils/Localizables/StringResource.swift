@@ -13,6 +13,12 @@ enum S: String {
     case clientsTitle
     case editClientTitle
     case addClientTitle
+    case alertTitleMissingInfo
+    case alertMessageMissingInfo
+    case alertTitleCantConvertPhoto
+    case alertMessageCantConvertPhoto
+    case alertTitleDeleteConfirm
+    case alertMessageDeleteConfirm
 
     var localized: String {
         NSLocalizedString(String(describing: Self.self) + "_\(rawValue)", comment: "")

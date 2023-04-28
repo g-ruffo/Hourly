@@ -11,4 +11,9 @@
 "S_clientsTitle" = "Manage Clients";
 "S_editClientTitle" = "Edit Client";
 "S_addClientTitle" = "Add Client";
-
+"S_alertTitleMissingInfo" = "Missing Information";
+"S_alertMessageMissingInfo" = "Please fill in all required fields";
+"S_alertTitleCantConvertPhoto" = "Error Adding Photo";
+"S_alertMessageCantConvertPhoto" = "We were unable to load one or more photos from your selection";
+"S_alertTitleDeleteConfirm" = "Are You Sure?";
+"S_alertMessageDeleteConfirm" = "Deleting this can't be undone, are you sure you would like to proceed?";
