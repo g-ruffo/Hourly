@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol ColourTagButtonDelegate {
+protocol ColourTagButtonDelegate: AnyObject {
     func didUpdateColourTag(_ colourTagButton: ColourTagButton, hexString: String)
 }
 
 class ColourTagButton: UIButton {
     
-    var delegate: ColourTagButtonDelegate?
+    weak var delegate: ColourTagButtonDelegate?
     
     private let tagStringColours: Array<String> = [
         "#0096FF", "#941751", "#941100", "#FF9300", "#00F900", "#0433FF", "#FF2F92", "#FFFB00", "#942193", "#73FCD6", "#009193", "#FF2600", "#FF85FF", "#FFFC79"
