@@ -7,16 +7,14 @@
 
 import UIKit
 
-protocol EditWorkdayDelegate {
+protocol EditWorkdayDelegate: AnyObject {
     func editWorkday(_ workDetailViewController: WorkDetailViewController, workday: WorkdayItem)
 }
 
 class WorkDetailViewController: UIViewController {
-    
     @IBOutlet weak var draftButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
-    
-    //MARK: - Fields to set
+    // MARK: - Fields to set
     @IBOutlet weak var clientLabel: UILabel!
     @IBOutlet weak var earningsLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -28,15 +26,10 @@ class WorkDetailViewController: UIViewController {
     @IBOutlet weak var payRateLabel: UILabel!
     @IBOutlet weak var mileageLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
-    
     private let manager = WorkdayDetailsManager()
-    
     private var savedPhotos: Array<PhotoItem> = []
-    
     var workday: WorkdayItem?
-    
-    var delegate: EditWorkdayDelegate?
-    
+    weak var delegate: EditWorkdayDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
@@ -44,15 +37,13 @@ class WorkDetailViewController: UIViewController {
         setWorkdayDetails()
         collectionView.register(PhotoCell.nib(), forCellWithReuseIdentifier: K.Cell.photoCell)
     }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.Segue.detailsPhotoCollectionNav {
-            let destinationVC = segue.destination as! PhotoViewController
-            destinationVC.photos = savedPhotos
-            destinationVC.startingRow = sender as? Int
+            let destinationVC = segue.destination as? PhotoViewController
+            destinationVC?.photos = savedPhotos
+            destinationVC?.startingRow = sender as? Int
         }
     }
-    
     private func setWorkdayDetails() {
         guard let day = workday else { fatalError("Unable to get work day") }
         clientLabel.text = day.clientName
@@ -87,17 +78,16 @@ class WorkDetailViewController: UIViewController {
                 self.delegate?.editWorkday(self, workday: editWorkday)
             }
     }
-    
 }
 
-//MARK: - UICollectionViewDataSource
+// MARK: - UICollectionViewDataSource
 
 extension WorkDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return savedPhotos.count
     }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.Cell.photoCell, for: indexPath) as! PhotoCell
         if let image = UIImage(data: savedPhotos[indexPath.row].image!) {
             cell.imageView.image = image
@@ -108,7 +98,7 @@ extension WorkDetailViewController: UICollectionViewDataSource {
     }
 }
 
-//MARK: - UICollectionViewDelegate
+// MARK: - UICollectionViewDelegate
 
 extension WorkDetailViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -116,9 +106,11 @@ extension WorkDetailViewController: UICollectionViewDelegate {
     }
 }
 
-//MARK: - UICollectionViewDelegateFlowLayout
+// MARK: - UICollectionViewDelegateFlowLayout
 extension WorkDetailViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 110, height: 110)
     }
 }
