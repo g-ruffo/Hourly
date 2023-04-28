@@ -69,9 +69,6 @@ class SummaryViewController: UIViewController {
         workedDaysView.layer.cornerRadius = 20
         hoursWorkedView.layer.cornerRadius = 20
         
- 
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-
         NotificationCenter.default.addObserver(self, selector: #selector(workdaysHaveBeenUpdated), name: K.NotificationKeys.updateWorkdaysNotification, object: nil)
 
     }
@@ -84,6 +81,7 @@ class SummaryViewController: UIViewController {
         super.viewWillAppear(animated)
         setupPopUpButton()
         loadWorkdaysFromDatabase()
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
