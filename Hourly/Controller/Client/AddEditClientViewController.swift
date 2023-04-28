@@ -10,7 +10,7 @@ import UIColorHexSwift
 import CoreData
 
 class AddEditClientViewController: UIViewController {
-
+    // MARK: - Variables
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var companyNameTextField: FloatingLabelTextField!
     @IBOutlet weak var contactNameTextField: FloatingLabelTextField!
@@ -18,58 +18,52 @@ class AddEditClientViewController: UIViewController {
     @IBOutlet weak var emailTextField: FloatingLabelTextField!
     @IBOutlet weak var addressTextField: FloatingLabelTextField!
     @IBOutlet weak var payRateTextField: FloatingLabelTextField!
-    
     @IBOutlet weak var deleteBarButton: UIBarButtonItem!
-    
     @IBOutlet weak var tagButton: ColourTagButton!
-    @IBOutlet weak var stackView: UIStackView!
     private let coreDataService = CoreDataService()
-    
     private var selectedColour = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1).hexString()
-    
     private var manager = AddEditClientManager()
     private var isEditingClient = false
-    
     var editClientId: NSManagedObjectID?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Set delegates.
         coreDataService.delegate = self
         manager.delegate = self
         payRateTextField.delegate = self
         tagButton.delegate = self
         tagButton.selectedColour = selectedColour
         checkForEdit()
+        // Set the save button background colour.
         saveButton.tintColor = UIColor("#F1C40F")
     }
     
     func checkForEdit() {
+        // Check if user is creating a new client or editing an existing one.
         if let id = editClientId {
             coreDataService.getClientFromID(id)
             isEditingClient = true
         } else { isEditingClient = false }
-        
+        // Set the navigation title based on editing state.
         self.title = isEditingClient ? S.editClientTitle.localized : S.addClientTitle.localized
         deleteBarButton.isEnabled = isEditingClient
         deleteBarButton.tintColor = isEditingClient ? .red : .clear
     }
 
     func showAlertDialog() {
-        // Create a new alert
-        let dialogMessage = UIAlertController(title: S.alertTitleMissingInfo.localized,
+        let alertDialog = UIAlertController(title: S.alertTitleMissingInfo.localized,
                                               message: S.alertMessageMissingInfo.localized,
                                               preferredStyle: .alert)
         
         let dismissButton = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
-            dialogMessage.dismiss(animated: true)
+            alertDialog.dismiss(animated: true)
         })
-        dialogMessage.addAction(dismissButton)
-        // Present alert to user
-        self.present(dialogMessage, animated: true, completion: nil)
+        alertDialog.addAction(dismissButton)
+        self.present(alertDialog, animated: true, completion: nil)
     }
     
     func showDeleteAlertDialog() {
-        // Create a new alert
         let dialogMessage = UIAlertController(title: S.alertTitleDeleteConfirm.localized,
                                               message: S.alertMessageDeleteConfirm.localized,
                                               preferredStyle: .alert)
@@ -84,12 +78,12 @@ class AddEditClientViewController: UIViewController {
         
         dialogMessage.addAction(dismissButton)
         dialogMessage.addAction(confirmButton)
-        // Present alert to user
         self.present(dialogMessage, animated: true, completion: nil)
     }
     
     func createUpdateClient() {
-        guard let company = companyNameTextField.text else {
+        // If
+        guard let company = companyNameTextField.text, !company.trimmingCharacters(in: .whitespaces).isEmpty else {
             showAlertDialog()
             return
         }

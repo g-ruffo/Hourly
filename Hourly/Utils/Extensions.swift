@@ -10,7 +10,7 @@ import UIKit
 extension UITextField {
     func isValid() -> Bool {
         guard let text = self.text,
-              !text.isEmpty else {
+              !text.trimmingCharacters(in: .whitespaces).isEmpty else {
             return false
         }
         return true

@@ -1179,7 +1179,6 @@
                         <outlet property="payRateTextField" destination="XWb-Bd-RgS" id="3LD-6f-Vcb"/>
                         <outlet property="phoneNumberTextField" destination="j3g-Pd-XUD" id="mZP-2R-SR4"/>
                         <outlet property="saveButton" destination="0MI-A5-hd7" id="Yza-5c-Cop"/>
-                        <outlet property="stackView" destination="Osg-Le-SRa" id="M6c-BL-AJf"/>
                         <outlet property="tagButton" destination="S3O-f2-Mnr" id="DAr-vS-8pe"/>
                     </connections>
                 </viewController>
