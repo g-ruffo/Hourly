@@ -53,6 +53,15 @@ class FloatingLabelTextField: UITextField {
         configure()
     }
     
+    override func willMove(toSuperview newSuperview: UIView?) {
+        super.willMove(toSuperview: newSuperview)
+        self.addTarget(self, action: #selector(textFieldDidEndEditingOnExit), for: .editingDidEndOnExit)
+
+    }
+    
+    @objc open func textFieldDidEndEditingOnExit() {
+        self.resignFirstResponder()
+    }
     
     override func layoutSubviews() {
         super.layoutSubviews()

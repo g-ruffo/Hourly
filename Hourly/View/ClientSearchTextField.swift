@@ -35,9 +35,7 @@ class ClientSearchTextField: FloatingLabelTextField {
         super.willMove(toSuperview: newSuperview)
         
         self.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
-        self.addTarget(self, action: #selector(textFieldDidBeginEditing), for: .editingDidBegin)
         self.addTarget(self, action: #selector(textFieldDidEndEditing), for: .editingDidEnd)
-        self.addTarget(self, action: #selector(textFieldDidEndEditingOnExit), for: .editingDidEndOnExit)
     }
     
     override func layoutSubviews() {
@@ -52,14 +50,8 @@ class ClientSearchTextField: FloatingLabelTextField {
         tableView?.isHidden = false
     }
     
-    @objc open func textFieldDidBeginEditing() {
-    }
-        
     @objc open func textFieldDidEndEditing() {
         searchDelegate?.didEndEditing(self)
-    }
-        
-    @objc open func textFieldDidEndEditingOnExit() {
     }
     
     // MARK : Filtering methods
