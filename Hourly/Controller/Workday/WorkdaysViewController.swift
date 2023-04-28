@@ -28,8 +28,8 @@ class WorkdaysViewController: UIViewController {
         tableView.dataSource = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(workdaysHaveBeenUpdated), name: K.NotificationKeys.updateWorkdaysNotification, object: nil)
-
     }
+    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
