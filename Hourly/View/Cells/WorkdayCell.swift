@@ -23,13 +23,9 @@ class WorkdayCell: UITableViewCell {
                 earningsLabel?.text = day.earnings.convertToCurrency()
                 hoursLabel?.text = Helper.minutesToHoursWorkedString(minutesWorked: day.minutesWorked)
                 clientTagImageView.image = day.isFinalized ? UIImage(systemName: "circle.fill") : UIImage(systemName: "pencil.circle")
-                
-                if let colour = day.client?.tagColour {
-                    clientTagImageView.tintColor = UIColor(colour)
-                } else {
-                    clientTagImageView.tintColor = UIColor("#ECF0F1")
-                }
-                
+                // If workday is not associated with an existing client set the tag colour to gray.
+                if let colour = day.client?.tagColour { clientTagImageView.tintColor = UIColor(colour) }
+                else { clientTagImageView.tintColor = UIColor("#ECF0F1") }
             }
         }
     }
@@ -43,10 +39,9 @@ class WorkdayCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
-    
+    // Helper function to retrieve nib name when registering in view controller.
     static func nib() -> UINib {
         return UINib(nibName: K.Cell.workdayCell, bundle: nil)
     }

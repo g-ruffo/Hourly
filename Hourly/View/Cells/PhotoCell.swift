@@ -22,11 +22,10 @@ class PhotoCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
     }
-    
     public func configure(with image: UIImage) {
         imageView.image = image
     }
-    
+    // Helper function to retrieve nib name when registering in view controller.
     static func nib() -> UINib {
         return UINib(nibName: K.Cell.photoCell, bundle: nil)
     }

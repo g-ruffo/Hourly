@@ -15,7 +15,7 @@ class AddPhotoCell: UICollectionViewCell {
         contentView.layer.cornerRadius = 20
         contentView.backgroundColor = .white
     }
-    
+    // Helper function to retrieve nib name when registering in view controller.
     static func nib() -> UINib {
         return UINib(nibName: K.Cell.addPhotoCell, bundle: nil)
     }

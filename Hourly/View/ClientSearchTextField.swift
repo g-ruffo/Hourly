@@ -33,7 +33,7 @@ class ClientSearchTextField: FloatingLabelTextField {
     
     override open func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
-        
+        // Add targets to notify function when editing changes or finishes.
         self.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         self.addTarget(self, action: #selector(textFieldDidEndEditing), for: .editingDidEnd)
     }
@@ -44,6 +44,7 @@ class ClientSearchTextField: FloatingLabelTextField {
     }
     
     @objc open func textFieldDidChange(){
+        // If text changes set the selected client to nil.
         self.searchDelegate?.selectedExistingClient(self, clientID: nil)
         filter()
         updateSearchTableView()
@@ -60,7 +61,7 @@ class ClientSearchTextField: FloatingLabelTextField {
         let request : NSFetchRequest<ClientItem> = ClientItem.fetchRequest()
         request.predicate = predicate
 
-        //Loading the data into the dataList
+        // Loading the data into the dataList
         coreDataService.getClients(withRequest: request)
      }
     
@@ -78,7 +79,6 @@ class ClientSearchTextField: FloatingLabelTextField {
     }
     
     func updateSearchTableView() {
-         
          if let tableView = tableView {
              superview?.bringSubviewToFront(tableView)
              var tableHeight: CGFloat = 0
@@ -114,10 +114,10 @@ class ClientSearchTextField: FloatingLabelTextField {
      }
 }
 
-//MARK: - UITableViewDelegate
-
+// MARK: - UITableViewDelegate
 extension ClientSearchTextField: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // After selecting client dismiss keyboard and hide table view.
         self.text = clientArray[indexPath.row].companyName
         self.searchDelegate?.selectedExistingClient(self, clientID: clientArray[indexPath.row].objectID)
         tableView.isHidden = true
@@ -125,8 +125,7 @@ extension ClientSearchTextField: UITableViewDelegate {
     }
 }
 
-//MARK: - UITableViewDataSource
-
+// MARK: - UITableViewDataSource
 extension ClientSearchTextField: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -142,8 +141,7 @@ extension ClientSearchTextField: UITableViewDataSource {
         return cell
     }
 }
-
-
+// MARK: - CoreDataServiceDelegate
 extension ClientSearchTextField: CoreDataServiceDelegate {
     func loadedClients(_ coreDataService: CoreDataService, clientItems: Array<ClientItem>) {
         clientArray = clientItems
