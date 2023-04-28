@@ -8,17 +8,12 @@
 import UIKit
 
 class HourlyTabBarController: UITabBarController {
-
     // MARK: - View Life Cycle
         override func viewDidLoad() {
             super.viewDidLoad()
-            
             delegate = self
-
             initializeTabBarItems()
         }
-    
-    
     private func initializeTabBarItems() {
         // Instantiate view controllers
         let summaryNav = self.storyboard?.instantiateViewController(withIdentifier: K.Identifiers.summaryNav) as! UINavigationController
@@ -38,37 +33,25 @@ class HourlyTabBarController: UITabBarController {
         // Assign ViewControllers to TabBarController
         let viewControllers = [summaryNav, calendarNav, newWorkdayNav, workdaysNav, settingsNav]
         self.setViewControllers(viewControllers, animated: false)
-        
         guard let tabBar = self.tabBar as? HourlyTabBar else { return }
-        
         tabBar.didTapButton = { [unowned self] in
             self.navigateToWorday()
         }
     }
-        
         func navigateToWorday() {
             let createAdNavController = self.storyboard?.instantiateViewController(withIdentifier: K.Identifiers.newWorkdayNav) as! UINavigationController
             createAdNavController.modalPresentationCapturesStatusBarAppearance = true
             self.present(createAdNavController, animated: true, completion: nil)
         }
     }
-
-
-
-
     // MARK: - UITabBarController Delegate
     extension HourlyTabBarController: UITabBarControllerDelegate {
         func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-            
             guard let selectedIndex = tabBarController.viewControllers?.firstIndex(of: viewController) else {
                 return true
             }
-            
             // The middle tab bar item index.
-            if selectedIndex == 2 {
-                return false
-            }
-            
+            if selectedIndex == 2 { return false }
             return true
         }
 }
