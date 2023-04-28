@@ -8,17 +8,12 @@
 import UIKit
 
 protocol AddEditWorkdayManagerDelegate: UITextFieldDelegate {
-    
     func didUpdateCurrencyText(_ addEditWorkdayManager: AddEditWorkdayManager, newCurrencyValue: String?)
 }
 
 struct AddEditWorkdayManager {
-    
     private var payRateAmount = 0
-    
     var delegate: AddEditWorkdayManagerDelegate?
-    
-    
     func updateAmount() -> String? {
         let formatter = NumberFormatter()
         formatter.numberStyle = NumberFormatter.Style.currency
@@ -26,7 +21,6 @@ struct AddEditWorkdayManager {
         return formatter.string(from: NSNumber(value: amount))
 
     }
-    
     mutating func validateCurrencyInput(string: String) -> Bool {
         if payRateAmount >= 1000000 && string != "" {
             return false
@@ -36,15 +30,12 @@ struct AddEditWorkdayManager {
             delegate?.didUpdateCurrencyText(self, newCurrencyValue: updateAmount())
 
         }
-        if string == ""
-        {
-            payRateAmount = payRateAmount / 10
+        if string == "" {
+            payRateAmount /=  10
             delegate?.didUpdateCurrencyText(self, newCurrencyValue: updateAmount())
         }
-        
         return false
     }
-    
     func calculateEarnings(startTime: Date?, endTime: Date?, lunchMinutes: Int?, payRate: Double?) -> Double {
         if let start = startTime, let end = endTime, let rate = payRate {
             let secondsPay = rate / 3600
@@ -60,7 +51,6 @@ struct AddEditWorkdayManager {
             return 0.00
         }
     }
-    
     func setStartTimeDate(startTime: Date?, date: Date) -> Date? {
         var resultTime: Date?
         if let start = startTime {
@@ -76,7 +66,6 @@ struct AddEditWorkdayManager {
         }
         return resultTime
     }
-    
     func setEndTimeDate(startTime: Date?, endTime: Date?, date: Date) -> Date? {
         var resultTime: Date?
         if let start = startTime, let end = endTime {
@@ -95,7 +84,6 @@ struct AddEditWorkdayManager {
         }
         return resultTime
     }
-    
     func calculateTimeWorkedInMinutes(startTime: Date?, endTime: Date?, lunchMinutes: Int?) -> Int32 {
         if let start = startTime, let end = endTime {
             var hours = 0

@@ -14,12 +14,8 @@ protocol AddEditClientManagerDelegate: UITextFieldDelegate {
 }
 
 struct AddEditClientManager {
-    
     private var payRateAmount = 0
-    
     var delegate: AddEditClientManagerDelegate?
-    
-    
     func updateAmount() -> String? {
         let formatter = NumberFormatter()
         formatter.numberStyle = NumberFormatter.Style.currency
@@ -27,7 +23,6 @@ struct AddEditClientManager {
         return formatter.string(from: NSNumber(value: amount))
 
     }
-    
     mutating func validateCurrencyInput(string: String) -> Bool {
         if payRateAmount >= 1000000 && string != "" {
             return false
@@ -37,12 +32,10 @@ struct AddEditClientManager {
             delegate?.didUpdateCurrencyText(self, newCurrencyValue: updateAmount())
 
         }
-        if string == ""
-        {
-            payRateAmount = payRateAmount / 10
+        if string == "" {
+            payRateAmount /= 10
             delegate?.didUpdateCurrencyText(self, newCurrencyValue: updateAmount())
         }
-        
         return false
     }
 }
