@@ -12,12 +12,12 @@ import CoreData
 class AddEditClientViewController: UIViewController {
 
     @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet weak var companyNameTextField: UITextField!
+    @IBOutlet weak var companyNameTextField: FloatingLabelTextField!
     @IBOutlet weak var contactNameTextField: FloatingLabelTextField!
-    @IBOutlet weak var phoneNumberTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var addressTextField: UITextField!
-    @IBOutlet weak var payRateTextField: UITextField!
+    @IBOutlet weak var phoneNumberTextField: FloatingLabelTextField!
+    @IBOutlet weak var emailTextField: FloatingLabelTextField!
+    @IBOutlet weak var addressTextField: FloatingLabelTextField!
+    @IBOutlet weak var payRateTextField: FloatingLabelTextField!
     
     @IBOutlet weak var deleteBarButton: UIBarButtonItem!
     

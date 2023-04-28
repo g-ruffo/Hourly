@@ -1074,59 +1074,65 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="grq-Uk-Ktt">
                                         <rect key="frame" x="0.0" y="0.0" width="339" height="45"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Company Name*" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BRn-fm-xKK">
-                                                <rect key="frame" x="0.0" y="0.0" width="203.5" height="45"/>
-                                                <color key="backgroundColor" red="0.20399999618530273" green="0.59600001573562622" blue="0.85900002717971802" alpha="0.098440838675213679" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <color key="tintColor" red="0.20392156862745098" green="0.59607843137254901" blue="0.85882352941176465" alpha="0.097589476495726496" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Company Name*" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BRn-fm-xKK" customClass="FloatingLabelTextField" customModule="Hourly" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="237.5" height="45"/>
+                                                <color key="backgroundColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="0.097589476499999994" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" textContentType="organization"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3O-f2-Mnr" customClass="ColourTagButton" customModule="Hourly" customModuleProvider="target">
-                                                <rect key="frame" x="211.5" y="0.0" width="127.5" height="45"/>
+                                                <rect key="frame" x="245.5" y="0.0" width="93.5" height="45"/>
                                                 <color key="backgroundColor" red="0.20399999620000001" green="0.59600001570000005" blue="0.85900002720000002" alpha="0.098440838680000003" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="circle.fill" catalog="system" imagePlacement="trailing" title="Tag Colour" imagePadding="10">
-                                                    <fontDescription key="titleFontDescription" type="system" pointSize="0.0"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="circle.fill" catalog="system" imagePlacement="trailing" title="Tag" imagePadding="8">
+                                                    <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
                                                 </buttonConfiguration>
                                             </button>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="S3O-f2-Mnr" secondAttribute="trailing" id="9Mi-v1-fHS"/>
                                             <constraint firstAttribute="height" constant="45" id="NXl-q3-OLy"/>
-                                            <constraint firstItem="BRn-fm-xKK" firstAttribute="width" secondItem="grq-Uk-Ktt" secondAttribute="width" multiplier="0.6" id="Z9I-Lv-mJF"/>
+                                            <constraint firstItem="BRn-fm-xKK" firstAttribute="width" secondItem="grq-Uk-Ktt" secondAttribute="width" multiplier="0.7" id="Z9I-Lv-mJF"/>
                                         </constraints>
                                     </stackView>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Contact Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="45P-6j-EOj" customClass="FloatingLabelTextField" customModule="Hourly" customModuleProvider="target">
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="eSA-oI-ey4">
                                         <rect key="frame" x="0.0" y="59" width="339" height="45"/>
-                                        <color key="backgroundColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="0.098440838680000003" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="45" id="vhK-Ax-BmW"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" textContentType="name"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j3g-Pd-XUD">
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Contact Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="45P-6j-EOj" customClass="FloatingLabelTextField" customModule="Hourly" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="339" height="45"/>
+                                                <color key="backgroundColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="0.098440838680000003" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="45" id="vhK-Ax-BmW"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" textContentType="name"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j3g-Pd-XUD" customClass="FloatingLabelTextField" customModule="Hourly" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="118" width="339" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="agl-ve-lg2">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="agl-ve-lg2" customClass="FloatingLabelTextField" customModule="Hourly" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="166" width="339" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="email"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SV6-6o-6zQ">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SV6-6o-6zQ" customClass="FloatingLabelTextField" customModule="Hourly" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="214" width="339" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="street-address"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pay Rate*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XWb-Bd-RgS">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pay Rate*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XWb-Bd-RgS" customClass="FloatingLabelTextField" customModule="Hourly" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="262" width="339" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad"/>
                                     </textField>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="eSA-oI-ey4" secondAttribute="trailing" id="2SQ-hm-QY4"/>
+                                    <constraint firstItem="eSA-oI-ey4" firstAttribute="leading" secondItem="Osg-Le-SRa" secondAttribute="leading" id="42J-z9-qfq"/>
                                     <constraint firstItem="grq-Uk-Ktt" firstAttribute="leading" secondItem="Osg-Le-SRa" secondAttribute="leading" id="F91-we-Eyt"/>
                                     <constraint firstAttribute="trailing" secondItem="grq-Uk-Ktt" secondAttribute="trailing" id="Xp4-H7-wqt"/>
                                 </constraints>
@@ -1167,13 +1173,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addressTextField" destination="SV6-6o-6zQ" id="NaH-XO-FII"/>
-                        <outlet property="companyNameTextField" destination="BRn-fm-xKK" id="5u7-Vn-rQA"/>
+                        <outlet property="addressTextField" destination="SV6-6o-6zQ" id="ZBv-eY-Gmt"/>
+                        <outlet property="companyNameTextField" destination="BRn-fm-xKK" id="fhI-Up-Y4p"/>
                         <outlet property="contactNameTextField" destination="45P-6j-EOj" id="TVc-vX-0Xe"/>
                         <outlet property="deleteBarButton" destination="vnL-51-fyF" id="Utf-aq-jxT"/>
-                        <outlet property="emailTextField" destination="agl-ve-lg2" id="isS-NP-P05"/>
-                        <outlet property="payRateTextField" destination="XWb-Bd-RgS" id="YkU-R6-l2Z"/>
-                        <outlet property="phoneNumberTextField" destination="j3g-Pd-XUD" id="bgs-1T-YQx"/>
+                        <outlet property="emailTextField" destination="agl-ve-lg2" id="SeZ-7Y-Emx"/>
+                        <outlet property="payRateTextField" destination="XWb-Bd-RgS" id="3LD-6f-Vcb"/>
+                        <outlet property="phoneNumberTextField" destination="j3g-Pd-XUD" id="mZP-2R-SR4"/>
                         <outlet property="saveButton" destination="0MI-A5-hd7" id="Yza-5c-Cop"/>
                         <outlet property="stackView" destination="Osg-Le-SRa" id="M6c-BL-AJf"/>
                         <outlet property="tagButton" destination="S3O-f2-Mnr" id="DAr-vS-8pe"/>
