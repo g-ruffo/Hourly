@@ -11,36 +11,48 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CalendarDetailCell" rowHeight="239" id="KGk-i7-Jjw" customClass="CalendarDetailCell" customModule="Hourly" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="402" height="239"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CalendarDetailCell" rowHeight="264" id="KGk-i7-Jjw" customClass="CalendarDetailCell" customModule="Hourly" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="402" height="261"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="402" height="239"/>
+                <rect key="frame" x="0.0" y="0.0" width="402" height="261"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="08Y-9J-BCR">
-                        <rect key="frame" x="0.0" y="0.0" width="402" height="244.66666666666666"/>
+                        <rect key="frame" x="0.0" y="0.0" width="402" height="261"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Fzo-jx-RQH">
-                                <rect key="frame" x="0.0" y="0.0" width="402" height="41"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ran-IG-3Q5" userLabel="HeaderView">
+                                <rect key="frame" x="0.0" y="0.0" width="402" height="60"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Company Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cez-rX-3bo">
-                                        <rect key="frame" x="0.0" y="0.0" width="402" height="21.666666666666668"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="March 20, 2023" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7S5-bv-Ml1">
-                                        <rect key="frame" x="0.0" y="21.666666666666671" width="402" height="19.333333333333329"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Fzo-jx-RQH">
+                                        <rect key="frame" x="20" y="9.6666666666666643" width="362" height="41"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Company Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cez-rX-3bo">
+                                                <rect key="frame" x="0.0" y="0.0" width="362" height="21.666666666666668"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="March 20, 2023" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7S5-bv-Ml1">
+                                                <rect key="frame" x="0.0" y="21.666666666666664" width="362" height="19.333333333333336"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" name="PrimaryBlueLight"/>
-                            </stackView>
+                                <constraints>
+                                    <constraint firstItem="Fzo-jx-RQH" firstAttribute="leading" secondItem="Ran-IG-3Q5" secondAttribute="leading" constant="20" id="C3g-KL-QYM"/>
+                                    <constraint firstItem="Fzo-jx-RQH" firstAttribute="centerY" secondItem="Ran-IG-3Q5" secondAttribute="centerY" id="Fwc-qn-ovd"/>
+                                    <constraint firstAttribute="height" constant="60" id="IHR-ym-TMI"/>
+                                    <constraint firstAttribute="trailing" secondItem="Fzo-jx-RQH" secondAttribute="trailing" constant="20" id="a6Q-rY-x8b"/>
+                                    <constraint firstItem="Fzo-jx-RQH" firstAttribute="centerX" secondItem="Ran-IG-3Q5" secondAttribute="centerX" id="v8l-AE-lii"/>
+                                </constraints>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6MX-Lt-8hP" userLabel="StartEndLunchTimeStackView">
-                                <rect key="frame" x="18" y="57" width="366" height="42.666666666666657"/>
+                                <rect key="frame" x="18" y="76" width="366" height="42.666666666666657"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="p5T-8B-Lap">
                                         <rect key="frame" x="0.0" y="0.0" width="122" height="42.666666666666664"/>
@@ -99,7 +111,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="CLf-43-eRQ" userLabel="PayRateHoursStackView">
-                                <rect key="frame" x="18" y="115.66666666666667" width="366" height="42.666666666666671"/>
+                                <rect key="frame" x="18" y="134.66666666666666" width="366" height="42.666666666666657"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Kem-CK-NWG">
                                         <rect key="frame" x="0.0" y="0.0" width="122" height="42.666666666666664"/>
@@ -111,7 +123,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8.5 hours" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ldK-Hn-vDc">
-                                                <rect key="frame" x="0.0" y="23.333333333333329" width="70" height="19.333333333333329"/>
+                                                <rect key="frame" x="0.0" y="23.333333333333343" width="70" height="19.333333333333329"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -128,7 +140,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$20.56" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oUz-bk-W4E">
-                                                <rect key="frame" x="34.333333333333343" y="23.333333333333329" width="53.333333333333343" height="19.333333333333329"/>
+                                                <rect key="frame" x="34.333333333333343" y="23.333333333333343" width="53.333333333333343" height="19.333333333333329"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -145,7 +157,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="35 km" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="caM-OD-t4C">
-                                                <rect key="frame" x="0.0" y="23.333333333333329" width="122" height="19.333333333333329"/>
+                                                <rect key="frame" x="0.0" y="23.333333333333343" width="122" height="19.333333333333329"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -160,16 +172,16 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="U9A-b3-Tuh">
-                                <rect key="frame" x="107.33333333333333" y="174.33333333333334" width="187.33333333333337" height="70.333333333333343"/>
+                                <rect key="frame" x="0.0" y="193.33333333333334" width="402" height="67.666666666666657"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RA5-Qp-t0j">
-                                        <rect key="frame" x="69.000000000000014" y="12" width="49.666666666666671" height="14.333333333333336"/>
+                                        <rect key="frame" x="176.33333333333334" y="12" width="49.666666666666657" height="14.333333333333336"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                         <color key="textColor" name="DarkGrey"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15887, 32 Avenue, Toronto" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bnf-2g-6RU">
-                                        <rect key="frame" x="0.0" y="30.333333333333314" width="187.33333333333334" height="18"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="15887, 32 Avenue, Toronto" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bnf-2g-6RU">
+                                        <rect key="frame" x="107.33333333333333" y="30.333333333333311" width="187.33333333333337" height="15.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -179,15 +191,19 @@
                             </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="Fzo-jx-RQH" firstAttribute="leading" secondItem="08Y-9J-BCR" secondAttribute="leading" id="51R-et-we6"/>
-                            <constraint firstAttribute="trailing" secondItem="Fzo-jx-RQH" secondAttribute="trailing" id="7sX-SE-RHp"/>
+                            <constraint firstItem="Ran-IG-3Q5" firstAttribute="leading" secondItem="08Y-9J-BCR" secondAttribute="leading" id="Iw7-x0-xAy"/>
+                            <constraint firstItem="U9A-b3-Tuh" firstAttribute="leading" secondItem="08Y-9J-BCR" secondAttribute="leading" id="SIm-p7-KcX"/>
+                            <constraint firstAttribute="trailing" secondItem="Ran-IG-3Q5" secondAttribute="trailing" id="TMg-Bn-htd"/>
+                            <constraint firstItem="Ran-IG-3Q5" firstAttribute="top" secondItem="08Y-9J-BCR" secondAttribute="top" id="YwO-xN-XwV"/>
                             <constraint firstItem="6MX-Lt-8hP" firstAttribute="leading" secondItem="08Y-9J-BCR" secondAttribute="leading" constant="18" id="ioe-aG-8FS"/>
                             <constraint firstAttribute="trailing" secondItem="6MX-Lt-8hP" secondAttribute="trailing" constant="18" id="jYf-qi-wW0"/>
                             <constraint firstAttribute="trailing" secondItem="CLf-43-eRQ" secondAttribute="trailing" constant="18" id="jZz-Ki-nfu"/>
+                            <constraint firstAttribute="trailing" secondItem="U9A-b3-Tuh" secondAttribute="trailing" id="qim-08-mjK"/>
                         </constraints>
                     </stackView>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="08Y-9J-BCR" secondAttribute="bottom" id="CWl-Ps-uIl"/>
                     <constraint firstItem="08Y-9J-BCR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="P9I-N6-lf8"/>
                     <constraint firstItem="08Y-9J-BCR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="qDT-6a-zYS"/>
                     <constraint firstAttribute="trailing" secondItem="08Y-9J-BCR" secondAttribute="trailing" id="see-6k-Ket"/>
@@ -198,7 +214,7 @@
                 <outlet property="clientLabel" destination="Cez-rX-3bo" id="7pe-Vb-0UP"/>
                 <outlet property="dateLabel" destination="7S5-bv-Ml1" id="yYZ-6R-iCT"/>
                 <outlet property="endTimeLabel" destination="Abl-V3-V3f" id="cNe-sf-EOF"/>
-                <outlet property="headerStackView" destination="Fzo-jx-RQH" id="8k9-wi-IMz"/>
+                <outlet property="headerView" destination="Ran-IG-3Q5" id="dx4-KI-j5E"/>
                 <outlet property="hoursWorkedLabel" destination="ldK-Hn-vDc" id="exj-qp-nOd"/>
                 <outlet property="locationLabel" destination="Bnf-2g-6RU" id="638-PD-Ujt"/>
                 <outlet property="lunchTimeLabel" destination="93E-jB-qo2" id="IRi-u2-9s2"/>
@@ -206,7 +222,7 @@
                 <outlet property="payRateLabel" destination="oUz-bk-W4E" id="K6o-1W-8YG"/>
                 <outlet property="startTimeLabel" destination="upS-9p-2hO" id="GEt-QW-8hK"/>
             </connections>
-            <point key="canvasLocation" x="192.36641221374046" y="40.492957746478872"/>
+            <point key="canvasLocation" x="192.36641221374046" y="48.239436619718312"/>
         </tableViewCell>
     </objects>
     <resources>

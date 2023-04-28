@@ -17,7 +17,7 @@ class CalendarDetailCell: UITableViewCell {
     @IBOutlet weak var payRateLabel: UILabel!
     @IBOutlet weak var mileageLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
-    @IBOutlet weak var headerStackView: UIStackView!
+    @IBOutlet weak var headerView: UIView!
     
     var workday: WorkdayItem? {
         didSet {
@@ -31,7 +31,7 @@ class CalendarDetailCell: UITableViewCell {
                 payRateLabel.text = day.payRate.convertToCurrency()
                 mileageLabel.text = "\(day.mileage) km"
                 if let clientTag = day.client?.tagColor {
-                    headerStackView.backgroundColor = UIColor(clientTag).withAlphaComponent(0.8)
+                    headerView.backgroundColor = UIColor(clientTag).withAlphaComponent(0.6)
                 }
             }
         }
@@ -41,7 +41,7 @@ class CalendarDetailCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        headerStackView.backgroundColor?.withAlphaComponent(0.8)
+        headerView.backgroundColor?.withAlphaComponent(0.6)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
