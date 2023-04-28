@@ -15,7 +15,7 @@ protocol AddEditClientManagerDelegate: UITextFieldDelegate {
 
 struct AddEditClientManager {
     private var payRateAmount = 0
-    var delegate: AddEditClientManagerDelegate?
+    weak var delegate: AddEditClientManagerDelegate?
     func updateAmount() -> String? {
         let formatter = NumberFormatter()
         formatter.numberStyle = NumberFormatter.Style.currency

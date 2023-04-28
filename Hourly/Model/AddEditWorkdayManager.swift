@@ -13,7 +13,7 @@ protocol AddEditWorkdayManagerDelegate: UITextFieldDelegate {
 
 struct AddEditWorkdayManager {
     private var payRateAmount = 0
-    var delegate: AddEditWorkdayManagerDelegate?
+    weak var delegate: AddEditWorkdayManagerDelegate?
     func updateAmount() -> String? {
         let formatter = NumberFormatter()
         formatter.numberStyle = NumberFormatter.Style.currency

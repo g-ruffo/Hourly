@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol EditClientDelegate {
+protocol EditClientDelegate: AnyObject {
     func editClient(_ clientDetailsViewController: ClientDetailsViewController, client: ClientItem)
 }
 
@@ -28,7 +28,7 @@ class ClientDetailsViewController: UIViewController {
     
     var client: ClientItem?
     
-    var delegate: EditClientDelegate?
+    weak var delegate: EditClientDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()

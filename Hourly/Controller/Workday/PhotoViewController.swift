@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol PhotoCollectionDelegate {
+protocol PhotoCollectionDelegate: AnyObject {
     func photoHasBeenDeleted(_ photoViewController: PhotoViewController)
 }
 
@@ -18,7 +18,7 @@ class PhotoViewController: UIViewController {
     var allowEditing = false
     private var hasSetToIndexPath = false
     
-    var delegate: PhotoCollectionDelegate?
+    weak var delegate: PhotoCollectionDelegate?
     
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!

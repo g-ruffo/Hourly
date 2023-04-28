@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import CoreData
 
-protocol CoreDataServiceDelegate {
+protocol CoreDataServiceDelegate: AnyObject {
     func loadedWorkday(_ coreDataService: CoreDataService, workdayItem: WorkdayItem?)
     func loadedWorkdays(_ coreDataService: CoreDataService, workdayItems: Array<WorkdayItem>)
     func loadedPhotos(_ coreDataService: CoreDataService, photoItems: Array<PhotoItem>)
@@ -53,7 +53,7 @@ final class CoreDataService {
     
     private let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    var delegate: CoreDataServiceDelegate?
+    weak var delegate: CoreDataServiceDelegate?
     
     //MARK: - Save Methods
     func saveToDatabase() -> Bool {
