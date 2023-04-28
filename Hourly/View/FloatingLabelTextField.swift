@@ -36,21 +36,12 @@ class FloatingLabelTextField: UITextField {
         }
     }
     
-    // MARK:- Properties
     override var placeholder: String? {
         didSet {
             floatingLabel.text = placeholder
             floatingLabel.sizeToFit()
         }
     }
-    
-    override var attributedPlaceholder:NSAttributedString? {
-        didSet {
-            floatingLabel.text = attributedPlaceholder?.string
-            floatingLabel.sizeToFit()
-        }
-    }
-        
     
     required init?(coder aDecoder:NSCoder) {
         super.init(coder:aDecoder)
@@ -123,6 +114,10 @@ class FloatingLabelTextField: UITextField {
         if let string = placeholder , !string.isEmpty {
             floatingLabel.text = string
             floatingLabel.sizeToFit()
+            self.attributedPlaceholder = NSAttributedString(
+                string: string,
+                attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]
+            )
         }
         self.addSubview(floatingLabel)
     }

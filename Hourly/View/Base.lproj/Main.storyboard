@@ -1069,7 +1069,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="Osg-Le-SRa">
-                                <rect key="frame" x="18" y="76" width="339" height="296"/>
+                                <rect key="frame" x="18" y="88" width="339" height="222"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="grq-Uk-Ktt">
                                         <rect key="frame" x="0.0" y="0.0" width="339" height="45"/>
@@ -1095,11 +1095,11 @@
                                             <constraint firstItem="BRn-fm-xKK" firstAttribute="width" secondItem="grq-Uk-Ktt" secondAttribute="width" multiplier="0.7" id="Z9I-Lv-mJF"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="eSA-oI-ey4">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="eSA-oI-ey4">
                                         <rect key="frame" x="0.0" y="59" width="339" height="45"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Contact Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="45P-6j-EOj" customClass="FloatingLabelTextField" customModule="Hourly" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="339" height="45"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="220.5" height="45"/>
                                                 <color key="backgroundColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="0.098440838680000003" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="vhK-Ax-BmW"/>
@@ -1107,27 +1107,46 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" textContentType="name"/>
                                             </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pay Rate*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XWb-Bd-RgS" customClass="FloatingLabelTextField" customModule="Hourly" customModuleProvider="target">
+                                                <rect key="frame" x="228.5" y="0.0" width="110.5" height="45"/>
+                                                <color key="backgroundColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="0.097589476499999994" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad"/>
+                                            </textField>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="45P-6j-EOj" firstAttribute="width" secondItem="eSA-oI-ey4" secondAttribute="width" multiplier="0.65" id="WSF-jB-PiQ"/>
+                                        </constraints>
                                     </stackView>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j3g-Pd-XUD" customClass="FloatingLabelTextField" customModule="Hourly" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="118" width="339" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="agl-ve-lg2" customClass="FloatingLabelTextField" customModule="Hourly" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="166" width="339" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="email"/>
-                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="YEq-tw-Xn5">
+                                        <rect key="frame" x="0.0" y="118" width="339" height="45"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="agl-ve-lg2" customClass="FloatingLabelTextField" customModule="Hourly" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="169.5" height="45"/>
+                                                <color key="backgroundColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="0.097589476499999994" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="email"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j3g-Pd-XUD" customClass="FloatingLabelTextField" customModule="Hourly" customModuleProvider="target">
+                                                <rect key="frame" x="177.5" y="0.0" width="161.5" height="45"/>
+                                                <color key="backgroundColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="0.097589476499999994" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="agl-ve-lg2" firstAttribute="width" secondItem="YEq-tw-Xn5" secondAttribute="width" multiplier="0.5" id="KUY-Ec-6yN"/>
+                                            <constraint firstAttribute="height" constant="45" id="gRH-GK-G5c"/>
+                                        </constraints>
+                                    </stackView>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SV6-6o-6zQ" customClass="FloatingLabelTextField" customModule="Hourly" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="214" width="339" height="34"/>
+                                        <rect key="frame" x="0.0" y="177" width="339" height="45"/>
+                                        <color key="backgroundColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="0.097589476499999994" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="Bmb-77-Bo3"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="street-address"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pay Rate*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XWb-Bd-RgS" customClass="FloatingLabelTextField" customModule="Hourly" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="262" width="339" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad"/>
                                     </textField>
                                 </subviews>
                                 <constraints>
@@ -1138,14 +1157,15 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0MI-A5-hd7">
-                                <rect key="frame" x="137.5" y="601.5" width="100" height="33.5"/>
+                                <rect key="frame" x="107.5" y="590" width="160" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="81T-Vd-5ti"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="81T-Vd-5ti"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="hAc-M8-lmX"/>
                                 </constraints>
                                 <color key="tintColor" red="0.94509803921568625" green="0.76862745098039209" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Save">
-                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="16"/>
+                                <buttonConfiguration key="configuration" style="filled" title="SAVE">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="18"/>
                                     <color key="baseForegroundColor" name="DarkGrey"/>
                                 </buttonConfiguration>
                                 <connections>
@@ -1155,9 +1175,9 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Dtb-rL-Rep"/>
                         <keyboardLayoutGuide key="keyboard" followsUndockedKeyboard="YES" id="BCA-p1-6EU"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Osg-Le-SRa" firstAttribute="top" secondItem="Dtb-rL-Rep" secondAttribute="top" constant="12" id="8yp-IR-RUf"/>
+                            <constraint firstItem="Osg-Le-SRa" firstAttribute="top" secondItem="Dtb-rL-Rep" secondAttribute="top" constant="24" id="8yp-IR-RUf"/>
                             <constraint firstItem="Dtb-rL-Rep" firstAttribute="bottom" secondItem="0MI-A5-hd7" secondAttribute="bottom" constant="32" id="9yB-Zy-PXM"/>
                             <constraint firstItem="Dtb-rL-Rep" firstAttribute="trailing" secondItem="Osg-Le-SRa" secondAttribute="trailing" constant="18" id="M8Q-JU-DL6"/>
                             <constraint firstItem="Osg-Le-SRa" firstAttribute="leading" secondItem="Dtb-rL-Rep" secondAttribute="leading" constant="18" id="ZsN-1b-820"/>
@@ -1165,7 +1185,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add New Client" largeTitleDisplayMode="always" id="gD1-gY-TN4">
-                        <barButtonItem key="rightBarButtonItem" image="trash.fill" catalog="system" id="vnL-51-fyF">
+                        <barButtonItem key="rightBarButtonItem" title="Delete" id="vnL-51-fyF">
                             <color key="tintColor" systemColor="systemRedColor"/>
                             <connections>
                                 <action selector="deleteButtonPressed:" destination="yHG-3C-L6b" id="qFr-yT-hyW"/>
