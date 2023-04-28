@@ -56,7 +56,9 @@ class AddEditClientViewController: UIViewController {
 
     func showAlertDialog() {
         // Create a new alert
-        let dialogMessage = UIAlertController(title: "Missing Information", message: "Please fill in all required fields", preferredStyle: .alert)
+        let dialogMessage = UIAlertController(title: S.alertTitleMissingInfo.localized,
+                                              message: S.alertMessageMissingInfo.localized,
+                                              preferredStyle: .alert)
         
         let dismissButton = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
             dialogMessage.dismiss(animated: true)
@@ -68,7 +70,9 @@ class AddEditClientViewController: UIViewController {
     
     func showDeleteAlertDialog() {
         // Create a new alert
-        let dialogMessage = UIAlertController(title: "Are You Sure?", message: "Deleting this client can't be undone, are you sure you would like to proceed?", preferredStyle: .alert)
+        let dialogMessage = UIAlertController(title: S.alertTitleDeleteConfirm.localized,
+                                              message: S.alertMessageDeleteConfirm.localized,
+                                              preferredStyle: .alert)
         
         let dismissButton = UIAlertAction(title: "No", style: .default, handler: { (action) -> Void in
             dialogMessage.dismiss(animated: true)
