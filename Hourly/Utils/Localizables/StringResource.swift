@@ -19,7 +19,11 @@ enum S: String {
     case alertMessageCantConvertPhoto
     case alertTitleDeleteConfirm
     case alertMessageDeleteConfirm
-
+    case alertTitleNoData
+    case alertMessageNoData
+    case alertTitleNoClientSelected
+    case alertMessageNoClientSelected
+    
     var localized: String {
         NSLocalizedString(String(describing: Self.self) + "_\(rawValue)", comment: "")
     }

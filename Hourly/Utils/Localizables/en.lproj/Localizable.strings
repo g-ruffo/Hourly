@@ -17,3 +17,7 @@
 "S_alertMessageCantConvertPhoto" = "We were unable to load one or more photos from your selection";
 "S_alertTitleDeleteConfirm" = "Are You Sure?";
 "S_alertMessageDeleteConfirm" = "Deleting this can't be undone, are you sure you would like to proceed?";
+"S_alertTitleNoData" = "No Data Found";
+"S_alertMessageNoData" = "There are no workdays found for the client and dates you have selected.";
+"S_alertTitleNoClientSelected" = "No Client Selected";
+"S_alertMessageNoClientSelected" = "You need to select a client before exporting the selected workdays.";
