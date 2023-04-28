@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-protocol ClientSearchDelegate {
+protocol ClientSearchDelegate: AnyObject {
     func selectedExistingClient(_ clientSearchTextField: ClientSearchTextField, clientID: NSManagedObjectID?)
     func didEndEditing(_ clientSearchTextField: ClientSearchTextField)
 }
@@ -24,7 +24,7 @@ class ClientSearchTextField: FloatingLabelTextField {
         
     private let coreDataService = CoreDataService()
     
-    var searchDelegate: ClientSearchDelegate?
+    weak var searchDelegate: ClientSearchDelegate?
 
     open override func willMove(toWindow newWindow: UIWindow?) {
         super.willMove(toWindow: newWindow)
