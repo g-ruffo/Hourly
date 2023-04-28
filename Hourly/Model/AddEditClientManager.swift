@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 protocol AddEditClientManagerDelegate: UITextFieldDelegate {
-
     func didUpdateCurrencyText(_ addEditClientManager: AddEditClientManager, newCurrencyValue: String?)
 }
 
@@ -24,6 +23,7 @@ struct AddEditClientManager {
 
     }
     mutating func validateCurrencyInput(string: String) -> Bool {
+        // Check to see if amount is within allowed limit and not empty.
         if payRateAmount >= 1000000 && string != "" {
             return false
         }

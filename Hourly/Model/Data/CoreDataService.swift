@@ -73,6 +73,7 @@ final class CoreDataService {
     
     //MARK: - Create Workday Methods
     func createUpdateWorkday(clientName: String, date workDate: Date, start: Date?, end: Date?, lunch: Int32, mileage: Int32, rate: Double, location: String?, description: String?, timeWorked: Int32, earnings: Double, isDraft: Bool) -> Bool {
+        // If workday is nil, the user is trying to create a new object. Else, user is updating existing object.
         let workday = workday ?? WorkdayItem(context: databaseContext)
         workday.clientName = clientName
         workday.date = workDate
@@ -180,7 +181,7 @@ final class CoreDataService {
     
     //MARK: - Create Client Methods
     func createUpdateClient(companyName: String, contactName: String?, phone: String?, email: String?, address: String?, rate: Double, tagColour: String?) -> Bool {
-        
+        // If client is nil, the user is trying to create a new object. Else, user is updating existing object.
         let client = client ?? ClientItem(context: databaseContext)
         client.companyName = companyName
         client.contactName = contactName
@@ -190,7 +191,6 @@ final class CoreDataService {
         client.payRate = rate
         client.tagColour = tagColour
         return saveToDatabase()
-        
     }
 }
 
