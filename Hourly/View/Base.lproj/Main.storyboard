@@ -666,14 +666,14 @@
                                         <rect key="frame" x="0.0" y="63" width="311" height="60"/>
                                         <subviews>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="bLm-Sj-exR">
-                                                <rect key="frame" x="0.0" y="0.0" width="126" height="60"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="124" height="60"/>
                                             </datePicker>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rpe-Ig-TFU">
-                                                <rect key="frame" x="148" y="2.5" width="18.5" height="55"/>
+                                                <rect key="frame" x="146" y="2.5" width="23" height="55"/>
                                                 <color key="tintColor" name="PrimaryBlueDark"/>
                                             </imageView>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="bBB-7Q-jzl">
-                                                <rect key="frame" x="188.5" y="0.0" width="122.5" height="60"/>
+                                                <rect key="frame" x="191" y="0.0" width="120" height="60"/>
                                             </datePicker>
                                         </subviews>
                                         <constraints>

@@ -87,7 +87,7 @@ class CalendarViewController: UIViewController {
         monthLabel.text = manager.monthString(date: selectedDate) + " " + manager.yearString(date: selectedDate)
         
         guard let direction = slideInDirection else {
-            DispatchQueue.main.async { self.collectionView.reloadData() }
+            self.collectionView.reloadData()
             return
         }
         
@@ -210,7 +210,7 @@ extension CalendarViewController: UICollectionViewDelegateFlowLayout{
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (floor(self.collectionView.bounds.width - 9)) / 7, height: (self.collectionView.bounds.height) / 5)
+        return CGSize(width: (floor(self.collectionView.bounds.width - 9)) / 7, height: (self.collectionView.bounds.height) / 6)
     }
     
     
