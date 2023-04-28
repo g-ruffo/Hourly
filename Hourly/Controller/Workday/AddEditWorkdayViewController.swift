@@ -79,6 +79,7 @@ class AddEditWorkdayViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         checkUserDefaults()
+        startTimeDatePicker.setDate(Date().startOfDay, animated: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -159,6 +160,7 @@ class AddEditWorkdayViewController: UIViewController {
             defaults.set(coreDataService.getWorkdayClientID(), forKey: K.UserDefaultsKey.client)
         } else if !isEditingWorkday && clearValues {
             let dictionary = defaults.dictionaryRepresentation()
+            self.coreDataService.getClientFromID(nil)
             dictionary.keys.forEach { key in
                 defaults.removeObject(forKey: key)
             }
@@ -193,7 +195,6 @@ class AddEditWorkdayViewController: UIViewController {
     }
     
     func setupDatePicker() {
-        
         datePicker.tag = PickerTags.date.rawValue
         startTimeDatePicker.tag = PickerTags.startTime.rawValue
         endTimeDatePicker.tag = PickerTags.endTime.rawValue
@@ -218,6 +219,7 @@ class AddEditWorkdayViewController: UIViewController {
                 showAlertDialog()
                 return false
             }
+            
             let workDate = datePicker.date.startOfDay
             let adjustedStart = manager.setStartTimeDate(startTime: startTimeDatePicker.date, date: workDate)
             let adjustedEnd = manager.setEndTimeDate(startTime: adjustedStart, endTime: endTimeDatePicker.date, date: workDate)
@@ -280,18 +282,18 @@ class AddEditWorkdayViewController: UIViewController {
     }
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
-//        if createUpdateWorkday() {
-//            self.completedSave = true
-//            self.updateUserDefaults(clearValues: true)
-//            NotificationCenter.default.post(name: K.NotificationKeys.updateWorkdaysNotification, object: nil)
-//            if !isEditingWorkday {
-//                dismiss(animated: true)
-//            } else {
-//                navigationController?.popViewController(animated: true)
-//            }
-//        } else {
-//            showAlertDialog()
-//        }
+        if createUpdateWorkday() {
+            self.completedSave = true
+            self.updateUserDefaults(clearValues: true)
+            NotificationCenter.default.post(name: K.NotificationKeys.updateWorkdaysNotification, object: nil)
+            if !isEditingWorkday {
+                dismiss(animated: true)
+            } else {
+                navigationController?.popViewController(animated: true)
+            }
+        } else {
+            showAlertDialog()
+        }
     }
     
     func createPhotoPicker() {
