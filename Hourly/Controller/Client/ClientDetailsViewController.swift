@@ -44,7 +44,7 @@ class ClientDetailsViewController: UIViewController {
             phoneTextField.text = details.phoneNumber
             emailTextField.text = details.email
             addressTextField.text = details.address
-            tagImageView.tintColor = UIColor(client?.tagColor ?? "#FFFFFF")
+            tagImageView.tintColor = UIColor(client?.tagColour ?? "#FFFFFF")
         }
         setIntentButtonState()
     }

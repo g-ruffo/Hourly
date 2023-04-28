@@ -30,7 +30,7 @@ class CalendarDetailCell: UITableViewCell {
                 hoursWorkedLabel.text = Helper.minutesToHoursWorkedString(minutesWorked: day.minutesWorked)
                 payRateLabel.text = day.payRate.convertToCurrency()
                 mileageLabel.text = "\(day.mileage) km"
-                if let clientTag = day.client?.tagColor {
+                if let clientTag = day.client?.tagColour {
                     headerView.backgroundColor = UIColor(clientTag).withAlphaComponent(0.6)
                 }
             }

@@ -154,7 +154,6 @@ final class CoreDataService {
     }
     
     //MARK: - Client Get Methods
-    
     func getClients(withRequest request : NSFetchRequest<ClientItem>) {
         do {
             clients = try databaseContext.fetch(request)
@@ -172,7 +171,6 @@ final class CoreDataService {
     }
     
     //MARK: - Client Delete Methods
-    
     func deleteClient() -> Bool {
         if let deleteClient = client {
             databaseContext.delete(deleteClient)
@@ -181,7 +179,6 @@ final class CoreDataService {
     }
     
     //MARK: - Create Client Methods
-    
     func createUpdateClient(companyName: String, contactName: String?, phone: String?, email: String?, address: String?, rate: Double, tagColour: String?) -> Bool {
         
         let client = client ?? ClientItem(context: databaseContext)
@@ -191,7 +188,7 @@ final class CoreDataService {
         client.email = email
         client.address = address
         client.payRate = rate
-        client.tagColor = tagColour
+        client.tagColour = tagColour
         return saveToDatabase()
         
     }

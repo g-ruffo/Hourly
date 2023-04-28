@@ -70,7 +70,7 @@ extension ClientsViewController: UITableViewDataSource {
         let client = clients[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: K.Identifiers.clientCell, for: indexPath) as! ClientCell
 
-        if let colour = client.tagColor {
+        if let colour = client.tagColour {
             cell.tagImageView.image = UIImage(systemName: "circle.fill")?.withTintColor(UIColor(colour), renderingMode: .alwaysOriginal)
         }
         

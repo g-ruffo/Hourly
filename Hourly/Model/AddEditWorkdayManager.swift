@@ -22,7 +22,8 @@ struct AddEditWorkdayManager {
 
     }
     mutating func validateCurrencyInput(string: String) -> Bool {
-        if payRateAmount >= 1000000 && string != "" {
+        // Check to see if amount is within allowed limit and not empty.
+        if payRateAmount >= 1000000 && !string.isEmpty {
             return false
         }
         if let digit = Int(string) {
@@ -36,8 +37,10 @@ struct AddEditWorkdayManager {
         }
         return false
     }
+    // Calculates earnings by finding the difference between the start and end time in seconds minus the lunch time.
     func calculateEarnings(startTime: Date?, endTime: Date?, lunchMinutes: Int?, payRate: Double?) -> Double {
         if let start = startTime, let end = endTime, let rate = payRate {
+            // Calculate payrate per second
             let secondsPay = rate / 3600
             var timeWorked = Int(end.timeIntervalSince1970 - start.timeIntervalSince1970)
             if let lunch = lunchMinutes, lunch.minutesToSeconds() < timeWorked {
@@ -51,6 +54,7 @@ struct AddEditWorkdayManager {
             return 0.00
         }
     }
+    // Sets the start time date to the work date selected.
     func setStartTimeDate(startTime: Date?, date: Date) -> Date? {
         var resultTime: Date?
         if let start = startTime {
@@ -66,6 +70,7 @@ struct AddEditWorkdayManager {
         }
         return resultTime
     }
+    // Sets the end time date to the work date selected.
     func setEndTimeDate(startTime: Date?, endTime: Date?, date: Date) -> Date? {
         var resultTime: Date?
         if let start = startTime, let end = endTime {
@@ -78,16 +83,19 @@ struct AddEditWorkdayManager {
             dateComponents.minute = Calendar.current.component(.minute, from: end)
             dateComponents.second = Calendar.current.component(.second, from: end)
             resultTime = calendar.date(from: dateComponents)
+            // If end time is before start add one day.
             if let addDay = resultTime, start >= addDay {
                 resultTime = Calendar.current.date(byAdding: .day, value: 1, to: addDay)
             }
         }
         return resultTime
     }
+    // Calculates time worked in minutes.
     func calculateTimeWorkedInMinutes(startTime: Date?, endTime: Date?, lunchMinutes: Int?) -> Int32 {
         if let start = startTime, let end = endTime {
             var hours = 0
             let timeWorked = Int(end.timeIntervalSince1970 - start.timeIntervalSince1970)
+            // Make sure the lunch time is not greater than the time worked, if so return 0.
             if let lunchSeconds = lunchMinutes?.minutesToSeconds(), lunchSeconds < timeWorked {
                 hours = (timeWorked - (lunchMinutes?.minutesToSeconds() ?? 0)) / 60
             } else {

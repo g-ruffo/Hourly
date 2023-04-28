@@ -7,7 +7,7 @@
         <attribute name="email" optional="YES" attributeType="String"/>
         <attribute name="payRate" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="phoneNumber" optional="YES" attributeType="String"/>
-        <attribute name="tagColor" attributeType="String" defaultValueString="#0096FF"/>
+        <attribute name="tagColour" attributeType="String" defaultValueString="#0096FF"/>
         <relationship name="daysWorked" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WorkdayItem" inverseName="client" inverseEntity="WorkdayItem"/>
     </entity>
     <entity name="PhotoItem" representedClassName="PhotoItem" syncable="YES" codeGenerationType="class">

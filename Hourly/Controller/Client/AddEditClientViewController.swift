@@ -141,7 +141,7 @@ extension AddEditClientViewController: CoreDataServiceDelegate {
             emailTextField.text = client.email
             addressTextField.text = client.address
             payRateTextField.text = client.payRate.convertToCurrency()
-            if let colour = client.tagColor {
+            if let colour = client.tagColour {
                 selectedColour = colour
                 tagButton.selectedColour = colour
             }

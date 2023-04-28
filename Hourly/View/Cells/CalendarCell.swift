@@ -30,7 +30,7 @@ class CalendarCell: UICollectionViewCell {
 
                 var colour = UIColor()
                 
-                if let tagColour = day.client?.tagColor { colour = UIColor(tagColour) }
+                if let tagColour = day.client?.tagColour { colour = UIColor(tagColour) }
                 else { colour = .gray }
                 
                 if day.isFinalized {

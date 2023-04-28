@@ -24,7 +24,7 @@ class WorkdayCell: UITableViewCell {
                 hoursLabel?.text = Helper.minutesToHoursWorkedString(minutesWorked: day.minutesWorked)
                 clientTagImageView.image = day.isFinalized ? UIImage(systemName: "circle.fill") : UIImage(systemName: "pencil.circle")
                 
-                if let colour = day.client?.tagColor {
+                if let colour = day.client?.tagColour {
                     clientTagImageView.tintColor = UIColor(colour)
                 } else {
                     clientTagImageView.tintColor = UIColor("#ECF0F1")
