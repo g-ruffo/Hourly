@@ -17,7 +17,7 @@ extension ClientSearchDelegate {
     func didEndEditing(_ clientSearchTextField: ClientSearchTextField) {}
 }
 
-class ClientSearchTextField: UITextField {
+class ClientSearchTextField: FloatingLabelTextField {
 
     var clientArray: Array<ClientItem> = []
     var tableView: UITableView?
