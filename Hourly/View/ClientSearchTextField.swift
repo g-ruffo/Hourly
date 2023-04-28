@@ -18,12 +18,10 @@ extension ClientSearchDelegate {
 }
 
 class ClientSearchTextField: FloatingLabelTextField {
-
+    // MARK: - Variables
     var clientArray: Array<ClientItem> = []
     var tableView: UITableView?
-        
     private let coreDataService = CoreDataService()
-    
     weak var searchDelegate: ClientSearchDelegate?
 
     open override func willMove(toWindow newWindow: UIWindow?) {

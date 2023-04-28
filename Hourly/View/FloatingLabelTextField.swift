@@ -1,13 +1,7 @@
-//
-//  FloatingLabelTextField.swift
-//  Hourly
-//
-//  Created by Grayson Ruffo on 2023-04-27.
-//
-
 import UIKit
 
 class FloatingLabelTextField: UITextField {
+    // MARK: - Variables
     let animationDuration = 0.3
     var floatingLabel = UILabel()
     var floatingLabelFont = UIFont.systemFont(ofSize: 12)
@@ -27,7 +21,6 @@ class FloatingLabelTextField: UITextField {
             }
         }
     }
-    
     var floatingLabelInFocus: UIColor! {
         didSet {
             if isFirstResponder {
@@ -55,11 +48,12 @@ class FloatingLabelTextField: UITextField {
     
     override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
+        // Call function when user taps the done button.
         self.addTarget(self, action: #selector(textFieldDidEndEditingOnExit), for: .editingDidEndOnExit)
-
     }
     
     @objc open func textFieldDidEndEditingOnExit() {
+        // Hide keyboard when done button is pressed.
         self.resignFirstResponder()
     }
     
@@ -72,7 +66,7 @@ class FloatingLabelTextField: UITextField {
         } else {
             floatingLabel.textColor = floatingLabelNotFocused
         }
-        // Should we show or hide the title label?
+        // Set whether to show or hide label.
         if let title = text , title.isEmpty {
             // Hide
             hidePlaceholder(isResponder)
@@ -151,6 +145,7 @@ class FloatingLabelTextField: UITextField {
     
     private func showPlaceholder(_ animated:Bool) {
         UIView.animate(withDuration: animationDuration, delay:0, options: [UIView.AnimationOptions.beginFromCurrentState, UIView.AnimationOptions.curveEaseOut], animations:{
+            // Set the animation.
                 self.floatingLabel.alpha = 1.0
                 var frame = self.floatingLabel.frame
                 frame.origin.y = self.titleYPadding
@@ -160,7 +155,7 @@ class FloatingLabelTextField: UITextField {
     
     private func hidePlaceholder(_ animated:Bool) {
         UIView.animate(withDuration: animationDuration, delay:0, options: [UIView.AnimationOptions.beginFromCurrentState, UIView.AnimationOptions.curveEaseIn], animations:{
-            // Animation
+            // Set the animation.
             self.floatingLabel.alpha = 0.0
             var frame = self.floatingLabel.frame
             frame.origin.y = self.floatingLabel.font.lineHeight + self.placeholderYPadding
