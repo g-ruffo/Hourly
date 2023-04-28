@@ -203,6 +203,7 @@ class AddEditWorkdayViewController: UIViewController {
     }
     func createUpdateWorkday(isDraft: Bool = false) -> Bool {
         if let client = clientTextField.text {
+            // Check if client name is empty.
             guard !client.trimmingCharacters(in: .whitespaces).isEmpty else {
                 showAlertDialog(title: S.alertTitleMissingInfo.localized,
                                 message: S.alertMessageMissingInfo.localized)

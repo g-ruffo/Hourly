@@ -82,8 +82,9 @@ class AddEditClientViewController: UIViewController {
     }
     
     func createUpdateClient() {
-        // If
-        guard let company = companyNameTextField.text, !company.trimmingCharacters(in: .whitespaces).isEmpty else {
+        // Check if client name is empty or nil. If so show alert dialog.
+        guard let company = companyNameTextField.text,
+              !company.trimmingCharacters(in: .whitespaces).isEmpty else {
             showAlertDialog()
             return
         }
@@ -93,41 +94,41 @@ class AddEditClientViewController: UIViewController {
         let address = addressTextField.text
         let rate = payRateTextField.currencyStringToDouble() ?? 0
         let colour = selectedColour
-        
-        if coreDataService.createUpdateClient(companyName: company, contactName: contact, phone: phoneNumber, email: email, address: address, rate: rate, tagColour: colour) {
+        // Notify service to create or update client using the provided input parameters.
+        if coreDataService.createUpdateClient(companyName: company,
+                                              contactName: contact,
+                                              phone: phoneNumber,
+                                              email: email,
+                                              address: address,
+                                              rate: rate,
+                                              tagColour: colour) {
+            // If successful navigate back.
             navigationController?.popViewController(animated: true)
         }
     }
-    
     func saveClient() -> Bool { return coreDataService.saveToDatabase() }
     
-    @IBAction func saveButtonPressed(_ sender: UIButton) {
-        if !companyNameTextField.isValid() {
-            showAlertDialog()
-        } else {
-            createUpdateClient()
-        }
-    }
-    @IBAction func deleteButtonPressed(_ sender: UIBarButtonItem) {
-        showDeleteAlertDialog()
-        
-    }
+    // Called when save button is pressed
+    @IBAction func saveButtonPressed(_ sender: UIButton) { createUpdateClient() }
+    // Called when save button is pressed.
+    @IBAction func deleteButtonPressed(_ sender: UIBarButtonItem) { showDeleteAlertDialog() }
     
 }
-//MARK: - AddEditClientManagerDelegate
+// MARK: - AddEditClientManagerDelegate
 extension AddEditClientViewController: AddEditClientManagerDelegate {
     func didUpdateCurrencyText(_ addEditClientManager: AddEditClientManager, newCurrencyValue: String?) {
+        // Update the text fields input to currency format.
         payRateTextField.text = newCurrencyValue
     }
-    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         manager.validateCurrencyInput(string: string)
     }
 }
 
-//MARK: - CoreDataServiceDelegate
+// MARK: - CoreDataServiceDelegate
 extension AddEditClientViewController: CoreDataServiceDelegate {
     func loadedClient(_ coreDataService: CoreDataService, clientItem: ClientItem?) {
+        // If user is updating client, set the text fields corresponding values.
         if let client = clientItem {
             companyNameTextField.text = client.companyName
             contactNameTextField.text = client.contactName
@@ -143,7 +144,7 @@ extension AddEditClientViewController: CoreDataServiceDelegate {
     }
 }
 
-//MARK: - ColourTagButtonDelegate
+// MARK: - ColourTagButtonDelegate
 extension AddEditClientViewController: ColourTagButtonDelegate {
     func didUpdateColourTag(_ colourTagButton: ColourTagButton, hexString: String) {
         selectedColour = hexString
