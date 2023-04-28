@@ -26,6 +26,8 @@ class AddEditWorkdayViewController: UIViewController {
     @IBOutlet weak var startTimeDatePicker: UIDatePicker!
     @IBOutlet weak var endTimeDatePicker: UIDatePicker!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
+    
     private let lunchPicker = UIPickerView()
     private let mileagePicker = UIPickerView()
     private var selectedLunchTimeMinutes: Int? {
@@ -64,11 +66,12 @@ class AddEditWorkdayViewController: UIViewController {
         createCollectionView()
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
         scrollView.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor).isActive = true
+        
+        loadingSpinner.hidesWhenStopped = true
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         checkUserDefaults()
-        startTimeDatePicker.setDate(Date().startOfDay, animated: true)
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -116,6 +119,7 @@ class AddEditWorkdayViewController: UIViewController {
             case "Clear":
                 self.updateUserDefaults(clearValues: true)
                 self.checkUserDefaults()
+                self.startTimeDatePicker.setDate(Date().startOfDay, animated: true)
             case "Delete":
                 self.showDeleteAlertDialog()
             default: print("Menu Handler Defaulted")
@@ -183,6 +187,7 @@ class AddEditWorkdayViewController: UIViewController {
         datePicker.tag = PickerTags.date.rawValue
         startTimeDatePicker.tag = PickerTags.startTime.rawValue
         endTimeDatePicker.tag = PickerTags.endTime.rawValue
+        startTimeDatePicker.setDate(Date().startOfDay, animated: true)
         datePicker.addTarget(self, action: #selector(datePickerChanged(picker:)), for: .valueChanged)
         startTimeDatePicker.addTarget(self, action: #selector(datePickerChanged(picker:)), for: .valueChanged)
         endTimeDatePicker.addTarget(self, action: #selector(datePickerChanged(picker:)), for: .valueChanged)
@@ -219,7 +224,6 @@ class AddEditWorkdayViewController: UIViewController {
             let minutesWorked = manager.calculateTimeWorkedInMinutes(startTime: adjustedStart,
                                                                      endTime: adjustedEnd,
                                                                      lunchMinutes: selectedLunchTimeMinutes ?? 0)
-            print("Date = \(datePicker.date.formatDateToString())")
             return coreDataService.createUpdateWorkday(
                 clientName: client,
                 date: workDate,

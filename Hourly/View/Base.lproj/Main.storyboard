@@ -1449,6 +1449,10 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="Z1t-FX-csy"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="pLu-cw-HWm"/>
                             </scrollView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Vzg-hW-7p2">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <color key="color" name="PrimaryYellow"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="GrK-Fo-fBJ"/>
                         <keyboardLayoutGuide key="keyboard" followsUndockedKeyboard="YES" id="428-wy-qKX"/>
@@ -1456,7 +1460,9 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="OQf-e4-L4Z" secondAttribute="trailing" id="2C4-S4-z5m"/>
                             <constraint firstItem="OQf-e4-L4Z" firstAttribute="top" secondItem="myi-Kt-Ur9" secondAttribute="top" id="2hH-Yk-AAM"/>
+                            <constraint firstItem="Vzg-hW-7p2" firstAttribute="centerY" secondItem="myi-Kt-Ur9" secondAttribute="centerY" id="4hE-TW-buS"/>
                             <constraint firstItem="OQf-e4-L4Z" firstAttribute="leading" secondItem="myi-Kt-Ur9" secondAttribute="leading" id="B8B-tj-2HX"/>
+                            <constraint firstItem="Vzg-hW-7p2" firstAttribute="centerX" secondItem="myi-Kt-Ur9" secondAttribute="centerX" id="CLR-XF-AMV"/>
                             <constraint firstItem="428-wy-qKX" firstAttribute="top" secondItem="OQf-e4-L4Z" secondAttribute="bottom" id="U2K-s1-qwb"/>
                         </constraints>
                     </view>
@@ -1467,6 +1473,7 @@
                         <outlet property="datePicker" destination="yg3-wK-RKI" id="7kv-tZ-223"/>
                         <outlet property="descriptionTexfield" destination="8on-JL-IvW" id="Ooz-0d-7Hv"/>
                         <outlet property="endTimeDatePicker" destination="6z2-eM-NGl" id="cL6-kf-wt8"/>
+                        <outlet property="loadingSpinner" destination="Vzg-hW-7p2" id="QUS-j9-PJl"/>
                         <outlet property="locationTexfield" destination="Xwc-f2-J8Q" id="RCb-0O-gCS"/>
                         <outlet property="lunchTexfield" destination="lNs-y6-UJX" id="WEL-bu-DbR"/>
                         <outlet property="mileageTexfield" destination="rNY-dt-Qz6" id="RTB-Ol-HDq"/>
@@ -2086,9 +2093,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="olG-vz-Or0"/>
+        <segue reference="tA9-Ze-nTZ"/>
         <segue reference="gAs-an-Vsm"/>
-        <segue reference="pqR-vS-0xj"/>
+        <segue reference="Q5n-uq-4AC"/>
         <segue reference="Ydi-Ml-fqH"/>
     </inferredMetricsTieBreakers>
     <resources>
