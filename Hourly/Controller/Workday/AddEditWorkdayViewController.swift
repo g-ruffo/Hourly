@@ -204,7 +204,8 @@ class AddEditWorkdayViewController: UIViewController {
     func createUpdateWorkday(isDraft: Bool = false) -> Bool {
         if let client = clientTextField.text {
             guard !client.isEmpty else {
-                showAlertDialog()
+                showAlertDialog(title: S.alertTitleMissingInfo.localized,
+                                message: S.alertMessageMissingInfo.localized)
                 return false
             }
             let workDate = datePicker.date.startOfDay
@@ -242,10 +243,10 @@ class AddEditWorkdayViewController: UIViewController {
             return false
         }
     }
-    func showAlertDialog() {
+    func showAlertDialog(title: String, message: String) {
         // Create a new alert
-        let dialogMessage = UIAlertController(title: "Missing Information",
-                                              message: "Please fill in all required fields",
+        let dialogMessage = UIAlertController(title: title,
+                                              message: message,
                                               preferredStyle: .alert)
         let dismissButton = UIAlertAction(title: "OK",
                                           style: .default,
@@ -258,8 +259,8 @@ class AddEditWorkdayViewController: UIViewController {
     }
     func showDeleteAlertDialog() {
         // Create a new alert
-        let dialogMessage = UIAlertController(title: "Are You Sure?",
-                                              message: "Deleting this workday can't be undone, are you sure you would like to proceed?", preferredStyle: .alert)
+        let dialogMessage = UIAlertController(title: S.alertTitleDeleteConfirm.localized,
+                                              message: S.alertMessageDeleteConfirm.localized, preferredStyle: .alert)
         let dismissButton = UIAlertAction(title: "No", style: .default, handler: { (_) -> Void in
             dialogMessage.dismiss(animated: true)
         })
@@ -283,7 +284,8 @@ class AddEditWorkdayViewController: UIViewController {
                 navigationController?.popViewController(animated: true)
             }
         } else {
-            showAlertDialog()
+            showAlertDialog(title: S.alertTitleMissingInfo.localized,
+                            message: S.alertMessageMissingInfo.localized)
         }
     }
     func createPhotoPicker() {
@@ -311,9 +313,11 @@ extension AddEditWorkdayViewController: AddEditWorkdayManagerDelegate {
 // MARK: - PHPickerViewControllerDelegate
 extension AddEditWorkdayViewController: PHPickerViewControllerDelegate {
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        loadingSpinner.startAnimating()
         picker.dismiss(animated: true)
         let group = DispatchGroup()
         var jpegImages: Array<Data?> = []
+        var convertingError: Error?
         results.forEach { result in
             group.enter()
             result.itemProvider.loadObject(ofClass: UIImage.self) { reading, error in
@@ -322,6 +326,7 @@ extension AddEditWorkdayViewController: PHPickerViewControllerDelegate {
                 }
                 guard let image = reading as? UIImage, error == nil else {
                     print("didFinishPicking error = \(String(describing: error?.localizedDescription))")
+                    convertingError = error
                     return
                 }
                 let jpegImage = image.jpegData(compressionQuality: 1.0)
@@ -330,6 +335,11 @@ extension AddEditWorkdayViewController: PHPickerViewControllerDelegate {
         }
         group.notify(queue: .main) {
             self.coreDataService.createPhotoItems(from: jpegImages)
+            self.loadingSpinner.stopAnimating()
+            if let _ = convertingError {
+                self.showAlertDialog(title: S.alertTitleCantConvertPhoto.localized,
+                                     message: S.alertMessageCantConvertPhoto.localized)
+            }
         }
     }
 }
