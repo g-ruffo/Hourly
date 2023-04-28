@@ -15,7 +15,8 @@ class PhotoCollectionCell: UICollectionViewCell {
     override func awakeFromNib() {
         textView.layer.cornerRadius = 10
         textView.addDoneButtonOnKeyboard()
-        textView.bottomAnchor.constraint(equalTo: contentView.keyboardLayoutGuide.topAnchor, constant: -28).isActive = true
+        textView.bottomAnchor.constraint(equalTo: contentView.keyboardLayoutGuide.topAnchor, constant: -12).isActive = true
+
     }
     
     func setEditingState(_ isEditing: Bool) {
@@ -25,3 +26,5 @@ class PhotoCollectionCell: UICollectionViewCell {
         textView.textColor = isEditing ? .black : .white
     }
 }
+
+
