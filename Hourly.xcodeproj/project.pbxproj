@@ -28,6 +28,7 @@
 		7964AFDF29EB2CEE00065863 /* WorkdaysManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964AFDE29EB2CEE00065863 /* WorkdaysManager.swift */; };
 		7964AFE129EB368900065863 /* AddEditWorkdayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964AFE029EB368900065863 /* AddEditWorkdayManager.swift */; };
 		7964AFE429EDE21F00065863 /* ClientSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964AFE329EDE21F00065863 /* ClientSearchTextField.swift */; };
+		797F535C29FDBC38002DE3A4 /* HelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797F535B29FDBC38002DE3A4 /* HelperTests.swift */; };
 		7983B00429F4A09900F2D76E /* WorkdayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7983B00229F4A09900F2D76E /* WorkdayCell.swift */; };
 		7983B00529F4A09900F2D76E /* WorkdayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7983B00329F4A09900F2D76E /* WorkdayCell.xib */; };
 		7983B00729F4C12700F2D76E /* SummaryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7983B00629F4C12700F2D76E /* SummaryManager.swift */; };
@@ -110,6 +111,7 @@
 		7964AFDE29EB2CEE00065863 /* WorkdaysManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkdaysManager.swift; sourceTree = "<group>"; };
 		7964AFE029EB368900065863 /* AddEditWorkdayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditWorkdayManager.swift; sourceTree = "<group>"; };
 		7964AFE329EDE21F00065863 /* ClientSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientSearchTextField.swift; sourceTree = "<group>"; };
+		797F535B29FDBC38002DE3A4 /* HelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperTests.swift; sourceTree = "<group>"; };
 		7983B00229F4A09900F2D76E /* WorkdayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkdayCell.swift; sourceTree = "<group>"; };
 		7983B00329F4A09900F2D76E /* WorkdayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkdayCell.xib; sourceTree = "<group>"; };
 		7983B00629F4C12700F2D76E /* SummaryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryManager.swift; sourceTree = "<group>"; };
@@ -202,6 +204,14 @@
 				7983B00329F4A09900F2D76E /* WorkdayCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		797F535A29FDBC24002DE3A4 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				797F535B29FDBC38002DE3A4 /* HelperTests.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		79A5641129FCB8E9004E8A7E /* Frameworks */ = {
@@ -303,6 +313,7 @@
 		79FA888629E4AD67003C6DFB /* HourlyTests */ = {
 			isa = PBXGroup;
 			children = (
+				797F535A29FDBC24002DE3A4 /* Utils */,
 				79A5641629FCB950004E8A7E /* Model */,
 				79FA888729E4AD67003C6DFB /* HourlyTests.swift */,
 			);
@@ -608,6 +619,7 @@
 				79AB6D0F29FDAC1D002E5E83 /* CalendarManagerTests.swift in Sources */,
 				79A5641829FCB979004E8A7E /* AddEditWorkdayManagerTests.swift in Sources */,
 				790FFC6229FDB5A3006BCE34 /* SummaryManagerTests.swift in Sources */,
+				797F535C29FDBC38002DE3A4 /* HelperTests.swift in Sources */,
 				79FA888829E4AD67003C6DFB /* HourlyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
