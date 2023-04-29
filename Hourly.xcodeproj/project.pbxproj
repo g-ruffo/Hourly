@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		790FFC6029FDB4D8006BCE34 /* WorkdaysManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790FFC5F29FDB4D8006BCE34 /* WorkdaysManagerTests.swift */; };
+		790FFC6229FDB5A3006BCE34 /* SummaryManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790FFC6129FDB5A3006BCE34 /* SummaryManagerTests.swift */; };
 		7912FB3329F25DE4008BEA14 /* AddPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7912FB3129F25DE4008BEA14 /* AddPhotoCell.swift */; };
 		7912FB3429F25DE4008BEA14 /* AddPhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7912FB3229F25DE4008BEA14 /* AddPhotoCell.xib */; };
 		7931A4D829FDB2E5000AE03C /* WorkdayDetailsManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7931A4D729FDB2E5000AE03C /* WorkdayDetailsManagerTests.swift */; };
@@ -90,6 +91,7 @@
 
 /* Begin PBXFileReference section */
 		790FFC5F29FDB4D8006BCE34 /* WorkdaysManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkdaysManagerTests.swift; sourceTree = "<group>"; };
+		790FFC6129FDB5A3006BCE34 /* SummaryManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryManagerTests.swift; sourceTree = "<group>"; };
 		7912FB3129F25DE4008BEA14 /* AddPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoCell.swift; sourceTree = "<group>"; };
 		7912FB3229F25DE4008BEA14 /* AddPhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPhotoCell.xib; sourceTree = "<group>"; };
 		7931A4D729FDB2E5000AE03C /* WorkdayDetailsManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkdayDetailsManagerTests.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				79AB6D0E29FDAC1D002E5E83 /* CalendarManagerTests.swift */,
 				7931A4D729FDB2E5000AE03C /* WorkdayDetailsManagerTests.swift */,
 				790FFC5F29FDB4D8006BCE34 /* WorkdaysManagerTests.swift */,
+				790FFC6129FDB5A3006BCE34 /* SummaryManagerTests.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -604,6 +607,7 @@
 				7931A4D829FDB2E5000AE03C /* WorkdayDetailsManagerTests.swift in Sources */,
 				79AB6D0F29FDAC1D002E5E83 /* CalendarManagerTests.swift in Sources */,
 				79A5641829FCB979004E8A7E /* AddEditWorkdayManagerTests.swift in Sources */,
+				790FFC6229FDB5A3006BCE34 /* SummaryManagerTests.swift in Sources */,
 				79FA888829E4AD67003C6DFB /* HourlyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
