@@ -23,36 +23,27 @@ extension CoreDataServiceDelegate {
     func loadedPhotos(_ coreDataService: CoreDataService, photoItems: Array<PhotoItem>) {}
     func loadedClient(_ coreDataService: CoreDataService, clientItem: ClientItem?) {}
     func loadedClients(_ coreDataService: CoreDataService, clientItems: Array<ClientItem>) {}
-
+    
 }
 final class CoreDataService {
-    
     private var workday: WorkdayItem? {
         didSet { delegate?.loadedWorkday(self, workdayItem: workday) }
     }
-    
     private var workdays: Array<WorkdayItem> = [] {
         didSet { delegate?.loadedWorkdays(self, workdayItems: workdays) }
     }
-    
     private var _workdayPhotos: Array<PhotoItem> = [] {
         didSet { delegate?.loadedPhotos(self, photoItems: _workdayPhotos) }
     }
-    
     var workdayPhotos: Array<PhotoItem> { get { return _workdayPhotos } }
-     
     private var client: ClientItem? {
         didSet { delegate?.loadedClient(self, clientItem: client) }
     }
-    
     private var clients: Array<ClientItem> = [] {
         didSet { delegate?.loadedClients(self, clientItems: clients) }
     }
-    
     private var clientId: NSManagedObjectID?
-    
     private let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     weak var delegate: CoreDataServiceDelegate?
     
     //MARK: - Save Methods
@@ -69,7 +60,6 @@ final class CoreDataService {
             return true
         }
     }
-
     
     //MARK: - Create Workday Methods
     func createUpdateWorkday(clientName: String, date workDate: Date, start: Date?, end: Date?, lunch: Int32, mileage: Int32, rate: Double, location: String?, description: String?, timeWorked: Int32, earnings: Double, isDraft: Bool) -> Bool {
@@ -91,13 +81,11 @@ final class CoreDataService {
         addPhotoItemsToWorkday(workday)
         return saveToDatabase()
     }
-
     func addPhotoItemsToWorkday(_ workday: WorkdayItem) {
-            for photo in _workdayPhotos {
-                photo.workingDay = workday
+        for photo in _workdayPhotos {
+            photo.workingDay = workday
         }
     }
-    
     func createPhotoItems(from jpegImages: Array<Data?>) {
         let date = Date()
         jpegImages.forEach { jpegImage in
@@ -125,7 +113,7 @@ final class CoreDataService {
     func updatePhoto(at index: Int, text: String) {
         _workdayPhotos[index].imageDescription = text
     }
-        
+    
     //MARK: - Workday Get Methods
     func getClientFromURL(url: URL) {
         let clientObjectId = databaseContext.persistentStoreCoordinator!.managedObjectID(forURIRepresentation: url)
@@ -133,15 +121,14 @@ final class CoreDataService {
     }
     
     func getWorkdayFromObjectId(_ id: NSManagedObjectID) {
-            do {
-                workday = try databaseContext.existingObject(with: id) as? WorkdayItem
-                client = workday?.client
-                _workdayPhotos = workday?.photos?.allObjects as? Array<PhotoItem> ?? []
-            } catch {
-                fatalError(error.localizedDescription)
-            }
+        do {
+            workday = try databaseContext.existingObject(with: id) as? WorkdayItem
+            client = workday?.client
+            _workdayPhotos = workday?.photos?.allObjects as? Array<PhotoItem> ?? []
+        } catch {
+            fatalError(error.localizedDescription)
+        }
     }
-    
     func getWorkdays(withRequest request : NSFetchRequest<WorkdayItem>) {
         do{
             workdays = try databaseContext.fetch(request)
@@ -149,7 +136,6 @@ final class CoreDataService {
             print("Error fetching clients from database = \(error)")
         }
     }
-    
     func getWorkdayClientID() -> URL? {
         return clientId?.uriRepresentation()
     }
@@ -162,7 +148,6 @@ final class CoreDataService {
             print("Error while fetching data: \(error)")
         }
     }
-    
     func getClientFromID(_ id: NSManagedObjectID?) {
         clientId = id
         if let clientId = id {

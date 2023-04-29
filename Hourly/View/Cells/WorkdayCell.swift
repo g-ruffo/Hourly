@@ -29,14 +29,11 @@ class WorkdayCell: UITableViewCell {
             }
         }
     }
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-
         contentView.backgroundColor = .clear
     }
-
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
@@ -45,9 +42,7 @@ class WorkdayCell: UITableViewCell {
     static func nib() -> UINib {
         return UINib(nibName: K.Cell.workdayCell, bundle: nil)
     }
-    
     public func configure(with day: WorkdayItem) {
         workday = day
     }
-    
 }

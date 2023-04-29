@@ -79,14 +79,14 @@ class SummaryViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == K.Segue.summaryWorkdayDetailNav {
-            let destinationVC = segue.destination as! WorkDetailViewController
-            destinationVC.workday = sender as? WorkdayItem
+        if segue.identifier == K.Navigation.summaryWorkdayDetailNav {
+            let destinationVC = segue.destination as? WorkDetailViewController
+            destinationVC?.workday = sender as? WorkdayItem
             // Set the destination view controllers delegate as self to listen for navigation requests.
-            destinationVC.delegate = self
-        } else if segue.identifier == K.Segue.summaryEditWorkdayNav {
-            let destinationVC = segue.destination as! AddEditWorkdayViewController
-            destinationVC.editWorkdayId = sender as? NSManagedObjectID
+            destinationVC?.delegate = self
+        } else if segue.identifier == K.Navigation.summaryEditWorkdayNav {
+            let destinationVC = segue.destination as? AddEditWorkdayViewController
+            destinationVC?.editWorkdayId = sender as? NSManagedObjectID
         }
     }
     
@@ -139,7 +139,7 @@ class SummaryViewController: UIViewController {
 extension SummaryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        performSegue(withIdentifier: K.Segue.summaryWorkdayDetailNav, sender: workdays[indexPath.row])
+        performSegue(withIdentifier: K.Navigation.summaryWorkdayDetailNav, sender: workdays[indexPath.row])
     }
 }
 // MARK: - UITableViewDataSource
@@ -156,7 +156,7 @@ extension SummaryViewController: UITableViewDataSource {
 // MARK: - EditWorkdayDelegate
 extension SummaryViewController: EditWorkdayDelegate {
     func editWorkday(_ workDetailViewController: WorkDetailViewController, workday: WorkdayItem) {
-        performSegue(withIdentifier: K.Segue.summaryEditWorkdayNav, sender: workday.objectID)
+        performSegue(withIdentifier: K.Navigation.summaryEditWorkdayNav, sender: workday.objectID)
     }
 }
 // MARK: - CoreDataServiceDelegate

@@ -10,7 +10,6 @@ import UIKit
 protocol AddEditWorkdayManagerDelegate: UITextFieldDelegate {
     func didUpdateCurrencyText(_ addEditWorkdayManager: AddEditWorkdayManager, newCurrencyValue: String?)
 }
-
 struct AddEditWorkdayManager {
     private var payRateAmount = 0
     weak var delegate: AddEditWorkdayManagerDelegate?
@@ -19,7 +18,7 @@ struct AddEditWorkdayManager {
         formatter.numberStyle = NumberFormatter.Style.currency
         let amount = Double(payRateAmount / 100) + Double(payRateAmount % 100) / 100
         return formatter.string(from: NSNumber(value: amount))
-
+        
     }
     mutating func validateCurrencyInput(string: String) -> Bool {
         // Check to see if amount is within allowed limit and not empty.
@@ -29,7 +28,7 @@ struct AddEditWorkdayManager {
         if let digit = Int(string) {
             payRateAmount = payRateAmount * 10 + digit
             delegate?.didUpdateCurrencyText(self, newCurrencyValue: updateAmount())
-
+            
         }
         if string == "" {
             payRateAmount /=  10

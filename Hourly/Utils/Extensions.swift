@@ -15,7 +15,6 @@ extension UITextField {
         }
         return true
     }
-    
     func currencyStringToDouble() -> Double? {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
@@ -27,12 +26,10 @@ extension UITextField {
             return nil
         }
     }
-    
     @IBInspectable var doneAccessory: Bool{
         get { return self.doneAccessory }
         set (hasDone) { if hasDone{ addDoneButtonOnKeyboard() } }
     }
-    
     func addDoneButtonOnKeyboard() {
         let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
         doneToolbar.barStyle = .default
@@ -47,28 +44,21 @@ extension UITextField {
         self.inputAccessoryView = doneToolbar
     }
     
-    @objc func doneButtonAction() {
-        self.resignFirstResponder()
-    }
+    @objc func doneButtonAction() { self.resignFirstResponder() }
 }
-
 extension UITextView {    
     @IBInspectable var doneAccessory: Bool{
         get { return self.doneAccessory }
         set (hasDone) { if hasDone{ addDoneButtonOnKeyboard() } }
     }
-    
     func addDoneButtonOnKeyboard() {
         let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
         doneToolbar.barStyle = .default
-        
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneButtonAction))
-        
         let items = [flexSpace, done]
         doneToolbar.items = items
         doneToolbar.sizeToFit()
-        
         self.inputAccessoryView = doneToolbar
     }
     
@@ -76,8 +66,6 @@ extension UITextView {
         self.resignFirstResponder()
     }
 }
-
-
 extension Date {
     var startOfDay: Date {
         let calendar = Calendar.current
@@ -104,7 +92,6 @@ extension Date {
         formatter.dateFormat = "EEEE, MMMM d, yyyy"
         return formatter.string(from: self)
     }
-    
     func formatTimeToString() -> String {
         let formatter = DateFormatter()
         formatter.timeStyle = .short
@@ -113,12 +100,10 @@ extension Date {
     func get(_ components: Calendar.Component..., calendar: Calendar = Calendar.current) -> DateComponents {
         return calendar.dateComponents(Set(components), from: self)
     }
-    
     func get(_ component: Calendar.Component, calendar: Calendar = Calendar.current) -> Int {
         return calendar.component(component, from: self)
     }
 }
-
 extension Double {
     func convertToCurrency() -> String {
         let formatter = NumberFormatter()
@@ -126,7 +111,6 @@ extension Double {
         return formatter.string(from: NSNumber(value: self)) ?? "$0.00"
     }
 }
-
 extension Int {
     func minutesToHoursDouble() -> Double {
         return Double (self / 60)

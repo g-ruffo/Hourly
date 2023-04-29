@@ -26,7 +26,7 @@ class ClientDetailsViewController: UIViewController {
     @IBOutlet weak var addressTextField: UITextField!
     var client: ClientItem?
     weak var delegate: EditClientDelegate?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setClientDetails()

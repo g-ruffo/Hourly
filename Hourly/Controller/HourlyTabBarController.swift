@@ -16,11 +16,11 @@ class HourlyTabBarController: UITabBarController {
         }
     private func initializeTabBarItems() {
         // Instantiate view controllers
-        let summaryNav = self.storyboard?.instantiateViewController(withIdentifier: K.Identifiers.summaryNav) as! UINavigationController
-        let calendarNav = self.storyboard?.instantiateViewController(withIdentifier: K.Identifiers.calendarNav) as! UINavigationController
-        let workdaysNav = self.storyboard?.instantiateViewController(withIdentifier: K.Identifiers.workdaysNav) as! UINavigationController
-        let settingsNav = self.storyboard?.instantiateViewController(withIdentifier: K.Identifiers.settingsNav) as! UINavigationController
-        let newWorkdayNav = self.storyboard?.instantiateViewController(withIdentifier: K.Identifiers.newWorkdayNav) as! UINavigationController
+        let summaryNav = self.storyboard?.instantiateViewController(withIdentifier: K.Navigation.summaryNav) as! UINavigationController
+        let calendarNav = self.storyboard?.instantiateViewController(withIdentifier: K.Navigation.calendarNav) as! UINavigationController
+        let workdaysNav = self.storyboard?.instantiateViewController(withIdentifier: K.Navigation.workdaysNav) as! UINavigationController
+        let settingsNav = self.storyboard?.instantiateViewController(withIdentifier: K.Navigation.settingsNav) as! UINavigationController
+        let newWorkdayNav = self.storyboard?.instantiateViewController(withIdentifier: K.Navigation.newWorkdayNav) as! UINavigationController
         
         // Create Tab Bar items
         summaryNav.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house.fill"))
@@ -39,7 +39,7 @@ class HourlyTabBarController: UITabBarController {
         }
     }
         func navigateToWorday() {
-            let createAdNavController = self.storyboard?.instantiateViewController(withIdentifier: K.Identifiers.newWorkdayNav) as! UINavigationController
+            let createAdNavController = self.storyboard?.instantiateViewController(withIdentifier: K.Navigation.newWorkdayNav) as! UINavigationController
             createAdNavController.modalPresentationCapturesStatusBarAppearance = true
             self.present(createAdNavController, animated: true, completion: nil)
         }

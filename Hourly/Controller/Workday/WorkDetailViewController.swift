@@ -12,9 +12,9 @@ protocol EditWorkdayDelegate: AnyObject {
 }
 
 class WorkDetailViewController: UIViewController {
+    // MARK: - Variables
     @IBOutlet weak var draftButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
-    // MARK: - Fields to set
     @IBOutlet weak var clientLabel: UILabel!
     @IBOutlet weak var earningsLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -30,22 +30,30 @@ class WorkDetailViewController: UIViewController {
     private var savedPhotos: Array<PhotoItem> = []
     var workday: WorkdayItem?
     weak var delegate: EditWorkdayDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Set the delegate and data source.
         collectionView.delegate = self
         collectionView.dataSource = self
         setWorkdayDetails()
         collectionView.register(PhotoCell.nib(), forCellWithReuseIdentifier: K.Cell.photoCell)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == K.Segue.detailsPhotoCollectionNav {
+        if segue.identifier == K.Navigation.detailsPhotoCollectionNav {
             let destinationVC = segue.destination as? PhotoViewController
+            // Pass the workdays photos to the destination view controller.
             destinationVC?.photos = savedPhotos
+            // Pass the index of the selected photo to the destination view controller.
             destinationVC?.startingRow = sender as? Int
         }
     }
+    // Load the selected workday and set the corresponding text fields values.
     private func setWorkdayDetails() {
-        guard let day = workday else { fatalError("Unable to get work day") }
+        guard let day = workday else {
+            print("Unable to get work day")
+            return
+        }
         clientLabel.text = day.clientName
         earningsLabel.text = day.earnings.convertToCurrency()
         dateLabel.text = day.date?.formatDateToString() ?? "No date set"
@@ -66,22 +74,22 @@ class WorkDetailViewController: UIViewController {
         } else {
             locationLabel.text = day.location
         }
+        // If there are no photos associated with the workday hide the collection view.
         savedPhotos = day.photos?.allObjects as? Array<PhotoItem> ?? []
         collectionView.isHidden = savedPhotos.count < 1
     }
-
+    // Called when the trailing navigation bar button is pressed.
     @IBAction func editButtonPressed(_ sender: UIButton) {
-            self.dismiss(animated: true) {
-                guard let editWorkday = self.workday else {
-                    fatalError("Unable to get workday to edit")
-                }
-                self.delegate?.editWorkday(self, workday: editWorkday)
+        self.dismiss(animated: true) {
+            guard let editWorkday = self.workday else {
+                print("Unable to get workday to edit")
+                return
             }
+            self.delegate?.editWorkday(self, workday: editWorkday)
+        }
     }
 }
-
 // MARK: - UICollectionViewDataSource
-
 extension WorkDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return savedPhotos.count
@@ -92,20 +100,18 @@ extension WorkDetailViewController: UICollectionViewDataSource {
         if let image = UIImage(data: savedPhotos[indexPath.row].image!) {
             cell.imageView.image = image
         } else {
+            // If image cant be retrieved set the image as a question mark.
             cell.imageView.image = UIImage(systemName: "externaldrive.badge.questionmark")
         }
         return cell
     }
 }
-
 // MARK: - UICollectionViewDelegate
-
 extension WorkDetailViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: K.Segue.detailsPhotoCollectionNav, sender: indexPath.row)
+        performSegue(withIdentifier: K.Navigation.detailsPhotoCollectionNav, sender: indexPath.row)
     }
 }
-
 // MARK: - UICollectionViewDelegateFlowLayout
 extension WorkDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,

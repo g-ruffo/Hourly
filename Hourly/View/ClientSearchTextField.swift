@@ -12,35 +12,30 @@ protocol ClientSearchDelegate: AnyObject {
     func selectedExistingClient(_ clientSearchTextField: ClientSearchTextField, clientID: NSManagedObjectID?)
     func didEndEditing(_ clientSearchTextField: ClientSearchTextField)
 }
-
 extension ClientSearchDelegate {
     func didEndEditing(_ clientSearchTextField: ClientSearchTextField) {}
 }
-
 class ClientSearchTextField: FloatingLabelTextField {
     // MARK: - Variables
     var clientArray: Array<ClientItem> = []
     var tableView: UITableView?
     private let coreDataService = CoreDataService()
     weak var searchDelegate: ClientSearchDelegate?
-
+    
     open override func willMove(toWindow newWindow: UIWindow?) {
         super.willMove(toWindow: newWindow)
         tableView?.removeFromSuperview()
     }
-    
     override open func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
         // Add targets to notify function when editing changes or finishes.
         self.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         self.addTarget(self, action: #selector(textFieldDidEndEditing), for: .editingDidEnd)
     }
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         buildSearchTableView()
     }
-    
     @objc open func textFieldDidChange(){
         // If text changes set the selected client to nil.
         self.searchDelegate?.selectedExistingClient(self, clientID: nil)
@@ -48,21 +43,18 @@ class ClientSearchTextField: FloatingLabelTextField {
         updateSearchTableView()
         tableView?.isHidden = false
     }
-    
     @objc open func textFieldDidEndEditing() {
         searchDelegate?.didEndEditing(self)
     }
-    
     // MARK : Filtering methods
     fileprivate func filter() {
         let predicate = NSPredicate(format: "companyName CONTAINS[cd] %@", self.text!)
         let request : NSFetchRequest<ClientItem> = ClientItem.fetchRequest()
         request.predicate = predicate
-
+        
         // Loading the data into the dataList
         coreDataService.getClients(withRequest: request)
-     }
-    
+    }
     func buildSearchTableView() {
         if let tableView = tableView {
             coreDataService.delegate = self
@@ -75,43 +67,36 @@ class ClientSearchTextField: FloatingLabelTextField {
         }
         updateSearchTableView()
     }
-    
     func updateSearchTableView() {
-         if let tableView = tableView {
-             superview?.bringSubviewToFront(tableView)
-             var tableHeight: CGFloat = 0
-             tableHeight = tableView.contentSize.height
-             
-             // Set a bottom margin of 10p
-             if tableHeight < tableView.contentSize.height {
-                 tableHeight -= 10
-             }
-             
-             // Set tableView frame
-             var tableViewFrame = CGRect(x: 0, y: 0, width: frame.size.width - 4, height: tableHeight)
-             tableViewFrame.origin = self.convert(tableViewFrame.origin, to: nil)
-             tableViewFrame.origin.x += 2
-             tableViewFrame.origin.y += frame.size.height + 2
-             UIView.animate(withDuration: 0.2, animations: { [weak self] in
-                 self?.tableView?.frame = tableViewFrame
-             })
-             
-             //Setting tableView style
-             tableView.layer.masksToBounds = true
-             tableView.separatorInset = UIEdgeInsets.zero
-             tableView.layer.cornerRadius = 5.0
-             tableView.separatorColor = UIColor.lightGray
-             tableView.backgroundColor = UIColor.white.withAlphaComponent(0.4)
-             
-             if self.isFirstResponder {
-                 superview?.bringSubviewToFront(self)
-             }
-             
-             DispatchQueue.main.async { tableView.reloadData() }
-         }
-     }
+        if let tableView = tableView {
+            superview?.bringSubviewToFront(tableView)
+            var tableHeight: CGFloat = 0
+            tableHeight = tableView.contentSize.height
+            // Set a bottom margin of 10p.
+            if tableHeight < tableView.contentSize.height {
+                tableHeight -= 10
+            }
+            // Set tableView frame.
+            var tableViewFrame = CGRect(x: 0, y: 0, width: frame.size.width - 4, height: tableHeight)
+            tableViewFrame.origin = self.convert(tableViewFrame.origin, to: nil)
+            tableViewFrame.origin.x += 2
+            tableViewFrame.origin.y += frame.size.height + 2
+            UIView.animate(withDuration: 0.2, animations: { [weak self] in
+                self?.tableView?.frame = tableViewFrame
+            })
+            //Setting tableView style.
+            tableView.layer.masksToBounds = true
+            tableView.separatorInset = UIEdgeInsets.zero
+            tableView.layer.cornerRadius = 5.0
+            tableView.separatorColor = UIColor.lightGray
+            tableView.backgroundColor = UIColor.white.withAlphaComponent(0.4)
+            if self.isFirstResponder {
+                superview?.bringSubviewToFront(self)
+            }
+            DispatchQueue.main.async { tableView.reloadData() }
+        }
+    }
 }
-
 // MARK: - UITableViewDelegate
 extension ClientSearchTextField: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -122,7 +107,6 @@ extension ClientSearchTextField: UITableViewDelegate {
         self.endEditing(true)
     }
 }
-
 // MARK: - UITableViewDataSource
 extension ClientSearchTextField: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {

@@ -79,7 +79,7 @@ class AddEditWorkdayViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == K.Segue.editPhotoCollectionNav {
+        if segue.identifier == K.Navigation.editPhotoCollectionNav {
             let destinationVC = segue.destination as? PhotoViewController
             destinationVC?.startingRow = sender as? Int
             destinationVC?.allowEditing = true
@@ -212,8 +212,8 @@ class AddEditWorkdayViewController: UIViewController {
             let workDate = datePicker.date.startOfDay
             let adjustedStart = manager.setStartTimeDate(startTime: startTimeDatePicker.date, date: workDate)
             let adjustedEnd = manager.setEndTimeDate(startTime: adjustedStart,
-                endTime: endTimeDatePicker.date,
-                date: workDate)
+                                                     endTime: endTimeDatePicker.date,
+                                                     date: workDate)
             let lunch = Int32(selectedLunchTimeMinutes ?? 0)
             let rate = payRateTexfield.currencyStringToDouble() ?? 0.00
             let mileage = Int32(selectedMileage ?? 0)
@@ -352,7 +352,7 @@ extension AddEditWorkdayViewController: UICollectionViewDelegate {
         if indexPath.item == photos.count {
             createPhotoPicker()
         } else {
-            performSegue(withIdentifier: K.Segue.editPhotoCollectionNav, sender: indexPath.row)
+            performSegue(withIdentifier: K.Navigation.editPhotoCollectionNav, sender: indexPath.row)
         }
     }
 }

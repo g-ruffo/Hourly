@@ -8,7 +8,7 @@
 import UIKit
 
 class CalendarCell: UICollectionViewCell {
-
+    
     @IBOutlet weak var dayOfMonthLabel: UILabel!
     @IBOutlet weak var stackView: UIStackView!
     
@@ -18,7 +18,6 @@ class CalendarCell: UICollectionViewCell {
         dayOfMonthLabel.layer.cornerRadius = dayOfMonthLabel.frame.height / 2
         dayOfMonthLabel.clipsToBounds = true
     }
-    
     func configure(title: String, with days: [WorkdayItem]) {
         dayOfMonthLabel.text = title
         // If title is empty, the cell is representing a day in a different month.
@@ -28,7 +27,7 @@ class CalendarCell: UICollectionViewCell {
             for day in days {
                 let image = UIImageView(image: UIImage(systemName: "square.fill"))
                 image.tintColor = .clear
-
+                
                 var colour = UIColor()
                 // If the workday is not associated with an existing client set its colour to gray.
                 if let tagColour = day.client?.tagColour { colour = UIColor(tagColour) }

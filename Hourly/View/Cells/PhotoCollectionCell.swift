@@ -16,8 +16,8 @@ class PhotoCollectionCell: UICollectionViewCell {
         textView.layer.cornerRadius = 10
         textView.addDoneButtonOnKeyboard()
         // Move the text view based on the position of the keyboard.
-        textView.bottomAnchor.constraint(equalTo: contentView.keyboardLayoutGuide.topAnchor, constant: -12).isActive = true
-
+        textView.bottomAnchor.constraint(equalTo: contentView.keyboardLayoutGuide.topAnchor,
+                                         constant: -12).isActive = true
     }
     // Set cell style based on whether the user is editing or viewing the data.
     func setEditingState(_ isEditing: Bool) {

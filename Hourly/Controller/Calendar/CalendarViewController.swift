@@ -18,7 +18,7 @@ class CalendarViewController: UIViewController {
     private let manager = CalendarManager()
     private var workdays: Array<WorkdayItem> = []
     private let coreDataService = CoreDataService()
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Set delegates and datasource to self.
@@ -30,7 +30,7 @@ class CalendarViewController: UIViewController {
         createCalendarGestureRecognizer()
         // Add observer to notify controller if a new workday has been added.
         NotificationCenter.default.addObserver(self, selector: #selector(workdaysHaveBeenUpdated), name: K.NotificationKeys.updateWorkdaysNotification, object: nil)
-
+        
     }
     
     deinit {
@@ -38,7 +38,7 @@ class CalendarViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == K.Segue.calendarDetailNav {
+        if segue.identifier == K.Navigation.calendarDetailNav {
             let destinationNav = segue.destination as? CalendarDetailController
             // Sets the workdays to be displayed on the detail view controller.
             destinationNav?.workdays = (sender as? Array<WorkdayItem>)!
@@ -176,7 +176,7 @@ extension CalendarViewController: UICollectionViewDelegate {
         collectionView.deselectItem(at: indexPath, animated: true)
         // Only allow user to perform segue if the selected day has associated workdays.
         if totalSquares[indexPath.row].items.count > 0 {
-            performSegue(withIdentifier: K.Segue.calendarDetailNav, sender: totalSquares[indexPath.row].items)
+            performSegue(withIdentifier: K.Navigation.calendarDetailNav, sender: totalSquares[indexPath.row].items)
         }
     }
 }
@@ -186,7 +186,7 @@ extension CalendarViewController: UICollectionViewDataSource {
         return totalSquares.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.Identifiers.calendarCell, for: indexPath) as! CalendarCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.Cell.calendarCell, for: indexPath) as! CalendarCell
         
         let dayObject = totalSquares[indexPath.item]
         // If the cell date matches todays date add blue circle around the label.
@@ -216,8 +216,8 @@ extension CalendarViewController: UICollectionViewDelegateFlowLayout{
 }
 // MARK: - CoreDataServiceDelegate
 extension CalendarViewController: CoreDataServiceDelegate {
-        func loadedWorkdays(_ coreDataService: CoreDataService, workdayItems: Array<WorkdayItem>) {
-            workdays = workdayItems
+    func loadedWorkdays(_ coreDataService: CoreDataService, workdayItems: Array<WorkdayItem>) {
+        workdays = workdayItems
     }
 }
 

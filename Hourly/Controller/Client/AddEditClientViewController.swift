@@ -25,7 +25,7 @@ class AddEditClientViewController: UIViewController {
     private var manager = AddEditClientManager()
     private var isEditingClient = false
     var editClientId: NSManagedObjectID?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Set delegates.
@@ -50,11 +50,11 @@ class AddEditClientViewController: UIViewController {
         deleteBarButton.isEnabled = isEditingClient
         deleteBarButton.tintColor = isEditingClient ? .red : .clear
     }
-
+    
     func showAlertDialog() {
         let alertDialog = UIAlertController(title: S.alertTitleMissingInfo.localized,
-                                              message: S.alertMessageMissingInfo.localized,
-                                              preferredStyle: .alert)
+                                            message: S.alertMessageMissingInfo.localized,
+                                            preferredStyle: .alert)
         
         let dismissButton = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
             alertDialog.dismiss(animated: true)

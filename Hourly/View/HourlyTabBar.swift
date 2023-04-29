@@ -31,7 +31,6 @@ class HourlyTabBar: UITabBar {
         return middleButton
     }()
     
-    
     // MARK: - View Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -41,18 +40,15 @@ class HourlyTabBar: UITabBar {
         self.layer.shadowOpacity = 0.4
         self.layer.masksToBounds = false
     }
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         // Set the middle buttons position to the center and up 5p.
         middleButton.center = CGPoint(x: frame.width / 2, y: 5)
     }
-    
     // MARK: - Actions
     @objc func middleButtonAction(sender: UIButton) {
         didTapButton?()
     }
-    
     // MARK: - HitTest
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         guard !clipsToBounds && !isHidden && alpha > 0 else { return nil }

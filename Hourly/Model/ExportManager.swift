@@ -8,7 +8,6 @@
 import Foundation
 
 struct ExportManager {
-    
     func exportWorkdaysToCSV(withObjects data: [WorkdayItem],
                              client: String,
                              startDate: Date,
@@ -64,18 +63,18 @@ struct ExportManager {
         exportCSVString.append(summaryValues)
         
         let fileManager = FileManager.default
-
+        
         var path = url.appendingPathComponent("\(fileName).\(fileExtension)")
-                
+        
         if (!fileManager.fileExists(atPath: path.path)) {
             fileManager.createFile(atPath: path.path, contents: nil)
         } else {
             // If file name exists keep incrementing counter and append it to name until unique path is found.
             while fileManager.fileExists(atPath: path.path) {
-                   counter += 1
-                   let newFileName =  "\(fileName)_\(counter).\(fileExtension)"
+                counter += 1
+                let newFileName =  "\(fileName)_\(counter).\(fileExtension)"
                 path = url.appendingPathComponent(newFileName)
-               }
+            }
         }
         do {
             try exportCSVString.write(to: path, atomically: true, encoding: .utf8)

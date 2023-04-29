@@ -10,7 +10,6 @@ import UIKit
 protocol ColourTagButtonDelegate: AnyObject {
     func didUpdateColourTag(_ colourTagButton: ColourTagButton, hexString: String)
 }
-
 class ColourTagButton: UIButton {
     // MARK: - Variables
     weak var delegate: ColourTagButtonDelegate?
@@ -29,24 +28,24 @@ class ColourTagButton: UIButton {
         self.layer.cornerRadius = 4
         self.titleLabel?.tintColor = .black
         self.tintColor = UIColor(selectedColour)
-
+        
         // Called when selection is made.
         let optionClosure = {(action: UIAction) in
             self.setImage(action.image, for: .normal)
             self.selectedColour = action.discoverabilityTitle ?? "#0096FF"
             self.delegate?.didUpdateColourTag(self, hexString: self.selectedColour)
-                }
-
+        }
+        
         var optionsArray = [UIAction]()
-
+        
         for hex in tagStringColours {
             let image = UIImage(systemName: "circle.fill")?.withTintColor(UIColor(hex), renderingMode: .alwaysOriginal)
             // Create each action and insert the coloured image.
             let action = UIAction(image: image, discoverabilityTitle: hex, state: .off, handler: optionClosure)
-
+            
             optionsArray.append(action)
         }
-                
+        
         // Set the starting menu item. If selected colour is nil, user is creating new client.
         let startingItem = optionsArray.first { $0.discoverabilityTitle == selectedColour } ?? optionsArray[0]
         startingItem.state = .on

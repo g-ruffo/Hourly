@@ -9,27 +9,11 @@ import Foundation
 
 
 struct K {
-    
-    struct Identifiers {
-        static let summaryNav = "SummaryNavigation"
-        static let calendarNav = "CalendarNavigation"
-        static let workdaysNav = "ClientsNavigation"
-        static let exportNav = "ExportNavigation"
-        static let newWorkdayNav = "WorkdayNavigation"
-        static let settingsNav = "SettingsNavigation"
-        static let clientCell = "ClientCell"
-        static let addClientNav = "AddClientNavigation"
-        static let detailClientNav = "DetailClientNavigation"
-        static let settingsCell = "SettingsReusableCell"
-        static let settingsNibName = "SettingsCell"
-        static let calendarCell = "CalendarCell"
-    }
-    
+
     struct NotificationKeys{
         private static let workdaysUpdated = "ca.veltus.hourly.notification.workdaysUpdated"
         static let updateWorkdaysNotification = Notification.Name(rawValue: workdaysUpdated)
     }
-    
     struct Cell {
         static let clientSearchCell = "ClientSearchCell"
         static let photoCell = "PhotoCell"
@@ -37,9 +21,12 @@ struct K {
         static let photoCollectionCell = "PhotoCollectionCell"
         static let addPhotoCell = "AddPhotoCell"
         static let calendarDetailCell = "CalendarDetailCell"
+        static let clientCell = "ClientCell"
+        static let settingsCell = "SettingsReusableCell"
+        static let settingsNibName = "SettingsCell"
+        static let calendarCell = "CalendarCell"
     }
-    
-    struct Segue {
+    struct Navigation {
         static let workDetailNav = "WorkDetailNavigation"
         static let editWorkdayNav = "EditWorkdayNavigation"
         static let clientsNav = "ClientsNavigation"
@@ -49,9 +36,15 @@ struct K {
         static let calendarDetailNav = "CalendarDetailNavigation"
         static let summaryWorkdayDetailNav = "SummaryWorkdayDetailNavigation"
         static let summaryEditWorkdayNav = "SummaryEditWorkdayNavigation"
-
+        static let summaryNav = "SummaryNavigation"
+        static let calendarNav = "CalendarNavigation"
+        static let workdaysNav = "ClientsNavigation"
+        static let exportNav = "ExportNavigation"
+        static let newWorkdayNav = "WorkdayNavigation"
+        static let settingsNav = "SettingsNavigation"
+        static let addClientNav = "AddClientNavigation"
+        static let detailClientNav = "DetailClientNavigation"
     }
-    
     struct UserDefaultsKey {
         static let clientName = "workdayClientName"
         static let date = "workdayDate"
@@ -63,9 +56,7 @@ struct K {
         static let mileage = "workdayMileage"
         static let description = "workdayDescription"
         static let client = "existingClient"
-
     }
-
     struct NavigationBar {
         static let middleButtonSize: CGFloat = 64
         static let middleButtonRadius: CGFloat = middleButtonSize / 2

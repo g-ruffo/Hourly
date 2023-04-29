@@ -8,7 +8,7 @@
 import UIKit
 
 class AddPhotoCell: UICollectionViewCell {
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,5 +19,4 @@ class AddPhotoCell: UICollectionViewCell {
     static func nib() -> UINib {
         return UINib(nibName: K.Cell.addPhotoCell, bundle: nil)
     }
-
 }
