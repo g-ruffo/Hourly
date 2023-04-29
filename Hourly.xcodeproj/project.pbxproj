@@ -32,6 +32,7 @@
 		79A563F829FB31E8004E8A7E /* FloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A563F729FB31E8004E8A7E /* FloatingLabelTextField.swift */; };
 		79A5640529FC9CD6004E8A7E /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 79A5640429FC9CD6004E8A7E /* FirebaseAnalyticsSwift */; };
 		79A5640729FC9CD6004E8A7E /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 79A5640629FC9CD6004E8A7E /* FirebaseCrashlytics */; };
+		79A5640A29FC9FDF004E8A7E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79A5640929FC9FDF004E8A7E /* GoogleService-Info.plist */; };
 		79AED58329F0DE9F00FBF2E4 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AED58129F0DE9F00FBF2E4 /* PhotoCell.swift */; };
 		79AED58429F0DE9F00FBF2E4 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79AED58229F0DE9F00FBF2E4 /* PhotoCell.xib */; };
 		79AED58A29F1FBD800FBF2E4 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AED58929F1FBD800FBF2E4 /* PhotoViewController.swift */; };
@@ -104,6 +105,7 @@
 		7983B00629F4C12700F2D76E /* SummaryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryManager.swift; sourceTree = "<group>"; };
 		7983B00829F7285600F2D76E /* ExportManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportManager.swift; sourceTree = "<group>"; };
 		79A563F729FB31E8004E8A7E /* FloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLabelTextField.swift; sourceTree = "<group>"; };
+		79A5640929FC9FDF004E8A7E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		79AED58129F0DE9F00FBF2E4 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		79AED58229F0DE9F00FBF2E4 /* PhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
 		79AED58929F1FBD800FBF2E4 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 		79FA886C29E4AD66003C6DFB /* Hourly */ = {
 			isa = PBXGroup;
 			children = (
+				79A5640929FC9FDF004E8A7E /* GoogleService-Info.plist */,
 				79FA88A029E4B256003C6DFB /* Utils */,
 				79FA886D29E4AD66003C6DFB /* AppDelegate.swift */,
 				79FA886F29E4AD66003C6DFB /* SceneDelegate.swift */,
@@ -463,6 +466,7 @@
 				79E4B9F729F3ADF000BE04FC /* CalendarDetailCell.xib in Resources */,
 				79FA88A929E4B37E003C6DFB /* Localizable.strings in Resources */,
 				79FA887A29E4AD67003C6DFB /* Assets.xcassets in Resources */,
+				79A5640A29FC9FDF004E8A7E /* GoogleService-Info.plist in Resources */,
 				7983B00529F4A09900F2D76E /* WorkdayCell.xib in Resources */,
 				79FA887529E4AD66003C6DFB /* Main.storyboard in Resources */,
 			);
@@ -487,6 +491,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		79A5640829FC9DE8004E8A7E /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
