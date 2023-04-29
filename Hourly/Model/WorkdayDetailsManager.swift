@@ -8,7 +8,7 @@
 import Foundation
 
 struct WorkdayDetailsManager {
-    
+    // Returns the time of the input date as a string.
     func timeToDisplayString(_ date: Date?) -> String {
         if let time = date {
             let formatter = DateFormatter()

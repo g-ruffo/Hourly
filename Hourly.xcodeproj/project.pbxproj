@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7912FB3329F25DE4008BEA14 /* AddPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7912FB3129F25DE4008BEA14 /* AddPhotoCell.swift */; };
 		7912FB3429F25DE4008BEA14 /* AddPhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7912FB3229F25DE4008BEA14 /* AddPhotoCell.xib */; };
+		7931A4D829FDB2E5000AE03C /* WorkdayDetailsManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7931A4D729FDB2E5000AE03C /* WorkdayDetailsManagerTests.swift */; };
 		795BB46B29E63FB1000D7FB1 /* ColourTagButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795BB46A29E63FB1000D7FB1 /* ColourTagButton.swift */; };
 		795BB46E29E65D99000D7FB1 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795BB46C29E65D99000D7FB1 /* SettingsCell.swift */; };
 		795BB46F29E65D99000D7FB1 /* SettingsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 795BB46D29E65D99000D7FB1 /* SettingsCell.xib */; };
@@ -89,6 +90,7 @@
 /* Begin PBXFileReference section */
 		7912FB3129F25DE4008BEA14 /* AddPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoCell.swift; sourceTree = "<group>"; };
 		7912FB3229F25DE4008BEA14 /* AddPhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPhotoCell.xib; sourceTree = "<group>"; };
+		7931A4D729FDB2E5000AE03C /* WorkdayDetailsManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkdayDetailsManagerTests.swift; sourceTree = "<group>"; };
 		795BB46A29E63FB1000D7FB1 /* ColourTagButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourTagButton.swift; sourceTree = "<group>"; };
 		795BB46C29E65D99000D7FB1 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		795BB46D29E65D99000D7FB1 /* SettingsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsCell.xib; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 			children = (
 				79A5641729FCB979004E8A7E /* AddEditWorkdayManagerTests.swift */,
 				79AB6D0E29FDAC1D002E5E83 /* CalendarManagerTests.swift */,
+				7931A4D729FDB2E5000AE03C /* WorkdayDetailsManagerTests.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -594,6 +597,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7931A4D829FDB2E5000AE03C /* WorkdayDetailsManagerTests.swift in Sources */,
 				79AB6D0F29FDAC1D002E5E83 /* CalendarManagerTests.swift in Sources */,
 				79A5641829FCB979004E8A7E /* AddEditWorkdayManagerTests.swift in Sources */,
 				79FA888829E4AD67003C6DFB /* HourlyTests.swift in Sources */,
