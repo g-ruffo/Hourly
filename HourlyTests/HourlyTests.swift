@@ -6,6 +6,8 @@
 //
 
 import XCTest
+import Firebase
+
 @testable import Hourly
 
 final class HourlyTests: XCTestCase {

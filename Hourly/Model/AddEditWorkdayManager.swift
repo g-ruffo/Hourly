@@ -13,6 +13,7 @@ protocol AddEditWorkdayManagerDelegate: UITextFieldDelegate {
 struct AddEditWorkdayManager {
     private var payRateAmount = 0
     weak var delegate: AddEditWorkdayManagerDelegate?
+    
     func updateAmount() -> String? {
         let formatter = NumberFormatter()
         formatter.numberStyle = NumberFormatter.Style.currency
@@ -20,6 +21,7 @@ struct AddEditWorkdayManager {
         return formatter.string(from: NSNumber(value: amount))
         
     }
+    
     mutating func validateCurrencyInput(string: String) -> Bool {
         // Check to see if amount is within allowed limit and not empty.
         if payRateAmount >= 1000000 && !string.isEmpty {
@@ -28,7 +30,6 @@ struct AddEditWorkdayManager {
         if let digit = Int(string) {
             payRateAmount = payRateAmount * 10 + digit
             delegate?.didUpdateCurrencyText(self, newCurrencyValue: updateAmount())
-            
         }
         if string == "" {
             payRateAmount /=  10
@@ -36,6 +37,7 @@ struct AddEditWorkdayManager {
         }
         return false
     }
+    
     // Calculates earnings by finding the difference between the start and end time in seconds minus the lunch time.
     func calculateEarnings(startTime: Date?, endTime: Date?, lunchMinutes: Int?, payRate: Double?) -> Double {
         if let start = startTime, let end = endTime, let rate = payRate {
@@ -53,6 +55,7 @@ struct AddEditWorkdayManager {
             return 0.00
         }
     }
+    
     // Sets the start time date to the work date selected.
     func setStartTimeDate(startTime: Date?, date: Date) -> Date? {
         var resultTime: Date?
@@ -69,6 +72,7 @@ struct AddEditWorkdayManager {
         }
         return resultTime
     }
+    
     // Sets the end time date to the work date selected.
     func setEndTimeDate(startTime: Date?, endTime: Date?, date: Date) -> Date? {
         var resultTime: Date?
@@ -89,6 +93,7 @@ struct AddEditWorkdayManager {
         }
         return resultTime
     }
+    
     // Calculates time worked in minutes.
     func calculateTimeWorkedInMinutes(startTime: Date?, endTime: Date?, lunchMinutes: Int?) -> Int32 {
         if let start = startTime, let end = endTime {

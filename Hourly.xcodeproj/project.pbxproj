@@ -30,9 +30,12 @@
 		7983B00729F4C12700F2D76E /* SummaryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7983B00629F4C12700F2D76E /* SummaryManager.swift */; };
 		7983B00929F7285600F2D76E /* ExportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7983B00829F7285600F2D76E /* ExportManager.swift */; };
 		79A563F829FB31E8004E8A7E /* FloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A563F729FB31E8004E8A7E /* FloatingLabelTextField.swift */; };
-		79A5640529FC9CD6004E8A7E /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 79A5640429FC9CD6004E8A7E /* FirebaseAnalyticsSwift */; };
-		79A5640729FC9CD6004E8A7E /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 79A5640629FC9CD6004E8A7E /* FirebaseCrashlytics */; };
 		79A5640A29FC9FDF004E8A7E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79A5640929FC9FDF004E8A7E /* GoogleService-Info.plist */; };
+		79A5640E29FCB7EE004E8A7E /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 79A5640D29FCB7EE004E8A7E /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		79A5641029FCB7EE004E8A7E /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 79A5640F29FCB7EE004E8A7E /* FirebaseCrashlytics */; };
+		79A5641329FCB8E9004E8A7E /* UIColorHexSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 79A5641229FCB8E9004E8A7E /* UIColorHexSwift */; };
+		79A5641529FCB8F8004E8A7E /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 79A5641429FCB8F8004E8A7E /* FirebaseCrashlytics */; };
+		79A5641829FCB979004E8A7E /* AddEditWorkdayManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A5641729FCB979004E8A7E /* AddEditWorkdayManagerTests.swift */; };
 		79AED58329F0DE9F00FBF2E4 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AED58129F0DE9F00FBF2E4 /* PhotoCell.swift */; };
 		79AED58429F0DE9F00FBF2E4 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79AED58229F0DE9F00FBF2E4 /* PhotoCell.xib */; };
 		79AED58A29F1FBD800FBF2E4 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AED58929F1FBD800FBF2E4 /* PhotoViewController.swift */; };
@@ -106,6 +109,7 @@
 		7983B00829F7285600F2D76E /* ExportManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportManager.swift; sourceTree = "<group>"; };
 		79A563F729FB31E8004E8A7E /* FloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLabelTextField.swift; sourceTree = "<group>"; };
 		79A5640929FC9FDF004E8A7E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		79A5641729FCB979004E8A7E /* AddEditWorkdayManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditWorkdayManagerTests.swift; sourceTree = "<group>"; };
 		79AED58129F0DE9F00FBF2E4 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		79AED58229F0DE9F00FBF2E4 /* PhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
 		79AED58929F1FBD800FBF2E4 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
@@ -147,9 +151,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79A5640729FC9CD6004E8A7E /* FirebaseCrashlytics in Frameworks */,
-				79A5640529FC9CD6004E8A7E /* FirebaseAnalyticsSwift in Frameworks */,
+				79A5641029FCB7EE004E8A7E /* FirebaseCrashlytics in Frameworks */,
 				7964AFC329E7C24C00065863 /* UIColorHexSwift in Frameworks */,
+				79A5640E29FCB7EE004E8A7E /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,6 +161,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79A5641329FCB8E9004E8A7E /* UIColorHexSwift in Frameworks */,
+				79A5641529FCB8F8004E8A7E /* FirebaseCrashlytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,6 +194,21 @@
 				7983B00329F4A09900F2D76E /* WorkdayCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		79A5641129FCB8E9004E8A7E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		79A5641629FCB950004E8A7E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				79A5641729FCB979004E8A7E /* AddEditWorkdayManagerTests.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		79C2929B29EE1DC300A2A8BF /* Client */ = {
@@ -236,6 +257,7 @@
 				79FA888629E4AD67003C6DFB /* HourlyTests */,
 				79FA889029E4AD67003C6DFB /* HourlyUITests */,
 				79FA886B29E4AD66003C6DFB /* Products */,
+				79A5641129FCB8E9004E8A7E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -269,6 +291,7 @@
 		79FA888629E4AD67003C6DFB /* HourlyTests */ = {
 			isa = PBXGroup;
 			children = (
+				79A5641629FCB950004E8A7E /* Model */,
 				79FA888729E4AD67003C6DFB /* HourlyTests.swift */,
 			);
 			path = HourlyTests;
@@ -355,7 +378,7 @@
 				79FA886629E4AD66003C6DFB /* Sources */,
 				79FA886729E4AD66003C6DFB /* Frameworks */,
 				79FA886829E4AD66003C6DFB /* Resources */,
-				79A5640829FC9DE8004E8A7E /* ShellScript */,
+				79A5640829FC9DE8004E8A7E /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -364,8 +387,8 @@
 			name = Hourly;
 			packageProductDependencies = (
 				7964AFC229E7C24C00065863 /* UIColorHexSwift */,
-				79A5640429FC9CD6004E8A7E /* FirebaseAnalyticsSwift */,
-				79A5640629FC9CD6004E8A7E /* FirebaseCrashlytics */,
+				79A5640D29FCB7EE004E8A7E /* FirebaseAnalyticsWithoutAdIdSupport */,
+				79A5640F29FCB7EE004E8A7E /* FirebaseCrashlytics */,
 			);
 			productName = Hourly;
 			productReference = 79FA886A29E4AD66003C6DFB /* Hourly.app */;
@@ -385,6 +408,10 @@
 				79FA888529E4AD67003C6DFB /* PBXTargetDependency */,
 			);
 			name = HourlyTests;
+			packageProductDependencies = (
+				79A5641229FCB8E9004E8A7E /* UIColorHexSwift */,
+				79A5641429FCB8F8004E8A7E /* FirebaseCrashlytics */,
+			);
 			productName = HourlyTests;
 			productReference = 79FA888329E4AD67003C6DFB /* HourlyTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -441,7 +468,7 @@
 			mainGroup = 79FA886129E4AD66003C6DFB;
 			packageReferences = (
 				7964AFC129E7C24C00065863 /* XCRemoteSwiftPackageReference "UIColor-Hex-Swift" */,
-				79A5640329FC9CD6004E8A7E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				79A5640C29FCB7EE004E8A7E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 79FA886B29E4AD66003C6DFB /* Products */;
 			projectDirPath = "";
@@ -489,7 +516,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		79A5640829FC9DE8004E8A7E /* ShellScript */ = {
+		79A5640829FC9DE8004E8A7E /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -501,6 +528,7 @@
 				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
 				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
 			);
+			name = "Run Script";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -563,6 +591,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79A5641829FCB979004E8A7E /* AddEditWorkdayManagerTests.swift in Sources */,
 				79FA888829E4AD67003C6DFB /* HourlyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -930,7 +959,7 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		79A5640329FC9CD6004E8A7E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		79A5640C29FCB7EE004E8A7E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
@@ -946,14 +975,24 @@
 			package = 7964AFC129E7C24C00065863 /* XCRemoteSwiftPackageReference "UIColor-Hex-Swift" */;
 			productName = UIColorHexSwift;
 		};
-		79A5640429FC9CD6004E8A7E /* FirebaseAnalyticsSwift */ = {
+		79A5640D29FCB7EE004E8A7E /* FirebaseAnalyticsWithoutAdIdSupport */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 79A5640329FC9CD6004E8A7E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalyticsSwift;
+			package = 79A5640C29FCB7EE004E8A7E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
 		};
-		79A5640629FC9CD6004E8A7E /* FirebaseCrashlytics */ = {
+		79A5640F29FCB7EE004E8A7E /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 79A5640329FC9CD6004E8A7E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 79A5640C29FCB7EE004E8A7E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		79A5641229FCB8E9004E8A7E /* UIColorHexSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7964AFC129E7C24C00065863 /* XCRemoteSwiftPackageReference "UIColor-Hex-Swift" */;
+			productName = UIColorHexSwift;
+		};
+		79A5641429FCB8F8004E8A7E /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 79A5640C29FCB7EE004E8A7E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
 		};
 /* End XCSwiftPackageProductDependency section */
