@@ -30,7 +30,6 @@ class CalendarViewController: UIViewController {
         createCalendarGestureRecognizer()
         // Add observer to notify controller if a new workday has been added.
         NotificationCenter.default.addObserver(self, selector: #selector(workdaysHaveBeenUpdated), name: K.NotificationKeys.updateWorkdaysNotification, object: nil)
-        
     }
     
     deinit {
@@ -44,10 +43,12 @@ class CalendarViewController: UIViewController {
             destinationNav?.workdays = (sender as? Array<WorkdayItem>)!
         }
     }
+    
     // If new workday has been added reload workdays from database.
     @objc func workdaysHaveBeenUpdated(notification: NSNotification) {
         loadWorkdaysFromDatabase()
     }
+    
     // Listen for swipe events and if detected change the current month.
     private func createCalendarGestureRecognizer() {
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(onSwipe(_:)))
@@ -158,6 +159,7 @@ class CalendarViewController: UIViewController {
             }
         }
     }
+    
     func loadWorkdaysFromDatabase(slideInDirection: CGFloat? = nil) {
         // Create a fetch request using the first and last day of the selected month as a filter.
         let startDate = manager.firstOfMonth(date: selectedDate)
@@ -180,6 +182,7 @@ extension CalendarViewController: UICollectionViewDelegate {
         }
     }
 }
+
 // MARK: - CalendarViewController
 extension CalendarViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -200,6 +203,7 @@ extension CalendarViewController: UICollectionViewDataSource {
         return cell
     }
 }
+
 // MARK: - UICollectionViewDelegateFlowLayout
 extension CalendarViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -214,6 +218,7 @@ extension CalendarViewController: UICollectionViewDelegateFlowLayout{
         return 1.0
     }
 }
+
 // MARK: - CoreDataServiceDelegate
 extension CalendarViewController: CoreDataServiceDelegate {
     func loadedWorkdays(_ coreDataService: CoreDataService, workdayItems: Array<WorkdayItem>) {

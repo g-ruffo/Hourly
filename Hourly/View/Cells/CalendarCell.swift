@@ -18,6 +18,7 @@ class CalendarCell: UICollectionViewCell {
         dayOfMonthLabel.layer.cornerRadius = dayOfMonthLabel.frame.height / 2
         dayOfMonthLabel.clipsToBounds = true
     }
+    
     func configure(title: String, with days: [WorkdayItem]) {
         dayOfMonthLabel.text = title
         // If title is empty, the cell is representing a day in a different month.

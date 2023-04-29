@@ -26,16 +26,19 @@ class ClientSearchTextField: FloatingLabelTextField {
         super.willMove(toWindow: newWindow)
         tableView?.removeFromSuperview()
     }
+    
     override open func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
         // Add targets to notify function when editing changes or finishes.
         self.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         self.addTarget(self, action: #selector(textFieldDidEndEditing), for: .editingDidEnd)
     }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         buildSearchTableView()
     }
+    
     @objc open func textFieldDidChange(){
         // If text changes set the selected client to nil.
         self.searchDelegate?.selectedExistingClient(self, clientID: nil)
@@ -43,9 +46,11 @@ class ClientSearchTextField: FloatingLabelTextField {
         updateSearchTableView()
         tableView?.isHidden = false
     }
+    
     @objc open func textFieldDidEndEditing() {
         searchDelegate?.didEndEditing(self)
     }
+    
     // MARK : Filtering methods
     fileprivate func filter() {
         let predicate = NSPredicate(format: "companyName CONTAINS[cd] %@", self.text!)
@@ -55,6 +60,7 @@ class ClientSearchTextField: FloatingLabelTextField {
         // Loading the data into the dataList
         coreDataService.getClients(withRequest: request)
     }
+    
     func buildSearchTableView() {
         if let tableView = tableView {
             coreDataService.delegate = self
@@ -67,6 +73,7 @@ class ClientSearchTextField: FloatingLabelTextField {
         }
         updateSearchTableView()
     }
+    
     func updateSearchTableView() {
         if let tableView = tableView {
             superview?.bringSubviewToFront(tableView)
@@ -97,6 +104,7 @@ class ClientSearchTextField: FloatingLabelTextField {
         }
     }
 }
+
 // MARK: - UITableViewDelegate
 extension ClientSearchTextField: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -107,6 +115,7 @@ extension ClientSearchTextField: UITableViewDelegate {
         self.endEditing(true)
     }
 }
+
 // MARK: - UITableViewDataSource
 extension ClientSearchTextField: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -123,6 +132,7 @@ extension ClientSearchTextField: UITableViewDataSource {
         return cell
     }
 }
+
 // MARK: - CoreDataServiceDelegate
 extension ClientSearchTextField: CoreDataServiceDelegate {
     func loadedClients(_ coreDataService: CoreDataService, clientItems: Array<ClientItem>) {

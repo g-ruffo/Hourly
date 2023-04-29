@@ -19,6 +19,7 @@ class PhotoCollectionCell: UICollectionViewCell {
         textView.bottomAnchor.constraint(equalTo: contentView.keyboardLayoutGuide.topAnchor,
                                          constant: -12).isActive = true
     }
+    
     // Set cell style based on whether the user is editing or viewing the data.
     func setEditingState(_ isEditing: Bool) {
         textView.isEditable = isEditing

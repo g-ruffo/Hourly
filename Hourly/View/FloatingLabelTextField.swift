@@ -28,29 +28,35 @@ class FloatingLabelTextField: UITextField {
             }
         }
     }
+    
     override var placeholder: String? {
         didSet {
             floatingLabel.text = placeholder
             floatingLabel.sizeToFit()
         }
     }
+    
     required init?(coder aDecoder:NSCoder) {
         super.init(coder:aDecoder)
         configure()
     }
+    
     override init(frame:CGRect) {
         super.init(frame:frame)
         configure()
     }
+    
     override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
         // Call function when user taps the done button.
         self.addTarget(self, action: #selector(textFieldDidEndEditingOnExit), for: .editingDidEndOnExit)
     }
+    
     @objc open func textFieldDidEndEditingOnExit() {
         // Hide keyboard when done button is pressed.
         self.resignFirstResponder()
     }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         setTitlePositionForTextAlignment()
@@ -69,6 +75,7 @@ class FloatingLabelTextField: UITextField {
             showPlaceholder(isResponder)
         }
     }
+    
     override func textRect(forBounds bounds:CGRect) -> CGRect {
         var textRect = super.textRect(forBounds: bounds)
         if let txt = text , !txt.isEmpty {
@@ -78,6 +85,7 @@ class FloatingLabelTextField: UITextField {
         }
         return textRect.integral
     }
+    
     override func editingRect(forBounds bounds:CGRect) -> CGRect {
         var editingRect = super.editingRect(forBounds: bounds)
         if let txt = text , !txt.isEmpty {
@@ -87,6 +95,7 @@ class FloatingLabelTextField: UITextField {
         }
         return editingRect.integral
     }
+    
     override func clearButtonRect(forBounds bounds:CGRect) -> CGRect {
         var clearButtonRect = super.clearButtonRect(forBounds: bounds)
         if let txt = text , !txt.isEmpty {
@@ -96,6 +105,7 @@ class FloatingLabelTextField: UITextField {
         }
         return clearButtonRect.integral
     }
+    
     private func configure() {
         self.addDoneButtonOnKeyboard()
         borderStyle = .roundedRect
@@ -114,12 +124,14 @@ class FloatingLabelTextField: UITextField {
         }
         self.addSubview(floatingLabel)
     }
+    
     private func maxTopInset() -> CGFloat {
         if let fnt = font {
             return max(0, floor(bounds.size.height - fnt.lineHeight))
         }
         return 0
     }
+    
     private func setTitlePositionForTextAlignment() {
         let textRect = textRect(forBounds: bounds)
         var x = textRect.origin.x
@@ -130,6 +142,7 @@ class FloatingLabelTextField: UITextField {
         }
         floatingLabel.frame = CGRect(x:x, y:floatingLabel.frame.origin.y, width:floatingLabel.frame.size.width, height:floatingLabel.frame.size.height)
     }
+    
     private func showPlaceholder(_ animated:Bool) {
         UIView.animate(withDuration: animationDuration, delay:0, options: [UIView.AnimationOptions.beginFromCurrentState, UIView.AnimationOptions.curveEaseOut], animations:{
             // Set the animation.
@@ -139,6 +152,7 @@ class FloatingLabelTextField: UITextField {
             self.floatingLabel.frame = frame
         })
     }
+    
     private func hidePlaceholder(_ animated:Bool) {
         UIView.animate(withDuration: animationDuration, delay:0, options: [UIView.AnimationOptions.beginFromCurrentState, UIView.AnimationOptions.curveEaseIn], animations:{
             // Set the animation.

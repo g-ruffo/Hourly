@@ -36,19 +36,23 @@ class CalendarDetailCell: UITableViewCell {
             }
         }
     }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         headerView.backgroundColor?.withAlphaComponent(0.6)
     }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
     }
+    
     // Helper function to retrieve nib name when registering in view controller.
     static func nib() -> UINib {
         return UINib(nibName: K.Cell.calendarDetailCell, bundle: nil)
     }
+    
     public func configure(with day: WorkdayItem) {
         workday = day
     }
