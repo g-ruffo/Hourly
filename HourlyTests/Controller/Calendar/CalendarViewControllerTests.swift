@@ -27,6 +27,5 @@ final class CalendarViewControllerTests: XCTestCase {
     func testCurrentSelectedMonthIsEqualToApril() {
         let monthLabel = systemUnderTest.monthLabel
         XCTAssertEqual(monthLabel?.text, "April 2023")
-
     }
 }

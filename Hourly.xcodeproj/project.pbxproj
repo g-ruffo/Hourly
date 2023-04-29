@@ -54,6 +54,7 @@
 		79E4B9F629F3ADF000BE04FC /* CalendarDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E4B9F429F3ADF000BE04FC /* CalendarDetailCell.swift */; };
 		79E4B9F729F3ADF000BE04FC /* CalendarDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79E4B9F529F3ADF000BE04FC /* CalendarDetailCell.xib */; };
 		79E4B9FA29F3AE2100BE04FC /* CalendarDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E4B9F929F3AE2100BE04FC /* CalendarDetailController.swift */; };
+		79F0A74529FDD51800A2850E /* CoreDataServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F0A74429FDD51800A2850E /* CoreDataServiceMock.swift */; };
 		79F1AFC829E4BD0E004CED4E /* HourlyTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFC729E4BD0E004CED4E /* HourlyTabBar.swift */; };
 		79F1AFCA29E4BD32004CED4E /* HourlyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFC929E4BD32004CED4E /* HourlyTabBarController.swift */; };
 		79F1AFCC29E4BFBB004CED4E /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFCB29E4BFBB004CED4E /* CalendarViewController.swift */; };
@@ -135,6 +136,7 @@
 		79E4B9F429F3ADF000BE04FC /* CalendarDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDetailCell.swift; sourceTree = "<group>"; };
 		79E4B9F529F3ADF000BE04FC /* CalendarDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarDetailCell.xib; sourceTree = "<group>"; };
 		79E4B9F929F3AE2100BE04FC /* CalendarDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDetailController.swift; sourceTree = "<group>"; };
+		79F0A74429FDD51800A2850E /* CoreDataServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataServiceMock.swift; sourceTree = "<group>"; };
 		79F1AFC729E4BD0E004CED4E /* HourlyTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyTabBar.swift; sourceTree = "<group>"; };
 		79F1AFC929E4BD32004CED4E /* HourlyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyTabBarController.swift; sourceTree = "<group>"; };
 		79F1AFCB29E4BFBB004CED4E /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 		797F535D29FDBDE5002DE3A4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				79F0A74229FDD4B100A2850E /* Model */,
 				7995D5F329FDCD6C004CEABF /* Client */,
 				797F535E29FDBDFA002DE3A4 /* Calendar */,
 			);
@@ -290,6 +293,22 @@
 				79E4B9F929F3AE2100BE04FC /* CalendarDetailController.swift */,
 			);
 			path = Calendar;
+			sourceTree = "<group>";
+		};
+		79F0A74229FDD4B100A2850E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				79F0A74329FDD4CE00A2850E /* Data */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		79F0A74329FDD4CE00A2850E /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				79F0A74429FDD51800A2850E /* CoreDataServiceMock.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		79F1AFD929E51971004CED4E /* Data */ = {
@@ -652,6 +671,7 @@
 				79A5641829FCB979004E8A7E /* AddEditWorkdayManagerTests.swift in Sources */,
 				790FFC6229FDB5A3006BCE34 /* SummaryManagerTests.swift in Sources */,
 				797F535C29FDBC38002DE3A4 /* HelperTests.swift in Sources */,
+				79F0A74529FDD51800A2850E /* CoreDataServiceMock.swift in Sources */,
 				79FA888829E4AD67003C6DFB /* HourlyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
