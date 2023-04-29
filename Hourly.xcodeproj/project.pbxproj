@@ -30,6 +30,8 @@
 		7983B00729F4C12700F2D76E /* SummaryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7983B00629F4C12700F2D76E /* SummaryManager.swift */; };
 		7983B00929F7285600F2D76E /* ExportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7983B00829F7285600F2D76E /* ExportManager.swift */; };
 		79A563F829FB31E8004E8A7E /* FloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A563F729FB31E8004E8A7E /* FloatingLabelTextField.swift */; };
+		79A5640529FC9CD6004E8A7E /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 79A5640429FC9CD6004E8A7E /* FirebaseAnalyticsSwift */; };
+		79A5640729FC9CD6004E8A7E /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 79A5640629FC9CD6004E8A7E /* FirebaseCrashlytics */; };
 		79AED58329F0DE9F00FBF2E4 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AED58129F0DE9F00FBF2E4 /* PhotoCell.swift */; };
 		79AED58429F0DE9F00FBF2E4 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79AED58229F0DE9F00FBF2E4 /* PhotoCell.xib */; };
 		79AED58A29F1FBD800FBF2E4 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AED58929F1FBD800FBF2E4 /* PhotoViewController.swift */; };
@@ -143,6 +145,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79A5640729FC9CD6004E8A7E /* FirebaseCrashlytics in Frameworks */,
+				79A5640529FC9CD6004E8A7E /* FirebaseAnalyticsSwift in Frameworks */,
 				7964AFC329E7C24C00065863 /* UIColorHexSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -356,6 +360,8 @@
 			name = Hourly;
 			packageProductDependencies = (
 				7964AFC229E7C24C00065863 /* UIColorHexSwift */,
+				79A5640429FC9CD6004E8A7E /* FirebaseAnalyticsSwift */,
+				79A5640629FC9CD6004E8A7E /* FirebaseCrashlytics */,
 			);
 			productName = Hourly;
 			productReference = 79FA886A29E4AD66003C6DFB /* Hourly.app */;
@@ -431,6 +437,7 @@
 			mainGroup = 79FA886129E4AD66003C6DFB;
 			packageReferences = (
 				7964AFC129E7C24C00065863 /* XCRemoteSwiftPackageReference "UIColor-Hex-Swift" */,
+				79A5640329FC9CD6004E8A7E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 79FA886B29E4AD66003C6DFB /* Products */;
 			projectDirPath = "";
@@ -893,6 +900,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		79A5640329FC9CD6004E8A7E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.9.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -900,6 +915,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7964AFC129E7C24C00065863 /* XCRemoteSwiftPackageReference "UIColor-Hex-Swift" */;
 			productName = UIColorHexSwift;
+		};
+		79A5640429FC9CD6004E8A7E /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 79A5640329FC9CD6004E8A7E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		79A5640629FC9CD6004E8A7E /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 79A5640329FC9CD6004E8A7E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
 		};
 /* End XCSwiftPackageProductDependency section */
 
