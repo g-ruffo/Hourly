@@ -81,11 +81,13 @@ final class CoreDataService {
         addPhotoItemsToWorkday(workday)
         return saveToDatabase()
     }
+    
     func addPhotoItemsToWorkday(_ workday: WorkdayItem) {
         for photo in _workdayPhotos {
             photo.workingDay = workday
         }
     }
+    
     func createPhotoItems(from jpegImages: Array<Data?>) {
         let date = Date()
         jpegImages.forEach { jpegImage in
@@ -129,6 +131,7 @@ final class CoreDataService {
             fatalError(error.localizedDescription)
         }
     }
+    
     func getWorkdays(withRequest request : NSFetchRequest<WorkdayItem>) {
         do{
             workdays = try databaseContext.fetch(request)
@@ -136,6 +139,7 @@ final class CoreDataService {
             print("Error fetching clients from database = \(error)")
         }
     }
+    
     func getWorkdayClientID() -> URL? {
         return clientId?.uriRepresentation()
     }

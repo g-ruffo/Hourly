@@ -36,6 +36,7 @@
 		79A5641329FCB8E9004E8A7E /* UIColorHexSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 79A5641229FCB8E9004E8A7E /* UIColorHexSwift */; };
 		79A5641529FCB8F8004E8A7E /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 79A5641429FCB8F8004E8A7E /* FirebaseCrashlytics */; };
 		79A5641829FCB979004E8A7E /* AddEditWorkdayManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A5641729FCB979004E8A7E /* AddEditWorkdayManagerTests.swift */; };
+		79AB6D0F29FDAC1D002E5E83 /* CalendarManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AB6D0E29FDAC1D002E5E83 /* CalendarManagerTests.swift */; };
 		79AED58329F0DE9F00FBF2E4 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AED58129F0DE9F00FBF2E4 /* PhotoCell.swift */; };
 		79AED58429F0DE9F00FBF2E4 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79AED58229F0DE9F00FBF2E4 /* PhotoCell.xib */; };
 		79AED58A29F1FBD800FBF2E4 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AED58929F1FBD800FBF2E4 /* PhotoViewController.swift */; };
@@ -110,6 +111,7 @@
 		79A563F729FB31E8004E8A7E /* FloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLabelTextField.swift; sourceTree = "<group>"; };
 		79A5640929FC9FDF004E8A7E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		79A5641729FCB979004E8A7E /* AddEditWorkdayManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditWorkdayManagerTests.swift; sourceTree = "<group>"; };
+		79AB6D0E29FDAC1D002E5E83 /* CalendarManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManagerTests.swift; sourceTree = "<group>"; };
 		79AED58129F0DE9F00FBF2E4 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		79AED58229F0DE9F00FBF2E4 /* PhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
 		79AED58929F1FBD800FBF2E4 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				79A5641729FCB979004E8A7E /* AddEditWorkdayManagerTests.swift */,
+				79AB6D0E29FDAC1D002E5E83 /* CalendarManagerTests.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -591,6 +594,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79AB6D0F29FDAC1D002E5E83 /* CalendarManagerTests.swift in Sources */,
 				79A5641829FCB979004E8A7E /* AddEditWorkdayManagerTests.swift in Sources */,
 				79FA888829E4AD67003C6DFB /* HourlyTests.swift in Sources */,
 			);
