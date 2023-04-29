@@ -12,8 +12,8 @@ import PhotosUI
 enum PickerTags: Int {
     case date, startTime, endTime
 }
-
 class AddEditWorkdayViewController: UIViewController {
+    // MARK: - Variables
     @IBOutlet weak var clientTextField: ClientSearchTextField!
     @IBOutlet weak var locationTexfield: FloatingLabelTextField!
     @IBOutlet weak var lunchTexfield: FloatingLabelTextField!
@@ -27,7 +27,6 @@ class AddEditWorkdayViewController: UIViewController {
     @IBOutlet weak var endTimeDatePicker: UIDatePicker!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
-    
     private let lunchPicker = UIPickerView()
     private let mileagePicker = UIPickerView()
     private var selectedLunchTimeMinutes: Int? {
@@ -38,16 +37,21 @@ class AddEditWorkdayViewController: UIViewController {
     }
     private var manager = AddEditWorkdayManager()
     private let coreDataService = CoreDataService()
+    // Selection options in minutes.
     private let lunchArray = [5, 10, 15, 20, 30, 40, 45, 60, 90, 120]
+    // Mileage wheels limit.
     private let mileageNumbers = [10, 10, 10]
+    // The users set mileage value.
     private var mileageDigits = [0, 0, 0]
     private let defaults = UserDefaults.standard
     private var isEditingWorkday: Bool = false
     private var completedSave: Bool = false
     private var photos: Array<PhotoItem> = []
     var editWorkdayId: NSManagedObjectID?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Set delegates and data source
         manager.delegate = self
         payRateTexfield.delegate = self
         lunchPicker.delegate = self
@@ -62,11 +66,14 @@ class AddEditWorkdayViewController: UIViewController {
         setupDatePicker()
         checkForEdit()
         setupMenuItems()
+        // Set save button background colour.
         saveButton.tintColor = UIColor("#F1C40F")
         createCollectionView()
+        // Set the navigation bar title colour to black.
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
+        // Set the scroll views bottom anchor to follow the keyboard.
         scrollView.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor).isActive = true
-        
+        // Automatically hide spinner when stopped.
         loadingSpinner.hidesWhenStopped = true
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -77,17 +84,21 @@ class AddEditWorkdayViewController: UIViewController {
         super.viewWillDisappear(animated)
         updateUserDefaults()
     }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.Navigation.editPhotoCollectionNav {
             let destinationVC = segue.destination as? PhotoViewController
+            // Pass the index of the selected photo to the destination view controller.
             destinationVC?.startingRow = sender as? Int
+            // Set the destination view controllers variable to allow editing.
             destinationVC?.allowEditing = true
+            // Pass the current service class reference to the destination view controller.
             destinationVC?.coreDataService = coreDataService
+            // Set the destination view controllers delegate to self to be notified of changes to the photos.
             destinationVC?.delegate = self
         }
     }
     func checkForEdit() {
+        // If the workday id is not nil the user is editing an existing object.
         if let id = editWorkdayId {
             coreDataService.getWorkdayFromObjectId(id)
             isEditingWorkday = true
@@ -98,6 +109,7 @@ class AddEditWorkdayViewController: UIViewController {
         collectionView.register(AddPhotoCell.nib(), forCellWithReuseIdentifier: K.Cell.addPhotoCell)
     }
     func setupMenuItems() {
+        // Set the appropriate navigation bar title.
         title = isEditingWorkday ? "Edit Workday" : "Add Worday"
         let menuHandler: UIActionHandler = { action in
             switch action.title {
@@ -298,8 +310,7 @@ class AddEditWorkdayViewController: UIViewController {
         present(pickerVC, animated: true)
     }
 }
-
-// MARK: - AddEditClientManagerDelegate
+// MARK: - AddEditWorkdayManagerDelegate
 extension AddEditWorkdayViewController: AddEditWorkdayManagerDelegate {
     func didUpdateCurrencyText(_ addEditWorkdayManager: AddEditWorkdayManager, newCurrencyValue: String?) {
         payRateTexfield.text = newCurrencyValue
@@ -310,7 +321,6 @@ extension AddEditWorkdayViewController: AddEditWorkdayManagerDelegate {
         manager.validateCurrencyInput(string: string)
     }
 }
-
 // MARK: - PHPickerViewControllerDelegate
 extension AddEditWorkdayViewController: PHPickerViewControllerDelegate {
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
@@ -344,7 +354,6 @@ extension AddEditWorkdayViewController: PHPickerViewControllerDelegate {
         }
     }
 }
-
 // MARK: - UICollectionViewDelegate
 extension AddEditWorkdayViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -356,7 +365,6 @@ extension AddEditWorkdayViewController: UICollectionViewDelegate {
         }
     }
 }
-
 // MARK: - UICollectionViewDataSource
 extension AddEditWorkdayViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -378,7 +386,6 @@ extension AddEditWorkdayViewController: UICollectionViewDataSource {
         }
     }
 }
-
 // MARK: - UICollectionViewDelegateFlowLayout
 extension AddEditWorkdayViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
@@ -387,7 +394,6 @@ extension AddEditWorkdayViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: 100, height: 100)
     }
 }
-
 // MARK: - UIPickerViewDelegate
 extension AddEditWorkdayViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -399,7 +405,6 @@ extension AddEditWorkdayViewController: UIPickerViewDelegate {
         }
     }
 }
-
 // MARK: - UIPickerViewDataSource
 extension AddEditWorkdayViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -428,14 +433,12 @@ extension AddEditWorkdayViewController: UIPickerViewDataSource {
         }
     }
 }
-
 // MARK: - ClientSearchDelegate
 extension AddEditWorkdayViewController: ClientSearchDelegate {
     func selectedExistingClient(_ clientSearchTextField: ClientSearchTextField, clientID: NSManagedObjectID?) {
         self.coreDataService.getClientFromID(clientID)
     }
 }
-
 // MARK: - PhotoCollectionDelegate
 extension AddEditWorkdayViewController: PhotoCollectionDelegate {
     func photoHasBeenDeleted(_ photoViewController: PhotoViewController) {
@@ -443,7 +446,6 @@ extension AddEditWorkdayViewController: PhotoCollectionDelegate {
         DispatchQueue.main.async { self.collectionView.reloadData() }
     }
 }
-
 // MARK: - CoreDataServiceDelegate
 extension AddEditWorkdayViewController: CoreDataServiceDelegate {
     func loadedWorkday(_ coreDataService: CoreDataService, workdayItem: WorkdayItem?) {
