@@ -9,6 +9,7 @@ import Foundation
 
 
 struct WorkdaysManager {
+    // Returns input date as formatted string.
     func dateToString(date: Date?) -> String {
         if let safeDate = date {
             let formatter = DateFormatter()
