@@ -24,4 +24,16 @@ class Helper {
             return "--:--"
         }
     }
+    // Prints the location path of core data files.
+    func getCoreDataPath() {
+            let path = FileManager
+                .default
+                .urls(for: .applicationSupportDirectory, in: .userDomainMask)
+                .last?
+                .absoluteString
+                .replacingOccurrences(of: "file://", with: "")
+                .removingPercentEncoding
+
+            print("Core Data Path = \(path ?? "Not found")")
+        }
 }
