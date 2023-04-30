@@ -64,6 +64,7 @@ class SummaryViewController: UIViewController {
         hoursWorkedView.layer.cornerRadius = 20
         // Create an observer that is notified when the user adds a new workday.
         NotificationCenter.default.addObserver(self, selector: #selector(workdaysHaveBeenUpdated), name: K.NotificationKeys.updateWorkdaysNotification, object: nil)
+        Helper().getCoreDataPath()
     }
     
     deinit {
