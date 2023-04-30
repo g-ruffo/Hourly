@@ -773,6 +773,12 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Clients Saved" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7F-ni-2Uv">
+                                <rect key="frame" x="122.5" y="243" width="130" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fuJ-b0-cQM"/>
                         <color key="backgroundColor" name="BackgroundGrey"/>
@@ -783,7 +789,9 @@
                             <constraint firstItem="yt8-tq-LYn" firstAttribute="leading" secondItem="fuJ-b0-cQM" secondAttribute="leading" constant="20" id="Wfr-jS-iuw"/>
                             <constraint firstItem="fuJ-b0-cQM" firstAttribute="trailing" secondItem="qXq-Ny-TAf" secondAttribute="trailing" id="bzL-wP-wvu"/>
                             <constraint firstItem="qXq-Ny-TAf" firstAttribute="bottom" secondItem="ceQ-9A-xKx" secondAttribute="bottom" id="dyv-Et-Lqr"/>
+                            <constraint firstItem="t7F-ni-2Uv" firstAttribute="centerY" secondItem="ceQ-9A-xKx" secondAttribute="centerY" constant="-80" id="moW-mC-OzP"/>
                             <constraint firstItem="yt8-tq-LYn" firstAttribute="top" secondItem="fuJ-b0-cQM" secondAttribute="top" id="qbF-Es-2v9"/>
+                            <constraint firstItem="t7F-ni-2Uv" firstAttribute="centerX" secondItem="ceQ-9A-xKx" secondAttribute="centerX" id="xjG-zY-Oea"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Clients" id="bLg-PT-lF7">
@@ -794,6 +802,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="noDataLabel" destination="t7F-ni-2Uv" id="fJ1-oN-8Ao"/>
                         <outlet property="searchBar" destination="yt8-tq-LYn" id="H87-0b-RtW"/>
                         <outlet property="tableView" destination="qXq-Ny-TAf" id="GPe-db-Q48"/>
                         <segue destination="yHG-3C-L6b" kind="show" identifier="AddClientNavigation" id="Ydi-Ml-fqH"/>
@@ -1397,7 +1406,7 @@
             </objects>
             <point key="canvasLocation" x="-176.80000000000001" y="802.848575712144"/>
         </scene>
-        <!--Work Days-->
+        <!--Workdays-->
         <scene sceneID="jJM-lr-SQ7">
             <objects>
                 <viewController id="3AC-de-x4e" customClass="WorkdaysViewController" customModule="Hourly" customModuleProvider="target" sceneMemberID="viewController">
@@ -1500,22 +1509,31 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Workdays Recorded" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tKD-BR-msg">
+                                <rect key="frame" x="98" y="243.5" width="179" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cyu-N5-Ira"/>
                         <color key="backgroundColor" name="BackgroundGrey"/>
                         <constraints>
+                            <constraint firstItem="tKD-BR-msg" firstAttribute="centerX" secondItem="vp6-oJ-c6o" secondAttribute="centerX" id="BUd-xQ-uwt"/>
                             <constraint firstItem="wHQ-zr-AuF" firstAttribute="leading" secondItem="cyu-N5-Ira" secondAttribute="leading" id="C4f-5t-aR1"/>
                             <constraint firstItem="wHQ-zr-AuF" firstAttribute="top" secondItem="MOL-hs-R0y" secondAttribute="bottom" constant="16" id="P5r-bS-h5d"/>
                             <constraint firstItem="wHQ-zr-AuF" firstAttribute="trailing" secondItem="cyu-N5-Ira" secondAttribute="trailing" id="WNW-ls-eww"/>
                             <constraint firstItem="cyu-N5-Ira" firstAttribute="trailing" secondItem="wHQ-zr-AuF" secondAttribute="trailing" id="Zf5-di-7pW"/>
+                            <constraint firstItem="tKD-BR-msg" firstAttribute="centerY" secondItem="vp6-oJ-c6o" secondAttribute="centerY" constant="-80" id="dFT-xF-AAp"/>
                             <constraint firstItem="cyu-N5-Ira" firstAttribute="trailing" secondItem="MOL-hs-R0y" secondAttribute="trailing" constant="16" id="kx4-5m-V76"/>
                             <constraint firstItem="cyu-N5-Ira" firstAttribute="bottom" secondItem="wHQ-zr-AuF" secondAttribute="bottom" id="oWa-xa-TC5"/>
                             <constraint firstItem="MOL-hs-R0y" firstAttribute="top" secondItem="cyu-N5-Ira" secondAttribute="top" id="wet-jS-41z"/>
                             <constraint firstItem="MOL-hs-R0y" firstAttribute="leading" secondItem="cyu-N5-Ira" secondAttribute="leading" constant="16" id="xbs-Ea-n9j"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Work Days" id="5HR-7s-rMD"/>
+                    <navigationItem key="navigationItem" title="Workdays" id="5HR-7s-rMD"/>
                     <connections>
+                        <outlet property="noDataLabel" destination="tKD-BR-msg" id="uIh-zP-b37"/>
                         <outlet property="searchBar" destination="MOL-hs-R0y" id="8r2-de-mNA"/>
                         <outlet property="tableView" destination="wHQ-zr-AuF" id="EHI-rJ-ZpO"/>
                         <segue destination="cmG-CB-vpK" kind="presentation" identifier="WorkDetailNavigation" id="tA9-Ze-nTZ"/>
@@ -1960,9 +1978,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="olG-vz-Or0"/>
+        <segue reference="tA9-Ze-nTZ"/>
         <segue reference="gAs-an-Vsm"/>
-        <segue reference="pqR-vS-0xj"/>
+        <segue reference="Q5n-uq-4AC"/>
         <segue reference="Ydi-Ml-fqH"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -1983,19 +2001,19 @@
         <image name="square.and.arrow.down.fill" catalog="system" width="121" height="128"/>
         <image name="trash.fill" catalog="system" width="119" height="128"/>
         <namedColor name="BackgroundGrey">
-            <color red="0.92549019607843142" green="0.94117647058823528" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.92500001192092896" green="0.94099998474121094" blue="0.94499999284744263" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="DarkGrey">
             <color red="0.22400000691413879" green="0.24300000071525574" blue="0.27500000596046448" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PrimaryBlueDark">
-            <color red="0.20392156862745098" green="0.28627450980392155" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20399999618530273" green="0.28600001335144043" blue="0.36899998784065247" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PrimaryBlueLight">
-            <color red="0.20392156862745098" green="0.59607843137254901" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20399999618530273" green="0.59600001573562622" blue="0.85900002717971802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PrimaryYellow">
-            <color red="0.94509803921568625" green="0.76862745098039209" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94499999284744263" green="0.76899999380111694" blue="0.059000000357627869" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -13,6 +13,7 @@ class WorkdaysViewController: UIViewController {
     // MARK: - Variables
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var noDataLabel: UILabel!
     private var workdays: Array<WorkdayItem> = []
     private var manager = WorkdaysManager()
     private let coreDataService = CoreDataService()
@@ -109,6 +110,8 @@ extension WorkdaysViewController: EditWorkdayDelegate {
 // MARK: - CoreDataServiceDelegate
 extension WorkdaysViewController: CoreDataServiceDelegate {
     func loadedWorkdays(_ coreDataService: CoreDataService, workdayItems: Array<WorkdayItem>) {
+        // Show no data label if workday list is empty.
+        noDataLabel.isHidden = workdayItems.count > 0
         workdays = workdayItems
         DispatchQueue.main.async { self.tableView.reloadData() }
     }

@@ -13,6 +13,7 @@ class ClientsViewController: UIViewController {
     // MARK: - Variables
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var noDataLabel: UILabel!
     private var clients: Array<ClientItem> = []
     private let coreDataService = CoreDataService()
     
@@ -105,6 +106,8 @@ extension ClientsViewController: EditClientDelegate {
 // MARK: - CoreDataServiceDelegate
 extension ClientsViewController: CoreDataServiceDelegate {
     func loadedClients(_ coreDataService: CoreDataService, clientItems: Array<ClientItem>) {
+        // Show no data label if workday list is empty.
+        noDataLabel.isHidden = clientItems.count > 0
         clients = clientItems
         DispatchQueue.main.async { self.tableView.reloadData() }
     }
