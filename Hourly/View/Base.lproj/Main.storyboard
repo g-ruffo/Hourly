@@ -373,6 +373,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                </variation>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="SJF-ER-bSW"/>
@@ -838,10 +841,13 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Clients Saved" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7F-ni-2Uv">
-                                <rect key="frame" x="447" y="592.5" width="130" height="21"/>
+                                <rect key="frame" x="416" y="587.5" width="192" height="31.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                </variation>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fuJ-b0-cQM"/>
@@ -1573,11 +1579,14 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Workdays Recorded" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tKD-BR-msg">
-                                <rect key="frame" x="422.5" y="593" width="179" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Workdays Saved" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tKD-BR-msg">
+                                <rect key="frame" x="399.5" y="587.5" width="225.5" height="31.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                </variation>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cyu-N5-Ira"/>
@@ -1647,7 +1656,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cgd-w4-8f8">
-                                <rect key="frame" x="12" y="12" width="360" height="861.5"/>
+                                <rect key="frame" x="12" y="12" width="360" height="932.5"/>
                                 <color key="tintColor" red="0.32549019610000002" green="0.63137254899999995" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain">
@@ -1658,7 +1667,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Rs5-k2-weB">
-                                <rect key="frame" x="0.0" y="873.5" width="704" height="122"/>
+                                <rect key="frame" x="0.0" y="944.5" width="704" height="51"/>
                                 <color key="backgroundColor" name="DarkGrey"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="7uv-xA-ora">
                                     <size key="itemSize" width="393" height="782"/>
@@ -1668,7 +1677,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" reuseIdentifier="PhotoCollectionCell" id="d5H-gr-WMe" customClass="PhotoCollectionCell" customModule="Hourly" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="-330" width="393" height="782"/>
+                                        <rect key="frame" x="0.0" y="-365.5" width="393" height="782"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="5xN-hk-jpM">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="782"/>
@@ -2042,9 +2051,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="olG-vz-Or0"/>
+        <segue reference="tA9-Ze-nTZ"/>
         <segue reference="gAs-an-Vsm"/>
-        <segue reference="pqR-vS-0xj"/>
+        <segue reference="Q5n-uq-4AC"/>
         <segue reference="Ydi-Ml-fqH"/>
     </inferredMetricsTieBreakers>
     <resources>
