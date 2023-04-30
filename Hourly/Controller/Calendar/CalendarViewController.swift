@@ -199,7 +199,6 @@ extension CalendarViewController: UICollectionViewDataSource {
             if let today = Int(dayObject.day), today == todaysDate.get(.day) {
                 cell.dayOfMonthLabel.backgroundColor = .systemCyan.withAlphaComponent(0.4) }
         }
-        
         cell.configure(title: dayObject.day, with: dayObject.items)
         
         return cell

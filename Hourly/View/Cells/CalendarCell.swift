@@ -23,6 +23,8 @@ class CalendarCell: UICollectionViewCell {
         dayOfMonthLabel.text = title
         // If title is empty, the cell is representing a day in a different month.
         contentView.backgroundColor = title.isEmpty ? .white.withAlphaComponent(0.5) : .white
+        // Clear all subviews before adding new ones.
+        stackView.subviews.forEach { $0.removeFromSuperview()}
         if days.count > 0 {
             // For each workday that has the same date as cell add its tag colour to stackview.
             for day in days {
@@ -42,9 +44,6 @@ class CalendarCell: UICollectionViewCell {
                 image.layer.cornerRadius = (image.frame.height / 2) / CGFloat(days.count)
                 stackView.addArrangedSubview(image)
             }
-        } else {
-            // If no workdays for the date are found remove existing views.
-            stackView.subviews.forEach { $0.removeFromSuperview()}
         }
     }
 }
