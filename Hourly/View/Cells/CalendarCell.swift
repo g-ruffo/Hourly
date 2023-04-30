@@ -41,7 +41,6 @@ class CalendarCell: UICollectionViewCell {
                 }
                 image.layer.cornerRadius = (image.frame.height / 2) / CGFloat(days.count)
                 stackView.addArrangedSubview(image)
-                
             }
         } else {
             // If no workdays for the date are found remove existing views.

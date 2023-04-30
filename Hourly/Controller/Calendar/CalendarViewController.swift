@@ -35,7 +35,7 @@ class CalendarViewController: UIViewController {
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.Navigation.calendarDetailNav {
             let destinationNav = segue.destination as? CalendarDetailController
@@ -66,7 +66,7 @@ class CalendarViewController: UIViewController {
         else if pan.direction == .left { setNextMonthSlide() }
     }
     
-    func setMonthView(_ slideInDirection: CGFloat? = nil) {
+    func setCalendarMonthView(_ slideInDirection: CGFloat? = nil) {
         totalSquares.removeAll()
         let daysInMonth = manager.daysInMonth(date: selectedDate)
         let firstDayOfMonth = manager.firstOfMonth(date: selectedDate)
@@ -168,7 +168,7 @@ class CalendarViewController: UIViewController {
         request.predicate = NSPredicate(format: "date >= %@ AND date <= %@", startDate as NSDate, endDate as NSDate)
         coreDataService.getWorkdays(withRequest: request)
         // Notify the collection view which direction to slide in from.
-        setMonthView(slideInDirection)
+        setCalendarMonthView(slideInDirection)
     }
 }
 
@@ -192,11 +192,13 @@ extension CalendarViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.Cell.calendarCell, for: indexPath) as! CalendarCell
         
         let dayObject = totalSquares[indexPath.item]
+        cell.dayOfMonthLabel.backgroundColor = .clear
+
         // If the cell date matches todays date add blue circle around the label.
-        if selectedDate.get(.year, .month) == todaysDate.get(.year, .month){
+        if selectedDate.get(.year, .month) == todaysDate.get(.year, .month) {
             if let today = Int(dayObject.day), today == todaysDate.get(.day) {
                 cell.dayOfMonthLabel.backgroundColor = .systemCyan.withAlphaComponent(0.4) }
-        } else { cell.dayOfMonthLabel.backgroundColor = .clear }
+        }
         
         cell.configure(title: dayObject.day, with: dayObject.items)
         
