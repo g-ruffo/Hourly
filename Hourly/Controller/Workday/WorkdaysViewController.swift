@@ -25,6 +25,7 @@ class WorkdaysViewController: UIViewController {
         searchBar.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.register(WorkdayCell.nib(), forCellReuseIdentifier: K.Cell.workdayCell)
         // Add observer to get notified when the user adds a new workday.
         NotificationCenter.default.addObserver(self, selector: #selector(workdaysHaveBeenUpdated), name: K.NotificationKeys.updateWorkdaysNotification, object: nil)
     }
