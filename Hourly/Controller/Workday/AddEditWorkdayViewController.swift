@@ -115,16 +115,13 @@ class AddEditWorkdayViewController: UIViewController {
             switch action.title {
             case "Save as Draft":
                 if self.createUpdateWorkday(isDraft: true) {
-                    print("saved draft")
+                    NotificationCenter.default.post(name: K.NotificationKeys.updateWorkdaysNotification, object: nil)
                     if self.isEditingWorkday {
                         self.navigationController?.popViewController(animated: true)
                     } else {
                         self.dismiss(animated: true) {
                             self.completedSave = true
                             self.updateUserDefaults(clearValues: true)
-                            NotificationCenter.default.post(
-                                name: K.NotificationKeys.updateWorkdaysNotification, object: nil
-                            )
                         }
                     }
                 }
@@ -291,11 +288,8 @@ class AddEditWorkdayViewController: UIViewController {
             self.completedSave = true
             self.updateUserDefaults(clearValues: true)
             NotificationCenter.default.post(name: K.NotificationKeys.updateWorkdaysNotification, object: nil)
-            if !isEditingWorkday {
-                dismiss(animated: true)
-            } else {
-                navigationController?.popViewController(animated: true)
-            }
+            if !isEditingWorkday {  dismiss(animated: true) }
+            else { navigationController?.popViewController(animated: true) }
         } else {
             showAlertDialog(title: S.alertTitleMissingInfo.localized,
                             message: S.alertMessageMissingInfo.localized)
