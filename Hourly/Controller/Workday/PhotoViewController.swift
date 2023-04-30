@@ -70,8 +70,12 @@ extension PhotoViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.Cell.photoCollectionCell, for: indexPath) as! PhotoCollectionCell
         // If the photo items photo is valid set it to the cells image view.
-        if let photo = UIImage(data: (photos[indexPath.row].image)!) {
-            cell.imageView.image = photo
+        let imageData = photos[indexPath.row].image
+        if let image = imageData {
+            let uiImage = UIImage(data: image)
+            cell.imageView.image = uiImage
+        } else {
+            cell.imageView.image = UIImage(systemName: "externaldrive.badge.questionmark")
         }
         cell.textView.text = photos[indexPath.row].imageDescription
         // Set the cells delegate as self to listen for changes in the text view.

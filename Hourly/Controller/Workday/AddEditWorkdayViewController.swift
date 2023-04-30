@@ -371,8 +371,10 @@ extension AddEditWorkdayViewController: UICollectionViewDataSource {
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.Cell.photoCell, for: indexPath) as! PhotoCell
-            if let image = UIImage(data: photos[indexPath.row].image!) {
-                cell.imageView.image = image
+            let imageData = photos[indexPath.row].image
+            if let image = imageData {
+                let uiImage = UIImage(data: image)
+                cell.imageView.image = uiImage
             } else {
                 cell.imageView.image = UIImage(systemName: "externaldrive.badge.questionmark")
             }

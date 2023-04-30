@@ -97,8 +97,10 @@ extension WorkDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.Cell.photoCell, for: indexPath) as! PhotoCell
-        if let image = UIImage(data: savedPhotos[indexPath.row].image!) {
-            cell.imageView.image = image
+        let imageData = savedPhotos[indexPath.row].image
+        if let image = imageData {
+            let uiImage = UIImage(data: image)
+            cell.imageView.image = uiImage
         } else {
             // If image cant be retrieved set the image as a question mark.
             cell.imageView.image = UIImage(systemName: "externaldrive.badge.questionmark")
