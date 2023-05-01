@@ -9,12 +9,12 @@ Utilizing iCloud, add photos, descriptions and locations to each working day and
 ![readme_screenshots](https://user-images.githubusercontent.com/93240608/235542993-7701d687-7e02-4c5a-abbe-230fa73a7900.png)
 
 ## Features
--[x] Create client lists for easy access to location and contact information
--[x] Record working days
--[x] View your total earnings for a given period of time
--[x] Display work history in a calendar layout
--[x] Export timesheets to a CSV file for invoicing
--[x] Use iCloud with Core Data to backup and sync your entries
+- [x] Create client lists for easy access to location and contact information
+- [x] Record working days
+- [x] View your total earnings for a given period of time
+- [x] Display work history in a calendar layout
+- [x] Export timesheets to a CSV file for invoicing
+- [x] Use iCloud with Core Data to backup and sync your entries
 
 ## Installation
 Available on the Apple App Store: https://appstore.com/
@@ -22,18 +22,21 @@ Available on the Apple App Store: https://appstore.com/
 ## Requirements
 - iOS 15.0+
 
-## Frameworks
+### Frameworks
 
 - UIKit
 - Core Data
 - CloudKit
 - PhotosUI
 
-## Libraries
+### Libraries
 
 - Firebase Crashlytics
 - Firebase Analytics Without Ad Support
 - UIColor Hex Swift
+
+### Architecture
+- MVC
 
 ## Developed By
 Grayson Ruffo
