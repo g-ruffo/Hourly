@@ -440,7 +440,11 @@ extension AddEditWorkdayViewController: ClientSearchDelegate {
 extension AddEditWorkdayViewController: PhotoCollectionDelegate {
     func photoHasBeenDeleted(_ photoViewController: PhotoViewController) {
         photos = coreDataService.workdayPhotos
+        print("Photos Been Deleted = \(photos.count)")
         DispatchQueue.main.async { self.collectionView.reloadData() }
+    }
+    func finishedEditing(_ photoViewController: PhotoViewController) {
+        coreDataService.delegate = self
     }
 }
 // MARK: - CoreDataServiceDelegate
@@ -467,6 +471,7 @@ extension AddEditWorkdayViewController: CoreDataServiceDelegate {
     }
     func loadedPhotos(_ coreDataService: CoreDataService, photoItems: Array<PhotoItem>) {
         photos = photoItems
+        print("Photo Count = \(photoItems.count)")
         DispatchQueue.main.async { self.collectionView.reloadData() }
     }
 }
