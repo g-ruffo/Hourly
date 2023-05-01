@@ -11,6 +11,7 @@ import UIKit
 protocol AddEditClientManagerDelegate: UITextFieldDelegate {
     func didUpdateCurrencyText(_ addEditClientManager: AddEditClientManager, newCurrencyValue: String?)
 }
+
 struct AddEditClientManager {
     private var payRateAmount = 0
     weak var delegate: AddEditClientManagerDelegate?

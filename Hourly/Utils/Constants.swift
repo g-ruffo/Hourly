@@ -14,6 +14,7 @@ struct K {
         private static let workdaysUpdated = "ca.veltus.hourly.notification.workdaysUpdated"
         static let updateWorkdaysNotification = Notification.Name(rawValue: workdaysUpdated)
     }
+    
     struct Cell {
         static let clientSearchCell = "ClientSearchCell"
         static let photoCell = "PhotoCell"
@@ -26,6 +27,7 @@ struct K {
         static let settingsNibName = "SettingsCell"
         static let calendarCell = "CalendarCell"
     }
+    
     struct Navigation {
         static let workDetailNav = "WorkDetailNavigation"
         static let editWorkdayNav = "EditWorkdayNavigation"
@@ -45,6 +47,7 @@ struct K {
         static let addClientNav = "AddClientNavigation"
         static let detailClientNav = "DetailClientNavigation"
     }
+    
     struct UserDefaultsKey {
         static let clientName = "workdayClientName"
         static let date = "workdayDate"
@@ -57,6 +60,7 @@ struct K {
         static let description = "workdayDescription"
         static let client = "existingClient"
     }
+    
     struct NavigationBar {
         static let middleButtonSize: CGFloat = 64
         static let middleButtonRadius: CGFloat = middleButtonSize / 2

@@ -10,6 +10,7 @@ import UIKit
 protocol ColourTagButtonDelegate: AnyObject {
     func didUpdateColourTag(_ colourTagButton: ColourTagButton, hexString: String)
 }
+
 class ColourTagButton: UIButton {
     // MARK: - Variables
     weak var delegate: ColourTagButtonDelegate?
@@ -37,7 +38,7 @@ class ColourTagButton: UIButton {
         }
         
         var optionsArray = [UIAction]()
-        
+        // Create action for each hex colour.
         for hex in tagStringColours {
             let image = UIImage(systemName: "circle.fill")?.withTintColor(UIColor(hex), renderingMode: .alwaysOriginal)
             // Create each action and insert the coloured image.

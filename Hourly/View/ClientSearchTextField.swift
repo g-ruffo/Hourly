@@ -12,9 +12,11 @@ protocol ClientSearchDelegate: AnyObject {
     func selectedExistingClient(_ clientSearchTextField: ClientSearchTextField, clientID: NSManagedObjectID?)
     func didEndEditing(_ clientSearchTextField: ClientSearchTextField)
 }
+
 extension ClientSearchDelegate {
     func didEndEditing(_ clientSearchTextField: ClientSearchTextField) {}
 }
+
 class ClientSearchTextField: FloatingLabelTextField {
     // MARK: - Variables
     var clientArray: Array<ClientItem> = []
