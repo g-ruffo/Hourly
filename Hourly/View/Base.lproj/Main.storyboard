@@ -1345,7 +1345,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="uPd-Ou-2d7">
                                                 <rect key="frame" x="0.0" y="123" width="378" height="45"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Company Name*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m8I-51-OBp" customClass="ClientSearchTextField" customModule="Hourly" customModuleProvider="target">
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Client Name*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m8I-51-OBp" customClass="ClientSearchTextField" customModule="Hourly" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="185" height="45"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="45" id="lEI-Qx-7bK"/>
