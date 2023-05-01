@@ -90,12 +90,14 @@ final class CoreDataService {
     
     func createPhotoItems(from jpegImages: Array<Data?>) {
         let date = Date()
+        var items: Array<PhotoItem> = []
         jpegImages.forEach { jpegImage in
             let photoItem = PhotoItem(context: databaseContext)
             photoItem.image = jpegImage
             photoItem.imageDescription = "Date: \(date.formatDateToString())"
-            _workdayPhotos.append(photoItem)
+            items.append(photoItem)
         }
+        _workdayPhotos.append(contentsOf: items)
     }
     
     //MARK: - Delete Workday Methods
