@@ -106,6 +106,7 @@ extension PhotoViewController: UITextViewDelegate {
 extension PhotoViewController: CoreDataServiceDelegate {
     func loadedPhotos(_ coreDataService: CoreDataService, photoItems: Array<PhotoItem>) {
         photos = photoItems
+        if photoItems.count < 1 { dismiss(animated: true) }
         DispatchQueue.main.async { self.collectionView.reloadData() }
     }
 }
