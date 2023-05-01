@@ -41,7 +41,7 @@ Available on the Apple App Store: https://appstore.com/
 ## Developed By
 Grayson Ruffo
 
-      Copyright 2022 Veltus
+      Copyright 2023 Veltus
 
 
 
