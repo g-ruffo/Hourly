@@ -8,6 +8,9 @@ Utilizing iCloud, add photos, descriptions and locations to each working day and
 ## Screenshots
 ![readme_screenshots](https://user-images.githubusercontent.com/93240608/235542993-7701d687-7e02-4c5a-abbe-230fa73a7900.png)
 
+## Installation
+Available on the Apple App Store: https://appstore.com/
+
 ## Features
 - [x] Create client lists for easy access to location and contact information
 - [x] Record working days
@@ -15,9 +18,6 @@ Utilizing iCloud, add photos, descriptions and locations to each working day and
 - [x] Display work history in a calendar layout
 - [x] Export timesheets to a CSV file for invoicing
 - [x] Use iCloud with Core Data to backup and sync your entries
-
-## Installation
-Available on the Apple App Store: https://appstore.com/
 
 ## Requirements
 - iOS 15.0+
