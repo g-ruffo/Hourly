@@ -442,6 +442,9 @@ extension AddEditWorkdayViewController: PhotoCollectionDelegate {
         photos = coreDataService.workdayPhotos
         DispatchQueue.main.async { self.collectionView.reloadData() }
     }
+    func finishedEditing(_ photoViewController: PhotoViewController) {
+        coreDataService.delegate = self
+    }
 }
 // MARK: - CoreDataServiceDelegate
 extension AddEditWorkdayViewController: CoreDataServiceDelegate {

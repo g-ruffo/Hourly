@@ -9,6 +9,7 @@ import UIKit
 
 protocol PhotoCollectionDelegate: AnyObject {
     func photoHasBeenDeleted(_ photoViewController: PhotoViewController)
+    func finishedEditing(_ photoViewController: PhotoViewController)
 }
 
 class PhotoViewController: UIViewController {
@@ -43,6 +44,12 @@ class PhotoViewController: UIViewController {
             hasSetToIndexPath = true
         }
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        delegate?.finishedEditing(self)
+    }
+    
     // Called when the trailing navigation bar button is pressed.
     @IBAction func deleteButtonPressed(_ sender: UIButton) {
         // Get the index of the current displayed photo item.
