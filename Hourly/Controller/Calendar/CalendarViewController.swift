@@ -18,6 +18,7 @@ class CalendarViewController: UIViewController {
     private let manager = CalendarManager()
     private var workdays: Array<WorkdayItem> = []
     private let coreDataService = CoreDataService()
+    private var widthForAnimation: CGFloat = 400
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +26,8 @@ class CalendarViewController: UIViewController {
         coreDataService.delegate = self
         collectionView.delegate = self
         collectionView.dataSource = self
-        
+        // Set the users screen width for use in swipe animations.
+        widthForAnimation = view.frame.width
         loadWorkdaysFromDatabase()
         createCalendarGestureRecognizer()
         // Add observer to notify controller if a new workday has been added.
@@ -114,7 +116,7 @@ class CalendarViewController: UIViewController {
             if completed {
                 // Slide in the new cells when animation is completed.
                 self.selectedDate = self.manager.plusMonth(date: self.selectedDate)
-                self.loadWorkdaysFromDatabase(slideInDirection: 400)
+                self.loadWorkdaysFromDatabase(slideInDirection: self.widthForAnimation)
             }
         }
     }
@@ -128,7 +130,7 @@ class CalendarViewController: UIViewController {
             // Slide in the new cells when animation is completed.
             if completed {
                 self.selectedDate = self.manager.minusMonth(date: self.selectedDate)
-                self.loadWorkdaysFromDatabase(slideInDirection: -400)
+                self.loadWorkdaysFromDatabase(slideInDirection: -self.widthForAnimation)
             }
         }
     }
@@ -136,26 +138,26 @@ class CalendarViewController: UIViewController {
     func setNextMonthSlide() {
         self.view.layoutIfNeeded()
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut) {
-            self.collectionView.center.x = self.collectionView.center.x - 400
+            self.collectionView.center.x = self.collectionView.center.x - self.widthForAnimation
             self.view.layoutIfNeeded()
         } completion: { completed in
             // Slide in the new cells when animation is completed.
             if completed {
                 self.selectedDate = self.manager.plusMonth(date: self.selectedDate)
-                self.loadWorkdaysFromDatabase(slideInDirection: 400)
+                self.loadWorkdaysFromDatabase(slideInDirection: self.widthForAnimation)
             }
         }
     }
     
     func setPreviousMonthSlide() {
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut) {
-            self.collectionView.center.x = self.collectionView.center.x + 400
+            self.collectionView.center.x = self.collectionView.center.x + self.widthForAnimation
             self.view.layoutIfNeeded()
         } completion: { completed in
             // Slide in the new cells when animation is completed.
             if completed {
                 self.selectedDate = self.manager.minusMonth(date: self.selectedDate)
-                self.loadWorkdaysFromDatabase(slideInDirection: -400)
+                self.loadWorkdaysFromDatabase(slideInDirection: -self.widthForAnimation)
             }
         }
     }
