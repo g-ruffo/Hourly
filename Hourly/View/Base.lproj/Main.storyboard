@@ -921,16 +921,10 @@
                                         </constraints>
                                         <color key="tintColor" red="0.3519255447446083" green="0.68372778960394265" blue="0.35891402829618041" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" imagePlacement="top" imagePadding="10" cornerStyle="medium" titleAlignment="center">
+                                        <buttonConfiguration key="configuration" style="filled" imagePlacement="top" title="Phone" imagePadding="10" cornerStyle="medium" titleAlignment="center">
                                             <imageReference key="image" image="phone.fill" catalog="system" symbolScale="large"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large"/>
-                                            <attributedString key="attributedTitle">
-                                                <fragment content="Phone">
-                                                    <attributes>
-                                                        <font key="NSFont" metaFont="system" size="10"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
+                                            <fontDescription key="titleFontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="10"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="phoneButtonPressed:" destination="EIG-Gh-Hm2" eventType="touchUpInside" id="GmG-Np-km5"/>
@@ -939,17 +933,10 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jbw-XT-Ru0">
                                         <rect key="frame" x="135" y="0.0" width="99.5" height="100"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" imagePlacement="top" imagePadding="10" cornerStyle="medium" titleAlignment="center">
+                                        <buttonConfiguration key="configuration" style="filled" imagePlacement="top" title="Message" imagePadding="10" cornerStyle="medium" titleAlignment="center">
                                             <imageReference key="image" image="envelope.fill" catalog="system" symbolScale="large"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large"/>
-                                            <attributedString key="attributedTitle">
-                                                <fragment content="Message">
-                                                    <attributes>
-                                                        <font key="NSFont" metaFont="system" size="10"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
+                                            <fontDescription key="titleFontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="10"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="messageButtonPressed:" destination="EIG-Gh-Hm2" eventType="touchUpInside" id="hJ7-IP-4Fl"/>
@@ -959,16 +946,10 @@
                                         <rect key="frame" x="269.5" y="0.0" width="100" height="100"/>
                                         <color key="tintColor" red="0.82192504448398573" green="0.5362676887164225" blue="0.088711696137013449" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" imagePlacement="top" imagePadding="10" cornerStyle="medium" titleAlignment="center">
+                                        <buttonConfiguration key="configuration" style="filled" imagePlacement="top" title="Emaill" imagePadding="10" cornerStyle="medium" titleAlignment="center">
                                             <imageReference key="image" image="mail.fill" catalog="system" symbolScale="large"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large"/>
-                                            <attributedString key="attributedTitle">
-                                                <fragment content="Emaill">
-                                                    <attributes>
-                                                        <font key="NSFont" metaFont="system" size="10"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
+                                            <fontDescription key="titleFontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="10"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="emailButtonPressed:" destination="EIG-Gh-Hm2" eventType="touchUpInside" id="lB4-AW-nQP"/>
@@ -978,16 +959,10 @@
                                         <rect key="frame" x="404.5" y="0.0" width="99.5" height="100"/>
                                         <color key="tintColor" red="0.78903469750889677" green="0.31076353386525696" blue="0.75765528259529946" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" imagePlacement="top" imagePadding="10" cornerStyle="medium" titleAlignment="center">
+                                        <buttonConfiguration key="configuration" style="filled" imagePlacement="top" title="Location" imagePadding="10" cornerStyle="medium" titleAlignment="center">
                                             <imageReference key="image" image="location.fill" catalog="system" symbolScale="large"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large"/>
-                                            <attributedString key="attributedTitle">
-                                                <fragment content="Location">
-                                                    <attributes>
-                                                        <font key="NSFont" metaFont="system" size="10"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
+                                            <fontDescription key="titleFontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="10"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="locationButtonPressed:" destination="EIG-Gh-Hm2" eventType="touchUpInside" id="kv8-qC-4ex"/>
@@ -1428,10 +1403,12 @@
                                         </constraints>
                                     </stackView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4gy-YY-HFF">
-                                        <rect key="frame" x="0.0" y="369" width="1024" height="100"/>
+                                        <rect key="frame" x="0.0" y="369" width="1024" height="150"/>
                                         <color key="backgroundColor" name="BackgroundGrey"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="Ojz-WF-mZE"/>
+                                            <constraint firstAttribute="height" constant="100" id="Ojz-WF-mZE">
+                                                <variation key="heightClass=regular-widthClass=regular" constant="150"/>
+                                            </constraint>
                                         </constraints>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="6" minimumInteritemSpacing="6" id="Uv2-27-Q8q">
                                             <size key="itemSize" width="100" height="100"/>
@@ -1442,7 +1419,7 @@
                                         <cells/>
                                     </collectionView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G5O-Og-xMy">
-                                        <rect key="frame" x="442" y="969" width="140" height="45"/>
+                                        <rect key="frame" x="442" y="1019" width="140" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="OjW-iS-TW9"/>
                                             <constraint firstAttribute="height" constant="45" id="ipV-dF-Zpc"/>
