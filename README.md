@@ -22,20 +22,21 @@ Available on the Apple App Store: https://appstore.com/
 ## Requirements
 - iOS 15.0+
 
-### Frameworks
+
+## Frameworks
 
 - UIKit
 - Core Data
 - CloudKit
 - PhotosUI
 
-### Libraries
+## Libraries
 
 - Firebase Crashlytics
 - Firebase Analytics Without Ad Support
 - UIColor Hex Swift
 
-### Architecture
+## Architecture
 - MVC
 
 ## Developed By
