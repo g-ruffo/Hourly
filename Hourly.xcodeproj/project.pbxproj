@@ -137,6 +137,7 @@
 		79E4B9F529F3ADF000BE04FC /* CalendarDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarDetailCell.xib; sourceTree = "<group>"; };
 		79E4B9F929F3AE2100BE04FC /* CalendarDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDetailController.swift; sourceTree = "<group>"; };
 		79F0A74429FDD51800A2850E /* CoreDataServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataServiceMock.swift; sourceTree = "<group>"; };
+		79F0A78529FF6C1200A2850E /* Hourly.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Hourly.entitlements; sourceTree = "<group>"; };
 		79F1AFC729E4BD0E004CED4E /* HourlyTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyTabBar.swift; sourceTree = "<group>"; };
 		79F1AFC929E4BD32004CED4E /* HourlyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyTabBarController.swift; sourceTree = "<group>"; };
 		79F1AFCB29E4BFBB004CED4E /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -344,6 +345,7 @@
 		79FA886C29E4AD66003C6DFB /* Hourly */ = {
 			isa = PBXGroup;
 			children = (
+				79F0A78529FF6C1200A2850E /* Hourly.entitlements */,
 				79A5640929FC9FDF004E8A7E /* GoogleService-Info.plist */,
 				79FA88A029E4B256003C6DFB /* Utils */,
 				79FA886D29E4AD66003C6DFB /* AppDelegate.swift */,
@@ -852,7 +854,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_ENTITLEMENTS = Hourly/Hourly.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -889,7 +891,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_ENTITLEMENTS = Hourly/Hourly.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
