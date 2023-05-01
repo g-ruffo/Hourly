@@ -31,6 +31,7 @@ class ClientDetailsViewController: UIViewController {
         super.viewDidLoad()
         setClientDetails()
     }
+    
     // Set variable values using the provided clients data.
     private func setClientDetails() {
         if let details = client {
@@ -45,6 +46,7 @@ class ClientDetailsViewController: UIViewController {
         // Set the state of the action buttons.
         setIntentButtonState()
     }
+    
     private func setIntentButtonState() {
         // Set button as disabled if corresponding value is missing.
         guard let phone = phoneTextField.text, let email = emailTextField.text, let address = addressTextField.text else {
@@ -58,6 +60,7 @@ class ClientDetailsViewController: UIViewController {
         if email.isEmpty { emailButton.isEnabled = false }
         if address.isEmpty { locationButton.isEnabled = false }
     }
+    
     // Called when the trailing navigation button is pressed.
     @IBAction func editButtonPressed(_ sender: UIButton) {
         self.dismiss(animated: true) {
@@ -70,18 +73,22 @@ class ClientDetailsViewController: UIViewController {
             self.delegate?.editClient(self, client: editClient)
         }
     }
+    
     // Called when the phone button is pressed.
     @IBAction func phoneButtonPressed(_ sender: UIButton) {
         if let phone = phoneTextField.text { performIntent(for: "tel:", address: phone) }
     }
+    
     // Called when the message button is pressed.
     @IBAction func messageButtonPressed(_ sender: UIButton) {
         if let phone = phoneTextField.text { performIntent(for: "sms:", address: phone) }
     }
+    
     // Called when the email button is pressed.
     @IBAction func emailButtonPressed(_ sender: UIButton) {
         if let email = emailTextField.text { performIntent(for: "mailTo:", address: email) }
     }
+    
     // Called when the location button is pressed.
     @IBAction func locationButtonPressed(_ sender: UIButton) {
         if let location = addressTextField.text {
@@ -90,6 +97,7 @@ class ClientDetailsViewController: UIViewController {
             performIntent(for: "http://maps.apple.com/?q=", address: formattedAddress)
         }
     }
+    
     // MARK: - Intent
     func performIntent(for action: String, address: String) {
         if let url = URL(string: "\(action)\(address)"),

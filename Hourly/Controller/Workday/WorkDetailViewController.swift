@@ -39,6 +39,7 @@ class WorkDetailViewController: UIViewController {
         setWorkdayDetails()
         collectionView.register(PhotoCell.nib(), forCellWithReuseIdentifier: K.Cell.photoCell)
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.Navigation.detailsPhotoCollectionNav {
             let destinationVC = segue.destination as? PhotoViewController
@@ -48,6 +49,7 @@ class WorkDetailViewController: UIViewController {
             destinationVC?.startingRow = sender as? Int
         }
     }
+    
     // Load the selected workday and set the corresponding text fields values.
     private func setWorkdayDetails() {
         guard let day = workday else {
@@ -78,6 +80,7 @@ class WorkDetailViewController: UIViewController {
         savedPhotos = day.photos?.allObjects as? Array<PhotoItem> ?? []
         collectionView.isHidden = savedPhotos.count < 1
     }
+    
     // Called when the trailing navigation bar button is pressed.
     @IBAction func editButtonPressed(_ sender: UIButton) {
         self.dismiss(animated: true) {
@@ -89,11 +92,13 @@ class WorkDetailViewController: UIViewController {
         }
     }
 }
+
 // MARK: - UICollectionViewDataSource
 extension WorkDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return savedPhotos.count
     }
+    
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.Cell.photoCell, for: indexPath) as! PhotoCell
@@ -108,12 +113,14 @@ extension WorkDetailViewController: UICollectionViewDataSource {
         return cell
     }
 }
+
 // MARK: - UICollectionViewDelegate
 extension WorkDetailViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         performSegue(withIdentifier: K.Navigation.detailsPhotoCollectionNav, sender: indexPath.row)
     }
 }
+
 // MARK: - UICollectionViewDelegateFlowLayout
 extension WorkDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,

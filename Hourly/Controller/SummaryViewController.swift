@@ -53,6 +53,7 @@ class SummaryViewController: UIViewController {
             noDataLabel.isHidden = workdays.count > 0
         }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Set the delegates and datasource.
@@ -93,6 +94,7 @@ class SummaryViewController: UIViewController {
     @objc func workdaysHaveBeenUpdated(notification: NSNotification) {
         loadWorkdaysFromDatabase()
     }
+    
     // Load workdays for the time frame selected by the user in the options menu.
     func loadWorkdaysFromDatabase() {
         var startDate = todaysDate
@@ -114,6 +116,7 @@ class SummaryViewController: UIViewController {
         
         coreDataService.getWorkdays(withRequest: request)
     }
+    
     func setupPopUpButton() {
         // Called when selection is made.
         let optionClosure = {(action: UIAction) in self.loadWorkdaysFromDatabase() }
@@ -135,6 +138,7 @@ class SummaryViewController: UIViewController {
         filterResultsButton.showsMenuAsPrimaryAction = true
     }
 }
+
 // MARK: - UITableViewDelegate
 extension SummaryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -142,6 +146,7 @@ extension SummaryViewController: UITableViewDelegate {
         performSegue(withIdentifier: K.Navigation.summaryWorkdayDetailNav, sender: workdays[indexPath.row])
     }
 }
+
 // MARK: - UITableViewDataSource
 extension SummaryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -153,12 +158,14 @@ extension SummaryViewController: UITableViewDataSource {
         return cell
     }
 }
+
 // MARK: - EditWorkdayDelegate
 extension SummaryViewController: EditWorkdayDelegate {
     func editWorkday(_ workDetailViewController: WorkDetailViewController, workday: WorkdayItem) {
         performSegue(withIdentifier: K.Navigation.summaryEditWorkdayNav, sender: workday.objectID)
     }
 }
+
 // MARK: - CoreDataServiceDelegate
 extension SummaryViewController: CoreDataServiceDelegate {
     func loadedWorkdays(_ coreDataService: CoreDataService, workdayItems: Array<WorkdayItem>) {

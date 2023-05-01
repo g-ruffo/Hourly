@@ -55,7 +55,6 @@ class AddEditClientViewController: UIViewController {
         let alertDialog = UIAlertController(title: S.alertTitleMissingInfo.localized,
                                             message: S.alertMessageMissingInfo.localized,
                                             preferredStyle: .alert)
-        
         let dismissButton = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
             alertDialog.dismiss(animated: true)
         })
@@ -67,7 +66,6 @@ class AddEditClientViewController: UIViewController {
         let dialogMessage = UIAlertController(title: S.alertTitleDeleteConfirm.localized,
                                               message: S.alertMessageDeleteConfirm.localized,
                                               preferredStyle: .alert)
-        
         let dismissButton = UIAlertAction(title: "No", style: .default, handler: { (action) -> Void in
             dialogMessage.dismiss(animated: true)
         })
@@ -106,6 +104,7 @@ class AddEditClientViewController: UIViewController {
             navigationController?.popViewController(animated: true)
         }
     }
+    
     func saveClient() -> Bool { return coreDataService.saveToDatabase() }
     
     // Called when save button is pressed
@@ -114,12 +113,14 @@ class AddEditClientViewController: UIViewController {
     @IBAction func deleteButtonPressed(_ sender: UIBarButtonItem) { showDeleteAlertDialog() }
     
 }
+
 // MARK: - AddEditClientManagerDelegate
 extension AddEditClientViewController: AddEditClientManagerDelegate {
     func didUpdateCurrencyText(_ addEditClientManager: AddEditClientManager, newCurrencyValue: String?) {
         // Update the text fields input to currency format.
         payRateTextField.text = newCurrencyValue
     }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         manager.validateCurrencyInput(string: string)
     }

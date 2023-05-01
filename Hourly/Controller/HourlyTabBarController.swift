@@ -9,11 +9,12 @@ import UIKit
 
 class HourlyTabBarController: UITabBarController {
     // MARK: - View Life Cycle
-        override func viewDidLoad() {
-            super.viewDidLoad()
-            delegate = self
-            initializeTabBarItems()
-        }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        delegate = self
+        initializeTabBarItems()
+    }
+    
     private func initializeTabBarItems() {
         // Instantiate view controllers
         let summaryNav = self.storyboard?.instantiateViewController(withIdentifier: K.Navigation.summaryNav) as! UINavigationController
@@ -29,7 +30,6 @@ class HourlyTabBarController: UITabBarController {
         settingsNav.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "gearshape"), selectedImage: UIImage(systemName: "gearshape.fill"))
         newWorkdayNav.tabBarItem = UITabBarItem(title: nil, image: nil, selectedImage: nil)
         
-        
         // Assign ViewControllers to TabBarController
         let viewControllers = [summaryNav, calendarNav, newWorkdayNav, workdaysNav, settingsNav]
         self.setViewControllers(viewControllers, animated: false)
@@ -38,20 +38,22 @@ class HourlyTabBarController: UITabBarController {
             self.navigateToWorday()
         }
     }
-        func navigateToWorday() {
-            let createAdNavController = self.storyboard?.instantiateViewController(withIdentifier: K.Navigation.newWorkdayNav) as! UINavigationController
-            createAdNavController.modalPresentationCapturesStatusBarAppearance = true
-            self.present(createAdNavController, animated: true, completion: nil)
-        }
+    
+    func navigateToWorday() {
+        let createAdNavController = self.storyboard?.instantiateViewController(withIdentifier: K.Navigation.newWorkdayNav) as! UINavigationController
+        createAdNavController.modalPresentationCapturesStatusBarAppearance = true
+        self.present(createAdNavController, animated: true, completion: nil)
     }
-    // MARK: - UITabBarController Delegate
-    extension HourlyTabBarController: UITabBarControllerDelegate {
-        func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-            guard let selectedIndex = tabBarController.viewControllers?.firstIndex(of: viewController) else {
-                return true
-            }
-            // The middle tab bar item index.
-            if selectedIndex == 2 { return false }
+}
+
+// MARK: - UITabBarController Delegate
+extension HourlyTabBarController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        guard let selectedIndex = tabBarController.viewControllers?.firstIndex(of: viewController) else {
             return true
         }
+        // The middle tab bar item index.
+        if selectedIndex == 2 { return false }
+        return true
+    }
 }

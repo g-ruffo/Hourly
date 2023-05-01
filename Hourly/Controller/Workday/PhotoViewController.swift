@@ -61,6 +61,7 @@ class PhotoViewController: UIViewController {
         coreDataService?.deletePhoto(at: index)
         delegate?.photoHasBeenDeleted(self)
     }
+    
     // Called when the leading navigation bar button is pressed.
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         // Save changes to database and navigate back if successful.
@@ -69,11 +70,13 @@ class PhotoViewController: UIViewController {
         }
     }
 }
+
 // MARK: - UICollectionViewDataSource
 extension PhotoViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photos.count
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.Cell.photoCollectionCell, for: indexPath) as! PhotoCollectionCell
         // If the photo items photo is valid set it to the cells image view.
@@ -92,6 +95,7 @@ extension PhotoViewController: UICollectionViewDataSource {
         return cell
     }
 }
+
 // MARK: - UICollectionViewFlowLayout
 extension PhotoViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -99,6 +103,7 @@ extension PhotoViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)
     }
 }
+
 // MARK: - UITextViewDelegate
 extension PhotoViewController: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
@@ -109,6 +114,7 @@ extension PhotoViewController: UITextViewDelegate {
         }
     }
 }
+
 // MARK: - CoreDataServiceDelegate
 extension PhotoViewController: CoreDataServiceDelegate {
     func loadedPhotos(_ coreDataService: CoreDataService, photoItems: Array<PhotoItem>) {

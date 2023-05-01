@@ -95,12 +95,12 @@ class ExportViewController: UIViewController {
     }
 }
 
-
 // MARK: - ClientSearchDelegate
 extension ExportViewController: ClientSearchDelegate {
     func selectedExistingClient(_ clientSearchTextField: ClientSearchTextField, clientID: NSManagedObjectID?) {
         coreDataService.getClientFromID(clientID)
     }
+    
     func didEndEditing(_ clientSearchTextField: ClientSearchTextField) {
         // If the user finishes editing without selecting a client set the text field back to nil.
         guard let _ = self.selectedClient else {
@@ -120,7 +120,6 @@ extension ExportViewController: UIDocumentPickerDelegate {
         }
         // Make sure you release the security-scoped resource when you finish.
         defer { url.stopAccessingSecurityScopedResource() }
-        
         manager.exportWorkdaysToCSV(withObjects: workdays, client: (selectedClient?.companyName)!, startDate: startDatePicker.date, endDate: endDatePicker.date, toPath: url)
         url.stopAccessingSecurityScopedResource()
     }

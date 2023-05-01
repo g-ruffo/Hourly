@@ -30,6 +30,7 @@ class ClientsViewController: UIViewController {
         super.viewWillAppear(animated)
         loadClientsFromDatabase()
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.Navigation.detailClientNav {
             let destinationVC = segue.destination as? ClientDetailsViewController
@@ -43,6 +44,7 @@ class ClientsViewController: UIViewController {
             destinationVC?.editClientId = sender as? NSManagedObjectID
         }
     }
+    
     func loadClientsFromDatabase(searchClients: String? = nil) {
         let request: NSFetchRequest<ClientItem> = ClientItem.fetchRequest()
         // If searchClients is not nil create predicate for users search inquiry.
@@ -51,17 +53,20 @@ class ClientsViewController: UIViewController {
             request.predicate = predicate
         }
         coreDataService.getClients(withRequest: request)
-    }    
+    }
+    
     // Called when trailing navigation button is pressed.
     @IBAction func createClientPressed(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: K.Navigation.addClientNav, sender: self)
     }
 }
+
 // MARK: - UITableViewDataSource
 extension ClientsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return clients.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let client = clients[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: K.Cell.clientCell, for: indexPath) as! ClientCell
@@ -81,6 +86,7 @@ extension ClientsViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
+
 // MARK: - UISearchBarDelegate
 extension ClientsViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -89,6 +95,7 @@ extension ClientsViewController: UISearchBarDelegate {
             loadClientsFromDatabase(searchClients: searchText)
         }
     }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         // Dismiss keyboard when the text field has been cleared.
         if searchText.isEmpty {
@@ -97,12 +104,14 @@ extension ClientsViewController: UISearchBarDelegate {
         }
     }
 }
+
 // MARK: - EditClientDelegate
 extension ClientsViewController: EditClientDelegate {    
     func editClient(_ clientDetailsViewController: ClientDetailsViewController, client: ClientItem) {
         performSegue(withIdentifier: K.Navigation.editClientNav, sender: client.objectID)
     }
 }
+
 // MARK: - CoreDataServiceDelegate
 extension ClientsViewController: CoreDataServiceDelegate {
     func loadedClients(_ coreDataService: CoreDataService, clientItems: Array<ClientItem>) {

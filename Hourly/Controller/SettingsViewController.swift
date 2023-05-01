@@ -26,10 +26,10 @@ class SettingsViewController: UIViewController {
         tableView.dataSource = self
         // Set the navigation title to large.
         navigationController?.navigationBar.prefersLargeTitles = true
-        
         tableView.register(UINib(nibName: K.Cell.settingsNibName, bundle: nil), forCellReuseIdentifier: K.Cell.settingsCell)
     }
 }
+
 // MARK: - UITableViewDelegate
 extension SettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -43,11 +43,13 @@ extension SettingsViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
+
 // MARK: - UITableViewDataSource
 extension SettingsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menuItems.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.Cell.settingsCell, for: indexPath) as! SettingsCell
         let image = menuItems[indexPath.row].image
