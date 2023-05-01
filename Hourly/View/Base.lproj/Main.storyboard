@@ -118,7 +118,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="Mjk-7A-2bI">
-                                <rect key="frame" x="100" y="261" width="824" height="350"/>
+                                <rect key="frame" x="100" y="293" width="824" height="350"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sot-ff-0aW" userLabel="Total Hours View">
                                         <rect key="frame" x="0.0" y="0.0" width="362" height="350"/>
@@ -365,11 +365,11 @@
                                 <variation key="heightClass=regular-widthClass=regular" spacing="100"/>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="BB6-EV-jbA">
-                                <rect key="frame" x="0.0" y="627" width="1024" height="739"/>
+                                <rect key="frame" x="0.0" y="659" width="1024" height="707"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Data for Selected Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PDD-mC-VAj">
-                                <rect key="frame" x="0.0" y="611" width="1024" height="735"/>
+                                <rect key="frame" x="0.0" y="643" width="1024" height="703"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -399,7 +399,7 @@
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
                             <constraint firstItem="Mjk-7A-2bI" firstAttribute="top" secondItem="JhT-pI-qFi" secondAttribute="bottom" constant="12" id="qFY-Wb-Yfl">
-                                <variation key="heightClass=regular-widthClass=regular" constant="12"/>
+                                <variation key="heightClass=regular-widthClass=regular" constant="44"/>
                             </constraint>
                             <constraint firstItem="SJF-ER-bSW" firstAttribute="trailing" secondItem="BB6-EV-jbA" secondAttribute="trailing" id="trd-d6-hoI"/>
                             <constraint firstItem="SJF-ER-bSW" firstAttribute="bottom" secondItem="PDD-mC-VAj" secondAttribute="bottom" id="uMr-Sj-hAc"/>
@@ -681,14 +681,14 @@
                                         <rect key="frame" x="0.0" y="63" width="960" height="60"/>
                                         <subviews>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="bLm-Sj-exR">
-                                                <rect key="frame" x="0.0" y="0.0" width="386" height="60"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="395" height="60"/>
                                             </datePicker>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rpe-Ig-TFU">
-                                                <rect key="frame" x="408" y="2.5" width="72" height="55"/>
+                                                <rect key="frame" x="417" y="2.5" width="52" height="55"/>
                                                 <color key="tintColor" name="PrimaryBlueDark"/>
                                             </imageView>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="bBB-7Q-jzl">
-                                                <rect key="frame" x="502" y="0.0" width="458" height="60"/>
+                                                <rect key="frame" x="491" y="0.0" width="469" height="60"/>
                                             </datePicker>
                                         </subviews>
                                         <constraints>
@@ -921,10 +921,16 @@
                                         </constraints>
                                         <color key="tintColor" red="0.3519255447446083" green="0.68372778960394265" blue="0.35891402829618041" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" imagePlacement="top" title="Phone" imagePadding="10" cornerStyle="medium" titleAlignment="center">
+                                        <buttonConfiguration key="configuration" style="filled" imagePlacement="top" imagePadding="10" cornerStyle="medium" titleAlignment="center">
                                             <imageReference key="image" image="phone.fill" catalog="system" symbolScale="large"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large"/>
-                                            <fontDescription key="titleFontDescription" type="system" pointSize="10"/>
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Phone">
+                                                    <attributes>
+                                                        <font key="NSFont" metaFont="system" size="10"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="phoneButtonPressed:" destination="EIG-Gh-Hm2" eventType="touchUpInside" id="GmG-Np-km5"/>
@@ -953,10 +959,16 @@
                                         <rect key="frame" x="269.5" y="0.0" width="100" height="100"/>
                                         <color key="tintColor" red="0.82192504448398573" green="0.5362676887164225" blue="0.088711696137013449" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" imagePlacement="top" title="Emaill" imagePadding="10" cornerStyle="medium" titleAlignment="center">
+                                        <buttonConfiguration key="configuration" style="filled" imagePlacement="top" imagePadding="10" cornerStyle="medium" titleAlignment="center">
                                             <imageReference key="image" image="mail.fill" catalog="system" symbolScale="large"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large"/>
-                                            <fontDescription key="titleFontDescription" type="system" pointSize="10"/>
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Emaill">
+                                                    <attributes>
+                                                        <font key="NSFont" metaFont="system" size="10"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="emailButtonPressed:" destination="EIG-Gh-Hm2" eventType="touchUpInside" id="lB4-AW-nQP"/>
@@ -966,10 +978,16 @@
                                         <rect key="frame" x="404.5" y="0.0" width="99.5" height="100"/>
                                         <color key="tintColor" red="0.78903469750889677" green="0.31076353386525696" blue="0.75765528259529946" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" imagePlacement="top" title="Location" imagePadding="10" cornerStyle="medium" titleAlignment="center">
+                                        <buttonConfiguration key="configuration" style="filled" imagePlacement="top" imagePadding="10" cornerStyle="medium" titleAlignment="center">
                                             <imageReference key="image" image="location.fill" catalog="system" symbolScale="large"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large"/>
-                                            <fontDescription key="titleFontDescription" type="system" pointSize="10"/>
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Location">
+                                                    <attributes>
+                                                        <font key="NSFont" metaFont="system" size="10"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="locationButtonPressed:" destination="EIG-Gh-Hm2" eventType="touchUpInside" id="kv8-qC-4ex"/>
@@ -2005,9 +2023,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="tA9-Ze-nTZ"/>
+        <segue reference="olG-vz-Or0"/>
         <segue reference="gAs-an-Vsm"/>
-        <segue reference="Q5n-uq-4AC"/>
+        <segue reference="pqR-vS-0xj"/>
         <segue reference="Ydi-Ml-fqH"/>
     </inferredMetricsTieBreakers>
     <resources>
