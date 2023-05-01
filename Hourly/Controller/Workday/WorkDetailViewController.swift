@@ -37,6 +37,7 @@ class WorkDetailViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         setWorkdayDetails()
+        // Register the photo collection cell.
         collectionView.register(PhotoCell.nib(), forCellWithReuseIdentifier: K.Cell.photoCell)
     }
     
@@ -50,7 +51,7 @@ class WorkDetailViewController: UIViewController {
         }
     }
     
-    // Load the selected workday and set the corresponding text fields values.
+    // Load the selected workday and set the corresponding text field values.
     private func setWorkdayDetails() {
         guard let day = workday else {
             print("Unable to get work day")
@@ -66,11 +67,13 @@ class WorkDetailViewController: UIViewController {
         hoursWorkedLabel.text = Helper.minutesToHoursWorkedString(minutesWorked: day.minutesWorked)
         payRateLabel.text = day.payRate.convertToCurrency()
         mileageLabel.text = "\(day.mileage) km"
+        // If no description for the workday has been set, display default text.
         if let description = day.workDescription, description.isEmpty {
             descriptionLabel.text = "No description found"
         } else {
             descriptionLabel.text = day.workDescription
         }
+        // If no location for the workday has been set, display default text.
         if let location = day.location, location.isEmpty {
             locationLabel.text = "No location set"
         } else {
@@ -88,6 +91,7 @@ class WorkDetailViewController: UIViewController {
                 print("Unable to get workday to edit")
                 return
             }
+            // Notify parent view controller to navigate to edit workday controller.
             self.delegate?.editWorkday(self, workday: editWorkday)
         }
     }
@@ -126,6 +130,7 @@ extension WorkDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
+        // Set the photo cell size.
         return CGSize(width: 110, height: 110)
     }
 }

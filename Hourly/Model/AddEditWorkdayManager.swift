@@ -19,7 +19,6 @@ struct AddEditWorkdayManager {
         formatter.numberStyle = NumberFormatter.Style.currency
         let amount = Double(payRateAmount / 100) + Double(payRateAmount % 100) / 100
         return formatter.string(from: NSNumber(value: amount))
-        
     }
     
     mutating func validateCurrencyInput(string: String) -> Bool {

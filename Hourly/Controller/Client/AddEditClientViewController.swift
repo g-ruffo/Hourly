@@ -62,6 +62,7 @@ class AddEditClientViewController: UIViewController {
         self.present(alertDialog, animated: true, completion: nil)
     }
     
+    // If the user selects the delete menu button display alert asking for confirmation.
     func showDeleteAlertDialog() {
         let dialogMessage = UIAlertController(title: S.alertTitleDeleteConfirm.localized,
                                               message: S.alertMessageDeleteConfirm.localized,
@@ -71,6 +72,7 @@ class AddEditClientViewController: UIViewController {
         })
         let confirmButton = UIAlertAction(title: "DELETE!", style: .destructive, handler: { (action) -> Void in
             dialogMessage.dismiss(animated: true)
+            // If delete is successful navigate back.
             if self.coreDataService.deleteClient() { self.navigationController?.popViewController(animated: true) }
         })
         
