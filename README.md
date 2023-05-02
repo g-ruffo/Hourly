@@ -9,7 +9,7 @@ Utilizing iCloud, add photos, descriptions and locations to each working day and
 ![readme_screenshots](https://user-images.githubusercontent.com/93240608/235542993-7701d687-7e02-4c5a-abbe-230fa73a7900.png)
 
 ## Installation
-Available on the Apple App Store: https://appstore.com/
+Available on the [Apple App Store](https://apps.apple.com/ca/app/hourly/id6448670360)
 
 ## Features
 - [x] Create client lists for easy access to location and contact information
