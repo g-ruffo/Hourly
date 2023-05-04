@@ -33,8 +33,11 @@ final class AddEditWorkdayViewControllerTests: XCTestCase {
     
     func test_dateEndTimePickerStartingValues_EqualsToday() {
         let date = systemUnderTest.datePicker.date
-        
-        XCTAssertEqual(date, date)
+        let start = systemUnderTest.startTimeDatePicker.date
+        let end = systemUnderTest.endTimeDatePicker.date
+        XCTAssertEqual(date, Date())
+        XCTAssertEqual(date, Date())
+        XCTAssertEqual(date, Date())
     }
 
 }
