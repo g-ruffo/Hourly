@@ -1280,7 +1280,7 @@
         <!--Add Workday-->
         <scene sceneID="cI7-HU-Gxj">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="q60-8t-Gij" customClass="AddEditWorkdayViewController" customModule="Hourly" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddEditWorkdayViewController" hidesBottomBarWhenPushed="YES" id="q60-8t-Gij" customClass="AddEditWorkdayViewController" customModule="Hourly" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" restorationIdentifier="WorkdayNavigation" id="myi-Kt-Ur9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

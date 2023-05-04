@@ -28,6 +28,7 @@
 		7964AFDF29EB2CEE00065863 /* WorkdaysManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964AFDE29EB2CEE00065863 /* WorkdaysManager.swift */; };
 		7964AFE129EB368900065863 /* AddEditWorkdayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964AFE029EB368900065863 /* AddEditWorkdayManager.swift */; };
 		7964AFE429EDE21F00065863 /* ClientSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964AFE329EDE21F00065863 /* ClientSearchTextField.swift */; };
+		7973B59B2A0339460066E0F2 /* AddEditWorkdayViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7973B59A2A0339460066E0F2 /* AddEditWorkdayViewControllerTests.swift */; };
 		797F535C29FDBC38002DE3A4 /* HelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797F535B29FDBC38002DE3A4 /* HelperTests.swift */; };
 		797F536029FDBE0A002DE3A4 /* CalendarViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797F535F29FDBE0A002DE3A4 /* CalendarViewControllerTests.swift */; };
 		7983B00429F4A09900F2D76E /* WorkdayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7983B00229F4A09900F2D76E /* WorkdayCell.swift */; };
@@ -114,6 +115,7 @@
 		7964AFDE29EB2CEE00065863 /* WorkdaysManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkdaysManager.swift; sourceTree = "<group>"; };
 		7964AFE029EB368900065863 /* AddEditWorkdayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditWorkdayManager.swift; sourceTree = "<group>"; };
 		7964AFE329EDE21F00065863 /* ClientSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientSearchTextField.swift; sourceTree = "<group>"; };
+		7973B59A2A0339460066E0F2 /* AddEditWorkdayViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditWorkdayViewControllerTests.swift; sourceTree = "<group>"; };
 		797F535B29FDBC38002DE3A4 /* HelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperTests.swift; sourceTree = "<group>"; };
 		797F535F29FDBE0A002DE3A4 /* CalendarViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewControllerTests.swift; sourceTree = "<group>"; };
 		7983B00229F4A09900F2D76E /* WorkdayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkdayCell.swift; sourceTree = "<group>"; };
@@ -213,6 +215,14 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		7973B5992A0339330066E0F2 /* Workday */ = {
+			isa = PBXGroup;
+			children = (
+				7973B59A2A0339460066E0F2 /* AddEditWorkdayViewControllerTests.swift */,
+			);
+			path = Workday;
+			sourceTree = "<group>";
+		};
 		797F535A29FDBC24002DE3A4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +234,7 @@
 		797F535D29FDBDE5002DE3A4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				7973B5992A0339330066E0F2 /* Workday */,
 				79F0A74229FDD4B100A2850E /* Model */,
 				7995D5F329FDCD6C004CEABF /* Client */,
 				797F535E29FDBDFA002DE3A4 /* Calendar */,
@@ -672,6 +683,7 @@
 				79AB6D0F29FDAC1D002E5E83 /* CalendarManagerTests.swift in Sources */,
 				79A5641829FCB979004E8A7E /* AddEditWorkdayManagerTests.swift in Sources */,
 				790FFC6229FDB5A3006BCE34 /* SummaryManagerTests.swift in Sources */,
+				7973B59B2A0339460066E0F2 /* AddEditWorkdayViewControllerTests.swift in Sources */,
 				797F535C29FDBC38002DE3A4 /* HelperTests.swift in Sources */,
 				79F0A74529FDD51800A2850E /* CoreDataServiceMock.swift in Sources */,
 				79FA888829E4AD67003C6DFB /* HourlyTests.swift in Sources */,
