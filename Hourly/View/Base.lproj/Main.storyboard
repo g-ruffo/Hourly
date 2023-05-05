@@ -1588,7 +1588,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DiL-Gw-7oR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="696.94656488549617" y="695.77464788732402"/>
+            <point key="canvasLocation" x="697" y="779"/>
         </scene>
         <!--Calendar Detail Controller-->
         <scene sceneID="YvJ-xb-iLa">
@@ -2031,9 +2031,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="olG-vz-Or0"/>
+        <segue reference="tA9-Ze-nTZ"/>
         <segue reference="gAs-an-Vsm"/>
-        <segue reference="pqR-vS-0xj"/>
+        <segue reference="6Zw-kC-fZp"/>
         <segue reference="Ydi-Ml-fqH"/>
     </inferredMetricsTieBreakers>
     <resources>

@@ -130,7 +130,7 @@ final class CoreDataService {
             client = workday?.client
             _workdayPhotos = workday?.photos?.allObjects as? Array<PhotoItem> ?? []
         } catch {
-            fatalError(error.localizedDescription)
+            print("Error loading files from core data = \(error)")
         }
     }
     
