@@ -25,7 +25,41 @@ extension CoreDataServiceDelegate {
     func loadedClients(_ coreDataService: CoreDataService, clientItems: Array<ClientItem>) {}
     
 }
-final class CoreDataService {
+
+protocol CoreDataServiceProtocol {
+    func createUpdateWorkday(clientName: String, date workDate: Date, start: Date?, end: Date?, lunch: Int32, mileage: Int32, rate: Double, location: String?, description: String?, timeWorked: Int32, earnings: Double, isDraft: Bool) -> Bool
+    func addPhotoItemsToWorkday(_ workday: WorkdayItem)
+    func createPhotoItems(from jpegImages: Array<Data?>)
+    func deleteWorkday() -> Bool
+    func deletePhoto(at index: Int)
+    func updatePhoto(at index: Int, text: String)
+    func getClientFromURL(url: URL)
+    func getWorkdayFromObjectId(_ id: NSManagedObjectID)
+    func getWorkdays(withRequest request : NSFetchRequest<WorkdayItem>)
+    func getWorkdayClientID() -> URL?
+    func getClients(withRequest request : NSFetchRequest<ClientItem>)
+    func getClientFromID(_ id: NSManagedObjectID?)
+    func deleteClient() -> Bool
+    func createUpdateClient(companyName: String, contactName: String?, phone: String?, email: String?, address: String?, rate: Double, tagColour: String?) -> Bool
+}
+extension CoreDataServiceProtocol {
+    func createUpdateWorkday(clientName: String, date workDate: Date, start: Date?, end: Date?, lunch: Int32, mileage: Int32, rate: Double, location: String?, description: String?, timeWorked: Int32, earnings: Double, isDraft: Bool) -> Bool { return true }
+    func addPhotoItemsToWorkday(_ workday: WorkdayItem) {}
+    func createPhotoItems(from jpegImages: Array<Data?>) {}
+    func deleteWorkday() -> Bool { return true }
+    func deletePhoto(at index: Int) {}
+    func updatePhoto(at index: Int, text: String) {}
+    func getClientFromURL(url: URL) {}
+    func getWorkdayFromObjectId(_ id: NSManagedObjectID) {}
+    func getWorkdays(withRequest request : NSFetchRequest<WorkdayItem>) {}
+    func getWorkdayClientID() -> URL? { return nil }
+    func getClients(withRequest request : NSFetchRequest<ClientItem>) {}
+    func getClientFromID(_ id: NSManagedObjectID?) {}
+    func deleteClient() -> Bool { return true }
+    func createUpdateClient(companyName: String, contactName: String?, phone: String?, email: String?, address: String?, rate: Double, tagColour: String?) -> Bool { return true }
+}
+
+final class CoreDataService: CoreDataServiceProtocol {
     private var workday: WorkdayItem? {
         didSet { delegate?.loadedWorkday(self, workdayItem: workday) }
     }
@@ -154,6 +188,7 @@ final class CoreDataService {
             print("Error while fetching data: \(error)")
         }
     }
+    
     func getClientFromID(_ id: NSManagedObjectID?) {
         clientId = id
         if let clientId = id {
