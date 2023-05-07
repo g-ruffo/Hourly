@@ -10,19 +10,19 @@ import UIKit
 import CoreData
 
 protocol CoreDataServiceDelegate: AnyObject {
-    func loadedWorkday(_ coreDataService: CoreDataService, workdayItem: WorkdayItem?)
-    func loadedWorkdays(_ coreDataService: CoreDataService, workdayItems: Array<WorkdayItem>)
-    func loadedPhotos(_ coreDataService: CoreDataService, photoItems: Array<PhotoItem>)
-    func loadedClient(_ coreDataService: CoreDataService, clientItem: ClientItem?)
-    func loadedClients(_ coreDataService: CoreDataService, clientItems: Array<ClientItem>)
+    func loadedWorkday(_ coreDataService: CoreDataServiceProtocol, workdayItem: WorkdayItem?)
+    func loadedWorkdays(_ coreDataService: CoreDataServiceProtocol, workdayItems: Array<WorkdayItem>)
+    func loadedPhotos(_ coreDataService: CoreDataServiceProtocol, photoItems: Array<PhotoItem>)
+    func loadedClient(_ coreDataService: CoreDataServiceProtocol, clientItem: ClientItem?)
+    func loadedClients(_ coreDataService: CoreDataServiceProtocol, clientItems: Array<ClientItem>)
 }
 
 extension CoreDataServiceDelegate {
-    func loadedWorkday(_ coreDataService: CoreDataService, workdayItem: WorkdayItem?) {}
-    func loadedWorkdays(_ coreDataService: CoreDataService, workdayItems: Array<WorkdayItem>) {}
-    func loadedPhotos(_ coreDataService: CoreDataService, photoItems: Array<PhotoItem>) {}
-    func loadedClient(_ coreDataService: CoreDataService, clientItem: ClientItem?) {}
-    func loadedClients(_ coreDataService: CoreDataService, clientItems: Array<ClientItem>) {}
+    func loadedWorkday(_ coreDataService: CoreDataServiceProtocol, workdayItem: WorkdayItem?) {}
+    func loadedWorkdays(_ coreDataService: CoreDataServiceProtocol, workdayItems: Array<WorkdayItem>) {}
+    func loadedPhotos(_ coreDataService: CoreDataServiceProtocol, photoItems: Array<PhotoItem>) {}
+    func loadedClient(_ coreDataService: CoreDataServiceProtocol, clientItem: ClientItem?) {}
+    func loadedClients(_ coreDataService: CoreDataServiceProtocol, clientItems: Array<ClientItem>) {}
     
 }
 
@@ -59,7 +59,7 @@ extension CoreDataServiceProtocol {
     func createUpdateClient(companyName: String, contactName: String?, phone: String?, email: String?, address: String?, rate: Double, tagColour: String?) -> Bool { return true }
 }
 
-final class CoreDataService: CoreDataServiceProtocol {
+class CoreDataService: CoreDataServiceProtocol {
     private var workday: WorkdayItem? {
         didSet { delegate?.loadedWorkday(self, workdayItem: workday) }
     }
@@ -77,8 +77,12 @@ final class CoreDataService: CoreDataServiceProtocol {
         didSet { delegate?.loadedClients(self, clientItems: clients) }
     }
     private var clientId: NSManagedObjectID?
-    private let databaseContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private let databaseContext: NSManagedObjectContext
     weak var delegate: CoreDataServiceDelegate?
+    
+    init(databaseContext: NSManagedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext) {
+        self.databaseContext = databaseContext
+    }
     
     //MARK: - Save Methods
     func saveToDatabase() -> Bool {
