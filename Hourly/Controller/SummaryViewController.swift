@@ -22,7 +22,7 @@ class SummaryViewController: UIViewController {
     @IBOutlet weak var workedDaysView: UIView!
     @IBOutlet weak var hoursWorkedView: UIView!
     @IBOutlet weak var noDataLabel: UILabel!
-    private let coreDataService = CoreDataService()
+    private var coreDataService: CoreDataService!
     // Titles for option menu filter selection.
     private let filterOptions = ["This Week", "This Month", "This Year"]
     var manager = SummaryManager()
@@ -52,6 +52,17 @@ class SummaryViewController: UIViewController {
             // Show the no data label if there are no workdays for the selected time frame.
             noDataLabel.isHidden = workdays.count > 0
         }
+    }
+    
+    init(coreDataService: CoreDataService) {
+        super.init(nibName: nil, bundle: nil)
+        self.coreDataService = coreDataService
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        self.coreDataService = CoreDataService()
+
     }
     
     override func viewDidLoad() {

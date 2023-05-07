@@ -52,7 +52,7 @@
         <!--Summary-->
         <scene sceneID="Umg-fd-Rg4">
             <objects>
-                <viewController id="jRK-G3-78r" customClass="SummaryViewController" customModule="Hourly" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SummaryViewController" id="jRK-G3-78r" customClass="SummaryViewController" customModule="Hourly" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rIT-X4-Q1T">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2031,9 +2031,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="tA9-Ze-nTZ"/>
+        <segue reference="olG-vz-Or0"/>
         <segue reference="gAs-an-Vsm"/>
-        <segue reference="6Zw-kC-fZp"/>
+        <segue reference="pqR-vS-0xj"/>
         <segue reference="Ydi-Ml-fqH"/>
     </inferredMetricsTieBreakers>
     <resources>
