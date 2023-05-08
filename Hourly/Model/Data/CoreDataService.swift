@@ -10,56 +10,23 @@ import UIKit
 import CoreData
 
 protocol CoreDataServiceDelegate: AnyObject {
-    func loadedWorkday(_ coreDataService: CoreDataServiceProtocol, workdayItem: WorkdayItem?)
-    func loadedWorkdays(_ coreDataService: CoreDataServiceProtocol, workdayItems: Array<WorkdayItem>)
-    func loadedPhotos(_ coreDataService: CoreDataServiceProtocol, photoItems: Array<PhotoItem>)
-    func loadedClient(_ coreDataService: CoreDataServiceProtocol, clientItem: ClientItem?)
-    func loadedClients(_ coreDataService: CoreDataServiceProtocol, clientItems: Array<ClientItem>)
+    func loadedWorkday(_ coreDataService: CoreDataService, workdayItem: WorkdayItem?)
+    func loadedWorkdays(_ coreDataService: CoreDataService, workdayItems: Array<WorkdayItem>)
+    func loadedPhotos(_ coreDataService: CoreDataService, photoItems: Array<PhotoItem>)
+    func loadedClient(_ coreDataService: CoreDataService, clientItem: ClientItem?)
+    func loadedClients(_ coreDataService: CoreDataService, clientItems: Array<ClientItem>)
 }
 
 extension CoreDataServiceDelegate {
-    func loadedWorkday(_ coreDataService: CoreDataServiceProtocol, workdayItem: WorkdayItem?) {}
-    func loadedWorkdays(_ coreDataService: CoreDataServiceProtocol, workdayItems: Array<WorkdayItem>) {}
-    func loadedPhotos(_ coreDataService: CoreDataServiceProtocol, photoItems: Array<PhotoItem>) {}
-    func loadedClient(_ coreDataService: CoreDataServiceProtocol, clientItem: ClientItem?) {}
-    func loadedClients(_ coreDataService: CoreDataServiceProtocol, clientItems: Array<ClientItem>) {}
+    func loadedWorkday(_ coreDataService: CoreDataService, workdayItem: WorkdayItem?) {}
+    func loadedWorkdays(_ coreDataService: CoreDataService, workdayItems: Array<WorkdayItem>) {}
+    func loadedPhotos(_ coreDataService: CoreDataService, photoItems: Array<PhotoItem>) {}
+    func loadedClient(_ coreDataService: CoreDataService, clientItem: ClientItem?) {}
+    func loadedClients(_ coreDataService: CoreDataService, clientItems: Array<ClientItem>) {}
     
 }
 
-protocol CoreDataServiceProtocol {
-    func createUpdateWorkday(clientName: String, date workDate: Date, start: Date?, end: Date?, lunch: Int32, mileage: Int32, rate: Double, location: String?, description: String?, timeWorked: Int32, earnings: Double, isDraft: Bool) -> Bool
-    func addPhotoItemsToWorkday(_ workday: WorkdayItem)
-    func createPhotoItems(from jpegImages: Array<Data?>)
-    func deleteWorkday() -> Bool
-    func deletePhoto(at index: Int)
-    func updatePhoto(at index: Int, text: String)
-    func getClientFromURL(url: URL)
-    func getWorkdayFromObjectId(_ id: NSManagedObjectID)
-    func getWorkdays(withRequest request : NSFetchRequest<WorkdayItem>)
-    func getWorkdayClientID() -> URL?
-    func getClients(withRequest request : NSFetchRequest<ClientItem>)
-    func getClientFromID(_ id: NSManagedObjectID?)
-    func deleteClient() -> Bool
-    func createUpdateClient(companyName: String, contactName: String?, phone: String?, email: String?, address: String?, rate: Double, tagColour: String?) -> Bool
-}
-extension CoreDataServiceProtocol {
-    func createUpdateWorkday(clientName: String, date workDate: Date, start: Date?, end: Date?, lunch: Int32, mileage: Int32, rate: Double, location: String?, description: String?, timeWorked: Int32, earnings: Double, isDraft: Bool) -> Bool { return true }
-    func addPhotoItemsToWorkday(_ workday: WorkdayItem) {}
-    func createPhotoItems(from jpegImages: Array<Data?>) {}
-    func deleteWorkday() -> Bool { return true }
-    func deletePhoto(at index: Int) {}
-    func updatePhoto(at index: Int, text: String) {}
-    func getClientFromURL(url: URL) {}
-    func getWorkdayFromObjectId(_ id: NSManagedObjectID) {}
-    func getWorkdays(withRequest request : NSFetchRequest<WorkdayItem>) {}
-    func getWorkdayClientID() -> URL? { return nil }
-    func getClients(withRequest request : NSFetchRequest<ClientItem>) {}
-    func getClientFromID(_ id: NSManagedObjectID?) {}
-    func deleteClient() -> Bool { return true }
-    func createUpdateClient(companyName: String, contactName: String?, phone: String?, email: String?, address: String?, rate: Double, tagColour: String?) -> Bool { return true }
-}
-
-class CoreDataService: CoreDataServiceProtocol {
+class CoreDataService {
     private var workday: WorkdayItem? {
         didSet { delegate?.loadedWorkday(self, workdayItem: workday) }
     }

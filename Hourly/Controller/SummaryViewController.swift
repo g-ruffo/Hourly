@@ -22,7 +22,7 @@ class SummaryViewController: UIViewController {
     @IBOutlet weak var workedDaysView: UIView!
     @IBOutlet weak var hoursWorkedView: UIView!
     @IBOutlet weak var noDataLabel: UILabel!
-    private var coreDataService: CoreDataService!
+    private var coreDataService: CoreDataService
     // Titles for option menu filter selection.
     private let filterOptions = ["This Week", "This Month", "This Year"]
     var manager = SummaryManager()
@@ -55,14 +55,13 @@ class SummaryViewController: UIViewController {
     }
     
     init(coreDataService: CoreDataService) {
-        super.init(nibName: nil, bundle: nil)
         self.coreDataService = coreDataService
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
         self.coreDataService = CoreDataService()
-
+        super.init(coder: coder)
     }
     
     override func viewDidLoad() {
