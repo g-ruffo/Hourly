@@ -16,7 +16,7 @@ final class SummaryViewControllerTests: XCTestCase {
         coreDataServiceMock = CoreDataServiceMock()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         systemUnderTest = storyboard.instantiateViewController(withIdentifier: "SummaryViewController") as? SummaryViewController
-        systemUnderTest.loadView()
+        systemUnderTest.loadViewIfNeeded()
 
 
     }
@@ -35,5 +35,13 @@ final class SummaryViewControllerTests: XCTestCase {
         // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
     }
     
-
+    func testPlaceHolderInitialValues() {
+        XCTAssertEqual(systemUnderTest.earningsLabel.text, "$0.00")
+        XCTAssertEqual(systemUnderTest.billableTimeLabel.text, "0 Hours")
+        XCTAssertEqual(systemUnderTest.breakTimeLabel.text, "0 Hours")
+        XCTAssertEqual(systemUnderTest.totalHoursLabel.text, "0 Hours")
+        XCTAssertEqual(systemUnderTest.daysWorkedLabel.text, "0 Days")
+        XCTAssertEqual(systemUnderTest.timesheetsLabel.text, "0")
+        XCTAssertEqual(systemUnderTest.clientsLabel.text, "0")
+    }
 }
