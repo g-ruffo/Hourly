@@ -64,6 +64,7 @@
 		79F1AFD029E4C047004CED4E /* AddEditWorkdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFCF29E4C047004CED4E /* AddEditWorkdayViewController.swift */; };
 		79F1AFD229E4C07A004CED4E /* ClientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFD129E4C07A004CED4E /* ClientsViewController.swift */; };
 		79F1AFD429E4C8CD004CED4E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1AFD329E4C8CD004CED4E /* Constants.swift */; };
+		79F1D0B62A0AF2110015E345 /* ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F1D0B52A0AF2110015E345 /* ExtensionsTests.swift */; };
 		79FA886E29E4AD66003C6DFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FA886D29E4AD66003C6DFB /* AppDelegate.swift */; };
 		79FA887029E4AD66003C6DFB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FA886F29E4AD66003C6DFB /* SceneDelegate.swift */; };
 		79FA887229E4AD66003C6DFB /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FA887129E4AD66003C6DFB /* SummaryViewController.swift */; };
@@ -149,6 +150,7 @@
 		79F1AFCF29E4C047004CED4E /* AddEditWorkdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditWorkdayViewController.swift; sourceTree = "<group>"; };
 		79F1AFD129E4C07A004CED4E /* ClientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsViewController.swift; sourceTree = "<group>"; };
 		79F1AFD329E4C8CD004CED4E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		79F1D0B52A0AF2110015E345 /* ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsTests.swift; sourceTree = "<group>"; };
 		79FA886A29E4AD66003C6DFB /* Hourly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hourly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79FA886D29E4AD66003C6DFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79FA886F29E4AD66003C6DFB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				797F535B29FDBC38002DE3A4 /* HelperTests.swift */,
+				79F1D0B52A0AF2110015E345 /* ExtensionsTests.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -680,6 +683,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				797F536029FDBE0A002DE3A4 /* CalendarViewControllerTests.swift in Sources */,
+				79F1D0B62A0AF2110015E345 /* ExtensionsTests.swift in Sources */,
 				790FFC6029FDB4D8006BCE34 /* WorkdaysManagerTests.swift in Sources */,
 				7995D5F529FDCD8D004CEABF /* AddEditClientViewControllerTests.swift in Sources */,
 				7931A4D829FDB2E5000AE03C /* WorkdayDetailsManagerTests.swift in Sources */,
