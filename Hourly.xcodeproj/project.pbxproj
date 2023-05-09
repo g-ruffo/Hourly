@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6404ECE3E645389F254D7697 /* Pods_HourlyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079FD500BC474686D0D80511 /* Pods_HourlyTests.framework */; };
 		790387512A0857800054F55E /* SummaryViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790387502A0857800054F55E /* SummaryViewControllerTests.swift */; };
 		790FFC6029FDB4D8006BCE34 /* WorkdaysManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790FFC5F29FDB4D8006BCE34 /* WorkdaysManagerTests.swift */; };
 		790FFC6229FDB5A3006BCE34 /* SummaryManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790FFC6129FDB5A3006BCE34 /* SummaryManagerTests.swift */; };
@@ -77,6 +78,8 @@
 		79FA889429E4AD67003C6DFB /* HourlyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FA889329E4AD67003C6DFB /* HourlyUITestsLaunchTests.swift */; };
 		79FA88A629E4B2BD003C6DFB /* StringResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FA88A529E4B2BD003C6DFB /* StringResource.swift */; };
 		79FA88A929E4B37E003C6DFB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79FA88AB29E4B37E003C6DFB /* Localizable.strings */; };
+		90550BA2BCF252F6B709B9EE /* Pods_Hourly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0404AF268598CABADE42C64 /* Pods_Hourly.framework */; };
+		A40ED464F1643D7CD56A50E6 /* Pods_Hourly_HourlyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2DE005DFF84A6DBF5B4123B /* Pods_Hourly_HourlyUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,12 +100,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		079FD500BC474686D0D80511 /* Pods_HourlyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HourlyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E4D10F4E55C256D9DB1130A /* Pods-Hourly-HourlyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hourly-HourlyUITests.release.xcconfig"; path = "Target Support Files/Pods-Hourly-HourlyUITests/Pods-Hourly-HourlyUITests.release.xcconfig"; sourceTree = "<group>"; };
+		3C84B252DC6B972EEEC00A55 /* Pods-Hourly.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hourly.debug.xcconfig"; path = "Target Support Files/Pods-Hourly/Pods-Hourly.debug.xcconfig"; sourceTree = "<group>"; };
 		790387502A0857800054F55E /* SummaryViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewControllerTests.swift; sourceTree = "<group>"; };
 		790FFC5F29FDB4D8006BCE34 /* WorkdaysManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkdaysManagerTests.swift; sourceTree = "<group>"; };
 		790FFC6129FDB5A3006BCE34 /* SummaryManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryManagerTests.swift; sourceTree = "<group>"; };
 		7912FB3129F25DE4008BEA14 /* AddPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoCell.swift; sourceTree = "<group>"; };
 		7912FB3229F25DE4008BEA14 /* AddPhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPhotoCell.xib; sourceTree = "<group>"; };
 		7931A4D729FDB2E5000AE03C /* WorkdayDetailsManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkdayDetailsManagerTests.swift; sourceTree = "<group>"; };
+		793B7E2F043B8ED29ADCE7DA /* Pods-Hourly-HourlyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hourly-HourlyUITests.debug.xcconfig"; path = "Target Support Files/Pods-Hourly-HourlyUITests/Pods-Hourly-HourlyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		795BB46A29E63FB1000D7FB1 /* ColourTagButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourTagButton.swift; sourceTree = "<group>"; };
 		795BB46C29E65D99000D7FB1 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		795BB46D29E65D99000D7FB1 /* SettingsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsCell.xib; sourceTree = "<group>"; };
@@ -167,6 +174,11 @@
 		79FA889329E4AD67003C6DFB /* HourlyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		79FA88A529E4B2BD003C6DFB /* StringResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringResource.swift; sourceTree = "<group>"; };
 		79FA88AA29E4B37E003C6DFB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7E24DF936ABE5A535118D6FF /* Pods-Hourly.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hourly.release.xcconfig"; path = "Target Support Files/Pods-Hourly/Pods-Hourly.release.xcconfig"; sourceTree = "<group>"; };
+		92FC8FCF0C9E83BFA83847DF /* Pods-HourlyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HourlyTests.debug.xcconfig"; path = "Target Support Files/Pods-HourlyTests/Pods-HourlyTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C76C2B929545E6898FCE033D /* Pods-HourlyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HourlyTests.release.xcconfig"; path = "Target Support Files/Pods-HourlyTests/Pods-HourlyTests.release.xcconfig"; sourceTree = "<group>"; };
+		E0404AF268598CABADE42C64 /* Pods_Hourly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hourly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2DE005DFF84A6DBF5B4123B /* Pods_Hourly_HourlyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hourly_HourlyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +189,7 @@
 				79A5641029FCB7EE004E8A7E /* FirebaseCrashlytics in Frameworks */,
 				7964AFC329E7C24C00065863 /* UIColorHexSwift in Frameworks */,
 				79A5640E29FCB7EE004E8A7E /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				90550BA2BCF252F6B709B9EE /* Pods_Hourly.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,6 +199,7 @@
 			files = (
 				79A5641329FCB8E9004E8A7E /* UIColorHexSwift in Frameworks */,
 				79A5641529FCB8F8004E8A7E /* FirebaseCrashlytics in Frameworks */,
+				6404ECE3E645389F254D7697 /* Pods_HourlyTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,6 +207,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A40ED464F1643D7CD56A50E6 /* Pods_Hourly_HourlyUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +281,9 @@
 		79A5641129FCB8E9004E8A7E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E0404AF268598CABADE42C64 /* Pods_Hourly.framework */,
+				F2DE005DFF84A6DBF5B4123B /* Pods_Hourly_HourlyUITests.framework */,
+				079FD500BC474686D0D80511 /* Pods_HourlyTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -345,6 +363,7 @@
 				79FA889029E4AD67003C6DFB /* HourlyUITests */,
 				79FA886B29E4AD66003C6DFB /* Products */,
 				79A5641129FCB8E9004E8A7E /* Frameworks */,
+				B304C7C1B2A7B6257909F50F /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -459,6 +478,20 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		B304C7C1B2A7B6257909F50F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3C84B252DC6B972EEEC00A55 /* Pods-Hourly.debug.xcconfig */,
+				7E24DF936ABE5A535118D6FF /* Pods-Hourly.release.xcconfig */,
+				793B7E2F043B8ED29ADCE7DA /* Pods-Hourly-HourlyUITests.debug.xcconfig */,
+				0E4D10F4E55C256D9DB1130A /* Pods-Hourly-HourlyUITests.release.xcconfig */,
+				92FC8FCF0C9E83BFA83847DF /* Pods-HourlyTests.debug.xcconfig */,
+				C76C2B929545E6898FCE033D /* Pods-HourlyTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -466,6 +499,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 79FA889729E4AD67003C6DFB /* Build configuration list for PBXNativeTarget "Hourly" */;
 			buildPhases = (
+				A0E774667833FB7170DCE79B /* [CP] Check Pods Manifest.lock */,
 				79FA886629E4AD66003C6DFB /* Sources */,
 				79FA886729E4AD66003C6DFB /* Frameworks */,
 				79FA886829E4AD66003C6DFB /* Resources */,
@@ -489,6 +523,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 79FA889A29E4AD67003C6DFB /* Build configuration list for PBXNativeTarget "HourlyTests" */;
 			buildPhases = (
+				C369E5D466C791F628ABDD7B /* [CP] Check Pods Manifest.lock */,
 				79FA887F29E4AD67003C6DFB /* Sources */,
 				79FA888029E4AD67003C6DFB /* Frameworks */,
 				79FA888129E4AD67003C6DFB /* Resources */,
@@ -511,6 +546,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 79FA889D29E4AD67003C6DFB /* Build configuration list for PBXNativeTarget "HourlyUITests" */;
 			buildPhases = (
+				6F4695C5C608067864FDD9D5 /* [CP] Check Pods Manifest.lock */,
 				79FA888929E4AD67003C6DFB /* Sources */,
 				79FA888A29E4AD67003C6DFB /* Frameworks */,
 				79FA888B29E4AD67003C6DFB /* Resources */,
@@ -558,7 +594,7 @@
 			);
 			mainGroup = 79FA886129E4AD66003C6DFB;
 			packageReferences = (
-				7964AFC129E7C24C00065863 /* XCRemoteSwiftPackageReference "UIColor-Hex-Swift" */,
+				7964AFC129E7C24C00065863 /* XCRemoteSwiftPackageReference "UIColor-Hex-Swift.git" */,
 				79A5640C29FCB7EE004E8A7E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 79FA886B29E4AD66003C6DFB /* Products */;
@@ -607,6 +643,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		6F4695C5C608067864FDD9D5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Hourly-HourlyUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		79A5640829FC9DE8004E8A7E /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -627,6 +685,50 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+		};
+		A0E774667833FB7170DCE79B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Hourly-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C369E5D466C791F628ABDD7B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HourlyTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -871,6 +973,7 @@
 		};
 		79FA889829E4AD67003C6DFB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3C84B252DC6B972EEEC00A55 /* Pods-Hourly.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -908,6 +1011,7 @@
 		};
 		79FA889929E4AD67003C6DFB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E24DF936ABE5A535118D6FF /* Pods-Hourly.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -945,6 +1049,7 @@
 		};
 		79FA889B29E4AD67003C6DFB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 92FC8FCF0C9E83BFA83847DF /* Pods-HourlyTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -966,6 +1071,7 @@
 		};
 		79FA889C29E4AD67003C6DFB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C76C2B929545E6898FCE033D /* Pods-HourlyTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -987,6 +1093,7 @@
 		};
 		79FA889E29E4AD67003C6DFB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 793B7E2F043B8ED29ADCE7DA /* Pods-Hourly-HourlyUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1005,6 +1112,7 @@
 		};
 		79FA889F29E4AD67003C6DFB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E4D10F4E55C256D9DB1130A /* Pods-Hourly-HourlyUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1063,7 +1171,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		7964AFC129E7C24C00065863 /* XCRemoteSwiftPackageReference "UIColor-Hex-Swift" */ = {
+		7964AFC129E7C24C00065863 /* XCRemoteSwiftPackageReference "UIColor-Hex-Swift.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/yeahdongcn/UIColor-Hex-Swift.git";
 			requirement = {
@@ -1084,7 +1192,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		7964AFC229E7C24C00065863 /* UIColorHexSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7964AFC129E7C24C00065863 /* XCRemoteSwiftPackageReference "UIColor-Hex-Swift" */;
+			package = 7964AFC129E7C24C00065863 /* XCRemoteSwiftPackageReference "UIColor-Hex-Swift.git" */;
 			productName = UIColorHexSwift;
 		};
 		79A5640D29FCB7EE004E8A7E /* FirebaseAnalyticsWithoutAdIdSupport */ = {
@@ -1099,7 +1207,7 @@
 		};
 		79A5641229FCB8E9004E8A7E /* UIColorHexSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7964AFC129E7C24C00065863 /* XCRemoteSwiftPackageReference "UIColor-Hex-Swift" */;
+			package = 7964AFC129E7C24C00065863 /* XCRemoteSwiftPackageReference "UIColor-Hex-Swift.git" */;
 			productName = UIColorHexSwift;
 		};
 		79A5641429FCB8F8004E8A7E /* FirebaseCrashlytics */ = {
