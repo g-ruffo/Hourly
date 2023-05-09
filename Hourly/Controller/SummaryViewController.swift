@@ -101,9 +101,7 @@ class SummaryViewController: UIViewController {
         }
     }
     
-    @objc func workdaysHaveBeenUpdated(notification: NSNotification) {
-        loadWorkdaysFromDatabase()
-    }
+    @objc func workdaysHaveBeenUpdated(notification: NSNotification) { loadWorkdaysFromDatabase() }
     
     // Load workdays for the time frame selected by the user in the options menu.
     func loadWorkdaysFromDatabase() {
@@ -123,7 +121,6 @@ class SummaryViewController: UIViewController {
         let sortDate = NSSortDescriptor(key: "date", ascending: false)
         request.predicate = NSPredicate(format: "date >= %@ AND date <= %@ AND isFinalized == true", startDate as NSDate, endDate as NSDate)
         request.sortDescriptors = [sortDate]
-        
         coreDataService.getWorkdays(withRequest: request)
     }
     

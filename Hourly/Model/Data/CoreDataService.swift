@@ -23,7 +23,6 @@ extension CoreDataServiceDelegate {
     func loadedPhotos(_ coreDataService: CoreDataService, photoItems: Array<PhotoItem>) {}
     func loadedClient(_ coreDataService: CoreDataService, clientItem: ClientItem?) {}
     func loadedClients(_ coreDataService: CoreDataService, clientItems: Array<ClientItem>) {}
-    
 }
 
 class CoreDataService {
