@@ -258,6 +258,7 @@ class AddEditWorkdayViewController: UIViewController {
             let mileage = Int32(selectedMileage ?? 0)
             let location = locationTextField.text
             let workDescription = descriptionTextField.text
+            // Calculate the earnings by multiplying the time worked minus the lunch minutes by the payrate.
             let earnings = manager.calculateEarnings(startTime: adjustedStart,
                                                      endTime: adjustedEnd,
                                                      lunchMinutes: selectedLunchTimeMinutes,
@@ -265,6 +266,7 @@ class AddEditWorkdayViewController: UIViewController {
             let minutesWorked = manager.calculateTimeWorkedInMinutes(startTime: adjustedStart,
                                                                      endTime: adjustedEnd,
                                                                      lunchMinutes: selectedLunchTimeMinutes ?? 0)
+            // Create workday using the generated values.
             return coreDataService.createUpdateWorkday(
                 clientName: client,
                 date: workDate,
@@ -295,7 +297,7 @@ class AddEditWorkdayViewController: UIViewController {
             dialogMessage.dismiss(animated: true)
         })
         dialogMessage.addAction(dismissButton)
-        // Present alert to user
+        // Present alert to user.
         self.present(dialogMessage, animated: true, completion: nil)
     }
     
@@ -309,11 +311,12 @@ class AddEditWorkdayViewController: UIViewController {
         })
         let confirmButton = UIAlertAction(title: "DELETE!", style: .destructive, handler: { (_) -> Void in
             dialogMessage.dismiss(animated: true)
+            // Delete selected workday and navigate back when completed.
             if self.coreDataService.deleteWorkday() { self.navigationController?.popViewController(animated: true) }
         })
         dialogMessage.addAction(dismissButton)
         dialogMessage.addAction(confirmButton)
-        // Present alert to user
+        // Present alert to user.
         self.present(dialogMessage, animated: true, completion: nil)
     }
     
@@ -337,10 +340,13 @@ class AddEditWorkdayViewController: UIViewController {
     // Presents a photo picker for the user to select images from their gallery.
     func createPhotoPicker() {
         var config = PHPickerConfiguration(photoLibrary: .shared())
+        // Set the photo limit to 10.
         config.selectionLimit = 10
+        // Allow only photos to be selected.
         config.filter = PHPickerFilter.images
         let pickerVC = PHPickerViewController(configuration: config)
         pickerVC.delegate = self
+        // Present the picker view controller to the user.
         present(pickerVC, animated: true)
     }
 }
