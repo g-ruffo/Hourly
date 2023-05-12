@@ -90,7 +90,9 @@ extension PhotoViewController: UICollectionViewDataSource {
         cell.textView.text = photos[indexPath.row].imageDescription
         // Set the cells delegate as self to listen for changes in the text view.
         cell.textView.delegate = self
+        // Set the text view tag to equal the index of the photo.
         cell.textView.tag = indexPath.row
+        // Set the editing state to enabled.
         cell.setEditingState(allowEditing)
         return cell
     }
@@ -119,6 +121,7 @@ extension PhotoViewController: UITextViewDelegate {
 extension PhotoViewController: CoreDataServiceDelegate {
     func loadedPhotos(_ coreDataService: CoreDataService, photoItems: Array<PhotoItem>) {
         photos = photoItems
+        // If there are no more photos in the array, dismiss the view controller.
         if photoItems.count < 1 { dismiss(animated: true) }
         DispatchQueue.main.async { self.collectionView.reloadData() }
     }
